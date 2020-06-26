@@ -3,8 +3,8 @@ import React from 'react'
 function Header(){
     return (
         <div>
-            <img src="..\public\assets\Logo.jpeg" />
-            <img src="..\public\assets\pec_seal.png" />
+            <img height="50" width="50" src="assets/Logo.jpeg" alt="photograph"/>
+            <img height="50" width="50" src="assets/pec_seal.png" alt="photograph2"/>
         </div>
     )
 }
