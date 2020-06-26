@@ -3,6 +3,7 @@ import { Collapse, Navbar, Nav, NavItem, NavLink, Button, Modal, ModalHeader, Mo
   } from 'reactstrap';
 
 
+
 class Bar extends Component {
     constructor(props) {
         super(props);
