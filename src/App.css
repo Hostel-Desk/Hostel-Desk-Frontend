@@ -1,0 +1,31 @@
+.row-content {
+    margin:0px auto;
+    padding: 50px 0px 50px 0px;
+    border-bottom: 1px ridge;
+    min-height:400px;
+}
+.row-header{
+    margin:0px auto;
+    padding:0px auto;
+}
+
+
+i.info {
+    float: left;
+    background-color: white;
+    border-radius: 50%;
+    border: 1x solid grey;
+    padding: 10px 10px;
+  }
+
+.text{
+    padding-left: 60px;
+}  
+
+.social{
+    padding-right: 20px;
+}
+.inline{
+    display: inline-block;
+
+}

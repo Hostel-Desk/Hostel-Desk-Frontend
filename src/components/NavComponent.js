@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Collapse, Navbar, Nav, NavItem, NavLink, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
 
 
+
 class Bar extends Component {
     constructor(props) {
         super(props);
@@ -42,6 +43,7 @@ class Bar extends Component {
                                         <span className="fa fa-sign-in fa-lg"></span> Login
                                     </NavLink>
                                 </NavItem>
+                                
                             </Nav>
                         </Collapse>
                     </div>
