@@ -24,7 +24,7 @@ class DashBoard extends Component {
                             </div>        
                             </div>                
                         </CardHeader>
-                        <CardBody><a href="#">Details</a></CardBody>
+                        <CardBody><Link to="/employees">Details</Link></CardBody>
                     </Card>
                 </div>
                 <div className="col-md-3">
@@ -40,7 +40,7 @@ class DashBoard extends Component {
                             </div>        
                             </div>                
                         </CardHeader>
-                        <CardBody><a href="#">Details</a></CardBody>
+                        <CardBody><Link to="/students">Details</Link></CardBody>
                     </Card>
                 </div>
                 <div className="col-md-3">
@@ -56,7 +56,7 @@ class DashBoard extends Component {
                             </div>        
                             </div>                
                         </CardHeader>
-                        <CardBody><a href="#">Details</a></CardBody>
+                        <CardBody><Link to="/rooms">Details</Link></CardBody>
                     </Card>
                 </div>
                 <div className="col-md-3">
@@ -72,7 +72,7 @@ class DashBoard extends Component {
                             </div>        
                             </div>                
                         </CardHeader>
-                        <CardBody><a href="#">Details</a></CardBody>
+                        <CardBody><Link to="/meals">Details</Link></CardBody>
                     </Card>
                 </div>
             </div>
