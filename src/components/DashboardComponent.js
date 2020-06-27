@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, CardBody, CardHeader, Alert} from 'reactstrap';
+import {Card, CardBody, CardHeader, Alert, CardFooter} from 'reactstrap';
 import {Link} from 'react-router-dom';
 
 class DashBoard extends Component {
@@ -24,7 +24,7 @@ class DashBoard extends Component {
                             </div>        
                             </div>                
                         </CardHeader>
-                        <CardBody><Link to="/employees">Details</Link></CardBody>
+                        <CardFooter><Link to="/employees">Details</Link></CardFooter>
                     </Card>
                 </div>
                 <div className="col-md-3">
@@ -39,8 +39,8 @@ class DashBoard extends Component {
                                 </div>
                             </div>        
                             </div>                
-                        </CardHeader>
-                        <CardBody><Link to="/students">Details</Link></CardBody>
+                    </CardHeader>
+                    <CardFooter><Link to="/students">Details</Link></CardFooter>
                     </Card>
                 </div>
                 <div className="col-md-3">
@@ -56,14 +56,14 @@ class DashBoard extends Component {
                             </div>        
                             </div>                
                         </CardHeader>
-                        <CardBody><Link classname="self-align-center" to="/rooms">Details</Link></CardBody>
+                        <CardFooter><Link to="/rooms">Details</Link></CardFooter>
                     </Card>
                 </div>
                 <div className="col-md-3">
                     <Card>
                         <CardHeader className="dashCard">
                             <div className="row">
-                            <span className="col-7 fa fa-building fa-4x"></span>
+                            <span className="col-7 fa fa-cutlery fa-4x"></span>
                             <div className="col-5">
                                 <div className="row">
                                     <h4>2</h4>
@@ -72,7 +72,7 @@ class DashBoard extends Component {
                             </div>        
                             </div>                
                         </CardHeader>
-                        <CardBody><Link to="/meals">Details</Link></CardBody>
+                        <CardFooter><Link to="/rooms">Details</Link></CardFooter>
                     </Card>
                 </div>
             </div>
