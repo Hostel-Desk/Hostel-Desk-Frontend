@@ -6,6 +6,9 @@ import Home from './HomeComponent'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import Admin from './AdminMainComponent'
 
+
+
+
 function Main(){
     return (
         <div>

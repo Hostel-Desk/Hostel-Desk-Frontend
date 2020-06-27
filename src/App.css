@@ -99,15 +99,60 @@ ul{
 .social-icon{
     margin: 20px 20px;
     color: white;
+    
 }
 .social-icon:hover{
-    color: #185a9d;
+    color:#185a9d;
+}
+/*Contact*/
+.contact{
+    padding-left: 100px 10px 10px 10px;
+    background-color: #FFFFF0;
+}
+.contactF{
+    background-image: linear-gradient(to right,#43cea2,#185a9d);
 }
 .admin {
     padding: 20px;
 }
 
+.row-content {
+    margin:0px auto;
+    padding: 50px 0px 50px 0px;
+    border-bottom: 1px ridge;
+    min-height:400px;
+}
+.row-header{
+    margin:0px auto;
+    padding:0px auto;
+}
 
+
+i.info {
+    float: left;
+    background-color: rgb(67, 189, 128);
+    border-radius: 75%;
+    border: 2x solid #185a9d;
+    padding: 10px 10px;
+    color: white;
+  }
+
+.text{
+    padding-left: 60px;
+    font-family:'Ubuntu', sans-serif;
+}  
+
+
+.inline{
+    display: inline-block;
+
+}
+.myForm{
+    font-family: 'Montserrat', sans-serif;
+}
+strong{
+    font-size: 1.5rem;
+}
 
 
 
