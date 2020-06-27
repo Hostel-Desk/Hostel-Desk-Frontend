@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, CardBody, CardHeader} from 'reactstrap';
+import {Card, CardBody, CardHeader, Alert} from 'reactstrap';
 import {Link} from 'react-router-dom';
 
 class DashBoard extends Component {
@@ -56,7 +56,7 @@ class DashBoard extends Component {
                             </div>        
                             </div>                
                         </CardHeader>
-                        <CardBody><Link to="/rooms">Details</Link></CardBody>
+                        <CardBody><Link classname="self-align-center" to="/rooms">Details</Link></CardBody>
                     </Card>
                 </div>
                 <div className="col-md-3">
@@ -73,6 +73,21 @@ class DashBoard extends Component {
                             </div>                
                         </CardHeader>
                         <CardBody><Link to="/meals">Details</Link></CardBody>
+                    </Card>
+                </div>
+            </div>
+            <div className="row mt-2">
+                <div className="offset-2 col-md-8">
+                    <Card>
+                        <CardHeader mb="0" mt="0"><span><h4>Notices</h4></span></CardHeader>
+                        <CardBody>
+                        <Alert color="success" className="mb-1 mt-1">
+                            Kive aa
+                        </Alert>
+                        <Alert color="success" className="mb-1 mt-1">
+                            Hor v
+                        </Alert>
+                        </CardBody>
                     </Card>
                 </div>
             </div>
