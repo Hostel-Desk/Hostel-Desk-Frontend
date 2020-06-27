@@ -77,7 +77,7 @@ class Contact extends Component{
                             </FormGroup>
                             
                             <FormGroup row>
-                                <Col md={{size: 10, offset: 4}}>
+                                <Col md={{size: 10}}>
                                     <Button type="submit" color="primary">
                                         Send Message
                                     </Button>
