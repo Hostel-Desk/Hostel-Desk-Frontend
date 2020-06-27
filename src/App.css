@@ -1,5 +1,7 @@
 /* Header */
-
+body{
+    background-color: #FFFFF0;
+}
 .header{
     padding-top: 10px;
 }
@@ -8,16 +10,19 @@
     width: 15%;
 }
 .pec{
-    height: 10%;
-    width: 10%;
-    position: relative;
-    left: 75%;
+    height: 15%;
+    width: 15%;
 }
 
 /* Nav Component */
 
+.close {
+    position: relative;
+    left: 60%;
+}
+
 .navbar{
-    padding: 0 0 1rem 1rem;
+    padding: 0 0 0px 0px;
   }
 .nav-item{
   padding: 0 18px;
@@ -57,9 +62,6 @@
 .feature-line{
     border-color: #185a9d;
 }
-.feature-content{
-    padding-left: 220px;
-}
 .hostel{
     background-color: #FFFFF0;
     text-align: center;
@@ -78,13 +80,11 @@ hr{
 }
 p{
     font-size: 1.2rem;
-    margin-left: 25px;
     font-weight: 500;
 }
 ul{
     line-height: 2rem;
     font-size: 1.2rem;
-    padding-left: 250px;
     font-family: 'Ubuntu', sans-serif;
 }
 
@@ -92,18 +92,11 @@ ul{
 
 #footer{
     background-image: linear-gradient(to right,#43cea2,#185a9d);
-    padding: 3% ;
+    padding: 3% 0%;
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
 }
-.social-icon{
-    margin: 20px 20px;
-    color: white;
-    
-}
-.social-icon:hover{
-    color:#185a9d;
-}
+
 /*Contact*/
 .contact{
     padding-left: 100px 10px 10px 10px;
@@ -114,6 +107,14 @@ ul{
 }
 .admin {
     padding: 20px;
+}
+.social-icon{
+    margin: 20px 20px;
+    color: white;
+    
+}
+.social-icon:hover{
+    color:#185a9d;
 }
 
 .row-content {

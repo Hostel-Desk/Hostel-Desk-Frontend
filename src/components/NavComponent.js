@@ -56,10 +56,11 @@ class Bar extends Component {
                     </div>
                 </Navbar>
                 <Modal backdrop="static" isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                    <ModalHeader>Login                 
+                    <ModalHeader>   
+                        Login         
                         <Button className="close" variant="secondary" onClick={this.toggleModal}>
-                        <span aria-hidden="true" className="white-text"></span><i class="fa fa-times"></i>
-                            </Button>
+                            <span aria-hidden="true" className="white-text"></span><i class="fa fa-times"></i>
+                        </Button>
                     </ModalHeader>
                     
                     <ModalBody>
@@ -90,7 +91,7 @@ class Bar extends Component {
                                     Remember Me
                                 </Label>
                             </FormGroup>
-                            <Button type="submit" value="submit" color="primary"><span className="fa fa-sign-in fa-lg"></span><BrowserRouter><Link to="/admin">Login</Link></BrowserRouter></Button>
+                            <BrowserRouter><Link to="/admin"><Button type="submit" value="submit" color="primary"><span className="fa fa-sign-in fa-lg"></span>Login</Button></Link></BrowserRouter>
                             
                         </Form>
                     </ModalBody>
