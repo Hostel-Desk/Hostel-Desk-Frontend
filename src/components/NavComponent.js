@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { Collapse, Navbar, Nav, NavItem, NavLink, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
+import { BrowserRouter, Link } from 'react-router-dom';
 
 
 class Bar extends Component {
@@ -87,7 +88,7 @@ class Bar extends Component {
                                     Remember Me
                                 </Label>
                             </FormGroup>
-                            <Button type="submit" value="submit" color="primary"><span className="fa fa-sign-in fa-lg"></span> Login</Button>
+                            <Button type="submit" value="submit" color="primary"><span className="fa fa-sign-in fa-lg"></span><BrowserRouter><Link to="/admin">Login</Link></BrowserRouter></Button>
                             
                         </Form>
                     </ModalBody>

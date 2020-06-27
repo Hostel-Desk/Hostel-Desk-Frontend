@@ -16,9 +16,9 @@ class DashBoard extends Component {
                         <CardHeader className="dashCard">
                             <div className="row">
                             <span className="col-7 fa fa-users fa-4x"></span>
-                            <div className="col-5">
+                            <h3>2</h3>
+                            <div className="mt-3">
                                 <div className="row">
-                                    <h4>2</h4>
                                     <p>Total Employees</p>
                                 </div>
                             </div>        
@@ -32,25 +32,25 @@ class DashBoard extends Component {
                     <CardHeader className="dashCard">
                             <div className="row">
                             <span className="col-7 fa fa-users fa-4x"></span>
-                            <div className="col-5">
+                            <h3>2</h3>
+                            <div className="mt-3">
                                 <div className="row">
-                                    <h4>2</h4>
                                     <p>Total Students</p>
                                 </div>
                             </div>        
                             </div>                
-                    </CardHeader>
+                        </CardHeader>
                     <CardFooter><Link to="/students">Details</Link></CardFooter>
                     </Card>
                 </div>
                 <div className="col-md-3">
                     <Card>
-                        <CardHeader className="dashCard">
+                    <CardHeader className="dashCard">
                             <div className="row">
                             <span className="col-7 fa fa-building fa-4x"></span>
-                            <div className="col-5">
+                            <h3>2</h3>
+                            <div className="mt-3">
                                 <div className="row">
-                                    <h4>4</h4>
                                     <p>Total Rooms</p>
                                 </div>
                             </div>        
@@ -61,23 +61,23 @@ class DashBoard extends Component {
                 </div>
                 <div className="col-md-3">
                     <Card>
-                        <CardHeader className="dashCard">
+                    <CardHeader className="dashCard">
+                        <div className="row">
+                        <span className="col-7 fa fa-cutlery fa-4x"></span>
+                        <h3>2</h3>
+                        <div className="mt-3">
                             <div className="row">
-                            <span className="col-7 fa fa-cutlery fa-4x"></span>
-                            <div className="col-5">
-                                <div className="row">
-                                    <h4>2</h4>
-                                    <p>Today's Meal</p>
-                                </div>
-                            </div>        
-                            </div>                
-                        </CardHeader>
-                        <CardFooter><Link to="/rooms">Details</Link></CardFooter>
+                                <p>Today's Meals</p>
+                            </div>
+                        </div>        
+                        </div>                
+                    </CardHeader>
+                    <CardFooter><Link to="/rooms">Details</Link></CardFooter>
                     </Card>
                 </div>
             </div>
-            <div className="row mt-2">
-                <div className="offset-2 col-md-8">
+            <div className="row mt-2 mt-3">
+                <div className="col-md-6">
                     <Card>
                         <CardHeader mb="0" mt="0"><span><h4>Notices</h4></span></CardHeader>
                         <CardBody>

@@ -11,7 +11,7 @@
     height: 9%;
     width: 9%;
     position: relative;
-    left: 1000px;
+    left: 850px;
 }
 
 /* Nav Component */
@@ -102,6 +102,9 @@ ul{
 }
 .social-icon:hover{
     color: #185a9d;
+}
+.admin {
+    padding: 20px;
 }
 
 

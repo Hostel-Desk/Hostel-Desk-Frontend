@@ -34,7 +34,6 @@ export default class LeftNav extends Component {
             <NavItem>
               <NavLink to="/MealManage"><i class="fa fa-cutlery" aria-hidden="true"></i> Meal Manage</NavLink>
             </NavItem>
-
             <NavItem>
               <NavLink to="/CostManage"><i class="fa fa-money" aria-hidden="true"></i> Cost Manage</NavLink>
             </NavItem>

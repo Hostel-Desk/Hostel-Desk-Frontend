@@ -10,12 +10,12 @@ class Admin extends Component {
 
     render() {
         return(
-            <div className="container">
+            <div className="feature admin">
                 <div className="row">
-                    <div className="col-md-2">
+                    <div className="col-md-3">
                         <LeftNav/>
                     </div>
-                    <div className="col-md-10">
+                    <div className="col-md-9">
                         <BrowserRouter>
                         <Switch>
                             <Route path="/dashboard" component={DashBoard}/>
