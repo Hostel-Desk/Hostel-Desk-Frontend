@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Collapse, Navbar, Nav, NavItem, NavLink, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Collapse, Navbar, Nav, NavItem, NavLink, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input, NavbarToggler } from 'reactstrap';
 import { BrowserRouter, Link } from 'react-router-dom';
 
 
@@ -31,6 +31,7 @@ class Bar extends Component {
     return (
         <div>
             <Navbar light expand="md">
+                <NavbarToggler onClick={this.toggleNav}/>
                     <div className="container-fluid">
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar className="navbar-expand-lg">
