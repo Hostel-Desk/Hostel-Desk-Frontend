@@ -6,6 +6,7 @@ import Home from './HomeComponent'
 
 
 
+
 function Main(){
     return (
         <div>
@@ -13,7 +14,8 @@ function Main(){
                     <Header />
                     <Bar />
                 </div>
-                <Home />   
+                <Home />  
+                
             <Footer />
         </div>
     )
