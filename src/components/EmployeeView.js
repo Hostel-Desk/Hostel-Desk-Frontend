@@ -1,5 +1,5 @@
 import React from 'react';
-import { MDBDataTable} from 'mdbreact';
+import { MDBDataTableV5} from 'mdbreact';
 
 export default function EmployeeView() {
   const [datatable, setDatatable] = React.useState({
@@ -155,7 +155,7 @@ export default function EmployeeView() {
   });
 
   return (
-    <MDBDataTable
+    <MDBDataTableV5
       hover
       
       bordered

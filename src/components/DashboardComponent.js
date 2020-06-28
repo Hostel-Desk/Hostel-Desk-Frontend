@@ -10,7 +10,7 @@ class DashBoard extends Component {
 
     render() {
         return(
-            <div className="conatainer">
+            <div>
             <div className="row">
                 <div className="col-md-3 mt-3">
                     <Card>
