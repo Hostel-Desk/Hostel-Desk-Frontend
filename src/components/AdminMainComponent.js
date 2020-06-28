@@ -4,6 +4,7 @@ import {Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
 import LeftNav from './LeftNav';
 import Profile from './ProfileComponent'
 import TopSearchSelect from './StudentsComponent';
+import EmployeeView from './EmployeeView';
 
 class Admin extends Component {
     constructor(props) {
@@ -18,7 +19,7 @@ class Admin extends Component {
                         <LeftNav/>
                     </div>
                     <div className="col-md-9">
-                        <BrowserRouter>
+                        
                         <Switch>
                             <Route path="/admin/dashboard" component={DashBoard}/>
                             <Route exact path="/admin/students" component={TopSearchSelect}/>
@@ -29,7 +30,7 @@ class Admin extends Component {
                             <Route exact path="/admin/CostManage" component={DashBoard}/>
                             <Route exact path="/admin/StudentsManage" component={DashBoard}/>
                             <Route exact path="/admin/StudentsPayment" component={DashBoard}/>
-                            <Route exact path="/admin/EmployeeManage" component={DashBoard}/>
+                            <Route exact path="/admin/EmployeeManage/view" component={EmployeeView}/>
                             <Route exact path="/admin/VendorPayment" component={DashBoard}/>
                             <Route exact path="/admin/BillManange" component={DashBoard}/>
                             <Route exact path="/admin/NoticeBoard" component={DashBoard}/>
@@ -37,7 +38,7 @@ class Admin extends Component {
                             <Route exact path="/admin/Setup" component={DashBoard}/>
                             <Redirect to="/admin/dashboard"/>
                         </Switch>
-                        </BrowserRouter>
+                        
                     </div>
                 </div>
             </div>

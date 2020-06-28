@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {Navbar,NavItem,Nav,NavbarToggler,Collapse,UncontrolledCollapse,Button,Card,CardBody} from 'reactstrap';
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
  function Carrot({open}){
    if (open===true){
      return(
-       <i className="fa fa-caret-up float-right align-self-center px-1" aria-hidden="true"></i>
+       <i className="fa fa-caret-up float-right" aria-hidden="true"></i>
       )
    }
    else{
@@ -68,85 +68,85 @@ export default class LeftNav extends Component {
           <Collapse isOpen={this.state.isNavOpen} navbar >
           <Nav navbar className="flex-column">
             <NavItem>
-              <NavLink className="nav-link" to="/admin/dashboard">
-              <i class="fa fa-tachometer" aria-hidden="true"></i>Dashboard
-              </NavLink>
+              <Link className="nav-link" to="/admin/dashboard">
+              <i class="fa fa-tachometer-alt" aria-hidden="true"></i>Dashboard
+              </Link>
               </NavItem>
             <NavItem>
-              <NavLink id="toggler" onClick={this.toggleManageMeal} className="nav-link" to="/admin/MealManage"> <i class="fa fa-cutlery" aria-hidden="true"></i> Meal Manage 
-              <Carrot open={this.state.ismealmanageopen}/></NavLink>
+              <Link id="toggler" onClick={this.toggleManageMeal} className="nav-link" to="/admin/MealManage"> <i class="fa fa-utensils" aria-hidden="true"></i> Meal Manage 
+              <Carrot open={this.state.ismealmanageopen}/></Link>
             </NavItem>
             <div>
             <UncontrolledCollapse toggler="#toggler">
                   <NavItem>
-                    <NavLink className="nav-link offset-2" to="/admin/MealManage/add"><i class="fa fa-plus" aria-hidden="true"></i> Add</NavLink>
+                    <Link className="nav-link offset-2" to="/admin/MealManage/add"><i class="fa fa-plus" aria-hidden="true"></i> Add</Link>
                   </NavItem>
                   
                   <NavItem>
-                    <NavLink className="nav-link offset-2" to="/admin/MealManage/view"><i class="fa fa-eye" aria-hidden="true"></i> View</NavLink>
+                    <Link className="nav-link offset-2" to="/admin/MealManage/view"><i class="fa fa-eye" aria-hidden="true"></i> View</Link>
                   </NavItem>   
             </UncontrolledCollapse>
           </div>
 
             <NavItem>
-              <NavLink className="nav-link" id="toggler1" onClick={this.toggleStudentManage} to="/admin/StudentsManage"> <i class="fa fa-child" aria-hidden="true"></i> Students Manage <Carrot open={this.state.isstudentmanageopen}/></NavLink>
+              <Link className="nav-link" id="toggler1" onClick={this.toggleStudentManage} to="/admin/StudentsManage"> <i class="fa fa-child" aria-hidden="true"></i> Students Manage <Carrot open={this.state.isstudentmanageopen}/></Link>
             </NavItem>
             <div>
             <UncontrolledCollapse toggler="#toggler1">
                   <NavItem>
-                    <NavLink className="nav-link offset-2" to="/admin/StudentManage/addnew"><i class="fa fa-plus" aria-hidden="true"></i> Add New</NavLink>
+                    <Link className="nav-link offset-2" to="/admin/StudentManage/addnew"><i class="fa fa-plus" aria-hidden="true"></i> Add New</Link>
                   </NavItem>
                   
                   <NavItem>
-                    <NavLink className="nav-link offset-2" to="/admin/StudentManage/view"><i class="fa fa-eye" aria-hidden="true"></i> View</NavLink>
+                    <Link className="nav-link offset-2" to="/admin/StudentManage/view"><i class="fa fa-eye" aria-hidden="true"></i> View</Link>
                   </NavItem>   
                   <NavItem>
-                    <NavLink className="nav-link offset-2" to="/admin/StudentManage/payment"><i class="fa fa-money" aria-hidden="true"></i> Payment</NavLink>
+                    <Link className="nav-link offset-2" to="/admin/StudentManage/payment"><i class="fa fa-money" aria-hidden="true"></i> Payment</Link>
                   </NavItem>   
             </UncontrolledCollapse>
           </div>
             <NavItem>
-              <NavLink className="nav-link" id="toggler2" onClick={this.toggleEmployeeManage} to="/admin/EmployeeManage"> <i class="fa fa-users" aria-hidden="true"></i> Employee Manage<Carrot open={this.state.isemployeemanageopen}/></NavLink>
+              <Link className="nav-link" id="toggler2" onClick={this.toggleEmployeeManage} to="/admin/EmployeeManage"> <i class="fa fa-users" aria-hidden="true"></i> Employee Manage<Carrot open={this.state.isemployeemanageopen}/></Link>
             </NavItem>
             <div>
             <UncontrolledCollapse toggler="#toggler2">
                   <NavItem>
-                    <NavLink className="nav-link offset-2" to="/admin/EmployeeManage/addnew"><i class="fa fa-plus" aria-hidden="true"></i> Add New</NavLink>
+                    <Link className="nav-link offset-2" to="/admin/EmployeeManage/addnew"><i class="fa fa-plus" aria-hidden="true"></i> Add New</Link>
                   </NavItem>
                   
                   <NavItem>
-                    <NavLink className="nav-link offset-2" to="/admin/EmployeeManage/view"><i class="fa fa-eye" aria-hidden="true"></i> View</NavLink>
+                    <Link className="nav-link offset-2" to="/admin/EmployeeManage/view"><i class="fa fa-eye" aria-hidden="true"></i> View</Link>
                   </NavItem>   
                   <NavItem>
-                    <NavLink className="nav-link offset-2" to="/admin/EmployeeManage/payment"><i class="fa fa-money" aria-hidden="true"></i> Payment</NavLink>
+                    <Link className="nav-link offset-2" to="/admin/EmployeeManage/payment"><i class="fa fa-money" aria-hidden="true"></i> Payment</Link>
                   </NavItem>   
             </UncontrolledCollapse>
           </div>
             <NavItem>
-              <NavLink className="nav-link" to="/admin/NoticeBoard"> <i class="fa fa-newspaper-o" aria-hidden="true"></i> Notice Board</NavLink>
+              <Link className="nav-link" to="/admin/NoticeBoard"> <i class="fa fa-newspaper-o" aria-hidden="true"></i> Notice Board</Link>
             </NavItem>
             <NavItem>
-              <NavLink className="nav-link" id="toggler3" onClick={this.toggleSettings} to="/admin/Settings"><i class="fa fa-cog" aria-hidden="true"></i> Settings<Carrot open={this.state.issettingsopen}/></NavLink>
+              <Link className="nav-link" id="toggler3" onClick={this.toggleSettings} to="/admin/Settings"><i class="fa fa-cog" aria-hidden="true"></i> Settings<Carrot open={this.state.issettingsopen}/></Link>
             </NavItem>
             <div>
             <UncontrolledCollapse toggler="#toggler3">
                   <NavItem>
-                    <NavLink className="nav-link offset-2" to="/admin/Settings/updateprofile"><i class="fa fa-user" aria-hidden="true"></i> Update Profile</NavLink>
+                    <Link className="nav-link offset-2" to="/admin/Settings/updateprofile"><i class="fa fa-user" aria-hidden="true"></i> Update Profile</Link>
                   </NavItem>  
             </UncontrolledCollapse>
           </div>
             
             <NavItem>
-              <NavLink className="nav-link" id="toggler4" onClick={this.toggleSetup} to="/admin/Setup"><i class="fa fa-server" aria-hidden="true"></i> Setup<Carrot open={this.state.issetupopen}/></NavLink>
+              <Link className="nav-link" id="toggler4" onClick={this.toggleSetup} to="/admin/Setup"><i class="fa fa-server" aria-hidden="true"></i>Architecture<Carrot open={this.state.issetupopen}/></Link>
             </NavItem>
             <div>
             <UncontrolledCollapse toggler="#toggler4">
                   <NavItem>
-                    <NavLink className="nav-link offset-2" to="/admin/Setup/addnew"><i class="fa fa-bed" aria-hidden="true"></i>Total Rooms</NavLink>
+                    <Link className="nav-link offset-2" to="/admin/Setup/addnew"><i class="fa fa-bed" aria-hidden="true"></i>Total Rooms</Link>
                   </NavItem>
                   
                   <NavItem>
-                    <NavLink className="nav-link offset-2" to="/admin/Setup/view"><i class="fa fa-building" aria-hidden="true"></i> Total Blocks</NavLink>
+                    <Link className="nav-link offset-2" to="/admin/Setup/view"><i class="fa fa-building" aria-hidden="true"></i> Total Blocks</Link>
                   </NavItem> 
             </UncontrolledCollapse>
           </div>
