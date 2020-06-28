@@ -29,7 +29,7 @@ class Admin extends Component {
                             <Route exact path="/admin/attendance" component={DashBoard}/> 
                             <Route exact path="/admin/MealManage" component={DashBoard}/>
                             <Route exact path="/admin/CostManage" component={DashBoard}/>
-                            <Route exact path="/admin/StudentsManage/view" component={StudentView}/>
+                            <Route exact path="/admin/StudentManage/view" component={StudentView}/>
                             <Route exact path="/admin/StudentsPayment" component={DashBoard}/>
                             <Route exact path="/admin/EmployeeManage/view" component={EmployeeView}/>
                             <Route exact path="/admin/VendorPayment" component={DashBoard}/>
