@@ -4,7 +4,6 @@ import {Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
 import LeftNav from './LeftNav';
 import Profile from './ProfileComponent'
 import Architecture from './ArchitectureComponent'
-
 import EmployeeView from './EmployeeView';
 import StudentView from './StudentsComponent';
 
