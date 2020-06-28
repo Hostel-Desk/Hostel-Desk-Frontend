@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
  function Carrot({open}){
    if (open===true){
      return(
-       <i className="fa fa-caret-up float-right " aria-hidden="true"></i>
+       <i className="fa fa-caret-up float-right" aria-hidden="true"></i>
       )
    }
    else{
