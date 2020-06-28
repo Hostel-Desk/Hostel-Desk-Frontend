@@ -5,6 +5,7 @@ html,body
     margin: 0px;
     padding: 0px;
     overflow-x: hidden; 
+    
 }
 
 /* Header */
@@ -106,6 +107,7 @@ ul{
     padding: 3% 0%;
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
+    
 }
 
 /*Contact*/

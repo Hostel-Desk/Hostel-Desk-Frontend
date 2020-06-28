@@ -166,7 +166,7 @@ export default function EmployeeView() {
       pagingTop
       searchTop
       searchBottom={false}
-      
+      scrollX
     />
   );
 }
