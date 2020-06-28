@@ -137,7 +137,7 @@ export default class LeftNav extends Component {
           </div>
             
             <NavItem>
-              <Link className="nav-link"  to="/admin/Setup"><i class="fa fa-server" aria-hidden="true"></i>Architecture</Link>
+              <Link className="nav-link"  to="/admin/Architecture"><i class="fa fa-server" aria-hidden="true"></i>Architecture</Link>
             </NavItem>
             
           </Nav>

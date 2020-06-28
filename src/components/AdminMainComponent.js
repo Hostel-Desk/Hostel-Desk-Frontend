@@ -35,8 +35,8 @@ class Admin extends Component {
                             <Route exact path="/admin/VendorPayment" component={DashBoard}/>
                             <Route exact path="/admin/BillManange" component={DashBoard}/>
                             <Route exact path="/admin/NoticeBoard" component={DashBoard}/>
-                            <Route exact path="/admin/Settings" component={Profile}/>
-                            <Route exact path="/admin/Setup" component={Architecture}/>
+                            <Route exact path="/admin/Settings/updateprofile" component={Profile}/>
+                            <Route exact path="/admin/Architecture" component={Architecture}/>
                             <Redirect to="/admin/dashboard"/>
                         </Switch>
                         
