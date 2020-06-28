@@ -1,0 +1,173 @@
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+/* Header */
+body{
+    background-color: #FFFFF0;
+}
+.header{
+    padding-top: 10px;
+}
+.hms{
+    height: 15%;
+    width: 15%;
+}
+.pec{
+    height: 15%;
+    width: 15%;
+}
+
+/* Nav Component */
+
+.close {
+    position: relative;
+    left: 60%;
+}
+
+.navbar{
+    padding: 0 0 0px 0px;
+  }
+.nav-item{
+  padding: 0 18px;
+  font-size: 10%;
+}
+.nav-link{
+    font-size: 1.2rem;
+    font-family: "Montserrat";
+}
+.close{
+    position: relative;
+    left: 380px;
+}
+
+/* Home Component */
+
+.topSection, .describe{
+    background-image: linear-gradient(to right,#43cea2,#185a9d);
+    padding-bottom: 30px;
+}
+.content{
+    text-align: center;
+    line-height: 2rem;
+    font-size: 1.2rem;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+}
+.feature{
+    background-color: #FFFFF0;
+    padding-top: 2%;
+    padding-bottom: 5%;
+}
+.feature-heading{
+    color: #185a9d;
+    font-family: 'Ubuntu', sans-serif;
+}
+.feature-line{
+    border-color: #185a9d;
+}
+.hostel{
+    background-color: #FFFFF0;
+    text-align: center;
+    padding-bottom: 5%;
+}
+h1, h2{
+    padding-top: 50px;
+    text-align: center;
+    color: white;
+    font-family: 'Montserrat', sans-serif;;
+}
+hr{
+    border-color: white;
+    width:7%;
+    text-align:center;
+}
+p{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+ul{
+    line-height: 2rem;
+    font-size: 1.2rem;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* Footer */
+
+#footer{
+    background-image: linear-gradient(to right,#43cea2,#185a9d);
+    padding: 3% 0%;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/*Contact*/
+.contact{
+    padding-left: 100px 10px 10px 10px;
+    background-color: #FFFFF0;
+}
+.contactF{
+    background-image: linear-gradient(to right,#43cea2,#185a9d);
+}
+.admin {
+    padding: 20px;
+}
+.social-icon{
+    margin: 20px 20px;
+    color: white;
+    
+}
+.social-icon:hover{
+    color:#185a9d;
+}
+
+.row-content {
+    margin:0px auto;
+    padding: 50px 0px 50px 0px;
+    border-bottom: 1px ridge;
+    min-height:400px;
+}
+.row-header{
+    margin:0px auto;
+    padding:0px auto;
+}
+
+
+i.info {
+    float: left;
+    background-color: rgb(67, 189, 128);
+    border-radius: 75%;
+    border: 2x solid #185a9d;
+    padding: 10px 10px;
+    color: white;
+  }
+
+.text{
+    padding-left: 60px;
+    font-family:'Ubuntu', sans-serif;
+}  
+
+
+.inline{
+    display: inline-block;
+
+}
+.myForm{
+    font-family: 'Montserrat', sans-serif;
+}
+strong{
+    font-size: 1.5rem;
+}
+
+
+
+
+
+
+
+

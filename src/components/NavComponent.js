@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
-import { Collapse, Navbar, Nav, NavItem, NavLink, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Collapse, Navbar, Nav, NavItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input, NavbarToggler } from 'reactstrap';
+import { BrowserRouter, Link, NavLink } from 'react-router-dom';
+
 
 
 
@@ -29,26 +31,40 @@ class Bar extends Component {
     render(){
     return (
         <div>
-            <Navbar dark expand="md">
-                    <div className="container">
+            <Navbar light expand="md">
+            <div className="container-fluid">
+                <NavbarToggler onClick={this.toggleNav}/>
+                    
                         <Collapse isOpen={this.state.isNavOpen} navbar>
-                            <Nav navbar>
-                                <NavItem>
-                                    <NavLink className="nav-link" to="/home">
+                            <Nav navbar className="navbar-expand-lg">
+                                <NavItem className="navbar-expand-lg ">
+                                    <Link className="nav-link" to="/home">
                                         <span className="fa fa-home fa-lg"></span> Home 
-                                    </NavLink>
+                                    </Link>
+                                </NavItem>
+                                <NavItem className="navbar-expand-lg ">
+                                    <Link className="nav-link" to="/contactus">
+                                        <span className="fa fa-address-book fa-lg"></span> Contact Us
+                                    </Link>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" onClick={this.toggleModal} >
+                                    <Link className="nav-link" onClick={this.toggleModal} >
                                         <span className="fa fa-sign-in fa-lg"></span> Login
-                                    </NavLink>
+                                    </Link>
                                 </NavItem>
+                                
                             </Nav>
                         </Collapse>
                     </div>
                 </Navbar>
-                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                    <ModalHeader>Login</ModalHeader>
+                <Modal backdrop="static" isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                    <ModalHeader>   
+                        Login         
+                        <Button className="close" variant="secondary" onClick={this.toggleModal}>
+                            <span aria-hidden="true" className="white-text"></span><i class="fa fa-times"></i>
+                        </Button>
+                    </ModalHeader>
+                    
                     <ModalBody>
                         <Form>
                             <FormGroup>
@@ -61,6 +77,15 @@ class Bar extends Component {
                                 <Input type="password" id="password" name="password"
                                     innerRef={(input) => this.password=input} />
                             </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor="select">Login As</Label>
+                                <Input type="select" id="select" name="select"
+                                    innerRef={(input) => this.loginAs=input} >
+                                    <option defaultValue>--Select--</option>
+                                    <option>Admin</option>
+                                    <option>Student</option>
+                                </Input>
+                            </FormGroup>
                             <FormGroup check>
                                 <Label check>
                                     <Input type="checkbox" name="remember"
@@ -68,7 +93,8 @@ class Bar extends Component {
                                     Remember Me
                                 </Label>
                             </FormGroup>
-                            <Button type="submit" value="submit" color="primary">Login</Button>
+                            <Link to="/admin"><Button type="submit" value="submit" color="primary" onClick={this.toggleModal} ><span className="fa fa-sign-in fa-lg"></span>Login</Button></Link>
+                            
                         </Form>
                     </ModalBody>
                 </Modal>
