@@ -137,7 +137,7 @@ export default class LeftNav extends Component {
           </div>
             
             <NavItem>
-              <Link className="nav-link" id="toggler4" onClick={this.toggleSetup} to="/admin/Setup"><i class="fa fa-server" aria-hidden="true"></i> Setup<Carrot open={this.state.issetupopen}/></Link>
+              <Link className="nav-link" id="toggler4" onClick={this.toggleSetup} to="/admin/Setup"><i class="fa fa-server" aria-hidden="true"></i>Architecture<Carrot open={this.state.issetupopen}/></Link>
             </NavItem>
             <div>
             <UncontrolledCollapse toggler="#toggler4">
