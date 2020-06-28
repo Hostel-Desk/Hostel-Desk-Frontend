@@ -11,68 +11,72 @@ class DashBoard extends Component {
         return(
             <div className="conatainer">
             <div className="row">
-                <div className="col-md-3">
+                <div className="col-md-3 mt-3">
                     <Card>
                         <CardHeader className="dashCard">
                             <div className="row">
                             <span className="col-7 fa fa-users fa-4x"></span>
                             <h3>2</h3>
+                            </div> 
                             <div className="mt-3">
                                 <div>
                                     <p>Total Employees</p>
                                 </div>
                             </div>        
-                            </div>                
+                                           
                         </CardHeader>
                         <CardFooter><Link to="/employees">Details</Link></CardFooter>
                     </Card>
                 </div>
-                <div className="col-md-3">
+                <div className="col-md-3 mt-3">
                     <Card>
-                    <CardHeader className="dashCard">
+                        <CardHeader className="dashCard">
                             <div className="row">
                             <span className="col-7 fa fa-users fa-4x"></span>
                             <h3>2</h3>
+                            </div> 
                             <div className="mt-3">
                                 <div>
                                     <p>Total Students</p>
                                 </div>
                             </div>        
-                            </div>                
+                                           
                         </CardHeader>
-                    <CardFooter><Link to="/students">Details</Link></CardFooter>
+                        <CardFooter><Link to="/students">Details</Link></CardFooter>
                     </Card>
                 </div>
-                <div className="col-md-3">
+                <div className="col-md-3 mt-3">
                     <Card>
-                    <CardHeader className="dashCard">
+                        <CardHeader className="dashCard">
                             <div className="row">
                             <span className="col-7 fa fa-building fa-4x"></span>
                             <h3>2</h3>
+                            </div> 
                             <div className="mt-3">
                                 <div>
                                     <p>Total Rooms</p>
                                 </div>
                             </div>        
-                            </div>                
+                                           
                         </CardHeader>
                         <CardFooter><Link to="/rooms">Details</Link></CardFooter>
                     </Card>
                 </div>
-                <div className="col-md-3">
+                <div className="col-md-3 mt-3">
                     <Card>
-                    <CardHeader className="dashCard">
-                        <div className="row">
-                        <span className="col-7 fa fa-cutlery fa-4x"></span>
-                        <h3>2</h3>
-                        <div className="mt-3">
-                            <div>
-                                <p>Today's Meals</p>
+                        <CardHeader className="dashCard">
+                            <div className="row">
+                            <span className="col-7 fa fa-cutlery fa-4x"></span>
+                            <h3>2</h3>
                             </div>
-                        </div>        
-                        </div>                
-                    </CardHeader>
-                    <CardFooter><Link to="/rooms">Details</Link></CardFooter>
+                            <div className="mt-3">
+                                <div>
+                                    <p>Today's Meals</p>
+                                </div>
+                            </div>        
+                                            
+                        </CardHeader>
+                        <CardFooter><Link to="/meals">Details</Link></CardFooter>
                     </Card>
                 </div>
             </div>
