@@ -1,7 +1,7 @@
 import React from 'react';
 import { MDBDataTableV5 } from 'mdbreact';
 
-export default function TopSearchSelect() {
+export default function StudentView() {
   const [datatable, setDatatable] = React.useState({
     columns: [
       {
