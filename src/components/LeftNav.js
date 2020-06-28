@@ -20,14 +20,16 @@ export default class LeftNav extends Component {
 
     render() {
         return (
-      <React.Fragment>
+      <div>
         <Navbar light navbar expand="md" >
           <NavbarToggler onClick={this.toggleNav}/>
           <Collapse isOpen={this.state.isNavOpen} navbar >
           <Nav navbar className="flex-column">
-            <NavbarBrand href="/admin/dashboard">
+            <NavItem>
+            <NavLink className="nav-link" to="/admin/dashboard">
               <i class="fa fa-tachometer" aria-hidden="true"></i>Dashboard
-              </NavbarBrand>
+              </NavLink>
+              </NavItem>
             <NavItem>
               <NavLink className="nav-link" to="/admin/attendance"><i class="fa fa-address-book-o" aria-hidden="true"></i> Attendance</NavLink>
             </NavItem>
@@ -66,7 +68,7 @@ export default class LeftNav extends Component {
           </Collapse>
           
         </Navbar>
-        </React.Fragment>
+        </div>
       
         )
     }
