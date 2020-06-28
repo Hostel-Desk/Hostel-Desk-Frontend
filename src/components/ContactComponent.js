@@ -38,9 +38,9 @@ class Contact extends Component{
                     
                         <div className="col-12 col-md-4 offset-md-2">
                         
-                        <a href="http://maps.google.com/?q=Punjab Engineering College, Sector-12" target="_blank" ><i className="fa fa-map-marker fa-2x info"></i></a><div className="text"><p><strong>Location:</strong><br/>Punjab Engineering College, Sector-12,<br/>Chandigarh, 160012</p></div>
-                         <a href="mailto:deansw@pec.edu.in" target="_blank"> <i className="fa fa-envelope-o fa-2x info"></i></a><div className="text"><p><strong>Email:</strong><br/>deansw@pec.edu.in</p></div>
-                        <a href="tel:+1722753071"target="_blank"> <i className="fa fa-phone fa-2x info"></i></a><div className="text"><p><strong>Call:</strong><br/>+1722753071</p></div>
+                        <a href="http://maps.google.com/?q=Punjab Engineering College, Sector-12" target="_blank" ><i className="fa fa-map-marker-alt fa-2x info"></i></a><div className="text"><p><strong>Location:</strong><br/>Punjab Engineering College, Sector-12,<br/>Chandigarh, 160012</p></div>
+                         <a href="mailto:deansw@pec.edu.in" target="_blank"> <i className="fa fa-envelope fa-2x info"></i></a><div className="text"><p><strong>Email:</strong><br/>deansw@pec.edu.in</p></div>
+                        <a href="tel:+1722753071"target="_blank"> <i className="fa fa-phone-alt fa-2x info"></i></a><div className="text"><p><strong>Call:</strong><br/>+1722753071</p></div>
 
  
                         </div>
@@ -91,14 +91,14 @@ class Contact extends Component{
                     
                         <div className="row offset-sm-5 ">
                             
-                            <a  href="http://www.pec.ac.in" className="social-icon" target="_blank"><i className="fa fa-globe social fa-2x"></i></a>
+                            <a  href="http://www.pec.ac.in" className="social-icon" target="_blank"><i className="fa fa-globe-asia social fa-2x"></i></a>
                             
                             
-                        <a  href="https://www.facebook.com/PunjabEngineeringCollege/" className="social-icon" target="_blank"><i className="fa fa-facebook fa-2x"></i></a>
+                        <a  href="https://www.facebook.com/PunjabEngineeringCollege/" className="social-icon" target="_blank"><i className="fab fa-facebook-f fa-2x"></i></a>
                         
-                        <a  href="https://www.linkedin.com/edu/school?id=20011" className="social-icon" target="_blank"><i className="fa fa-linkedin fa-2x"></i></a>
+                        <a  href="https://www.linkedin.com/edu/school?id=20011" className="social-icon" target="_blank"><i className="fab fa-linkedin-in fa-2x"></i></a>
                         
-                        <a  href="mailto:" className="social-icon"><i className="fa fa-envelope-o fa-2x" target="_blank"></i></a>
+                        <a  href="mailto:" className="social-icon"><i className="fa fa-envelope fa-2x" target="_blank"></i></a>
                         
                     
                         </div>

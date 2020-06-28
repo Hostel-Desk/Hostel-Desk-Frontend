@@ -49,7 +49,7 @@ class Bar extends Component {
                                 </NavItem>
                                 <NavItem>
                                     <Link className="nav-link" onClick={this.toggleModal} >
-                                        <span className="fa fa-sign-in fa-lg"></span> Login
+                                        <span className="fa fa-sign-in-alt fa-lg"></span> Login
                                     </Link>
                                 </NavItem>
                                 
@@ -93,7 +93,7 @@ class Bar extends Component {
                                     Remember Me
                                 </Label>
                             </FormGroup>
-                            <Link to="/admin"><Button type="submit" value="submit" color="primary" onClick={this.toggleModal} ><span className="fa fa-sign-in fa-lg"></span>Login</Button></Link>
+                            <Link to="/admin"><Button type="submit" value="submit" color="primary" onClick={this.toggleModal} ><span className="fa fa-sign-in-alt fa-lg"></span>Login</Button></Link>
                             
                         </Form>
                     </ModalBody>

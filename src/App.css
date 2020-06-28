@@ -67,6 +67,8 @@ body{
 .feature-heading{
     color: #185a9d;
     font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
 }
 .feature-line{
     border-color: #185a9d;
@@ -76,11 +78,11 @@ body{
     text-align: center;
     padding-bottom: 5%;
 }
-h1, h2{
+h1{
     padding-top: 50px;
     text-align: center;
     color: white;
-    font-family: 'Montserrat', sans-serif;;
+    font-family: 'Montserrat', sans-serif;
 }
 hr{
     border-color: white;
@@ -164,10 +166,6 @@ strong{
     font-size: 1.5rem;
 }
 
-
-
-
-
-
-
-
+.pad{
+    padding-left: 50%;
+}
