@@ -5,6 +5,7 @@ import LeftNav from './LeftNav';
 import Profile from './ProfileComponent'
 import TopSearchSelect from './StudentsComponent';
 import EmployeeView from './EmployeeView';
+import Architecture from './ArchitectureComponent'
 
 class Admin extends Component {
     constructor(props) {
@@ -35,7 +36,7 @@ class Admin extends Component {
                             <Route exact path="/admin/BillManange" component={DashBoard}/>
                             <Route exact path="/admin/NoticeBoard" component={DashBoard}/>
                             <Route exact path="/admin/Settings" component={Profile}/>
-                            <Route exact path="/admin/Setup" component={DashBoard}/>
+                            <Route exact path="/admin/Setup" component={Architecture}/>
                             <Redirect to="/admin/dashboard"/>
                         </Switch>
                         
