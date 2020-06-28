@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Card, CardBody, CardHeader, Alert, CardFooter} from 'reactstrap';
 import {Link} from 'react-router-dom';
 
+
 class DashBoard extends Component {
     constructor(props) {
         super(props);
@@ -93,6 +94,9 @@ class DashBoard extends Component {
                         </Alert>
                         </CardBody>
                     </Card>
+                </div>
+                <div className="col-md-6">
+                    
                 </div>
             </div>
         </div>

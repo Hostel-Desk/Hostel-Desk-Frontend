@@ -3,6 +3,7 @@ import DashBoard from './DashboardComponent';
 import {Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
 import LeftNav from './LeftNav';
 import Profile from './ProfileComponent'
+import TopSearchSelect from './StudentsComponent';
 
 class Admin extends Component {
     constructor(props) {
@@ -20,7 +21,7 @@ class Admin extends Component {
                         <BrowserRouter>
                         <Switch>
                             <Route path="/admin/dashboard" component={DashBoard}/>
-                            <Route exact path="/admin/students" component={DashBoard}/>
+                            <Route exact path="/admin/students" component={TopSearchSelect}/>
                             <Route exact path="/admin/employees" component={DashBoard}/>
                             <Route exact path="/admin/rooms" component={DashBoard}/>
                             <Route exact path="/admin/attendance" component={DashBoard}/> 
