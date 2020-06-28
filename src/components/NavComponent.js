@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import { Collapse, Navbar, Nav, NavItem, NavLink, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input, NavbarToggler } from 'reactstrap';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { Collapse, Navbar, Nav, NavItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input, NavbarToggler } from 'reactstrap';
+import { BrowserRouter, Link, NavLink } from 'react-router-dom';
 
 
 
@@ -31,24 +31,25 @@ class Bar extends Component {
     return (
         <div>
             <Navbar light expand="md">
+            <div className="container-fluid">
                 <NavbarToggler onClick={this.toggleNav}/>
-                    <div className="container-fluid">
+                    
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar className="navbar-expand-lg">
                                 <NavItem className="navbar-expand-lg ">
-                                    <NavLink className="nav-link" to="/home">
+                                    <Link className="nav-link" to="/home">
                                         <span className="fa fa-home fa-lg"></span> Home 
-                                    </NavLink>
+                                    </Link>
                                 </NavItem>
                                 <NavItem className="navbar-expand-lg ">
-                                    <NavLink className="nav-link" to="/contactus">
+                                    <Link className="nav-link" to="/contactus">
                                         <span className="fa fa-address-book fa-lg"></span> Contact Us
-                                    </NavLink>
+                                    </Link>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" onClick={this.toggleModal} >
+                                    <Link className="nav-link" onClick={this.toggleModal} >
                                         <span className="fa fa-sign-in fa-lg"></span> Login
-                                    </NavLink>
+                                    </Link>
                                 </NavItem>
                                 
                             </Nav>
@@ -56,10 +57,11 @@ class Bar extends Component {
                     </div>
                 </Navbar>
                 <Modal backdrop="static" isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                    <ModalHeader>Login                 
+                    <ModalHeader>   
+                        Login         
                         <Button className="close" variant="secondary" onClick={this.toggleModal}>
-                        <span aria-hidden="true" className="white-text"></span><i class="fa fa-times"></i>
-                            </Button>
+                            <span aria-hidden="true" className="white-text"></span><i class="fa fa-times"></i>
+                        </Button>
                     </ModalHeader>
                     
                     <ModalBody>
@@ -90,7 +92,7 @@ class Bar extends Component {
                                     Remember Me
                                 </Label>
                             </FormGroup>
-                            <Button type="submit" value="submit" color="primary"><span className="fa fa-sign-in fa-lg"></span><BrowserRouter><Link to="/admin">Login</Link></BrowserRouter></Button>
+                            <Link to="/admin"><Button type="submit" value="submit" color="primary" onClick={this.toggleModal} ><span className="fa fa-sign-in fa-lg"></span>Login</Button></Link>
                             
                         </Form>
                     </ModalBody>

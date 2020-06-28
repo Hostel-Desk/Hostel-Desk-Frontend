@@ -18,7 +18,7 @@ class DashBoard extends Component {
                             <span className="col-7 fa fa-users fa-4x"></span>
                             <h3>2</h3>
                             <div className="mt-3">
-                                <div className="row">
+                                <div>
                                     <p>Total Employees</p>
                                 </div>
                             </div>        
@@ -34,7 +34,7 @@ class DashBoard extends Component {
                             <span className="col-7 fa fa-users fa-4x"></span>
                             <h3>2</h3>
                             <div className="mt-3">
-                                <div className="row">
+                                <div>
                                     <p>Total Students</p>
                                 </div>
                             </div>        
@@ -50,7 +50,7 @@ class DashBoard extends Component {
                             <span className="col-7 fa fa-building fa-4x"></span>
                             <h3>2</h3>
                             <div className="mt-3">
-                                <div className="row">
+                                <div>
                                     <p>Total Rooms</p>
                                 </div>
                             </div>        
@@ -66,7 +66,7 @@ class DashBoard extends Component {
                         <span className="col-7 fa fa-cutlery fa-4x"></span>
                         <h3>2</h3>
                         <div className="mt-3">
-                            <div className="row">
+                            <div>
                                 <p>Today's Meals</p>
                             </div>
                         </div>        
