@@ -169,3 +169,6 @@ strong{
 .pad{
     padding-left: 50%;
 }
+.me{
+    box-shadow: none;
+}

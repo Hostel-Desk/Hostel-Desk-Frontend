@@ -30,7 +30,7 @@ class Bar extends Component {
     render(){
     return (
         <div>
-            <Navbar light expand="md">
+            <Navbar light expand="md" className="me">
             <div className="container-fluid">
                 <NavbarToggler onClick={this.toggleNav}/>
                     
