@@ -1,55 +1,44 @@
 import React, { Component } from 'react'
-import {Form, Input, Button, Label, Col, Row, FormGroup, Modal, ModalBody, ModalHeader} from 'reactstrap';
-import {Link} from 'react-router-dom'
+import {Form, Input, Button, Label, Col, Row, FormGroup} from 'reactstrap';
 
-class Profile extends Component {
-    constructor(props) {
+class Architecture extends Component {
+    constructor(props){
         super(props);
-
     }
 
-    render() {
+    render(){
         return (
             <div>
                 <div className="row">
                     <div className="col-12 container-fluid">
-                        <h2 className="feature-heading ">Profile</h2>
+                        <h2 className="feature-heading ">Architecture</h2>
                         <hr className="feature-line" /> 
                     </div>  
-                </div>
-                <div>
-                    <h3>Account Settings</h3>
                 </div>
                 <div >
                     <Form className="myForm">
                             <Row form>
                                 <Col md={5}>
                                 <FormGroup>
-                                    <Label for="Name">Name</Label>
-                                    <Input type="text" name="Name" id="name" placeholder="Name" />
+                                    <Label for="Rooms">Total Rooms</Label>
+                                    <Input type="text" name="Rooms" id="rooms" placeholder="Rooms" />
                                 </FormGroup>
                                 </Col>
                                 <Col md={5}>
                                 <FormGroup>
-                                    <Label for="LoginId">Login ID</Label>
-                                    <Input type="text" name="LoginId" id="LoginId" placeholder="LoginId" />
+                                    <Label for="Blocks">Total Blocks</Label>
+                                    <Input type="text" name="Blocks" id="blocks" placeholder="Blocks" />
                                 </FormGroup>
                                 </Col>
                             </Row>
                             <Row form>
                                 <Col md={5}>
                                     <FormGroup>
-                                        <Label for="password">Password</Label>
-                                        <Input type="password" name="password" id="password" placeholder="password"/>
+                                        <Label for="Floor">Total Floors</Label>
+                                        <Input type="text" name="Floors" id="floors" placeholder="Floors"/>
                                     </FormGroup>
                                 </Col>
-                                <Col md={5}>
-                                    <FormGroup>
-                                        <Label for="password">Confirm Password</Label>
-                                        <Input type="password" name="password" id="password" placeholder="password"/>
-                                    </FormGroup>
-                                </Col>
-                        </Row>
+                            </Row>
                             <FormGroup row>
                                 <Col md={{size: 10}}>
                                     <Button type="submit" color="primary">
@@ -60,9 +49,8 @@ class Profile extends Component {
                     </Form>
                 </div>
             </div>
-
         )
     }
 }
 
-export default Profile;
+export default Architecture;
