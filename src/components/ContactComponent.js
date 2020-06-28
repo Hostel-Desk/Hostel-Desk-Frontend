@@ -27,10 +27,10 @@ class Contact extends Component{
 
     render(){
         return(
-            <div className =" contact">
+            <div className ="container-fluid contact">
                 <div className="row">
                     <div className="col-12 text-center  container-fluid">
-                        <h3 className="feature-heading">Contact Us</h3>
+                        <h2 className="feature-heading">Contact Us</h2>
                         <hr className="feature-line" /> 
                      </div>  
                      </div> 
@@ -77,7 +77,7 @@ class Contact extends Component{
                             </FormGroup>
                             
                             <FormGroup row>
-                                <Col md={{size: 10, offset: 4}}>
+                                <Col md={{size: 10}}>
                                     <Button type="submit" color="primary">
                                         Send Message
                                     </Button>
@@ -91,14 +91,14 @@ class Contact extends Component{
                     
                         <div className="row offset-sm-5 ">
                             
-                            <a  href="http://www.pec.ac.in" className="social-icon"><i className="fa fa-globe social fa-2x"></i></a>
+                            <a  href="http://www.pec.ac.in" className="social-icon" target="_blank"><i className="fa fa-globe social fa-2x"></i></a>
                             
                             
-                        <a  href="https://www.facebook.com/PunjabEngineeringCollege/" className="social-icon"><i className="fa fa-facebook fa-2x"></i></a>
+                        <a  href="https://www.facebook.com/PunjabEngineeringCollege/" className="social-icon" target="_blank"><i className="fa fa-facebook fa-2x"></i></a>
                         
-                        <a  href="https://www.linkedin.com/edu/school?id=20011" className="social-icon"><i className="fa fa-linkedin fa-2x"></i></a>
+                        <a  href="https://www.linkedin.com/edu/school?id=20011" className="social-icon" target="_blank"><i className="fa fa-linkedin fa-2x"></i></a>
                         
-                        <a  href="mailto:" className="social-icon"><i className="fa fa-envelope-o fa-2x"></i></a>
+                        <a  href="mailto:" className="social-icon"><i className="fa fa-envelope-o fa-2x" target="_blank"></i></a>
                         
                     
                         </div>
