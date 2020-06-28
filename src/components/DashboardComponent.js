@@ -66,7 +66,7 @@ class DashBoard extends Component {
                     <Card>
                         <CardHeader className="dashCard">
                             <div className="row">
-                            <span className="col-7 fa fa-cutlery fa-4x"></span>
+                            <span className="col-7 fa fa-utensils fa-4x"></span>
                             <h3>2</h3>
                             </div>
                             <div className="mt-3">
