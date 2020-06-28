@@ -16,7 +16,7 @@ export default function EmployeeView() {
       {
         label: 'Gender',
         field: 'gender',
-        width: 270,
+        width: 150,
       },
       {
         label: 'Employee Type',
@@ -166,7 +166,7 @@ export default function EmployeeView() {
       pagingTop
       searchTop
       searchBottom={false}
-      scrollY maxHeight='300px'
+      
     />
   );
 }
