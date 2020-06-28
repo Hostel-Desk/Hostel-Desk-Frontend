@@ -3,6 +3,7 @@ import DashBoard from './DashboardComponent';
 import {Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
 import LeftNav from './LeftNav';
 import Profile from './ProfileComponent'
+import Architecture from './ArchitectureComponent'
 
 import EmployeeView from './EmployeeView';
 import StudentView from './StudentsComponent';
@@ -36,7 +37,7 @@ class Admin extends Component {
                             <Route exact path="/admin/BillManange" component={DashBoard}/>
                             <Route exact path="/admin/NoticeBoard" component={DashBoard}/>
                             <Route exact path="/admin/Settings" component={Profile}/>
-                            <Route exact path="/admin/Setup" component={DashBoard}/>
+                            <Route exact path="/admin/Setup" component={Architecture}/>
                             <Redirect to="/admin/dashboard"/>
                         </Switch>
                         
