@@ -92,7 +92,7 @@ class Bar extends Component {
                                     Remember Me
                                 </Label>
                             </FormGroup>
-                            <BrowserRouter><Link to="/admin"><Button type="submit" value="submit" color="primary"><span className="fa fa-sign-in fa-lg"></span>Login</Button></Link></BrowserRouter>
+                            <Link to="/admin"><Button type="submit" value="submit" color="primary" onClick={this.toggleModal} ><span className="fa fa-sign-in fa-lg"></span>Login</Button></Link>
                             
                         </Form>
                     </ModalBody>
