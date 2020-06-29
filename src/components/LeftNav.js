@@ -27,7 +27,9 @@ export default class LeftNav extends Component {
         isstudentmanageopen:false,
         isemployeemanageopen:false,
         issettingsopen:false,
-        issetupopen:false
+        issetupopen:false,
+        isstudentmanagepaymentopen:false,
+        isemployeemanagepaymentopen:false
       }
       this.toggleNav=this.toggleNav.bind(this);
       this.toggleManageMeal=this.toggleManageMeal.bind(this);
@@ -36,6 +38,8 @@ export default class LeftNav extends Component {
       this.toggleEmployeeManage=this.toggleEmployeeManage.bind(this);
       
       this.toggleSettings=this.toggleSettings.bind(this);
+      this.toggleStudentManagePayment=this.toggleStudentManagePayment.bind(this);
+      this.toggleEmployeeManagePayment=this.toggleEmployeeManagePayment.bind(this);
     }
 
     toggleNav(){
@@ -53,6 +57,12 @@ export default class LeftNav extends Component {
     }
     toggleSettings(){
       this.setState({issettingsopen:!this.state.issettingsopen});
+    }
+    toggleStudentManagePayment(){
+      this.setState({isstudentmanagepaymentopen:!this.state.isstudentmanagepaymentopen});
+    }
+    toggleEmployeeManagePayment(){
+      this.setState({isemployeemanagepaymentopen:!this.state.isemployeemanagepaymentopen});
     }
     
     render() {
@@ -96,13 +106,25 @@ export default class LeftNav extends Component {
                     <Link className="nav-link offset-2" to="/admin/StudentManage/view"><i className="fa fa-eye" aria-hidden="true"></i> View</Link>
                   </NavItem>   
                   <NavItem>
-                    <Link className="nav-link offset-2" to="/admin/StudentManage/payment"><i className="fa fa-money" aria-hidden="true"></i> Payment</Link>
-                  </NavItem>   
+                    <Link className="nav-link offset-2" id="toggler4" onClick={this.toggleStudentManagePayment} to="/admin/StudentManage/payment"><i className="fa fa-money" aria-hidden="true"></i> Payment<Carrot open={this.state.isstudentmanagepaymentopen}/></Link>
+                  </NavItem>  
+                      <div>
+                      <UncontrolledCollapse toggler="#toggler4">
+                            <NavItem>
+                              <Link className="nav-link offset-4" to="/admin/StudentManagePayment/Add Bill"><i class="fas fa-money-check-alt"></i> Add Bill</Link>
+                            </NavItem>
+                            
+                            <NavItem>
+                              <Link className="nav-link offset-4" to="/admin/StudentManagePayment/Mess Bill"><i class="fas fa-receipt"></i> Mess Bill</Link>
+                            </NavItem>   
+                      </UncontrolledCollapse>
+                    </div>
             </UncontrolledCollapse>
           </div>
             <NavItem>
               <Link className="nav-link" id="toggler2" onClick={this.toggleEmployeeManage} to="/admin/EmployeeManage"> <i className="fa fa-users" aria-hidden="true"></i> Employee Manage<Carrot open={this.state.isemployeemanageopen}/></Link>
             </NavItem>
+                  
             <div>
             <UncontrolledCollapse toggler="#toggler2">
                   <NavItem>
@@ -113,8 +135,19 @@ export default class LeftNav extends Component {
                     <Link className="nav-link offset-2" to="/admin/EmployeeManage/view"><i className="fa fa-eye" aria-hidden="true"></i> View</Link>
                   </NavItem>   
                   <NavItem>
-                    <Link className="nav-link offset-2" to="/admin/EmployeeManage/payment"><i className="fa fa-money" aria-hidden="true"></i> Payment</Link>
-                  </NavItem>   
+                    <Link className="nav-link offset-2" id="toggler5" onClick={this.toggleEmployeeManagePayment} to="/admin/EmployeeManage/payment"><i className="fa fa-money" aria-hidden="true"></i> Payment<Carrot open={this.state.isemployeemanagepaymentopen}/></Link>
+                  </NavItem>
+                  <div>
+                      <UncontrolledCollapse toggler="#toggler5">
+                            <NavItem>
+                              <Link className="nav-link offset-4" to="/admin/EmployeeManagePayment/Add Bill"><i class="fas fa-money-check-alt"></i> Add Salary</Link>
+                            </NavItem>
+                            
+                            <NavItem>
+                              <Link className="nav-link offset-4" to="/admin/EmployeeManagePayment/Mess Bill"><i class="fas fa-receipt"></i> Salary</Link>
+                            </NavItem>   
+                      </UncontrolledCollapse>
+                    </div>
             </UncontrolledCollapse>
           </div>
             <NavItem>

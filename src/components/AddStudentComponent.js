@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Form, Input, Button, Label, Col, Row, FormGroup, Select} from 'reactstrap';
+import {Form, Input, Button, Label, Col, Row, FormGroup} from 'reactstrap';
 
 class AddStudent extends Component {
     constructor(props) {

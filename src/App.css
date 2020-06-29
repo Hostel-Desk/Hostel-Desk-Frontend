@@ -57,6 +57,7 @@ body{
     font-size: 1.2rem;
     color: white;
     font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
 }
 .feature{
     background-color: white;
@@ -71,6 +72,17 @@ body{
 }
 .feature-line{
     border-color: #185a9d;
+}
+
+.feature-sub{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.feature-content{
+    line-height: 2rem;
+    font-size: 1.2rem;
+    font-family: 'Ubuntu', sans-serif;
 }
 .hostel{
     background-color: white;
@@ -88,15 +100,7 @@ hr{
     width:7%;
     text-align:center;
 }
-p{
-    font-size: 1.2rem;
-    font-weight: 500;
-}
-ul{
-    line-height: 2rem;
-    font-size: 1.2rem;
-    font-family: 'Ubuntu', sans-serif;
-}
+
 
 /* Footer */
 
@@ -106,6 +110,11 @@ ul{
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
     
+}
+
+.copyright{
+    font-size: 1.2rem;
+    font-weight: 500;
 }
 
 /*Contact*/
@@ -200,4 +209,7 @@ strong{
 .leftNav {
     font-size: small;
     color: turquoise;
+}
+.mealTable th {
+    text-align: center;
 }
