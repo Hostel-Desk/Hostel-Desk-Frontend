@@ -36,7 +36,6 @@ export default class LeftNav extends Component {
       this.toggleEmployeeManage=this.toggleEmployeeManage.bind(this);
       
       this.toggleSettings=this.toggleSettings.bind(this);
-      this.toggleSetup=this.toggleSetup.bind(this);
     }
 
     toggleNav(){
@@ -55,9 +54,7 @@ export default class LeftNav extends Component {
     toggleSettings(){
       this.setState({issettingsopen:!this.state.issettingsopen});
     }
-    toggleSetup(){
-      this.setState({issetupopen:!this.state.issetupopen})
-    }
+    
     render() {
 
 
