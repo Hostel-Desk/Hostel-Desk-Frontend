@@ -140,7 +140,7 @@ export default class LeftNav extends Component {
                   <div>
                       <UncontrolledCollapse toggler="#toggler5">
                             <NavItem>
-                              <Link className="nav-link offset-4" to="/admin/EmployeeManagePayment/Add Salary"><i class="fas fa-money-check-alt"></i> Add Salary</Link>
+                              <Link className="nav-link offset-4" to="/admin/EmployeeManagePayment/Add Bill"><i class="fas fa-money-check-alt"></i> Add Salary</Link>
                             </NavItem>
                             
                             <NavItem>
