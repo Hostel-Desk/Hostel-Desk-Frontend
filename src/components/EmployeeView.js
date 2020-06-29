@@ -157,7 +157,7 @@ export default function EmployeeView() {
   return (
     <MDBDataTableV5
       hover
-      
+      responsiveMd
       bordered
       entriesOptions={[5, 20, 25]}
       entries={5}
