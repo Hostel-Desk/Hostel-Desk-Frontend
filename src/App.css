@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
 html,body
 {
+    font-family: 'Questrial', sans-serif;
     width: 100%;
     height: 100%;
     margin: 0px;
@@ -10,7 +13,7 @@ html,body
 
 /* Header */
 body{
-    background-color: #FFFFF0;
+    background-color: white;
 }
 .header{
     padding-top: 10px;
@@ -30,16 +33,11 @@ body{
     position: relative;
     left: 60%;
 }
-
-.navbar{
-    padding: 0 0 0px 0px;
-  }
 .nav-item{
   padding: 0 18px;
-  font-size: 10%;
 }
 .nav-link{
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-family: "Montserrat";
 }
 .close{
@@ -61,7 +59,7 @@ body{
     font-family: 'Ubuntu', sans-serif;
 }
 .feature{
-    background-color: #FFFFF0;
+    background-color: white;
     padding-top: 2%;
     padding-bottom: 5%;
 }
@@ -75,7 +73,7 @@ body{
     border-color: #185a9d;
 }
 .hostel{
-    background-color: #FFFFF0;
+    background-color: white;
     text-align: center;
     padding-bottom: 5%;
 }
@@ -113,7 +111,7 @@ ul{
 /*Contact*/
 .contact{
     padding-left: 100px 10px 10px 10px;
-    background-color: #FFFFF0;
+    background-color: white;
 }
 .contactF{
     background-image: linear-gradient(to right,#43cea2,#185a9d);
@@ -173,4 +171,33 @@ strong{
 }
 .me{
     box-shadow: none;
+}
+.card{
+    border-radius: 0;
+    box-shadow: none;
+    font-size: x-small; 
+}
+.card p {
+    font-size: medium;
+    margin-bottom: 0;
+}
+.card h3 {
+    margin-left: 20%;
+}
+.card-header {
+    background-color: rgb(255, 255, 255);
+}
+.card-footer {
+    font-size: 0.8rem;
+}
+.dashcards {
+    border: none;
+}
+
+.leftNav{
+    background-color: rgb(233, 243, 242);
+}
+.leftNav {
+    font-size: small;
+    color: turquoise;
 }

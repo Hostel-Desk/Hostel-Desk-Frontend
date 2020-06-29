@@ -59,10 +59,8 @@ export default class LeftNav extends Component {
       this.setState({issetupopen:!this.state.issetupopen})
     }
     render() {
-
-
         return (
-      <div>
+      <div className="leftNav">
         <Navbar light expand="md" className="me" >
           <NavbarToggler onClick={this.toggleNav}/>
           <Collapse isOpen={this.state.isNavOpen} navbar >

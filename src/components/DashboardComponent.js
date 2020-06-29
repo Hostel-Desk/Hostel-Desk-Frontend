@@ -12,7 +12,13 @@ class DashBoard extends Component {
         return(
             <div>
             <div className="row">
-                <div className="col-md-3 mt-3">
+                <div className="col-12 container-fluid">
+                    <h4 className="feature-heading ">Dashboard</h4>
+                    <hr className="feature-line" /> 
+                </div>  
+            </div>
+            <div className="row">
+                <div className="dashCards col-md-3 mt-3">
                     <Card>
                         <CardHeader className="dashCard">
                             <div className="row">
