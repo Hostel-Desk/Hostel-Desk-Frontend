@@ -115,10 +115,13 @@ export default class LeftNav extends Component {
                             </NavItem>
                             
                             <NavItem>
-                              <Link className="nav-link offset-4" to="/admin/StudentManagePayment/Mess Bill"><i class="fas fa-receipt"></i> Mess Bill</Link>
+                              <Link className="nav-link offset-4" to="/admin/StudentManagePayment/MessBill"><i class="fas fa-receipt"></i> Mess Bill</Link>
                             </NavItem>   
                       </UncontrolledCollapse>
                     </div>
+                    <NavItem>
+                    <Link className="nav-link offset-2" to="/admin/StudentManage/seatallocation"><i className="fa fa-building" aria-hidden="true"></i>Seat Allocation</Link>
+                  </NavItem>
             </UncontrolledCollapse>
           </div>
             <NavItem>
@@ -140,11 +143,11 @@ export default class LeftNav extends Component {
                   <div>
                       <UncontrolledCollapse toggler="#toggler5">
                             <NavItem>
-                              <Link className="nav-link offset-4" to="/admin/EmployeeManagePayment/Add Bill"><i class="fas fa-money-check-alt"></i> Add Salary</Link>
+                              <Link className="nav-link offset-4" to="/admin/EmployeeManagePayment/Add Salary"><i class="fas fa-money-check-alt"></i> Add Salary</Link>
                             </NavItem>
                             
                             <NavItem>
-                              <Link className="nav-link offset-4" to="/admin/EmployeeManagePayment/Mess Bill"><i class="fas fa-receipt"></i> Salary</Link>
+                              <Link className="nav-link offset-4" to="/admin/EmployeeManagePayment/Salary"><i class="fas fa-receipt"></i> Salary</Link>
                             </NavItem>   
                       </UncontrolledCollapse>
                     </div>

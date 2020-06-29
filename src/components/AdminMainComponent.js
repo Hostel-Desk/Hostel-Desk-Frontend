@@ -12,7 +12,9 @@ import AddStudent from './AddStudentComponent';
 import StudentPayment from './StudentPayment';
 import EmployeeSalary from './AddSalary';
 import AddEmployee from './AddEmployeeComponent';
-
+import StudentMessBill from './StudentMessBill';
+import EmployeeSalaryView from './EmployeeSalaryView';
+import Seat from './SeatComponent';
 class Admin extends Component {
     constructor(props) {
         super(props);
@@ -40,7 +42,10 @@ class Admin extends Component {
                             <Route exact path="/admin/Settings/updateprofile" component={Profile}/>
                             <Route exact path="/admin/Architecture" component={Architecture}/>
                             <Route exact path="/admin/StudentManagePayment/Add Bill" component={StudentPayment} />
+                            <Route exact path="/admin/StudentManagePayment/MessBill" component={StudentMessBill} />
                             <Route exact path="/admin/EmployeeManagePayment/Add Salary" component={EmployeeSalary}/>
+                            <Route exact path="/admin/EmployeeManagePayment/Salary" component={EmployeeSalaryView}/>
+                            <Route exact path="/admin/StudentManage/seatallocation" component={Seat}/>
                             <Redirect to="/admin/dashboard"/>
                         </Switch>
 
