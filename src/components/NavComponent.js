@@ -61,7 +61,7 @@ class Bar extends Component {
                     <ModalHeader>   
                         Login         
                         <Button className="close" variant="secondary" onClick={this.toggleModal}>
-                            <span aria-hidden="true" className="white-text"></span><i class="fa fa-times"></i>
+                            <span aria-hidden="true" className="white-text"></span><i className="fa fa-times"></i>
                         </Button>
                     </ModalHeader>
                     

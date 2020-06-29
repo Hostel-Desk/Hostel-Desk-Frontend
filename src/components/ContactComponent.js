@@ -89,7 +89,7 @@ class Contact extends Component{
                     
                     <div className="row contactF">
                     
-                        <div className="row offset-sm-5 ">
+                        <div className="row mr-auto ml-auto ">
                             
                             <a  href="http://www.pec.ac.in" className="social-icon" target="_blank"><i className="fa fa-globe-asia social fa-2x"></i></a>
                             
