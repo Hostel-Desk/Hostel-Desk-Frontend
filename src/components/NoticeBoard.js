@@ -1,5 +1,6 @@
 import React, { Component } from'react'
 import {Form, Input, Button, Label, Col, Row, FormGroup} from 'reactstrap';
+import NoticeView from './NoticeView';
 
 class NoticeBoard extends Component {
     constructor(props) {
@@ -39,6 +40,9 @@ class NoticeBoard extends Component {
                                 </Col>
                             </FormGroup>
                     </Form>
+                </div>
+                <div>
+                    <NoticeView/>
                 </div>
             </div>
         )
