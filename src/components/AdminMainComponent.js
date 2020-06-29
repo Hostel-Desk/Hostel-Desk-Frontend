@@ -8,6 +8,7 @@ import EmployeeView from './EmployeeView';
 import StudentView from './StudentsComponent';
 import NoticeBoard from './NoticeBoard'
 import MealView from './MealTable';
+import AddStudent from './AddStudentComponent';
 
 class Admin extends Component {
     constructor(props) {
@@ -26,6 +27,7 @@ class Admin extends Component {
                         <Switch>
                             <Route path="/admin/dashboard" component={DashBoard}/>
                             <Route exact path="/admin/students" component={StudentView}/>
+                            <Route exact path="/admin/StudentManage/addnew" component={AddStudent}/>
                             <Route exact path="/admin/employees" component={EmployeeView}/>
                             <Route exact path="/admin/rooms" component={DashBoard}/>
                             <Route exact path="/admin/attendance" component={DashBoard}/>
