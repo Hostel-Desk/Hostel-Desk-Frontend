@@ -40,7 +40,7 @@ class Admin extends Component {
                             <Route exact path="/admin/Settings/updateprofile" component={Profile}/>
                             <Route exact path="/admin/Architecture" component={Architecture}/>
                             <Route exact path="/admin/StudentManagePayment/Add Bill" component={StudentPayment} />
-                            <Route exact path="/admin/EmployeeManagePayment/Add Bill" component={EmployeeSalary}/>
+                            <Route exact path="/admin/EmployeeManagePayment/Add Salary" component={EmployeeSalary}/>
                             <Redirect to="/admin/dashboard"/>
                         </Switch>
 
