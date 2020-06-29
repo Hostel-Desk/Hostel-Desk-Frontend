@@ -4,6 +4,7 @@ import { BrowserRouter, Link, NavLink } from 'react-router-dom';
 
 
 
+
 class Bar extends Component {
     constructor(props) {
         super(props);

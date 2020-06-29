@@ -13,15 +13,15 @@ function Main(){
                 <Header />
                 <Bar />
             </div>
-           
+
                 <Switch >
                     <Route path="/home" component={Home}/>
                     <Route path="/admin" component={Admin}/>
                     <Route path="/contactus" component={Contact}/>
                     <Redirect to="/home"/>
                 </Switch>
-                
-               
+
+
             <Footer />
         </div>
     )
