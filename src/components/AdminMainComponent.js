@@ -11,6 +11,8 @@ import MealView from './MealTable';
 import AddStudent from './AddStudentComponent';
 import StudentPayment from './StudentPayment';
 import EmployeeSalary from './AddSalary';
+import AddEmployee from './AddEmployeeComponent';
+
 class Admin extends Component {
     constructor(props) {
         super(props);
@@ -30,6 +32,7 @@ class Admin extends Component {
                             <Route exact path="/admin/students" component={StudentView}/>
                             <Route exact path="/admin/StudentManage/addnew" component={AddStudent}/>
                             <Route exact path="/admin/employees" component={EmployeeView}/>
+                            <Route exact path="/admin/EmployeeManage/addnew" component={AddEmployee}/>
                             <Route exact path="/admin/rooms" component={DashBoard}/>
                             <Route exact path="/admin/attendance" component={DashBoard}/>
                             <Route exact path="/admin/MealManage" component={MealView}/>
