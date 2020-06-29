@@ -155,6 +155,14 @@ export default function EmployeeView() {
   });
 
   return (
+    <div>
+    <div className="row">
+                    <div className="col-12 container-fluid">
+                        <h2 className="feature-heading ">Employees</h2>
+                        <hr className="feature-line" /> 
+                    </div>  
+    </div>
+    <div>
     <MDBDataTableV5
       hover
       responsiveMd
@@ -168,5 +176,7 @@ export default function EmployeeView() {
       searchBottom={false}
       scrollX
     />
+    </div>
+    </div>
   );
 }

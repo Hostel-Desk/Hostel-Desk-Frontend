@@ -30,7 +30,7 @@ class Contact extends Component{
             <div className ="container-fluid contact">
                 <div className="row">
                     <div className="col-12 text-center  container-fluid">
-                        <h2 className="feature-heading">Contact Us</h2>
+                        <h2 className="feature-heading mt-4">Contact Us</h2>
                         <hr className="feature-line" /> 
                      </div>  
                      </div> 
