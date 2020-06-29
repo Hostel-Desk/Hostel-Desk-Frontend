@@ -18,9 +18,9 @@ function Home(){
             <div className="feature container-fluid col-12">
                 <h2 className="feature-heading">Features</h2>
                 <hr className="feature-line" /> 
-                <div className="row offset-1 col-10"><p>This Hostel Management System allows you to manage all the necessary details of the college hostels.</p></div>
+                <div className="row offset-1 col-10"><p className="feature-sub">This Hostel Management System allows you to manage all the necessary details of the college hostels.</p></div>
                 <div className="row offset-1 col-10">
-                <ul>
+                <ul className="feature-content">
                     <li>It allows you to manage all the College hostels efficiently.</li>
                     <li>It allows you to manage different students in different hostels and allocate different rooms to different students.</li>
                 </ul>
