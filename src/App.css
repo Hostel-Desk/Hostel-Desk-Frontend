@@ -210,3 +210,6 @@ strong{
     font-size: small;
     color: turquoise;
 }
+.mealTable th {
+    text-align: center;
+}
