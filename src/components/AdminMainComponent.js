@@ -7,10 +7,11 @@ import Architecture from './ArchitectureComponent'
 import EmployeeView from './EmployeeView';
 import StudentView from './StudentsComponent';
 import NoticeBoard from './NoticeBoard'
+import MealView from './MealTable';
 import AddStudent from './AddStudentComponent';
-import AddEmployee from './AddEmployeeComponent';
 import StudentPayment from './StudentPayment';
 import EmployeeSalary from './AddSalary';
+import AddEmployee from './AddEmployeeComponent';
 
 class Admin extends Component {
     constructor(props) {
@@ -32,21 +33,14 @@ class Admin extends Component {
                             <Route exact path="/admin/StudentManage/addnew" component={AddStudent}/>
                             <Route exact path="/admin/employees" component={EmployeeView}/>
                             <Route exact path="/admin/EmployeeManage/addnew" component={AddEmployee}/>
-                            <Route exact path="/admin/rooms" component={DashBoard}/>
-                            <Route exact path="/admin/attendance" component={DashBoard}/>
-                            <Route exact path="/admin/MealManage" component={DashBoard}/>
-                            <Route exact path="/admin/CostManage" component={DashBoard}/>
+                            <Route exact path="/admin/MealManage/view" component={MealView}/>
                             <Route exact path="/admin/StudentManage/view" component={StudentView}/>
-                            <Route exact path="/admin/StudentsPayment" component={DashBoard}/>
                             <Route exact path="/admin/EmployeeManage/view" component={EmployeeView}/>
-                            <Route exact path="/admin/VendorPayment" component={DashBoard}/>
-                            <Route exact path="/admin/BillManange" component={DashBoard}/>
                             <Route exact path="/admin/NoticeBoard" component={NoticeBoard}/>
                             <Route exact path="/admin/Settings/updateprofile" component={Profile}/>
                             <Route exact path="/admin/Architecture" component={Architecture}/>
-                            <Route exact path="/admin/StudentManagePayment/Add Bill" component={StudentPayment}/>
-                            <Route exact path="/admin/EmployeeManagePayment/Add Salary" component={EmployeeSalary}/>
-                            
+                            <Route exact path="/admin/StudentManagePayment/Add Bill" component={StudentPayment} />
+                            <Route exact path="/admin/EmployeeManagePayment/Add Bill" component={EmployeeSalary}/>
                             <Redirect to="/admin/dashboard"/>
                         </Switch>
 

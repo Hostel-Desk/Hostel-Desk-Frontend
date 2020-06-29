@@ -65,6 +65,7 @@ export default function StudentView() {
   return (
     <MDBDataTableV5
       hover
+      responsiveMd
       entriesOptions={[5, 20, 25]}
       entries={5}
       pagesAmount={4}
