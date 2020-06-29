@@ -48,7 +48,7 @@ body{
 /* Home Component */
 
 .topSection, .describe{
-    background-image: linear-gradient(to right,#43cea2,#185a9d);
+    background-image: linear-gradient( 111.5deg, rgba(20,100,196,1) 0.4%, rgba(33,152,214,1) 100.2% );
     padding-bottom: 30px;
 }
 .content{
@@ -65,13 +65,13 @@ body{
     padding-bottom: 5%;
 }
 .feature-heading{
-    color: #185a9d;
+    color: rgba(20,100,196,1);
     font-family: 'Ubuntu', sans-serif;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
 }
 .feature-line{
-    border-color: #185a9d;
+    border-color: rgba(20,100,196,1);
 }
 
 .feature-sub{
@@ -105,7 +105,7 @@ hr{
 /* Footer */
 
 #footer{
-    background-image: linear-gradient(to right,#43cea2,#185a9d);
+    background-image: linear-gradient( 111.5deg, rgba(20,100,196,1) 0.4%, rgba(33,152,214,1) 100.2% );
     padding: 3% 0%;
     text-align: center;
     font-family: 'Ubuntu', sans-serif;
@@ -123,7 +123,7 @@ hr{
     background-color: white;
 }
 .contactF{
-    background-image: linear-gradient(to right,#43cea2,#185a9d);
+    background-image: linear-gradient( 111.5deg, rgba(20,100,196,1) 0.4%, rgba(33,152,214,1) 100.2% );
 }
 .admin {
     padding: 20px;
@@ -134,7 +134,7 @@ hr{
     
 }
 .social-icon:hover{
-    color:#185a9d;
+    color:#094372
 }
 
 .row-content {
@@ -153,7 +153,7 @@ i.info {
     float: left;
     background-color: rgb(67, 189, 128);
     border-radius: 75%;
-    border: 2x solid #185a9d;
+    border: 2x solid #094372;
     padding: 10px 10px;
     color: white;
   }
