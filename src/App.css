@@ -213,3 +213,30 @@ strong{
 .mealTable th {
     text-align: center;
 }
+.edit{
+   
+    float: left;
+    background-color: rgb(67, 189, 128);
+    border-radius: 75%;
+    border: 2x solid #094372;
+    padding: 10px 10px;
+    color: white;
+    padding-right: 10px;
+}
+.delete{
+    float: left;
+    background-color: rgb(236, 13, 43);
+    border-radius: 75%;
+    border: 2x solid #094372;
+    padding: 10px 10px;
+    color: white;
+
+}
+.resolve{
+    float: left;
+    background-color: rgb(236, 158, 13);
+    border-radius: 75%;
+    border: 2x solid #094372;
+    padding: 10px 10px;
+    color: white;
+}

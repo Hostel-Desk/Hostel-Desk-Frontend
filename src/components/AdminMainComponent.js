@@ -16,6 +16,7 @@ import StudentMessBill from './StudentMessBill';
 import EmployeeSalaryView from './EmployeeSalaryView';
 import Seat from './SeatComponent';
 import AddMeal from './AddMeal';
+import Complaints from './Complaints';
 import NoticeView from './NoticeView';
 class Admin extends Component {
     constructor(props) {
@@ -114,7 +115,10 @@ class Admin extends Component {
                       month: 'June-2020',
                       amount: 5000.00,
                       date: '29th June,2020',
-                      actions: 'Buttons'
+                      actions: <div>
+                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-trash-alt delete"></i>
+                    </div>
                   },
                 
               ],
@@ -162,7 +166,11 @@ class Admin extends Component {
                       label: 'Actions',
                       field: 'actions',
                       sort: 'disabled',
-                      width: 100
+                      width: 100,
+                      default:  <div>
+                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-trash-alt delete"></i>
+                    </div>
                     }
                 ],
                 rows: [
@@ -173,7 +181,11 @@ class Admin extends Component {
                         guardian: 'Mr Xyz',
                         gMob: '8264554894',
                         pAddress: 'Mullanpur',
-                        actions: 'Buttons'
+                        actions: <div>
+                        <i className="fa fa-pencil-alt edit mr-2"></i>
+                        <i className="fa fa-trash-alt delete"></i>
+                      </div>
+                        
                     },
                     
                 ],
@@ -223,6 +235,16 @@ class Admin extends Component {
                       
                       width: 100,
                     },
+                    {
+                        label: 'Actions',
+                        field: 'actions',
+                        sort: 'disabled',
+                        width: 100,
+                        default: <div>
+                        <i className="fa fa-pencil-alt edit mr-2"></i>
+                        <i className="fa fa-trash-alt delete"></i>
+                      </div>
+                      }
               
                   ],
                   rows: [
@@ -234,7 +256,11 @@ class Admin extends Component {
                       
                       date: '2011/04/25',
                       salary: '$320',
-                      address: 'Shivalik Hostel'
+                      address: 'Shivalik Hostel',
+                      actions: <div>
+                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-trash-alt delete"></i>
+                    </div>
                     },
                     {
                       name: 'Garrett Winters',
@@ -244,7 +270,11 @@ class Admin extends Component {
                       
                       date: '2011/07/25',
                       salary: '$170',
-                      address: 'Shivalik Hostel'
+                      address: 'Shivalik Hostel',
+                      actions: <div>
+                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-trash-alt delete"></i>
+                    </div>
                     },
                     {
                       name: 'Ashton Cox',
@@ -254,7 +284,11 @@ class Admin extends Component {
                       
                       date: '2009/01/12',
                       salary: '$86',
-                      address: 'Shivalik Hostel'
+                      address: 'Shivalik Hostel',
+                      actions: <div>
+                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-trash-alt delete"></i>
+                    </div>
                     },
                     {
                       name: 'Cedric Kelly',
@@ -264,7 +298,11 @@ class Admin extends Component {
                       
                       date: '2012/03/29',
                       salary: '$433',
-                      address: 'Shivalik Hostel'
+                      address: 'Shivalik Hostel',
+                      actions: <div>
+                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-trash-alt delete"></i>
+                    </div>  
                     },
                     {
                       name: 'Airi Satou',
@@ -274,7 +312,11 @@ class Admin extends Component {
                       
                       date: '2008/11/28',
                       salary: '$162',
-                      address: 'Shivalik Hostel'
+                      address: 'Shivalik Hostel',
+                      actions: <div>
+                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-trash-alt delete"></i>
+                    </div>
                     },
                     {
                       name: 'Brielle Williamson',
@@ -284,7 +326,11 @@ class Admin extends Component {
                       
                       date: '2012/12/02',
                       salary: '$372',
-                      address: 'Shivalik Hostel'
+                      address: 'Shivalik Hostel',
+                      actions: <div>
+                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-trash-alt delete"></i>
+                    </div>
                     },
                     {
                       name: 'Herrod Chandler',
@@ -294,7 +340,11 @@ class Admin extends Component {
                       
                       date: '2012/08/06',
                       salary: '$137',
-                      address: 'Shivalik Hostel'
+                      address: 'Shivalik Hostel',
+                      actions: <div>
+                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-trash-alt delete"></i>
+                    </div>
                     },
                     {
                       name: 'Rhona Davidson',
@@ -304,7 +354,11 @@ class Admin extends Component {
                       
                       date: '2010/10/14',
                       salary: '$327',
-                      address: 'Shivalik Hostel'
+                      address: 'Shivalik Hostel',
+                      actions: <div>
+                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-trash-alt delete"></i>
+                    </div>
                     },
                     {
                       name: 'Colleen Hurst',
@@ -314,7 +368,11 @@ class Admin extends Component {
                       
                       date: '2009/09/15',
                       salary: '$205',
-                      address: 'Shivalik Hostel'
+                      address: 'Shivalik Hostel',
+                      actions: <div>
+                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-trash-alt delete"></i>
+                    </div>
                     },
                     {
                       name: 'Sonya Frost',
@@ -324,7 +382,11 @@ class Admin extends Component {
                       
                       date: '2008/12/13',
                       salary: '$103',
-                      address: 'Shivalik Hostel'
+                      address: 'Shivalik Hostel',
+                      actions: <div>
+                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-trash-alt delete"></i>
+                    </div>
                     },
                   
                 ],
@@ -353,7 +415,11 @@ class Admin extends Component {
                         label: 'Actions',
                         field: 'actions',
                         sort: 'disabled',
-                        width: 80
+                        width: 80,
+                        default:<div>
+                        <i className="fa fa-pencil-alt edit mr-2"></i>
+                        <i className="fa fa-trash-alt delete"></i>
+                      </div>
                     }
                 ],
                 rows: [
@@ -361,7 +427,10 @@ class Admin extends Component {
                         title: 'Notice 1',
                         description: 'Description',
                         date: '29/06/2020',
-                        actions: 'Buttons'
+                        actions: <div>
+                        <i className="fa fa-pencil-alt edit mr-2"></i>
+                        <i className="fa fa-trash-alt delete"></i>
+                      </div>
                     },
                 ],
                 
@@ -397,7 +466,11 @@ class Admin extends Component {
                         label: 'Actions',
                         field: 'actions',
                         sort: 'disabled',
-                        width: 100
+                        width: 100,
+                        default: <div>
+                        <i className="fa fa-pencil-alt edit mr-2"></i>
+                        <i className="fa fa-trash-alt delete"></i>
+                      </div>
                     }
                 ],
                 rows: [
@@ -406,7 +479,10 @@ class Admin extends Component {
                         rooms: 200,
                         blocks: 3,
                         floors: 2,
-                        actions: 'Buttons'
+                        actions: <div>
+              <i className="fa fa-pencil-alt edit mr-2"></i>
+              <i className="fa fa-trash-alt delete"></i>
+            </div>
                     },
                 
                 ],
@@ -444,6 +520,10 @@ class Admin extends Component {
                       field: 'actions',
                       
                       width: 100,
+                      default: <div>
+                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-trash-alt delete"></i>
+                    </div>
                     },
               
                 ],
@@ -453,7 +533,10 @@ class Admin extends Component {
                     block: 'BL-01',
                     room: 'R-01',
                     rent: 7500.00,
-                    actions: 'Buttons'
+                    actions: <div>
+              <i className="fa fa-pencil-alt edit mr-2"></i>
+              <i className="fa fa-trash-alt delete"></i>
+            </div>
                 },
                 
               ],
@@ -484,7 +567,11 @@ class Admin extends Component {
                       label: 'Actions',
                       field: 'actions',
                       sort: 'disabled',
-                      width: 100
+                      width: 100,
+                      default: <div>
+                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-trash-alt delete"></i>
+                    </div>
                     }
                   ],
                   rows: [
@@ -492,10 +579,56 @@ class Admin extends Component {
                           name: 'Jatin Bansal',
                           amount: 2000.00,
                           date: '29th June, 2020',
-                          actions: 'Buttons'
+                          actions: <div>
+              <i className="fa fa-pencil-alt edit mr-2"></i>
+              <i className="fa fa-trash-alt delete"></i>
+            </div>
                       },
                     
                   ],
+            },
+            Complaints :{
+                columns: [
+                    {
+                      label: 'Student Name',
+                      field: 'name',
+                      width: 150,
+                      attributes: {
+                        'aria-controls': 'DataTable',
+                        'aria-label': 'Name',
+                      },
+                    },
+                    {
+                      label: 'Room No',
+                      field: 'room',
+                      width: 150,
+                    },
+                    {
+                      label: 'Complaint',
+                      field: 'complaint',
+                      width: 150,
+                    },
+                    
+                    {
+                      label: 'Actions',
+                      field: 'actions',
+                      
+                      width: 100,
+                    },
+              
+                  ],
+                  rows: [
+                      {
+                      name: 'Jatin Bansal',
+                      room: '2021',
+                      complaint: 'darwaaza sahi kraayo mera',
+                      actions: <div>
+                      <i className="fa fa-check-circle resolve mr-2"></i>
+                      <i className="fa fa-trash-alt delete"></i>
+                    </div>
+                  },
+                
+              ],
             }
             
         }
@@ -526,6 +659,7 @@ class Admin extends Component {
                             <Route exact path="/admin/StudentManagePayment/Add Bill" component={StudentPayment} />
                             <Route exact path="/admin/StudentManagePayment/MessBill" component={()=><StudentMessBill messBills={this.state.MessBills}/>} />
                             <Route exact path="/admin/EmployeeManagePayment/Add Salary" component={EmployeeSalary}/>
+                            <Route exact path="/admin/Complaints" component={() => <Complaints complaints={this.state.Complaints}/>}/>
                             <Route exact path="/admin/EmployeeManagePayment/Salary" component={() => <EmployeeSalaryView employeeSal={this.state.EmployeeSal}/>}/>
                             <Route exact path="/admin/StudentManage/seatallocation" component={()=> <Seat seats={this.state.Seats}/>}/>
                             <Redirect to="/admin/dashboard"/>

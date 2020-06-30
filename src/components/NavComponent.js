@@ -60,7 +60,7 @@ class Bar extends Component {
                 <Modal backdrop="static" isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader>   
                         Login         
-                        <Button className="close" variant="secondary" onClick={this.toggleModal}>
+                        <Button className="close me" variant="secondary" onClick={this.toggleModal} color="white">
                             <span aria-hidden="true" className="white-text"></span><i className="fa fa-times"></i>
                         </Button>
                     </ModalHeader>

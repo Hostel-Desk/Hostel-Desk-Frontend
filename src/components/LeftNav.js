@@ -111,11 +111,11 @@ export default class LeftNav extends Component {
                       <div>
                       <UncontrolledCollapse toggler="#toggler4">
                             <NavItem>
-                              <Link className="nav-link offset-4" to="/admin/StudentManagePayment/Add Bill"><i class="fas fa-money-check-alt"></i> Add Bill</Link>
+                              <Link className="nav-link offset-4" to="/admin/StudentManagePayment/Add Bill"><i className="fas fa-money-check-alt"></i> Add Bill</Link>
                             </NavItem>
                             
                             <NavItem>
-                              <Link className="nav-link offset-4" to="/admin/StudentManagePayment/MessBill"><i class="fas fa-receipt"></i> Mess Bill</Link>
+                              <Link className="nav-link offset-4" to="/admin/StudentManagePayment/MessBill"><i className="fas fa-receipt"></i> Mess Bill</Link>
                             </NavItem>   
                       </UncontrolledCollapse>
                     </div>
@@ -143,11 +143,11 @@ export default class LeftNav extends Component {
                   <div>
                       <UncontrolledCollapse toggler="#toggler5">
                             <NavItem>
-                              <Link className="nav-link offset-4" to="/admin/EmployeeManagePayment/Add Salary"><i class="fas fa-money-check-alt"></i> Add Salary</Link>
+                              <Link className="nav-link offset-4" to="/admin/EmployeeManagePayment/Add Salary"><i className="fas fa-money-check-alt"></i> Add Salary</Link>
                             </NavItem>
                             
                             <NavItem>
-                              <Link className="nav-link offset-4" to="/admin/EmployeeManagePayment/Salary"><i class="fas fa-receipt"></i> Salary</Link>
+                              <Link className="nav-link offset-4" to="/admin/EmployeeManagePayment/Salary"><i className="fas fa-receipt"></i> Salary</Link>
                             </NavItem>   
                       </UncontrolledCollapse>
                     </div>
@@ -169,6 +169,9 @@ export default class LeftNav extends Component {
             
             <NavItem>
               <Link className="nav-link"  to="/admin/Architecture"><i className="fa fa-server" aria-hidden="true"></i>Architecture</Link>
+            </NavItem>
+            <NavItem>
+              <Link className="nav-link"  to="/admin/Complaints"><i className="fa fa-book" aria-hidden="true"></i>Complaints</Link>
             </NavItem>
             
           </Nav>
