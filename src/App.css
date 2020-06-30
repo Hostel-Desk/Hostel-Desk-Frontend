@@ -191,7 +191,7 @@ strong{
     margin-bottom: 0;
 }
 .card h3 {
-    margin-left: 20%;
+    margin-left: 10%;
 }
 .card-header {
     background-color: rgb(255, 255, 255);
@@ -230,8 +230,16 @@ strong{
     border: 2x solid #094372;
     padding: 10px 10px;
     color: white;
-
 }
+.delete:hover {
+    cursor: pointer;
+    color: #eaeff3;
+}
+.edit:hover{
+    cursor: pointer;
+    color: #eaeff3;
+}
+
 .resolve{
     float: left;
     background-color: rgb(236, 158, 13);
@@ -239,4 +247,8 @@ strong{
     border: 2x solid #094372;
     padding: 10px 10px;
     color: white;
+}
+.resolve:hover {
+    cursor: pointer;
+    color: #eaeff3;
 }
