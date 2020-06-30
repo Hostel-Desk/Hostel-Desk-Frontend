@@ -42,7 +42,7 @@ class NoticeBoard extends Component {
                     </Form>
                 </div>
                 <div>
-                    <NoticeView/>
+                    <NoticeView notices={this.props.notices}/>
                 </div>
             </div>
         )

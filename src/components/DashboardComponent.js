@@ -92,10 +92,10 @@ class DashBoard extends Component {
                     <Card>
                         <CardHeader mb="0" mt="0"><span><h4>Notices</h4></span></CardHeader>
                         <CardBody>
-                        <Alert color="success" className="mb-1 mt-1">
+                        <Alert color="primary" className="mb-1 mt-1">
                             Kive aa
                         </Alert>
-                        <Alert color="success" className="mb-1 mt-1">
+                        <Alert color="primary" className="mb-1 mt-1">
                             Hor v
                         </Alert>
                         </CardBody>

@@ -61,7 +61,7 @@ class Seat extends Component {
                     </Form>
                 </div>
                 <div>
-                    <SeatAllocationView/>
+                    <SeatAllocationView seats={this.props.seats}/>
                 </div>
             </div>
 

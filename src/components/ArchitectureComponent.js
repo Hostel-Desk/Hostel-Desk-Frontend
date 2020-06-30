@@ -53,7 +53,7 @@ class Architecture extends Component {
                             </Row>
                     </Form>
                 </div>
-                <div><ArchitectureView/></div>
+                <div><ArchitectureView architectures={this.props.architectures}/></div>
                
                     
             </div>
