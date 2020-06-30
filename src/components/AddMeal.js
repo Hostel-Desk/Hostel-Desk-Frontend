@@ -19,7 +19,7 @@ export default class AddMeal extends Component {
                         <Row form>
                             <Col md={4}>
                             <FormGroup>
-                                    <Label for="Gender">Day</Label>
+                                    <Label for="Day">Day</Label>
                                     <select className="form-control" >
                                         <option defaultValue>Select</option>
                                         <option value="Monday">Monday</option>
@@ -34,7 +34,7 @@ export default class AddMeal extends Component {
                             </Col>
                             <Col md={4}>
                             <FormGroup>
-                            <Label for="Gender">Time</Label>
+                            <Label for="Time">Time</Label>
                                     <select className="form-control" >
                                         <option defaultValue>Select</option>
                                         <option value="Breakfast">Breakfast</option>
@@ -46,7 +46,7 @@ export default class AddMeal extends Component {
                             </Col>
                             <Col md={4}>
                             <FormGroup>
-                                <Label for="Designation">Item Name</Label>
+                                <Label for="itemName">Item Name</Label>
                                 <Input type="text" name="itemName" id="itemName" placeholder="Item Name" />
                             </FormGroup>
                             </Col>
