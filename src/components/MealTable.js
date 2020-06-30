@@ -4,72 +4,19 @@ import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
 export default class MealView extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      Days: [
-        {
-          day: 'Monday',
-          breakfast: [
-            'Bread-Jam + Corn Flakes',
-            'Omlette + Fruit',
-            'Milk/Tea + Butter',
-            'Aloo Paratha'
-          ],
-          lunch: [
-            'Kadhi Pakoda + Aloo Zeera',
-            'Jeera Rice + Chapati',
-            'Pickle + Salad'
-          ],
-          snacks: [
-            'Samosa',
-            'Tea',
-            'Biscuit + Rusk'
-          ],
-          dinner: [
-            'Butter Chicker + Masoor Sabut',
-            'Paneer Bhurji/ Matar Paneer',
-            'Simple Rice + Chapati',
-            'Gulab Jabun'
-          ] 
-        },
-        {
-          day: 'Tuesday',
-          breakfast: [
-            'Bread-Jam + Corn Flakes',
-            'Boiled Egg + Fruit',
-            'Milk/Tea + Butter',
-            'Mix Paratha'
-          ],
-          lunch: [
-            'White Chole + Aloo Baingan',
-            'Simple Rice + Chapati + Butter',
-            'Pickle + Salad + Lassi(sweet)'
-          ],
-          snacks: [
-            'Bread Roll/ Spring Roll',
-            'Tea',
-            'Cream Biscuit + Rusk'
-          ],
-          dinner: [
-            'Dal Makhni + Aloo Gajar Matar',
-            'Jeera Rice + Chapati + Curd',
-            'Moongdal Halwa/ Suji Halwa'
-          ] 
-        }
-      ]
-    }
   }
   RenderMenu() {
     return(
       <MDBTableBody>
         {
-          this.state.Days.map((Day)=>{
+          this.props.meals.map((meal)=>{
             return(
               <tr>
-                <td>{Day.day}</td>
+                <td>{meal.day}</td>
                 <td>
                   <ul>
                     {
-                      Day.breakfast.map((Break) => {
+                      meal.breakfast.map((Break) => {
                         return(
                           <li>{Break}</li>
                         )
@@ -80,7 +27,7 @@ export default class MealView extends Component {
                 <td>
                   <ul>
                     {
-                      Day.lunch.map((Lunch) => {
+                      meal.lunch.map((Lunch) => {
                         return(
                           <li>{Lunch}</li>
                         )
@@ -91,7 +38,7 @@ export default class MealView extends Component {
                 <td>
                   <ul>
                     {
-                      Day.snacks.map((Snack) => {
+                      meal.snacks.map((Snack) => {
                         return(
                           <li>{Snack}</li>
                         )
@@ -102,7 +49,7 @@ export default class MealView extends Component {
                 <td>
                   <ul>
                     {
-                      Day.dinner.map((Dine) => {
+                      meal.dinner.map((Dine) => {
                         return(
                           <li>{Dine}</li>
                         )
