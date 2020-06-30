@@ -183,6 +183,7 @@ strong{
 }
 .card{
     border-radius: 0;
+    border-color: rgb(101, 131, 212);
     box-shadow: none;
     font-size: x-small; 
 }
