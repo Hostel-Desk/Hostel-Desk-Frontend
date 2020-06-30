@@ -29,8 +29,8 @@ class AddEmployee extends Component {
                                         <Label for="Gender">Gender</Label>
                                         <select className="form-control" >
                                             <option defaultValue>Select</option>
-                                            <option>Male</option>
-                                            <option>Female</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
                                         </select>  
                                     </FormGroup>
                                 </Col>
