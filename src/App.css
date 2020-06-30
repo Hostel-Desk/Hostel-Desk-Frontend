@@ -232,3 +232,11 @@ strong{
     color: white;
 
 }
+.resolve{
+    float: left;
+    background-color: rgb(236, 158, 13);
+    border-radius: 75%;
+    border: 2x solid #094372;
+    padding: 10px 10px;
+    color: white;
+}
