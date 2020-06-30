@@ -194,10 +194,12 @@ strong{
     margin-left: 10%;
 }
 .card-header {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(101, 131, 212);
+    color: white;
 }
 .card-footer {
     font-size: 0.8rem;
+    background-color: white;
 }
 .dashcards {
     border: none;
