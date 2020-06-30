@@ -1,67 +1,7 @@
 import React from 'react';
 import { MDBDataTableV5 } from 'mdbreact';
 
-export default function StudentView() {
-  const [datatable, setDatatable] = React.useState({
-    columns: [
-      {
-        label: 'Name',
-        field: 'name',
-        width: 150,
-        attributes: {
-          'aria-controls': 'DataTable',
-          'aria-label': 'Name',
-        },
-      },
-      {
-        label: 'Mobile No.',
-        field: 'mobile',
-        width: 150,
-      },
-      {
-        label: 'Program',
-        field: 'program',
-        width: 150,
-      },
-      {
-        label: 'Guardian',
-        field: 'guardian',
-        sort: 'disabled',
-        width: 100,
-      },
-      {
-        label: 'G Mobile',
-        field: 'gMob',
-        sort: 'disabled',
-        width: 150,
-      },
-      {
-        label: 'P. Address',
-        field: 'pAddress',
-        sort: 'disabled',
-        width: 100
-      },
-      {
-        label: 'Actions',
-        field: 'actions',
-        sort: 'disabled',
-        width: 100
-      }
-    ],
-    rows: [
-        {
-            name: 'Jatin Bansal',
-            mobile: '8729060249',
-            program: 'ELEC',
-            guardian: 'Mr Xyz',
-            gMob: '8264554894',
-            pAddress: 'Mullanpur',
-            actions: 'Buttons'
-        },
-      
-    ],
-  });
-
+export default function StudentView({students}) {
   return (
     <div>
     <div className="row">
@@ -77,7 +17,7 @@ export default function StudentView() {
       entriesOptions={[5, 20, 25]}
       entries={5}
       pagesAmount={4}
-      data={datatable}
+      data={students}
       pagingTop
       searchTop
       searchBottom={false}
