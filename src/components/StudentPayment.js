@@ -27,16 +27,14 @@ class StudentPayment extends Component {
                                     <Input type="text" name="Name" id="name" placeholder="Name" />
                                 </FormGroup>
                                 </Col>
-                                <Col md={4} className="offset-2">
+                                <Col md={3}>
                                 <FormGroup>
                                     <Label for="Id">Student Id</Label>
                                     <Input type="number" name="Id" id="id" placeholder="Student Id" />
                                 </FormGroup>
-                                </Col>
-                                
-                            </Row>
-                            <Row form>
-                            <Col md={4}>
+                                </Col>  
+                            
+                                <Col md={3}>
                                 <FormGroup>
                                     <Label for="Branch">Branch</Label>
                                     <select className="form-control">
@@ -52,23 +50,20 @@ class StudentPayment extends Component {
                                         </select>  
                                 </FormGroup>
                                 </Col>
-                                <Col md={4} className="offset-2">
+                            </Row>
+                            <Row form>
+                                <Col md={4}>
                                 <FormGroup>
                                     <Label for="rupees">Payment</Label>
                                     <Input type="number" name="rupees" id="rupees" placeholder="Payment" />
                                 </FormGroup>
                                 </Col>
-                                
-                                
-                            </Row>
-                            <Row form>
-                            <Col md={4}>
+                                <Col md={3}>
                                     <FormGroup>
                                         <Label for="paymentduedate">Payment Due Date</Label>
                                         <Input type="date" name="DpaymentduedateOB" id="paymentduedate" placeholder="Date Of Birth"/>
                                     </FormGroup>
-                                </Col>
-                                
+                                </Col> 
                             </Row>
                             <FormGroup row>
                                 <Col md={{size: 10}}>
