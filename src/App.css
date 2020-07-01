@@ -19,10 +19,11 @@ body{
     padding-top: 10px;
 }
 .hms{
-    height: 15%;
-    width: 15%;
+    height: 25%;
+    width: 25%;
 }
 .pec{
+    padding-top: 1.5%;
     height: 15%;
     width: 15%;
 }
