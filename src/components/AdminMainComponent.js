@@ -17,6 +17,7 @@ import EmployeeSalaryView from './EmployeeSalaryView';
 import Seat from './SeatComponent';
 import AddMeal from './AddMeal';
 import Complaints from './Complaints';
+import ArchitectureView from './ArchitectureView';
 class Admin extends Component {
     constructor(props) {
         super(props);
@@ -646,9 +647,10 @@ class Admin extends Component {
                             <Route path="/admin/dashboard" component={() => <DashBoard architectures={this.state.Architectures}
                                                                                         employees={this.state.Employees}
                                                                                         students={this.state.Students}/>}/>
-                            <Route exact path="/admin/students" component={StudentView}/>
+                            <Route exact path="/admin/students" component={()=><StudentView students={this.state.Students}/>}/>
+                            <Route exact path="/admin/rooms" component={() => <ArchitectureView architectures={this.state.Architectures}/>}/>
                             <Route exact path="/admin/StudentManage/addnew" component={AddStudent}/>
-                            <Route exact path="/admin/employees" component={EmployeeView}/>
+                            <Route exact path="/admin/employees" component={()=><EmployeeView employees={this.state.Employees}/>}/>
                             <Route exact path="/admin/EmployeeManage/addnew" component={AddEmployee}/>
                             <Route exact path="/admin/MealManage/view" component={() => <MealView meals={this.state.Meals}/>}/>
                             <Route exact path="/admin/MealManage/add" component={AddMeal}/>
