@@ -7,7 +7,11 @@ class SubmitComplaint extends Component {
 
         this.state = {
             title: '',
-            description: ''
+            description: '',
+            touched: {
+                title: false,
+                description: false
+            }
         }
     }
 
@@ -36,12 +40,10 @@ class SubmitComplaint extends Component {
             title: '',
             description: ''
         }
-        if(this.state.touched.subject && subject.length < 10) 
+        if(this.state.touched.title && title.length < 10) 
             errors.title = 'Subject should contain a minimum of 10 characters';
-        if(this.state.touched.subject && subject.length > 30) 
-            errors.title = 'Subject should contain a maximum of 30 characters';
-        if(this.state.touched.subject && subject.length < 50) 
-            errors.description = 'Description should contain a minimum of 50 characters';
+        if(this.state.touched.description && description.length < 30) 
+            errors.description = 'Subject should contain a minimum of 30 characters';
 
         return errors;
         
@@ -64,7 +66,8 @@ class SubmitComplaint extends Component {
                             <FormGroup>
                                 <Label for="title">Title</Label>
                                 <Input onBlur={this.handleBlur('title')} onChange={this.handleInputChange} type="text" 
-                                name="title" id="title" placeholder="Title" value={this.state.title}/>
+                                name="title" id="title" placeholder="Title" value={this.state.title}
+                                valid={errors.title === ''} invalid={errors.title !== ''}/>
                                 <FormFeedback>{errors.title}</FormFeedback>
                             </FormGroup>
                             </Col>
@@ -72,7 +75,8 @@ class SubmitComplaint extends Component {
                             <FormGroup>
                                 <Label for="description">Description</Label>
                                 <Input type="textarea" name="description" id="description" placeholder="Description"
-                                onBlur={this.handleBlur('description')} onChange={this.handleInputChange} value={this.state.description} rows="1"/>
+                                onBlur={this.handleBlur('description')} onChange={this.handleInputChange} value={this.state.description} rows="1"
+                                valid={errors.description === ''} invalid={errors.description !== ''}/>
                                 <FormFeedback>{errors.description}</FormFeedback>
                             </FormGroup>
                             </Col>
