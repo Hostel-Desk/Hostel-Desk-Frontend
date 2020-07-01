@@ -1,21 +1,20 @@
 import React, {Component} from 'react';
-import {Breadcrumb, BreadcrumbItem, Form, Input, Button, Label, Col, Row, FormGroup} from 'reactstrap';
-
-const required = (val) => val && val.length;
-const maxLength = (len) => (val) => !(val) || (val.length <= len);
-const minLength = (len) => (val) => (val) && (val.length >= len);
-const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
+import {Breadcrumb, BreadcrumbItem, Form, Input, Button, Label, Col, Row, FormGroup, FormFeedback} from 'reactstrap';
 
 class Contact extends Component{
     constructor(props){
         super(props);
         this.state={
-            yourname: '',
-           
+            name: '',
             email: '',
-            
             subject: '',
-            message: ''
+            message: '',
+            touched: {
+                name: false,
+                email: false,
+                subject: false,
+                message: false
+            }
         }
     }
 
@@ -24,8 +23,47 @@ class Contact extends Component{
         alert("Current State is: " + JSON.stringify(this.state));
         event.preventDefault();
     }
+    handleInputChange = (event) => {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+    handleBlur = (field) => (evt) => {
+        this.setState({
+            touched: {...this.state.touched, [field]: true}
+        });
+    }
+
+    validate = (name, email, subject, message) => {
+        const errors = {
+            name: '',
+            email: '',
+            subject: '',
+            message: ''
+        }
+        if(this.state.touched.name && name.length < 3)
+            errors.name = 'Name should be of minimum length of 3 characters';
+        else if(this.state.touched.name && name.length > 30)
+            errors.name = 'Name should not be greater than 30 characters';
+        if(this.state.touched.email && email.split('').filter(x=>x === '@').length!=1)
+            errors.email = 'Enter a valid email';
+        if(this.state.touched.subject && subject.length < 10) 
+            errors.subject = 'Subject should contain a minimum of 10 characters';
+        if(this.state.touched.subject && subject.length > 30) 
+            errors.subject = 'Subject should contain a maximum of 30 characters';
+        if(this.state.touched.subject && message.length < 50) 
+            errors.message = 'Description should contain a minimum of 50 characters';
+
+        return errors;
+        
+    }   
 
     render(){
+        const errors = this.validate(this.state.name, this.state.email, this.state.subject, this.state.message);
         return(
             <div className ="container-fluid contact">
                 <div className="row">
@@ -46,33 +84,45 @@ class Contact extends Component{
                         </div>
                         <div className="col-12 col-md-5">
 
-                        <Form className="myForm">
+                        <Form className="myForm" onSubmit={this.handleSubmit}>
                             <Row form>
                                 <Col md={6}>
                                 <FormGroup>
-                                    <Label for="Your Name">Your Name</Label>
-                                    <Input type="text" name="Your Name" id="yourname" placeholder="Your Name" />
+                                    <Label for="name">Your Name</Label>
+                                    <Input onChange={this.handleInputChange} type="text" name="name" id="name" 
+                                    valid={errors.name === ''} invalid={errors.name !== ''}
+                                    onBlur={this.handleBlur('name')} placeholder="Your Name" />
+                                    <FormFeedback>{errors.name}</FormFeedback>
                                 </FormGroup>
                                 </Col>
                                 <Col md={6}>
                                 <FormGroup>
-                                    <Label for="Email">Your Email</Label>
-                                    <Input type="email" name="email" id="email" placeholder="Your Email"/>
+                                    <Label for="email">Your Email</Label>
+                                    <Input onChange={this.handleInputChange} type="email" name="email" id="email" 
+                                    valid={errors.email === ''} invalid={errors.email !== ''}
+                                    onBlur={this.handleBlur('email')} placeholder="Your Email"/>
+                                    <FormFeedback>{errors.email}</FormFeedback>
                                 </FormGroup>
                                 </Col>
                             </Row>
                             <FormGroup row>
                                 <Col>
                                 <Label for="subject">Subject</Label>
-                                <Input type="text" name="subject" id="subject" placeholder="Subject"/>
+                                <Input onChange={this.handleInputChange} type="text" name="subject" id="subject" 
+                                valid={errors.subject === ''} invalid={errors.subject !== ''}
+                                onBlur={this.handleBlur('subject')} placeholder="Subject"/>
+                                <FormFeedback>{errors.subject}</FormFeedback>
                                 </Col>
                             </FormGroup>
                             
                             <FormGroup row>
                                 <Col>
                                 <Label for="message">Message</Label>
-                                <Input type="textarea" name="message" id="message" placeholder="Message"
+                                <Input onChange={this.handleInputChange} onBlur={this.handleBlur('message')} 
+                                valid={errors.message === ''} invalid={errors.message !== ''} 
+                                type="textarea" name="message" id="message" placeholder="Message"
                                  rows="3"/>
+                                 <FormFeedback>{errors.message}</FormFeedback>
                                 </Col>
                             </FormGroup>
                             

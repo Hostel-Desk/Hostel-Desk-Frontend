@@ -1,14 +1,69 @@
 import React, { Component } from 'react'
-import {Form, Input, Button, Label, Col, Row, FormGroup, Modal, ModalBody, ModalHeader} from 'reactstrap';
-import {Link} from 'react-router-dom'
+import {Form, Input, Button, Label, Col, Row, FormGroup, FormFeedback} from 'reactstrap';
 import SeatAllocationView from './SeatAllocationView';
 class Seat extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            name: '',
+            block: '',
+            room: '',
+            rent: '',
+            touched: {
+                name: false,
+                block: false,
+                room: false,
+                rent: false
+            }
+        }
+
+    }
+    handleSubmit(event) {
+        console.log("Current State is: " + JSON.stringify(this.state));
+        alert("Current State is: " + JSON.stringify(this.state));
+        event.preventDefault();
+    }
+    handleInputChange = (event) => {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+    handleBlur = (field) => (evt) => {
+        this.setState({
+            touched: {...this.state.touched, [field]: true}
+        });
+    }
+
+    validate = (name, block, room, rent) => {
+        const errors = {
+            name: '',
+            block: '',
+            room: '',
+            rent: '',
+        }
+    
+        if(this.state.touched.name && name.length < 3)
+            errors.name = 'Name should be of minimum length of 3 characters';
+        else if(this.state.touched.name && name.length > 30)
+            errors.name = 'Name should not be greater than 30 characters';
+        if(this.state.touched.block && block.length === 0) 
+            errors.block = 'Specify the block';
+        if(this.state.touched.room && room.length === 0) 
+            errors.room = 'Specify the Room';
+        if(this.state.touched.rent && rent.length === 0) 
+            errors.rent = 'Specify the Rent';
+
+        return errors;
+        
     }
 
     render() {
+        const errors = this.validate(this.state.name, this.state.block, this.state.room, this.state.rent);
         return (
             <div>
                 <div className="row">
@@ -21,24 +76,33 @@ class Seat extends Component {
                     <h4>Student's Seat Allocation</h4>
                 </div>
                 <div >
-                    <Form className="myForm">
+                    <Form className="myForm" onSubmit={this.handleSubmit}>
                             <Row form>
                                 <Col md={4}>
                                 <FormGroup>
-                                    <Label for="Name">Student Name</Label>
-                                    <Input type="text" name="Name" id="name" placeholder="Name" />
+                                    <Label for="name">Student Name</Label>
+                                    <Input type="text" name="name" id="name" value={this.state.name} placeholder="Name" 
+                                    onBlur={this.handleBlur('name')} onChange={this.handleInputChange}
+                                    valid={errors.name === ''} invalid={errors.name !== ''}/>
+                                    <FormFeedback>{errors.name}</FormFeedback>
                                 </FormGroup>
                                 </Col>
                                 <Col md={4}>
                                 <FormGroup>
-                                    <Label for="Block">Block No</Label>
-                                    <Input type="text" name="Block" id="Block" placeholder="Block No" />
+                                    <Label for="block">Block No</Label>
+                                    <Input type="text" name="block" id="Block" value={this.state.block} placeholder="Block No" 
+                                    onBlur={this.handleBlur('block')} onChange={this.handleInputChange}
+                                    valid={errors.block === ''} invalid={errors.block !== ''}/>
+                                    <FormFeedback>{errors.block}</FormFeedback>
                                 </FormGroup>
                                 </Col>
                                 <Col md={4}>
                                 <FormGroup>
-                                    <Label for="Room">Room No</Label>
-                                    <Input type="text" name="Room" id="Room" placeholder="Room No" />
+                                    <Label for="room">Room No</Label>
+                                    <Input type="text" name="room" id="room" vlaue={this.state.room} placeholder="Room No" 
+                                    onBlur={this.handleBlur('room')} onChange={this.handleInputChange}
+                                    valid={errors.room === ''} invalid={errors.room !== ''}/>
+                                    <FormFeedback>{errors.room}</FormFeedback>
                                 </FormGroup>
                                 </Col>
                             </Row>
@@ -46,7 +110,10 @@ class Seat extends Component {
                                 <Col md={4}>
                                     <FormGroup>
                                         <Label for="rent">Monthly Rent</Label>
-                                        <Input type="number" name="rent" id="rent" placeholder="Monthly Rent"/>
+                                        <Input type="number" name="rent" id="rent" value={this.state.rent} placeholder="Monthly Rent"
+                                        onBlur={this.handleBlur('rent')} onChange={this.handleInputChange}
+                                        valid={errors.rent === ''} invalid={errors.rent !== ''}/>
+                                        <FormFeedback>{errors.rent}</FormFeedback>
                                     </FormGroup>
                                 </Col>
                                
