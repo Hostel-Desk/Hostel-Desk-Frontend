@@ -18,10 +18,14 @@ import Seat from './SeatComponent';
 import AddMeal from './AddMeal';
 import Complaints from './Complaints';
 import ArchitectureView from './ArchitectureView';
+import {Modal, ModalBody, Form, ModalHeader, FormGroup,Label, Input, Button, Row, Col} from 'reactstrap';
 class Admin extends Component {
     constructor(props) {
         super(props);
         this.state = {
+          isStudentModalOpen: false,
+          isMessBillModalOpen: false,
+          isEmployeeModalOpen: false,
             Meals: [
                 {
                   day: 'Monday',
@@ -174,7 +178,7 @@ class Admin extends Component {
                       sort: 'disabled',
                       width: 100,
                       default:  <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-pencil-alt edit mr-2" onClick={() =>this.toggleStudentModal()}></i>
                       <i className="fa fa-trash-alt delete"></i>
                     </div>
                     }
@@ -189,7 +193,7 @@ class Admin extends Component {
                         gMob: '8264554894',
                         pAddress: 'Mullanpur',
                         actions: <div>
-                        <i className="fa fa-pencil-alt edit mr-2"></i>
+                        <i className="fa fa-pencil-alt edit mr-2" onClick={() =>this.toggleStudentModal()}></i>
                         <i className="fa fa-trash-alt delete"></i>
                       </div>
                         
@@ -248,7 +252,7 @@ class Admin extends Component {
                         sort: 'disabled',
                         width: 100,
                         default: <div>
-                        <i className="fa fa-pencil-alt edit mr-2"></i>
+                        <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
                         <i className="fa fa-trash-alt delete"></i>
                       </div>
                       }
@@ -265,7 +269,7 @@ class Admin extends Component {
                       salary: '$320',
                       address: 'Shivalik Hostel',
                       actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
                       <i className="fa fa-trash-alt delete"></i>
                     </div>
                     },
@@ -279,7 +283,7 @@ class Admin extends Component {
                       salary: '$170',
                       address: 'Shivalik Hostel',
                       actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
                       <i className="fa fa-trash-alt delete"></i>
                     </div>
                     },
@@ -293,7 +297,7 @@ class Admin extends Component {
                       salary: '$86',
                       address: 'Shivalik Hostel',
                       actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
                       <i className="fa fa-trash-alt delete"></i>
                     </div>
                     },
@@ -307,7 +311,7 @@ class Admin extends Component {
                       salary: '$433',
                       address: 'Shivalik Hostel',
                       actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
                       <i className="fa fa-trash-alt delete"></i>
                     </div>  
                     },
@@ -321,7 +325,7 @@ class Admin extends Component {
                       salary: '$162',
                       address: 'Shivalik Hostel',
                       actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
                       <i className="fa fa-trash-alt delete"></i>
                     </div>
                     },
@@ -335,7 +339,7 @@ class Admin extends Component {
                       salary: '$372',
                       address: 'Shivalik Hostel',
                       actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
                       <i className="fa fa-trash-alt delete"></i>
                     </div>
                     },
@@ -349,7 +353,7 @@ class Admin extends Component {
                       salary: '$137',
                       address: 'Shivalik Hostel',
                       actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
                       <i className="fa fa-trash-alt delete"></i>
                     </div>
                     },
@@ -363,7 +367,7 @@ class Admin extends Component {
                       salary: '$327',
                       address: 'Shivalik Hostel',
                       actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
                       <i className="fa fa-trash-alt delete"></i>
                     </div>
                     },
@@ -377,7 +381,7 @@ class Admin extends Component {
                       salary: '$205',
                       address: 'Shivalik Hostel',
                       actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
                       <i className="fa fa-trash-alt delete"></i>
                     </div>
                     },
@@ -391,7 +395,7 @@ class Admin extends Component {
                       salary: '$103',
                       address: 'Shivalik Hostel',
                       actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
                       <i className="fa fa-trash-alt delete"></i>
                     </div>
                     },
@@ -576,7 +580,7 @@ class Admin extends Component {
                       sort: 'disabled',
                       width: 100,
                       default: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
+                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleMessBillModal()}></i>
                       <i className="fa fa-trash-alt delete"></i>
                     </div>
                     }
@@ -587,7 +591,7 @@ class Admin extends Component {
                           amount: 2000.00,
                           date: '29th June, 2020',
                           actions: <div>
-              <i className="fa fa-pencil-alt edit mr-2"></i>
+              <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleMessBillModal()}></i>
               <i className="fa fa-trash-alt delete"></i>
             </div>
                       },
@@ -638,7 +642,25 @@ class Admin extends Component {
               ],
             }
             
-        }
+        };
+        this.toggleStudentModal = this.toggleStudentModal.bind(this);
+        this.toggleMessBillModal= this.toggleMessBillModal.bind(this);
+        this.toggleEmployeeModal= this.toggleEmployeeModal.bind(this);
+    }
+    toggleStudentModal(){
+      this.setState({
+        isStudentModalOpen: !this.state.isStudentModalOpen
+      });
+    }
+    toggleMessBillModal(){
+      this.setState({
+        isMessBillModalOpen: !this.state.isMessBillModalOpen
+      });
+    }
+    toggleEmployeeModal(){
+      this.setState({
+        isEmployeeModalOpen: !this.state.isEmployeeModalOpen
+      });
     }
 
     render() {
@@ -677,6 +699,188 @@ class Admin extends Component {
 
                     </div>
                 </div>
+                <Modal isOpen={this.state.isStudentModalOpen} toggle={this.toggleStudentModal}>
+                <ModalHeader >Edit Student Details<Button className="close me" variant="secondary" onClick={this.toggleStudentModal} color="white">
+                            <span aria-hidden="true" className="white-text"></span><i className="fa fa-times"></i>
+                        </Button></ModalHeader>
+                <ModalBody>
+                  <Form>
+                    <Row form>
+                      <Col md={6}>
+                  <FormGroup>
+                                <Label htmlFor="sid">SID</Label>
+                                <Input type="text" id="sid" name="sid"
+                                    innerRef={(input) => this.sid=input} />
+                            </FormGroup>
+                            </Col>
+                            <Col md={6}>
+                  <FormGroup>
+                    
+                                <Label htmlFor="fullname">Fullname</Label>
+                                <Input type="text" id="fullname" name="fullname"
+                                    innerRef={(input) => this.fullname=input} />
+                            </FormGroup>
+                            </Col>
+                            </Row>
+                            <Row form>
+                              <Col md={6}>
+                            <FormGroup>
+                                <Label htmlFor="mobile">Mobile No.</Label>
+                                <Input type="text" id="mobile" name="mobile"
+                                    innerRef={(input) => this.mobile=input} />
+                            </FormGroup>
+                            </Col>
+                            <Col md={6}>
+                            <FormGroup>
+                                <Label htmlFor="program">Program</Label>
+                                <Input type="text" id="program" name="program"
+                                    innerRef={(input) => this.program=input} />
+                            </FormGroup>
+                            </Col>
+                            </Row>
+                            <Row form>
+                              <Col md={6}>
+                            <FormGroup>
+                                <Label htmlFor="guardian">Guardian</Label>
+                                <Input type="text" id="guardian" name="guardian"
+                                    innerRef={(input) => this.guardian=input} />
+                            </FormGroup>
+                            </Col>
+                            <Col md={6}>
+                            <FormGroup>
+                                <Label htmlFor="gmobile">G Mobile</Label>
+                                <Input type="text" id="gmobile" name="gmobile"
+                                    innerRef={(input) => this.gmobile=input} />
+                            </FormGroup>
+                            </Col>
+                            </Row>
+                            <FormGroup>
+                                <Label htmlFor="address">P. Address</Label>
+                                <Input type="text" id="address" name="address"
+                                    innerRef={(input) => this.address=input} />
+                            </FormGroup>
+                            <Button type="submit" color="primary">
+                                    Update
+                                </Button> 
+                  </Form>
+                </ModalBody>
+                </Modal>
+                <Modal isOpen={this.state.isMessBillModalOpen} toggle={this.toggleMessBillModal}>
+                <ModalHeader >Edit Mess Bill<Button className="close me" variant="secondary" onClick={this.toggleMessBillModal} color="white">
+                            <span aria-hidden="true" className="white-text"></span><i className="fa fa-times"></i>
+                        </Button></ModalHeader>
+                <ModalBody>
+                  <Form>
+                
+                  <FormGroup>
+                                <Label htmlFor="sid">SID</Label>
+                                <Input type="text" id="sid" name="sid"
+                                    innerRef={(input) => this.sid=input} />
+                            </FormGroup>
+                            
+                            
+                  <FormGroup>
+                    
+                                <Label htmlFor="fullname">Fullname</Label>
+                                <Input type="text" id="fullname" name="fullname"
+                                    innerRef={(input) => this.fullname=input} />
+                            </FormGroup>
+                            
+                            
+                            <FormGroup>
+                                <Label htmlFor="amount">Amount</Label>
+                                <Input type="number" id="amount" name="amount"
+                                    innerRef={(input) => this.amount=input} />
+                            </FormGroup>
+                            
+                            <FormGroup>
+                                <Label htmlFor="date">Deposit Date</Label>
+                                <Input type="text" id="date" name="date"
+                                    innerRef={(input) => this.date=input} />
+                            </FormGroup>
+                            <Button type="submit" color="primary">
+                                    Update
+                                </Button> 
+                  </Form>
+                </ModalBody>
+                </Modal>
+                <Modal isOpen={this.state.isEmployeeModalOpen} toggle={this.toggleEmployeeModal}>
+                <ModalHeader >Edit Employee Details<Button className="close me" variant="secondary" onClick={this.toggleEmployeeModal} color="white">
+                            <span aria-hidden="true" className="white-text"></span><i className="fa fa-times"></i>
+                        </Button></ModalHeader>
+                <ModalBody>
+                  <Form>
+                    <Row form>
+                      <Col md={6}>
+                  <FormGroup>
+                                <Label htmlFor="eid">EID</Label>
+                                <Input type="text" id="eid" name="eid"
+                                    innerRef={(input) => this.eid=input} />
+                            </FormGroup>
+                            </Col>
+                            <Col md={6}>
+                  <FormGroup>
+                    
+                                <Label htmlFor="fullname">Fullname</Label>
+                                <Input type="text" id="fullname" name="fullname"
+                                    innerRef={(input) => this.fullname=input} />
+                            </FormGroup>
+                            </Col>
+                            </Row>
+                            <Row form>
+                              <Col md={6}>
+                            <FormGroup>
+                                <Label htmlFor="gender">Gender</Label>
+                                <Input type="text" id="gender" name="gender"
+                                    innerRef={(input) => this.gender=input} />
+                            </FormGroup>
+                            </Col>
+                            <Col md={6}>
+                            <FormGroup>
+                                <Label htmlFor="type">Employee Type</Label>
+                                <Input type="text" id="type" name="type"
+                                    innerRef={(input) => this.type=input} />
+                            </FormGroup>
+                            </Col>
+                            </Row>
+                            <Row form>
+                              <Col md={6}>
+                            <FormGroup>
+                                <Label htmlFor="designation">Designation</Label>
+                                <Input type="text" id="designation" name="designation"
+                                    innerRef={(input) => this.designation=input} />
+                            </FormGroup>
+                            </Col>
+                            <Col md={6}>
+                            <FormGroup>
+                                <Label htmlFor="date">Join Date</Label>
+                                <Input type="text" id="date" name="date"
+                                    innerRef={(input) => this.date=input} />
+                            </FormGroup>
+                            </Col>
+                            </Row>
+                            <Row form>
+                            <Col md={6}>
+                            <FormGroup>
+                                <Label htmlFor="salary">Salary</Label>
+                                <Input type="text" id="salary" name="salary"
+                                    innerRef={(input) => this.salary=input} />
+                            </FormGroup>
+                            </Col>
+                              <Col md={6}>
+                            <FormGroup>
+                                <Label htmlFor="address">P. Address</Label>
+                                <Input type="text" id="address" name="address"
+                                    innerRef={(input) => this.address=input} />
+                            </FormGroup>
+                            </Col>
+                            </Row>
+                            <Button type="submit" color="primary">
+                                    Update
+                                </Button> 
+                  </Form>
+                </ModalBody>
+                </Modal>
             </div>
         )
     }
