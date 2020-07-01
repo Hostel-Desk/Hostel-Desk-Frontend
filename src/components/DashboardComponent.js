@@ -66,7 +66,7 @@ class DashBoard extends Component {
                             </div>        
                                            
                         </CardHeader>
-                        <CardFooter><Link to="/admin/Architecture">Details</Link></CardFooter>
+                        <CardFooter><Link to="/admin/rooms">Details</Link></CardFooter>
                     </Card>
                 </div>
                 <div className="col-md-3 mt-3">
