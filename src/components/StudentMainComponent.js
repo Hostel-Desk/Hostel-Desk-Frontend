@@ -7,6 +7,7 @@ import ArchitectureView from './ArchitectureView';
 import StudentProfile from './StudentProfile';
 import StudentLeftNav from './Studentleftnav';
 import NoticeView from './NoticeView';
+import SubmitComplaint from './SubmitComplaint';
 class Student extends Component {
     constructor(props) {
         super(props);
@@ -588,6 +589,7 @@ class Student extends Component {
                             <Route exact path="/student/payment" component={()=><StudentMessBill messBills={this.state.MessBills}/>}/>
                             <Route exact path="/student/Noticeboard" component={() => <NoticeView notices={this.state.Notices}/>}/>
                             <Route exact path="/student/Architecture" component={() => <ArchitectureView architectures={this.state.Architectures}/>}/>
+                            <Route exact path="/student/Complaints" component={SubmitComplaint} />
                            
                             <Redirect to="/student/dashboard"/>
                         </Switch>

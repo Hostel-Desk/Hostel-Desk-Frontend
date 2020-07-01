@@ -10,10 +10,12 @@ class Bar extends Component {
         super(props);
         this.state ={
             isNavOpen: false,
-            isModalOpen: false
+            isModalOpen: false,
+            changedvalue:null
         };
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.changelink = this.changelink.bind(this);
     }
 
     toggleNav() {
@@ -27,6 +29,20 @@ class Bar extends Component {
             isModalOpen: !this.state.isModalOpen
         });
     }
+
+    changelink=(event)=>{
+        if (event.target.value==="Admin"){
+            this.setState({
+                changedvalue:"/admin"
+            });
+        }
+        if (event.target.value==="Student"){
+            this.setState({
+                changedvalue:'/student'
+            });
+        }
+    }
+    
 
     render(){
     return (
@@ -80,10 +96,10 @@ class Bar extends Component {
                             <FormGroup>
                                 <Label htmlFor="select">Login As</Label>
                                 <Input type="select" id="select" name="select"
-                                    innerRef={(input) => this.loginAs=input} >
-                                    <option defaultValue>--Select--</option>
-                                    <option>Admin</option>
-                                    <option>Student</option>
+                                    innerRef={(input) => this.loginAs=input} onChange={this.changelink} >
+                                    <option value="null">--Select--</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Student">Student</option>
                                 </Input>
                             </FormGroup>
                             <FormGroup check>
@@ -93,7 +109,7 @@ class Bar extends Component {
                                     Remember Me
                                 </Label>
                             </FormGroup>
-                            <Link to="/admin"><Button type="submit" value="submit" color="primary" onClick={this.toggleModal} ><span className="fa fa-sign-in-alt fa-lg"></span>Login</Button></Link>
+                            <Link to={this.state.changedvalue}><Button type="submit" value="submit" color="primary" onClick={this.toggleModal} ><span className="fa fa-sign-in-alt fa-lg"></span>Login</Button></Link>
                             
                         </Form>
                     </ModalBody>
