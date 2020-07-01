@@ -55,7 +55,7 @@ class Contact extends Component{
             errors.subject = 'Subject should contain a minimum of 10 characters';
         if(this.state.touched.subject && subject.length > 30) 
             errors.subject = 'Subject should contain a maximum of 30 characters';
-        if(this.state.touched.subject && subject.length < 50) 
+        if(this.state.touched.subject && message.length < 50) 
             errors.message = 'Description should contain a minimum of 50 characters';
 
         return errors;

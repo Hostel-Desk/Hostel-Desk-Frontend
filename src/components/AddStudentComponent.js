@@ -112,7 +112,7 @@ class AddStudent extends Component {
                             <Col md={4}>
                             <FormGroup>
                                 <Label for="name">Full Name</Label>
-                                <Input type="text" name="name" id="name" placeholder="Name" value={this.state.name}
+                                <Input required type="text" name="name" id="name" placeholder="Name" value={this.state.name}
                                 onChange={this.handleInputChange} valid={errors.name === ''} invalid={errors.name !== ''} onBlur={this.handleBlur('name')}/>
                                 <FormFeedback>{errors.name}</FormFeedback>
                             </FormGroup>
@@ -120,7 +120,7 @@ class AddStudent extends Component {
                             <Col md={3}>
                             <FormGroup>
                                 <Label for="id">Student Id(As Login Id)</Label>
-                                <Input type="text" name="id" id="id" placeholder="Student Id" value={this.state.id}
+                                <Input required type="text" name="id" id="id" placeholder="Student Id" value={this.state.id}
                                 onChange={this.handleInputChange} valid={errors.id === ''} invalid={errors.id !== ''} onBlur={this.handleBlur('id')}/>
                                 <FormFeedback>{errors.id}</FormFeedback>
                             </FormGroup>
