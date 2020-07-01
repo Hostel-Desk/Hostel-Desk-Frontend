@@ -183,6 +183,7 @@ strong{
 }
 .card{
     border-radius: 0;
+    border-color: rgb(101, 131, 212);
     box-shadow: none;
     font-size: x-small; 
 }
@@ -191,13 +192,15 @@ strong{
     margin-bottom: 0;
 }
 .card h3 {
-    margin-left: 20%;
+    margin-left: 10%;
 }
 .card-header {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(101, 131, 212);
+    color: white;
 }
 .card-footer {
     font-size: 0.8rem;
+    background-color: white;
 }
 .dashcards {
     border: none;
@@ -230,5 +233,25 @@ strong{
     border: 2x solid #094372;
     padding: 10px 10px;
     color: white;
+}
+.delete:hover {
+    cursor: pointer;
+    color: #eaeff3;
+}
+.edit:hover{
+    cursor: pointer;
+    color: #eaeff3;
+}
 
+.resolve{
+    float: left;
+    background-color: rgb(236, 158, 13);
+    border-radius: 75%;
+    border: 2x solid #094372;
+    padding: 10px 10px;
+    color: white;
+}
+.resolve:hover {
+    cursor: pointer;
+    color: #eaeff3;
 }

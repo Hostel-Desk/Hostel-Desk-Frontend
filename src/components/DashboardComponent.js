@@ -23,7 +23,7 @@ class DashBoard extends Component {
                         <CardHeader className="dashCard">
                             <div className="row">
                             <span className="col-7 fa fa-users fa-4x"></span>
-                            <h3>2</h3>
+                            <h3>{this.props.employees.rows.length}</h3>
                             </div> 
                             <div className="mt-3">
                                 <div>
@@ -40,7 +40,7 @@ class DashBoard extends Component {
                         <CardHeader className="dashCard">
                             <div className="row">
                             <span className="col-7 fa fa-users fa-4x"></span>
-                            <h3>2</h3>
+                            <h3>{this.props.students.rows.length}</h3>
                             </div> 
                             <div className="mt-3">
                                 <div>
@@ -57,7 +57,7 @@ class DashBoard extends Component {
                         <CardHeader className="dashCard">
                             <div className="row">
                             <span className="col-7 fa fa-building fa-4x"></span>
-                            <h3>2</h3>
+                            <h3>{this.props.architectures.rows[0].rooms}</h3>
                             </div> 
                             <div className="mt-3">
                                 <div>
@@ -74,7 +74,7 @@ class DashBoard extends Component {
                         <CardHeader className="dashCard">
                             <div className="row">
                             <span className="col-7 fa fa-utensils fa-4x"></span>
-                            <h3>2</h3>
+                            
                             </div>
                             <div className="mt-3">
                                 <div>
