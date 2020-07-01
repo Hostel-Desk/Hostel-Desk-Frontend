@@ -6,6 +6,7 @@ import Home from './HomeComponent'
 import { BrowserRouter, Switch, Route, Redirect, useLocation } from 'react-router-dom'
 import Admin from './AdminMainComponent'
 import Contact from './ContactComponent'
+import Student from './StudentMainComponent'
 function Main(){
     return (
         <div>
@@ -18,6 +19,7 @@ function Main(){
                     <Route path="/home" component={Home}/>
                     <Route path="/admin" component={Admin}/>
                     <Route path="/contactus" component={Contact}/>
+                    <Route path="/student" component={Student}/>
                     <Redirect to="/home"/>
                 </Switch>
 
