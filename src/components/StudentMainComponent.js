@@ -1,24 +1,13 @@
 import React, {Component} from 'react';
 import DashBoard from './DashboardComponent';
 import {Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
-import LeftNav from './LeftNav';
-import Profile from './ProfileComponent'
-import Architecture from './ArchitectureComponent'
-import EmployeeView from './EmployeeView';
-import StudentView from './StudentsComponent';
-import NoticeBoard from './NoticeBoard'
 import MealView from './MealTable';
-import AddStudent from './AddStudentComponent';
-import StudentPayment from './StudentPayment';
-import EmployeeSalary from './AddSalary';
-import AddEmployee from './AddEmployeeComponent';
 import StudentMessBill from './StudentMessBill';
-import EmployeeSalaryView from './EmployeeSalaryView';
-import Seat from './SeatComponent';
-import AddMeal from './AddMeal';
-import Complaints from './Complaints';
 import ArchitectureView from './ArchitectureView';
-class Admin extends Component {
+import StudentProfile from './StudentProfile';
+import StudentLeftNav from './Studentleftnav';
+import NoticeView from './NoticeView';
+class Student extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -125,12 +114,6 @@ class Admin extends Component {
             },
             Students: {
                 columns: [
-                  {
-                    label: 'SID',
-                    field: 'sid',
-                    width: 150,
-                    sort: 'asc'
-                  },
                     {
                       label: 'Name',
                       field: 'name',
@@ -181,7 +164,6 @@ class Admin extends Component {
                 ],
                 rows: [
                     {
-                        sid: 19104009,
                         name: 'Jatin Bansal',
                         mobile: '8729060249',
                         program: 'ELEC',
@@ -570,73 +552,19 @@ class Admin extends Component {
                       width: 200,
                     },
                     
-                    {
-                      label: 'Actions',
-                      field: 'actions',
-                      sort: 'disabled',
-                      width: 100,
-                      default: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
-                    }
+                   
                   ],
                   rows: [
                       {
                           name: 'Jatin Bansal',
                           amount: 2000.00,
                           date: '29th June, 2020',
-                          actions: <div>
-              <i className="fa fa-pencil-alt edit mr-2"></i>
-              <i className="fa fa-trash-alt delete"></i>
-            </div>
+                         
                       },
                     
                   ],
             },
-            Complaints :{
-                columns: [
-                    {
-                      label: 'Student Name',
-                      field: 'name',
-                      width: 150,
-                      attributes: {
-                        'aria-controls': 'DataTable',
-                        'aria-label': 'Name',
-                      },
-                    },
-                    {
-                      label: 'Room No',
-                      field: 'room',
-                      width: 150,
-                    },
-                    {
-                      label: 'Complaint',
-                      field: 'complaint',
-                      width: 150,
-                    },
-                    
-                    {
-                      label: 'Actions',
-                      field: 'actions',
-                      
-                      width: 100,
-                    },
-              
-                  ],
-                  rows: [
-                      {
-                      name: 'Jatin Bansal',
-                      room: '2021',
-                      complaint: 'darwaaza sahi kraayo mera',
-                      actions: <div>
-                      <i className="fa fa-check-circle resolve mr-2"></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
-                  },
-                
-              ],
-            }
+           
             
         }
     }
@@ -646,33 +574,22 @@ class Admin extends Component {
             <div className="feature admin">
                 <div className="row">
                     <div className="col-md-3">
-                        <LeftNav/>
+                        <StudentLeftNav/>
                     </div>
                     <div className="col-md-9">
 
                         <Switch>
-                            <Route path="/admin/dashboard" component={() => <DashBoard architectures={this.state.Architectures}
+                            <Route path="/student/dashboard" component={() => <DashBoard architectures={this.state.Architectures}
                                                                                         employees={this.state.Employees}
                                                                                         students={this.state.Students}/>}/>
-                            <Route exact path="/admin/students" component={()=><StudentView students={this.state.Students}/>}/>
-                            <Route exact path="/admin/rooms" component={() => <ArchitectureView architectures={this.state.Architectures}/>}/>
-                            <Route exact path="/admin/StudentManage/addnew" component={AddStudent}/>
-                            <Route exact path="/admin/employees" component={()=><EmployeeView employees={this.state.Employees}/>}/>
-                            <Route exact path="/admin/EmployeeManage/addnew" component={AddEmployee}/>
-                            <Route exact path="/admin/MealManage/view" component={() => <MealView meals={this.state.Meals}/>}/>
-                            <Route exact path="/admin/MealManage/add" component={AddMeal}/>
-                            <Route exact path="/admin/StudentManage/view" component={()=><StudentView students={this.state.Students}/>}/>
-                            <Route exact path="/admin/EmployeeManage/view" component={()=><EmployeeView employees={this.state.Employees}/>}/>
-                            <Route exact path="/admin/NoticeBoard" component={() => <NoticeBoard notices={this.state.Notices}/>}/>
-                            <Route exact path="/admin/Settings/updateprofile" component={Profile}/>
-                            <Route exact path="/admin/Architecture" component={() => <Architecture architectures={this.state.Architectures}/>}/>
-                            <Route exact path="/admin/StudentManagePayment/Add Bill" component={StudentPayment} />
-                            <Route exact path="/admin/StudentManagePayment/MessBill" component={()=><StudentMessBill messBills={this.state.MessBills}/>} />
-                            <Route exact path="/admin/EmployeeManagePayment/Add Salary" component={EmployeeSalary}/>
-                            <Route exact path="/admin/Complaints" component={() => <Complaints complaints={this.state.Complaints}/>}/>
-                            <Route exact path="/admin/EmployeeManagePayment/Salary" component={() => <EmployeeSalaryView employeeSal={this.state.EmployeeSal}/>}/>
-                            <Route exact path="/admin/StudentManage/seatallocation" component={()=> <Seat seats={this.state.Seats}/>}/>
-                            <Redirect to="/admin/dashboard"/>
+                            <Route exact path="/student/profile" component={StudentProfile}/>
+                            <Route exact path="/student/Meal" component={() => <MealView meals={this.state.Meals}/>}/>
+                            
+                            <Route exact path="/student/payment" component={()=><StudentMessBill messBills={this.state.MessBills}/>}/>
+                            <Route exact path="/student/Noticeboard" component={() => <NoticeView notices={this.state.Notices}/>}/>
+                            <Route exact path="/student/Architecture" component={() => <ArchitectureView architectures={this.state.Architectures}/>}/>
+                           
+                            <Redirect to="/student/dashboard"/>
                         </Switch>
 
                     </div>
@@ -681,4 +598,4 @@ class Admin extends Component {
         )
     }
 }
-export default Admin
+export default Student;

@@ -25,13 +25,13 @@ class Architecture extends Component {
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="Rooms">Total Rooms</Label>
-                                    <Input type="text" name="Rooms" id="rooms" placeholder="Rooms" />
+                                    <Input type="text" name="Rooms" id="rooms" placeholder="Rooms" value={this.props.architectures.rows[0].rooms} />
                                 </FormGroup>
                                 </Col>
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="Blocks">Total Blocks</Label>
-                                    <Input type="text" name="Blocks" id="blocks" placeholder="Blocks" />
+                                    <Input type="text" name="Blocks" id="blocks" placeholder="Blocks" value={this.props.architectures.rows[0].blocks} />
                                 </FormGroup>
                                 </Col>
                             
@@ -39,7 +39,7 @@ class Architecture extends Component {
                                 <Col md={4}>
                                     <FormGroup>
                                         <Label for="Floor">Total Floors</Label>
-                                        <Input type="text" name="Floors" id="floors" placeholder="Floors"/>
+                                        <Input type="text" name="Floors" id="floors" placeholder="Floors" value={this.props.architectures.rows[0].floors}/>
                                     </FormGroup>
                                 </Col>
                             
