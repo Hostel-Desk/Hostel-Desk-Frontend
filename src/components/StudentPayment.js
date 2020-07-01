@@ -1,12 +1,71 @@
 import React, { Component } from 'react'
-import {Form, Input, Button, Label, Col, Row, FormGroup, Select} from 'reactstrap';
+import {Form, Input, Button, Label, Col, Row, FormGroup, Select,FormFeedback} from 'reactstrap';
 
 class StudentPayment extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            name: '',
+            id: '',
+            rupees: '',
+            branch: '',
+            paymentduedate:'',
+            touched: {
+                name: false,
+                id: false,
+                rupees: false,
+                paymentduedate: false,
+            }
+        }
+    }
+    
+    handleInputChange = (event) => {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+
+    handleSubmit = (event) => {
+        console.log("State: " + JSON.stringify(this.state));
+        alert("Current state: " + JSON.stringify(this.state));
+        event.preventDefault();
+    }
+
+    handleBlur = (field) => (evt) => {
+        this.setState({
+            touched: {...this.state.touched, [field]: true}
+        });
+    }
+
+    validate = (name, id,paymentduedate, rupees) => {
+        const errors = {
+            name: '',
+            rupees: '',
+            paymentduedate: '',
+            id: ''
+        }
+        if(this.state.touched.name && name.length < 3)
+            errors.name = 'Name should be of minimum length of 3 characters';
+        else if(this.state.touched.name && name.length > 30)
+            errors.name = 'Name should not be greater than 30 characters';
+        
+        if(this.state.touched.id && id.length != 8) {
+            errors.id = 'Length of the student id should be equal to 8';
+        }
+        if(this.state.touched.paymentduedate && paymentduedate.length === 0)
+            errors.paymentduedate = 'Specify Date';
+        if(this.state.touched.rupees && rupees.length === 0)
+            errors.rupees = 'Specify Payment Amount';
+
+        return errors;
     }
 
     render(){
+        const errors = this.validate(this.state.name, this.state.id,this.state.paymentduedate,this.state.rupees);
         return (
             <div>
                 <div className="row">
@@ -19,35 +78,40 @@ class StudentPayment extends Component {
                     <h3>Student Details</h3>
                 </div>
                 <div >
-                    <Form className="myForm">
+                    <Form className="myForm" onSubmit={this.handleSubmit}>
                             <Row form>
                                 <Col md={4}>
                                 <FormGroup>
-                                    <Label for="Name">Full Name</Label>
-                                    <Input type="text" name="Name" id="name" placeholder="Name" />
+                                    <Label for="name">Full Name</Label>
+                                    <Input required type="text" name="name" id="name" placeholder="Name" value={this.state.name}
+                                onChange={this.handleInputChange} valid={errors.name === ''} invalid={errors.name !== ''} onBlur={this.handleBlur('name')} />
+                                <FormFeedback>{errors.name}</FormFeedback>
                                 </FormGroup>
                                 </Col>
                                 <Col md={3}>
                                 <FormGroup>
-                                    <Label for="Id">Student Id</Label>
-                                    <Input type="number" name="Id" id="id" placeholder="Student Id" />
+                                    <Label for="id">Student Id</Label>
+                                    <Input required type="number" name="id" id="id" placeholder="Student Id" value={this.state.id}
+                                onChange={this.handleInputChange} valid={errors.id === ''} invalid={errors.id !== ''} onBlur={this.handleBlur('id')} />
+                                <FormFeedback>{errors.id}</FormFeedback>
                                 </FormGroup>
                                 </Col>  
                             
                                 <Col md={3}>
                                 <FormGroup>
-                                    <Label for="Branch">Branch</Label>
-                                    <select className="form-control">
-                                            <option defaultValue>Select</option>
-                                            <option value="CSE">CSE</option>
-                                            <option value="ECE">ECE</option>
-                                            <option value="Electrical">Electrical</option>
-                                            <option value="Mechanical">Mechanical</option>
-                                            <option value="Civil">Civil</option>
-                                            <option value="Mettalurgy">Mettalurgy</option>
-                                            <option value="Aerospace">Aerospace</option>
-                                            <option value="Production">Production</option>
-                                        </select>  
+                                <Label for="branch">Branch</Label>
+                                <Input required type="select" name="branch" id="branch" value={this.state.branch} className="form-control"
+                                onChange={this.handleInputChange}>
+                                        <option defaultValue>Select</option>
+                                        <option>CSE</option>
+                                        <option>ECE</option>
+                                        <option>Electrical</option>
+                                        <option>Mechanical</option>
+                                        <option>Civil</option>
+                                        <option>Mettalurgy</option>
+                                        <option>Aerospace</option>
+                                        <option>Production</option>
+                                    </Input>     
                                 </FormGroup>
                                 </Col>
                             </Row>
@@ -55,13 +119,20 @@ class StudentPayment extends Component {
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="rupees">Payment</Label>
-                                    <Input type="number" name="rupees" id="rupees" placeholder="Payment" />
+                                    <Input required type="number" name="rupees" id="rupees" placeholder="Payment" value={this.state.rupees} id="rupees" placeholder="Amount" 
+                                    onBlur={this.handleBlur('rupees')} onChange={this.handleInputChange}
+                                    valid={errors.rupees === ''} invalid={errors.rupees !== ''} />
+                                    <FormFeedback>{errors.rupees}</FormFeedback>
                                 </FormGroup>
                                 </Col>
                                 <Col md={3}>
                                     <FormGroup>
                                         <Label for="paymentduedate">Payment Due Date</Label>
-                                        <Input type="date" name="DpaymentduedateOB" id="paymentduedate" placeholder="Date Of Birth"/>
+                                        <Input required type="date" name="paymentduedate" id="paymentduedate" placeholder="Payment Due Date" value={this.state.paymentduedate}
+                                    onBlur={this.handleBlur('paymentduedate')} onChange={this.handleInputChange}
+                                    valid={errors.paymentduedate === ''} invalid={errors.paymentduedate !== ''}/>
+                                    
+                                    <FormFeedback>{errors.paymentduedate}</FormFeedback>
                                     </FormGroup>
                                 </Col> 
                             </Row>

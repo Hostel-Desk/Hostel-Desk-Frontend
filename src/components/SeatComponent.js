@@ -81,7 +81,7 @@ class Seat extends Component {
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="name">Student Name</Label>
-                                    <Input type="text" name="name" id="name" value={this.state.name} placeholder="Name" 
+                                    <Input required type="text" name="name" id="name" value={this.state.name} placeholder="Name" 
                                     onBlur={this.handleBlur('name')} onChange={this.handleInputChange}
                                     valid={errors.name === ''} invalid={errors.name !== ''}/>
                                     <FormFeedback>{errors.name}</FormFeedback>
@@ -90,7 +90,7 @@ class Seat extends Component {
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="block">Block No</Label>
-                                    <Input type="text" name="block" id="Block" value={this.state.block} placeholder="Block No" 
+                                    <Input required type="text" name="block" id="Block" value={this.state.block} placeholder="Block No" 
                                     onBlur={this.handleBlur('block')} onChange={this.handleInputChange}
                                     valid={errors.block === ''} invalid={errors.block !== ''}/>
                                     <FormFeedback>{errors.block}</FormFeedback>
@@ -99,7 +99,7 @@ class Seat extends Component {
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="room">Room No</Label>
-                                    <Input type="text" name="room" id="room" vlaue={this.state.room} placeholder="Room No" 
+                                    <Input required type="text" name="room" id="room" vlaue={this.state.room} placeholder="Room No" 
                                     onBlur={this.handleBlur('room')} onChange={this.handleInputChange}
                                     valid={errors.room === ''} invalid={errors.room !== ''}/>
                                     <FormFeedback>{errors.room}</FormFeedback>
@@ -110,7 +110,7 @@ class Seat extends Component {
                                 <Col md={4}>
                                     <FormGroup>
                                         <Label for="rent">Monthly Rent</Label>
-                                        <Input type="number" name="rent" id="rent" value={this.state.rent} placeholder="Monthly Rent"
+                                        <Input required type="number" name="rent" id="rent" value={this.state.rent} placeholder="Monthly Rent"
                                         onBlur={this.handleBlur('rent')} onChange={this.handleInputChange}
                                         valid={errors.rent === ''} invalid={errors.rent !== ''}/>
                                         <FormFeedback>{errors.rent}</FormFeedback>

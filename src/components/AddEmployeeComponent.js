@@ -21,7 +21,8 @@ class AddEmployee extends Component {
                 type: false,
                 address: false,
                 designation: false,
-                salary: false
+                salary: false,
+                joinDate:false
             }
         }
     }
@@ -46,7 +47,7 @@ class AddEmployee extends Component {
         });
     }
 
-    validate = (name, mobile, gender, type, address, designation, salary) => {
+    validate = (name, mobile, gender, type, address, designation, salary,joinDate) => {
         const errors = {
             name: '',
             email: '',
@@ -56,7 +57,8 @@ class AddEmployee extends Component {
             type: '',
             address: '',
             designation: '',
-            salary: ''
+            salary: '',
+            joinDate:''
         }
         const reg = /^\d{10}$/;
         if(this.state.touched.mobile && !reg.test(mobile)) 
@@ -75,6 +77,8 @@ class AddEmployee extends Component {
             errors.designation = 'Designation should contain a minimum of 3 characters';
         if(this.state.touched.salary && salary.length === 0) 
             errors.salary = 'Please Enter the salary';
+        if(this.state.touched.joinDate && joinDate.length === 0)
+            errors.joinDate = 'Specify Joining Date';
 
         return errors;
         
@@ -82,7 +86,7 @@ class AddEmployee extends Component {
 
     render(){
         const errors = this.validate(this.state.name, this.state.mobile,
-            this.state.gender,this.state.type,this.state.address, this.state.designation)
+            this.state.gender,this.state.type,this.state.address, this.state.designation,this.state.salary,this.state.joinDate);
         return (
             <div>
                 <div className="row">
@@ -97,7 +101,7 @@ class AddEmployee extends Component {
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="name">Full Name</Label>
-                                    <Input type="text" name="name" id="name" value={this.state.name} placeholder="Name"
+                                    <Input required type="text" name="name" id="name" value={this.state.name} placeholder="Name"
                                     onBlur={this.handleBlur('name')} onChange={this.handleInputChange}
                                     valid={errors.name === ''} invalid={errors.name !== ''}/>
                                     <FormFeedback>{errors.name}</FormFeedback>
@@ -106,7 +110,7 @@ class AddEmployee extends Component {
                                 <Col md={3}>
                                 <FormGroup>
                                         <Label for="gender">Gender</Label>
-                                        <Input type="select" name="gender" id="gender" value={this.state.gender} className="form-control"
+                                        <Input required type="select" name="gender" id="gender" value={this.state.gender} className="form-control"
                                         onBlur={this.handleBlur('gender')} onChange={this.handleInputChange} 
                                         valid={errors.gender === ''} invalid={errors.gender !== ''}>
                                             <option defaultValue>Select</option>
@@ -119,7 +123,7 @@ class AddEmployee extends Component {
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="type">Employee Type</Label>
-                                    <Input type="text" name="type" id="type" value={this.state.type} placeholder="Employee Type"
+                                    <Input required type="text" name="type" id="type" value={this.state.type} placeholder="Employee Type"
                                     onBlur={this.handleBlur('type')} onChange={this.handleInputChange} 
                                     valid={errors.type === ''} invalid={errors.type !== ''}/>
                                     <FormFeedback>{errors.type}</FormFeedback>
@@ -130,22 +134,24 @@ class AddEmployee extends Component {
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="designation">Designation</Label>
-                                    <Input type="text" name="designation" value={this.state.designation} id="designation"
+                                    <Input required type="text" name="designation" value={this.state.designation} id="designation"
                                     onBlur={this.handleBlur('designation')} onChange={this.handleInputChange} 
-                                    valid={errors.name === ''} invalid={errors.name !== ''}  placeholder="Designation"/>
+                                    valid={errors.designation === ''} invalid={errors.designation !== ''}  placeholder="Designation"/>
                                     <FormFeedback>{errors.designation}</FormFeedback>
                                 </FormGroup>
                                 </Col>
                                 <Col md={3}>
                                     <FormGroup>
                                         <Label for="joinDate">Joining Date</Label>
-                                        <Input type="date" name="joinDate" value={this.state.joinDate} id="joiningdate" placeholder="Joining Date"/>
+                                        <Input required type="date" name="joinDate" value={this.state.joinDate} id="joiningdate" placeholder="Joining Date"  onBlur={this.handleBlur('joinDate')} onChange={this.handleInputChange}
+                                        valid={errors.joinDate === ''} invalid={errors.joinDate !== ''}/>
+                                         <FormFeedback>{errors.joinDate}</FormFeedback>
                                     </FormGroup>
                                 </Col>
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="address">Address</Label>
-                                    <Input type="textarea" name="address" value={this.state.address} id="address" 
+                                    <Input required type="textarea" name="address" value={this.state.address} id="address" 
                                     onBlur={this.handleBlur('address')} onChange={this.handleInputChange} placeholder="Address" 
                                     valid={errors.address === ''} invalid={errors.address !== ''} rows="1" />
                                     <FormFeedback>{errors.address}</FormFeedback>
@@ -156,7 +162,7 @@ class AddEmployee extends Component {
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="salary">Salary</Label>
-                                    <Input type="text" name="salary" id="salary" value={this.state.salary} 
+                                    <Input required type="number" name="salary" id="salary" value={this.state.salary} 
                                     onBlur={this.handleBlur('salary')} onChange={this.handleInputChange} placeholder="Salary" 
                                     valid={errors.salary === ''} invalid={errors.salary !== ''} rows="1" />
                                     <FormFeedback>{errors.salary}</FormFeedback>
@@ -165,7 +171,7 @@ class AddEmployee extends Component {
                                 <Col md={3}>
                                 <FormGroup>
                                     <Label for="mobile">Mobile No.</Label>
-                                    <Input type="text" name="mobile" id="mobile" value={this.state.mobile} 
+                                    <Input required type="text" name="mobile" id="mobile" value={this.state.mobile} 
                                     onBlur={this.handleBlur('mobile')} onChange={this.handleInputChange} 
                                     valid={errors.mobile === ''} invalid={errors.mobile !== ''} placeholder="Mobile No." />
                                     <FormFeedback>{errors.mobile}</FormFeedback>
@@ -174,7 +180,7 @@ class AddEmployee extends Component {
                                 <Col md={4}>
                                     <FormGroup>
                                         <Label for="photo">Photo</Label>
-                                        <Input type="file" name="photo" value={this.state.photo} id="photo" />
+                                        <Input type="file" name="photo"  id="photo" />
                                     </FormGroup>
                                 </Col>
                             </Row>
