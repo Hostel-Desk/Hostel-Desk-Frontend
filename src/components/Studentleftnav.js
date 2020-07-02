@@ -48,6 +48,9 @@ export default class StudentLeftNav extends Component {
             <NavItem>
               <Link className="nav-link"  to="/student/Architecture"><i className="fa fa-server" aria-hidden="true"></i>Architecture</Link>
             </NavItem>
+            <NavItem>
+              <Link className="nav-link"  to="/student/Complaints"><i className="fa fa-book" aria-hidden="true"></i>Complaints</Link>
+            </NavItem>
           
             
           </Nav>

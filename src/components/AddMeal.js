@@ -3,6 +3,34 @@ import {Form, Input, Button, Label, Col, Row, FormGroup} from 'reactstrap';
 export default class AddMeal extends Component {
     constructor(props) {
         super(props);
+
+        this.state={
+            day:'',
+            time:'',
+            itemName:''
+        }
+
+    }
+
+    handleInputChange = (event) => {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+
+    handleSubmit = (event) => {
+        console.log("State: " + JSON.stringify(this.state));
+        alert("Current state: " + JSON.stringify(this.state));
+        event.preventDefault();
+    }
+    handleBlur = (field) => (evt) => {
+        this.setState({
+            touched: {...this.state.touched, [field]: true}
+        });
     }
 
     render(){
@@ -15,12 +43,12 @@ export default class AddMeal extends Component {
                     </div>  
                 </div>
                 <div >
-                    <Form className="myForm">
+                    <Form className="myForm" onSubmit={this.handleSubmit}>
                         <Row form>
                             <Col md={4}>
                             <FormGroup>
-                                    <Label for="Day">Day</Label>
-                                    <select className="form-control" >
+                                    <Label  for="day">Day</Label>
+                                    <select className="form-control" name="day" id="day" value={this.state.day} onChange={this.handleInputChange}  required>
                                         <option defaultValue>Select</option>
                                         <option value="Monday">Monday</option>
                                         <option value="Tuesday">Tuesday</option>
@@ -34,8 +62,8 @@ export default class AddMeal extends Component {
                             </Col>
                             <Col md={4}>
                             <FormGroup>
-                            <Label for="Time">Time</Label>
-                                    <select className="form-control" >
+                            <Label for="time">Time</Label>
+                                    <select name="time" id="time" value={this.state.time} onChange={this.handleInputChange}  required className="form-control" >
                                         <option defaultValue>Select</option>
                                         <option value="Breakfast">Breakfast</option>
                                         <option value="Lunch">Lunch</option>
@@ -47,7 +75,8 @@ export default class AddMeal extends Component {
                             <Col md={4}>
                             <FormGroup>
                                 <Label for="itemName">Item Name</Label>
-                                <Input type="text" name="itemName" id="itemName" placeholder="Item Name" />
+                                <Input required type="text" name="itemName" id="itemName" placeholder="Item Name" value={this.state.itemName}
+                                onChange={this.handleInputChange} />
                             </FormGroup>
                             </Col>
                         </Row>
