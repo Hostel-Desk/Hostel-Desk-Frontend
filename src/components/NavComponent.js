@@ -14,6 +14,7 @@ class Bar extends Component {
             changedvalue:'null',
             username: '',
             id: '',
+            isLoggedIn: false,
             touched: {
                 username: false
             }
@@ -21,6 +22,8 @@ class Bar extends Component {
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.changelink = this.changelink.bind(this);
+        this.handleLoginClick = this.handleLoginClick.bind(this);
+        this.handleLogoutClick = this.handleLogoutClick.bind(this);
     }
 
     toggleNav() {
@@ -31,9 +34,17 @@ class Bar extends Component {
 
     toggleModal(){
         this.setState({
-            isModalOpen: !this.state.isModalOpen
+            isModalOpen: !this.state.isModalOpen,
         });
     }
+    handleLoginClick() {
+        this.setState({isLoggedIn: true,isModalOpen: !this.state.isModalOpen,});
+        
+      }
+    
+      handleLogoutClick() {
+        this.setState({isLoggedIn: false});
+      }
 
     changelink=(event)=>{
         if (event.target.value==="Admin"){
@@ -88,6 +99,14 @@ class Bar extends Component {
     render(){
         
         const errors = this.validate(this.state.username);
+        const isLoggedIn = this.state.isLoggedIn;
+        let button;
+
+    if (isLoggedIn) {
+      button = <LogoutButton onClick={this.handleLogoutClick} />;
+    } else {
+      button = <LoginButton onClick={this.toggleModal }/>;
+    }
     return (
         <div>
             <Navbar light expand="md" className="me">
@@ -107,9 +126,7 @@ class Bar extends Component {
                                     </Link>
                                 </NavItem>
                                 <NavItem>
-                                    <Link className="nav-link" onClick={this.toggleModal} >
-                                        <span className="fa fa-sign-in-alt fa-lg"></span> Login
-                                    </Link>
+                                    {button}
                                 </NavItem>
                                 
                             </Nav>
@@ -153,14 +170,22 @@ class Bar extends Component {
                                     Remember Me
                                 </Label>
                             </FormGroup>
-                            <Link to={this.state.changedvalue}><Button type="submit" value="submit" color="primary" onClick={this.toggleModal} ><span className="fa fa-sign-in-alt fa-lg"></span>Login</Button></Link>
-                            
+                            <Link to={this.state.changedvalue}><Button type="submit" value="submit" color="primary" onClick={this.handleLoginClick} ><span className="fa fa-sign-in-alt fa-lg"></span>Login</Button></Link>
                         </Form>
                     </ModalBody>
                 </Modal>
         </div>
     )
 }
+}
+
+
+
+function LoginButton(props){
+    return (<Link className="nav-link" onClick={props.onClick}><span className="fa fa-sign-in-alt fa-lg"></span>Login</Link>);
+}  
+function LogoutButton(props){
+    return (<Link to="/home" className="nav-link" onClick={props.onClick}><span className="fa fa-sign-out-alt fa-lg"></span>Logout</Link>);
 }
 
 export default Bar;
