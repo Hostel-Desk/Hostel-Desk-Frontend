@@ -60,12 +60,12 @@ class SubmitComplaint extends Component {
                     </div>  
                 </div>
                 <div>
-                    <Form className="myForm">
+                    <Form className="myForm" onSubmit={this.handleSubmit}>
                         <Row form>
                             <Col md={5}>
                             <FormGroup>
                                 <Label for="title">Title</Label>
-                                <Input onBlur={this.handleBlur('title')} onChange={this.handleInputChange} type="text" 
+                                <Input required onBlur={this.handleBlur('title')} onChange={this.handleInputChange} type="text" 
                                 name="title" id="title" placeholder="Title" value={this.state.title}
                                 valid={errors.title === ''} invalid={errors.title !== ''}/>
                                 <FormFeedback>{errors.title}</FormFeedback>
@@ -74,7 +74,7 @@ class SubmitComplaint extends Component {
                             <Col md={5}>
                             <FormGroup>
                                 <Label for="description">Description</Label>
-                                <Input type="textarea" name="description" id="description" placeholder="Description"
+                                <Input required type="textarea" name="description" id="description" placeholder="Description"
                                 onBlur={this.handleBlur('description')} onChange={this.handleInputChange} value={this.state.description} rows="1"
                                 valid={errors.description === ''} invalid={errors.description !== ''}/>
                                 <FormFeedback>{errors.description}</FormFeedback>

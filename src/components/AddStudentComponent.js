@@ -228,7 +228,7 @@ class AddStudent extends Component {
                             <FormGroup>
                                 <Label for="Fnum">Father's Mobile No.</Label>
                                 <Input required type="text" name="Fnum" id="fathermobile" onChange={this.handleInputChange} 
-                                value={this.state.Fnum} valid={errors.Fnum === ''} invalid={errors.Fnum !== ''} placeholder="Father's Mobile No." onBlur={this.handleBlur('mobile')}/>
+                                value={this.state.Fnum} valid={errors.Fnum === ''} invalid={errors.Fnum !== ''} placeholder="Father's Mobile No." onBlur={this.handleBlur('Fnum')}/>
                                 <FormFeedback>{errors.Fnum}</FormFeedback>
                             </FormGroup>
                             </Col>

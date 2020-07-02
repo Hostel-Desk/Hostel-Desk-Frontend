@@ -7,7 +7,11 @@ class Architecture extends Component {
         super(props);
     }
     
-    
+    handleSubmit = (event) => {
+        console.log("State: " + JSON.stringify(this.props));
+        alert("Current state: " + JSON.stringify(this.props));
+        event.preventDefault();
+    }
 
 
     render(){
@@ -20,18 +24,18 @@ class Architecture extends Component {
                     </div>  
                 </div>
                 <div >
-                    <Form className="myForm">
+                    <Form className="myForm" onSubmit={this.handleSubmit}>
                             <Row form>
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="Rooms">Total Rooms</Label>
-                                    <Input type="text" name="Rooms" id="rooms" placeholder="Rooms" value={this.props.architectures.rows[0].rooms} />
+                                    <Input required type="text" name="Rooms" id="rooms" placeholder="Rooms" value={this.props.architectures.rows[0].rooms} />
                                 </FormGroup>
                                 </Col>
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="Blocks">Total Blocks</Label>
-                                    <Input type="text" name="Blocks" id="blocks" placeholder="Blocks" value={this.props.architectures.rows[0].blocks} />
+                                    <Input required type="text" name="Blocks" id="blocks" placeholder="Blocks" value={this.props.architectures.rows[0].blocks} />
                                 </FormGroup>
                                 </Col>
                             
@@ -39,7 +43,7 @@ class Architecture extends Component {
                                 <Col md={4}>
                                     <FormGroup>
                                         <Label for="Floor">Total Floors</Label>
-                                        <Input type="text" name="Floors" id="floors" placeholder="Floors" value={this.props.architectures.rows[0].floors}/>
+                                        <Input required type="text" name="Floors" id="floors" placeholder="Floors" value={this.props.architectures.rows[0].floors}/>
                                     </FormGroup>
                                 </Col>
                             
