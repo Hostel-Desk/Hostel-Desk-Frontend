@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Collapse, Navbar, Nav, NavItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input, NavbarToggler } from 'reactstrap';
+import { Collapse, Navbar, Nav, NavItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input, NavbarToggler,FormFeedback } from 'reactstrap';
 import { BrowserRouter, Link, NavLink } from 'react-router-dom';
 
 
@@ -11,7 +11,12 @@ class Bar extends Component {
         this.state ={
             isNavOpen: false,
             isModalOpen: false,
-            changedvalue:null
+            changedvalue:'null',
+            username: '',
+            id: '',
+            touched: {
+                username: false
+            }
         };
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
@@ -42,9 +47,47 @@ class Bar extends Component {
             });
         }
     }
+
+    handleInputChange = (event) => {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+
+    handleSubmit = (event) => {
+        console.log("State: " + JSON.stringify(this.state));
+        alert("Current state: " + JSON.stringify(this.state));
+        event.preventDefault();
+    }
+
+    handleBlur = (field) => (evt) => {
+        this.setState({
+            touched: {...this.state.touched, [field]: true}
+        });
+    }
+
+    validate = (username, id) => {
+        const errors = {
+            username: '',
+            id: ''
+        }
+        if(this.state.touched.username && username.length < 3)
+            errors.username = 'Username should be of minimum length of 3 characters';
+        else if(this.state.touched.username && username.length > 30)
+            errors.username = 'Username should not be greater than 30 characters';
+
+        return errors;
+    }
+
     
 
     render(){
+        
+        const errors = this.validate(this.state.username);
     return (
         <div>
             <Navbar light expand="md" className="me">
@@ -82,11 +125,12 @@ class Bar extends Component {
                     </ModalHeader>
                     
                     <ModalBody>
-                        <Form>
+                        <Form className="myForm" onSubmit={this.handleSubmit}>
                             <FormGroup>
                                 <Label htmlFor="username">Username</Label>
-                                <Input type="text" id="username" name="username"
-                                    innerRef={(input) => this.username=input} />
+                                <Input required type="text" id="username" name="username" value={this.state.username}
+                                    onChange={this.handleInputChange} valid={errors.username === ''} invalid={errors.username !== ''} onBlur={this.handleBlur('username')} />
+                                    <FormFeedback>{errors.username}</FormFeedback>
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="password">Password</Label>
@@ -96,8 +140,8 @@ class Bar extends Component {
                             <FormGroup>
                                 <Label htmlFor="select">Login As</Label>
                                 <Input type="select" id="select" name="select"
-                                    innerRef={(input) => this.loginAs=input} onChange={this.changelink} >
-                                    <option value="null">--Select--</option>
+                                    innerRef={(input) => this.loginAs=input}  onChange={this.changelink} >
+                                    <option value="">--Select--</option>
                                     <option value="Admin">Admin</option>
                                     <option value="Student">Student</option>
                                 </Input>
