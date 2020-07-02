@@ -14,6 +14,7 @@ class AddEmployee extends Component {
             salary: '',
             joinDate: '',
             photo: '',
+            eid:'',
             touched: {
                 name: false,
                 mobile: false,
@@ -22,7 +23,8 @@ class AddEmployee extends Component {
                 address: false,
                 designation: false,
                 salary: false,
-                joinDate:false
+                joinDate:false,
+                eid: false
             }
         }
     }
@@ -47,7 +49,7 @@ class AddEmployee extends Component {
         });
     }
 
-    validate = (name, mobile, gender, type, address, designation, salary,joinDate) => {
+    validate = (name, mobile, gender, type, address, designation, salary,joinDate,eid) => {
         const errors = {
             name: '',
             email: '',
@@ -58,7 +60,9 @@ class AddEmployee extends Component {
             address: '',
             designation: '',
             salary: '',
-            joinDate:''
+            joinDate:'',
+            eid:''
+            
         }
         const reg = /^\d{10}$/;
         if(this.state.touched.mobile && !reg.test(mobile)) 
@@ -79,6 +83,8 @@ class AddEmployee extends Component {
             errors.salary = 'Please Enter the salary';
         if(this.state.touched.joinDate && joinDate.length === 0)
             errors.joinDate = 'Specify Joining Date';
+        if(this.state.touched.eid && eid.length < 4)
+            errors.eid = 'Enter a valid Employee Id';    
 
         return errors;
         
@@ -86,7 +92,7 @@ class AddEmployee extends Component {
 
     render(){
         const errors = this.validate(this.state.name, this.state.mobile,
-            this.state.gender,this.state.type,this.state.address, this.state.designation,this.state.salary,this.state.joinDate);
+            this.state.gender,this.state.type,this.state.address, this.state.designation,this.state.salary,this.state.joinDate,this.state.eid);
         return (
             <div>
                 <div className="row">
@@ -183,6 +189,17 @@ class AddEmployee extends Component {
                                         <Label for="photo">Photo</Label>
                                         <Input type="file" name="photo" value={this.state.photo} 
                                         onChange={this.handleInputChange} id="photo" />
+                                    </FormGroup>
+                                </Col>
+                            </Row>
+                            <Row form>
+                                <Col md={4}>
+                                    <FormGroup>
+                                    <Label for="eid">Employee Id</Label>
+                                    <Input required type="text" name="eid" value={this.state.eid} id="eid"
+                                    onBlur={this.handleBlur('eid')} onChange={this.handleInputChange} 
+                                    valid={errors.eid === ''} invalid={errors.eid !== ''}  placeholder="Employee Id"/>
+                                    <FormFeedback>{errors.eid}</FormFeedback>
                                     </FormGroup>
                                 </Col>
                             </Row>
