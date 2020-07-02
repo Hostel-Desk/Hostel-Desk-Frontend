@@ -26,7 +26,7 @@ class AddEmployee extends Component {
         }
     }
 
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         console.log("Current State is: " + JSON.stringify(this.state));
         alert("Current State is: " + JSON.stringify(this.state));
         event.preventDefault();
@@ -71,10 +71,10 @@ class AddEmployee extends Component {
             errors.gender = 'Please select the gender';
         if(this.state.touched.address && address.length < 20) 
             errors.address = 'Address should contain a minimum of 20 characters';
-        if(this.state.touched.designation && designation < 3) 
+        if(this.state.touched.designation && designation.length < 3) 
             errors.designation = 'Designation should contain a minimum of 3 characters';
         if(this.state.touched.salary && salary.length === 0) 
-            errors.salary = 'Please Enter the salary';
+            errors.salary = 'Enter the salary';
 
         return errors;
         
@@ -82,7 +82,7 @@ class AddEmployee extends Component {
 
     render(){
         const errors = this.validate(this.state.name, this.state.mobile,
-            this.state.gender,this.state.type,this.state.address, this.state.designation)
+            this.state.gender,this.state.type,this.state.address, this.state.designation, this.state.salary)
         return (
             <div>
                 <div className="row">
@@ -139,7 +139,8 @@ class AddEmployee extends Component {
                                 <Col md={3}>
                                     <FormGroup>
                                         <Label for="joinDate">Joining Date</Label>
-                                        <Input type="date" name="joinDate" value={this.state.joinDate} id="joiningdate" placeholder="Joining Date"/>
+                                        <Input type="date" name="joinDate" value={this.state.joinDate} 
+                                        onChange={this.handleInputChange} id="joiningdate" placeholder="Joining Date"/>
                                     </FormGroup>
                                 </Col>
                                 <Col md={4}>
@@ -158,7 +159,8 @@ class AddEmployee extends Component {
                                     <Label for="salary">Salary</Label>
                                     <Input type="text" name="salary" id="salary" value={this.state.salary} 
                                     onBlur={this.handleBlur('salary')} onChange={this.handleInputChange} placeholder="Salary" 
-                                    valid={errors.salary === ''} invalid={errors.salary !== ''} rows="1" />
+                                    valid={errors.salary === ''} invalid={errors.salary !== ''}
+                                    rows="1" />
                                     <FormFeedback>{errors.salary}</FormFeedback>
                                 </FormGroup>
                                 </Col>
@@ -174,7 +176,8 @@ class AddEmployee extends Component {
                                 <Col md={4}>
                                     <FormGroup>
                                         <Label for="photo">Photo</Label>
-                                        <Input type="file" name="photo" value={this.state.photo} id="photo" />
+                                        <Input type="file" name="photo" value={this.state.photo} 
+                                        onChange={this.handleInputChange} id="photo" />
                                     </FormGroup>
                                 </Col>
                             </Row>
