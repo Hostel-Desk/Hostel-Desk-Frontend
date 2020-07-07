@@ -120,8 +120,8 @@ class AddEmployee extends Component {
                                         onBlur={this.handleBlur('gender')} onChange={this.handleInputChange} 
                                         valid={errors.gender === ''} invalid={errors.gender !== ''}>
                                             <option defaultValue>Select</option>
-                                            <option>Male</option>
-                                            <option>Female</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
                                         </Input>  
                                         <FormFeedback>{errors.gender}</FormFeedback>
                                     </FormGroup>

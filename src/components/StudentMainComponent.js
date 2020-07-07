@@ -8,6 +8,9 @@ import StudentProfile from './StudentProfile';
 import StudentLeftNav from './Studentleftnav';
 import NoticeView from './NoticeView';
 import SubmitComplaint from './SubmitComplaint';
+import StudentView from './StudentsComponent';
+import EmployeeView from './EmployeeView';
+
 class Student extends Component {
     constructor(props) {
         super(props);
@@ -91,12 +94,7 @@ class Student extends Component {
                       width: 150,
                     },
                     
-                    {
-                      label: 'Actions',
-                      field: 'actions',
-                      
-                      width: 100,
-                    },
+                    
               
                   ],
                   rows: [
@@ -105,10 +103,7 @@ class Student extends Component {
                       month: 'June-2020',
                       amount: 5000.00,
                       date: '29th June,2020',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
+                     
                   },
                 
               ],
@@ -152,16 +147,7 @@ class Student extends Component {
                       sort: 'disabled',
                       width: 100
                     },
-                    {
-                      label: 'Actions',
-                      field: 'actions',
-                      sort: 'disabled',
-                      width: 100,
-                      default:  <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
-                    }
+                    
                 ],
                 rows: [
                     {
@@ -171,10 +157,7 @@ class Student extends Component {
                         guardian: 'Mr Xyz',
                         gMob: '8264554894',
                         pAddress: 'Mullanpur',
-                        actions: <div>
-                        <i className="fa fa-pencil-alt edit mr-2"></i>
-                        <i className="fa fa-trash-alt delete"></i>
-                      </div>
+                       
                         
                     },
                     
@@ -225,16 +208,7 @@ class Student extends Component {
                       
                       width: 100,
                     },
-                    {
-                        label: 'Actions',
-                        field: 'actions',
-                        sort: 'disabled',
-                        width: 100,
-                        default: <div>
-                        <i className="fa fa-pencil-alt edit mr-2"></i>
-                        <i className="fa fa-trash-alt delete"></i>
-                      </div>
-                      }
+                    
               
                   ],
                   rows: [
@@ -247,10 +221,7 @@ class Student extends Component {
                       date: '2011/04/25',
                       salary: '$320',
                       address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
+                      
                     },
                     {
                       name: 'Garrett Winters',
@@ -261,10 +232,7 @@ class Student extends Component {
                       date: '2011/07/25',
                       salary: '$170',
                       address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
+                      
                     },
                     {
                       name: 'Ashton Cox',
@@ -275,10 +243,7 @@ class Student extends Component {
                       date: '2009/01/12',
                       salary: '$86',
                       address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
+                      
                     },
                     {
                       name: 'Cedric Kelly',
@@ -289,10 +254,7 @@ class Student extends Component {
                       date: '2012/03/29',
                       salary: '$433',
                       address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>  
+                      
                     },
                     {
                       name: 'Airi Satou',
@@ -303,10 +265,7 @@ class Student extends Component {
                       date: '2008/11/28',
                       salary: '$162',
                       address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
+                      
                     },
                     {
                       name: 'Brielle Williamson',
@@ -317,10 +276,7 @@ class Student extends Component {
                       date: '2012/12/02',
                       salary: '$372',
                       address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
+                     
                     },
                     {
                       name: 'Herrod Chandler',
@@ -331,10 +287,7 @@ class Student extends Component {
                       date: '2012/08/06',
                       salary: '$137',
                       address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
+                      
                     },
                     {
                       name: 'Rhona Davidson',
@@ -345,10 +298,7 @@ class Student extends Component {
                       date: '2010/10/14',
                       salary: '$327',
                       address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
+                      
                     },
                     {
                       name: 'Colleen Hurst',
@@ -359,10 +309,7 @@ class Student extends Component {
                       date: '2009/09/15',
                       salary: '$205',
                       address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
+                      
                     },
                     {
                       name: 'Sonya Frost',
@@ -373,10 +320,7 @@ class Student extends Component {
                       date: '2008/12/13',
                       salary: '$103',
                       address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
+                      
                     },
                   
                 ],
@@ -401,26 +345,14 @@ class Student extends Component {
                         sort: 'disabled',
                         width: 80
                     },
-                    {
-                        label: 'Actions',
-                        field: 'actions',
-                        sort: 'disabled',
-                        width: 80,
-                        default:<div>
-                        <i className="fa fa-pencil-alt edit mr-2"></i>
-                        <i className="fa fa-trash-alt delete"></i>
-                      </div>
-                    }
+                    
                 ],
                 rows: [
                     {
                         title: 'Notice 1',
                         description: 'Description',
                         date: '29/06/2020',
-                        actions: <div>
-                        <i className="fa fa-pencil-alt edit mr-2"></i>
-                        <i className="fa fa-trash-alt delete"></i>
-                      </div>
+                        
                     },
                 ],
                 
@@ -452,16 +384,7 @@ class Student extends Component {
                         width: 150,
                         },
                     
-                    {
-                        label: 'Actions',
-                        field: 'actions',
-                        sort: 'disabled',
-                        width: 100,
-                        default: <div>
-                        <i className="fa fa-pencil-alt edit mr-2"></i>
-                        <i className="fa fa-trash-alt delete"></i>
-                      </div>
-                    }
+                   
                 ],
                 rows: [
                     {
@@ -469,10 +392,7 @@ class Student extends Component {
                         rooms: 200,
                         blocks: 3,
                         floors: 2,
-                        actions: <div>
-              <i className="fa fa-pencil-alt edit mr-2"></i>
-              <i className="fa fa-trash-alt delete"></i>
-            </div>
+                        
                     },
                 
                 ],
@@ -505,16 +425,7 @@ class Student extends Component {
                       width: 150,
                     },
                     
-                    {
-                      label: 'Actions',
-                      field: 'actions',
-                      
-                      width: 100,
-                      default: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
-                    },
+                    
               
                 ],
                 rows: [
@@ -523,10 +434,7 @@ class Student extends Component {
                     block: 'BL-01',
                     room: 'R-01',
                     rent: 7500.00,
-                    actions: <div>
-              <i className="fa fa-pencil-alt edit mr-2"></i>
-              <i className="fa fa-trash-alt delete"></i>
-            </div>
+                   
                 },
                 
               ],
@@ -582,7 +490,8 @@ class Student extends Component {
                         <Switch>
                             <Route path="/student/dashboard" component={() => <DashBoard architectures={this.state.Architectures}
                                                                                         employees={this.state.Employees}
-                                                                                        students={this.state.Students}/>}/>
+                                                                                        students={this.state.Students}
+                                                                                        changedValue={this.props.changedValue}/>}/>
                             <Route exact path="/student/profile" component={StudentProfile}/>
                             <Route exact path="/student/Meal" component={() => <MealView meals={this.state.Meals}/>}/>
                             
@@ -590,7 +499,10 @@ class Student extends Component {
                             <Route exact path="/student/Noticeboard" component={() => <NoticeView notices={this.state.Notices}/>}/>
                             <Route exact path="/student/Architecture" component={() => <ArchitectureView architectures={this.state.Architectures}/>}/>
                             <Route exact path="/student/Complaints" component={SubmitComplaint} />
-                           
+                            <Route exact path="/student/mealview" component={() => <MealView meals={this.state.Meals}/>} />
+                            <Route exact path="/student/studentView"  component={()=><StudentView students={this.state.Students}/>} />
+                            <Route exact path="/student/rooms" component={() => <ArchitectureView architectures={this.state.Architectures}/>}/>
+                            <Route exact path="/student/employeeView" component={()=><EmployeeView employees={this.state.Employees}/>}/>
                             <Redirect to="/student/dashboard"/>
                         </Switch>
 

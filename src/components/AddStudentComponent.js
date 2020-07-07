@@ -169,14 +169,14 @@ class AddStudent extends Component {
                                 <Input required type="select" name="branch" id="branch" value={this.state.branch} className="form-control"
                                 onChange={this.handleInputChange}>
                                         <option defaultValue>Select</option>
-                                        <option>CSE</option>
-                                        <option>ECE</option>
-                                        <option>Electrical</option>
-                                        <option>Mechanical</option>
-                                        <option>Civil</option>
-                                        <option>Mettalurgy</option>
-                                        <option>Aerospace</option>
-                                        <option>Production</option>
+                                        <option value="CSE">CSE</option>
+                                        <option value="ECE">ECE</option>
+                                        <option value="Electrical">Electrical</option>
+                                        <option value="Mechanical">Mechanical</option>
+                                        <option value="Civil">Civil</option>
+                                        <option value="Mettalurgy">Mettalurgy</option>
+                                        <option value="Aerospace">Aerospace</option>
+                                        <option value="Production">Production</option>
                                     </Input>  
                             </FormGroup>
                             </Col>
