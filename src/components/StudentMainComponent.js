@@ -585,8 +585,8 @@ class Student extends Component {
                         <Switch>
                             <Route path="/student/dashboard" component={() => <DashBoard architectures={this.state.Architectures}
                                                                                         employees={this.state.Employees}
-                                                                                        students={this.state.Students}/>}
-                                                                                        changedValue={this.props.changedValue}/>
+                                                                                        students={this.state.Students}
+                                                                                        changedValue={this.props.changedValue}/>}/>
                             <Route exact path="/student/profile" component={StudentProfile}/>
                             <Route exact path="/student/Meal" component={() => <MealView meals={this.state.Meals}/>}/>
                             

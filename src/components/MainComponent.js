@@ -33,7 +33,7 @@ class Main extends Component {
                 </div>
     
                     <Switch >
-                        <Route path="/home" component={() => <Home changedValue = {this.state.changedValue}/>}/>
+                        <Route path="/home" component={() => <Home/>}/>
                         <Route path="/admin" component={() => <Admin changedValue = {this.state.changedValue}/>}/>
                         <Route path="/contactus" component={Contact}/>
                         <Route path="/student" component={() => <Student changedValue = {this.state.changedValue}/>}/>

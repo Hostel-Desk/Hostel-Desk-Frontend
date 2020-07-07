@@ -19,6 +19,7 @@ class DashBoard extends Component {
     }
 
     changeLink = () => {
+        console.log(this.props.changedValue)
         if(this.props.changedValue === "/admin") {
             console.log('in if statement')
             this.setState({
