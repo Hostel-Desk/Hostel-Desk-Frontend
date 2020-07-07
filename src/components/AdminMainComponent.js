@@ -719,6 +719,7 @@ class Admin extends Component {
     }
 
     render() {
+      console.log(this.props.changedValue);
         return(
             <div className="feature admin">
                 <div className="row">
@@ -730,8 +731,8 @@ class Admin extends Component {
                         <Switch>
                             <Route path="/admin/dashboard" component={() => <DashBoard architectures={this.state.Architectures}
                                                                                         employees={this.state.Employees}
-                                                                                        students={this.state.Students}/>}
-                                                                                        changedValue={this.props.changedValue}/>
+                                                                                        students={this.state.Students}
+                                                                                        changedValue={this.props.changedValue}/>}/>
                             <Route exact path="/admin/students" component={()=><StudentView students={this.state.Students}/>}/>
                             <Route exact path="/admin/rooms" component={() => <ArchitectureView architectures={this.state.Architectures}/>}/>
                             <Route exact path="/admin/StudentManage/addnew" component={AddStudent}/>
