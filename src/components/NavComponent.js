@@ -11,7 +11,6 @@ class Bar extends Component {
         this.state ={
             isNavOpen: false,
             isModalOpen: false,
-            changedvalue:'null',
             username: '',
             id: '',
             isLoggedIn: false,
@@ -48,14 +47,10 @@ class Bar extends Component {
 
     changelink=(event)=>{
         if (event.target.value==="Admin"){
-            this.setState({
-                changedvalue:"/admin"
-            });
+            this.props.changelink("/admin");
         }
         if (event.target.value==="Student"){
-            this.setState({
-                changedvalue:'/student'
-            });
+            this.props.changelink("/student");
         }
     }
 
@@ -170,7 +165,7 @@ class Bar extends Component {
                                     Remember Me
                                 </Label>
                             </FormGroup>
-                            <Link to={this.state.changedvalue}><Button type="submit" value="submit" color="primary" onClick={this.handleLoginClick} ><span className="fa fa-sign-in-alt fa-lg"></span>Login</Button></Link>
+                            <Link to={this.props.changedValue}><Button type="submit" value="submit" color="primary" onClick={this.handleLoginClick} ><span className="fa fa-sign-in-alt fa-lg"></span>Login</Button></Link>
                         </Form>
                     </ModalBody>
                 </Modal>

@@ -6,6 +6,37 @@ import {Link} from 'react-router-dom';
 class DashBoard extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            employee: '',
+            student: '',
+            rooms: '',
+            meals: ''
+        }
+    }
+    componentDidMount() {
+        this.changeLink();
+        console.log('Component Mounted')
+    }
+
+    changeLink = () => {
+        if(this.props.changedValue === "/admin") {
+            console.log('in if statement')
+            this.setState({
+                employee: "/admin/EmployeeManage/view",
+                student: "/admin/StudentManage/view",
+                meals: "/admin/MealManage/view",
+                rooms: "/admin/rooms"
+            })
+        } if(this.props.changedValue === "/student") {
+            console.log('in if statement')
+
+            this.setState({
+                employee: "/student/employeeView",
+                student: "/student/studentView",
+                meals: "/student/mealview",
+                rooms: "/student/rooms"
+            })
+        }
     }
 
     render() {
@@ -32,7 +63,7 @@ class DashBoard extends Component {
                             </div>        
                                            
                         </CardHeader>
-                        <CardFooter><Link to="/admin/EmployeeManage/view">Details</Link></CardFooter>
+                        <CardFooter><Link to={this.state.employee}>Details</Link></CardFooter>
                     </Card>
                 </div>
                 <div className="col-md-3 mt-3">
@@ -49,7 +80,7 @@ class DashBoard extends Component {
                             </div>        
                                            
                         </CardHeader>
-                        <CardFooter><Link to="/admin/StudentManage/view">Details</Link></CardFooter>
+                        <CardFooter><Link to={this.state.student}>Details</Link></CardFooter>
                     </Card>
                 </div>
                 <div className="col-md-3 mt-3">
@@ -66,7 +97,7 @@ class DashBoard extends Component {
                             </div>        
                                            
                         </CardHeader>
-                        <CardFooter><Link to="/admin/rooms">Details</Link></CardFooter>
+                        <CardFooter><Link to={this.state.rooms}>Details</Link></CardFooter>
                     </Card>
                 </div>
                 <div className="col-md-3 mt-3">
@@ -83,7 +114,7 @@ class DashBoard extends Component {
                             </div>        
                                             
                         </CardHeader>
-                        <CardFooter><Link to="/admin/MealManage/view">Details</Link></CardFooter>
+                        <CardFooter><Link to={this.state.meals}>Details</Link></CardFooter>
                     </Card>
                 </div>
             </div>

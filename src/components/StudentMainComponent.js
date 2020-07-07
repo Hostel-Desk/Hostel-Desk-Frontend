@@ -8,6 +8,9 @@ import StudentProfile from './StudentProfile';
 import StudentLeftNav from './Studentleftnav';
 import NoticeView from './NoticeView';
 import SubmitComplaint from './SubmitComplaint';
+import StudentView from './StudentsComponent';
+import EmployeeView from './EmployeeView';
+
 class Student extends Component {
     constructor(props) {
         super(props);
@@ -582,7 +585,8 @@ class Student extends Component {
                         <Switch>
                             <Route path="/student/dashboard" component={() => <DashBoard architectures={this.state.Architectures}
                                                                                         employees={this.state.Employees}
-                                                                                        students={this.state.Students}/>}/>
+                                                                                        students={this.state.Students}/>}
+                                                                                        changedValue={this.props.changedValue}/>
                             <Route exact path="/student/profile" component={StudentProfile}/>
                             <Route exact path="/student/Meal" component={() => <MealView meals={this.state.Meals}/>}/>
                             
@@ -590,7 +594,10 @@ class Student extends Component {
                             <Route exact path="/student/Noticeboard" component={() => <NoticeView notices={this.state.Notices}/>}/>
                             <Route exact path="/student/Architecture" component={() => <ArchitectureView architectures={this.state.Architectures}/>}/>
                             <Route exact path="/student/Complaints" component={SubmitComplaint} />
-                           
+                            <Route exact path="/student/mealview" component={() => <MealView meals={this.state.Meals}/>} />
+                            <Route exact path="/student/studentView"  component={()=><StudentView students={this.state.Students}/>} />
+                            <Route exact path="/student/rooms" component={() => <ArchitectureView architectures={this.state.Architectures}/>}/>
+                            <Route exact path="/student/employeeView" component={()=><EmployeeView employees={this.state.Employees}/>}/>
                             <Redirect to="/student/dashboard"/>
                         </Switch>
 
