@@ -50,7 +50,7 @@ class DashBoard extends Component {
                 </div>  
             </div>
             <div className="row">
-                <div className="dashCards col-md-3 mt-3">
+                <div className="dashCards col-lg-3 col-sm-6 mt-3">
                     <Card>
                         <CardHeader className="dashCard">
                             <div className="row">
@@ -67,7 +67,7 @@ class DashBoard extends Component {
                         <CardFooter><Link to={this.state.employee}>Details</Link></CardFooter>
                     </Card>
                 </div>
-                <div className="col-md-3 mt-3">
+                <div className="col-lg-3 col-sm-6 mt-3">
                     <Card>
                         <CardHeader className="dashCard">
                             <div className="row">
@@ -84,7 +84,7 @@ class DashBoard extends Component {
                         <CardFooter><Link to={this.state.student}>Details</Link></CardFooter>
                     </Card>
                 </div>
-                <div className="col-md-3 mt-3">
+                <div className="col-lg-3 col-sm-6 mt-3">
                     <Card>
                         <CardHeader className="dashCard">
                             <div className="row">
@@ -101,7 +101,7 @@ class DashBoard extends Component {
                         <CardFooter><Link to={this.state.rooms}>Details</Link></CardFooter>
                     </Card>
                 </div>
-                <div className="col-md-3 mt-3">
+                <div className="col-lg-3 col-sm-6 mt-3">
                     <Card>
                         <CardHeader className="dashCard">
                             <div className="row">
@@ -120,7 +120,7 @@ class DashBoard extends Component {
                 </div>
             </div>
             <div className="row mt-2 mt-3">
-                <div className="col-md-6">
+                <div className="col-12">
                     <Card>
                         <CardHeader mb="0" mt="0"><span><h4>Notices</h4></span></CardHeader>
                         <CardBody>
