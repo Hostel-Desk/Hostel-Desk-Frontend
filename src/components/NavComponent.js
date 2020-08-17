@@ -11,18 +11,23 @@ class Bar extends Component {
         this.state ={
             isNavOpen: false,
             isModalOpen: false,
+            isModalOpen1: false,
             username: '',
+            password: '',
             id: '',
             isLoggedIn: false,
             touched: {
-                username: false
+                username: false,
+                password: false
             }
         };
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.toggleModal1 = this.toggleModal1.bind(this);
         this.changelink = this.changelink.bind(this);
         this.handleLoginClick = this.handleLoginClick.bind(this);
         this.handleLogoutClick = this.handleLogoutClick.bind(this);
+        this.handleSignUpClick = this.handleSignUpClick.bind(this);
     }
 
     toggleNav() {
@@ -36,6 +41,11 @@ class Bar extends Component {
             isModalOpen: !this.state.isModalOpen,
         });
     }
+    toggleModal1(){
+        this.setState({
+            isModalOpen1: !this.state.isModalOpen1,
+        });
+    }
     handleLoginClick() {
         this.setState({isLoggedIn: true,isModalOpen: !this.state.isModalOpen,});
         
@@ -44,6 +54,10 @@ class Bar extends Component {
       handleLogoutClick() {
         this.setState({isLoggedIn: false});
       }
+
+    handleSignUpClick() {
+        this.setState({isModalOpen1: !this.state.isModalOpen1,});
+    }
 
     changelink=(event)=>{
         if (event.target.value==="Admin"){
@@ -76,16 +90,18 @@ class Bar extends Component {
         });
     }
 
-    validate = (username, id) => {
+    validate = (username, password, id) => {
         const errors = {
             username: '',
+            password: '',
             id: ''
         }
         if(this.state.touched.username && username.length < 3)
             errors.username = 'Username should be of minimum length of 3 characters';
         else if(this.state.touched.username && username.length > 30)
             errors.username = 'Username should not be greater than 30 characters';
-
+        else if(this.state.touched.password && password.length < 8)
+            errors.password = 'Password should be of minimum length of 8 characters';
         return errors;
     }
 
@@ -93,14 +109,16 @@ class Bar extends Component {
 
     render(){
         
-        const errors = this.validate(this.state.username);
+        const errors = this.validate(this.state.username, this.state.password);
         const isLoggedIn = this.state.isLoggedIn;
         let button;
+        let button1;
 
     if (isLoggedIn) {
       button = <LogoutButton onClick={this.handleLogoutClick} />;
     } else {
       button = <LoginButton onClick={this.toggleModal }/>;
+      button1 = <SignupButton onClick={this.toggleModal1}/>
     }
     return (
         <div>
@@ -122,6 +140,9 @@ class Bar extends Component {
                                 </NavItem>
                                 <NavItem>
                                     {button}
+                                </NavItem>
+                                <NavItem>
+                                    {button1}
                                 </NavItem>
                                 
                             </Nav>
@@ -169,6 +190,33 @@ class Bar extends Component {
                         </Form>
                     </ModalBody>
                 </Modal>
+                <Modal backdrop="static" isOpen={this.state.isModalOpen1} toggle={this.toggleModal1}>
+                    <ModalHeader>   
+                        SignUp         
+                        <Button className="close me" variant="secondary" onClick={this.toggleModal1} color="white">
+                            <span aria-hidden="true" className="white-text"></span><i className="fa fa-times"></i>
+                        </Button>
+                    </ModalHeader>
+                    
+                    <ModalBody>
+                        <Form className="myForm" onSubmit={this.handleSubmit}>
+                            <FormGroup>
+                                <Label htmlFor="username">Set Username(Only SID)</Label>
+                                <Input required type="text" id="username" name="username" value={this.state.username}
+                                    onChange={this.handleInputChange} valid={errors.username === ''} invalid={errors.username !== ''} onBlur={this.handleBlur('username')} />
+                                    <FormFeedback>{errors.username}</FormFeedback>
+                            </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor="password">Set Password</Label>
+                                <Input required type="password" id="password" name="password" value={this.state.password}
+                                   onChange={this.handleInputChange} valid={errors.password === ''} invalid={errors.password !== ''} onBlur={this.handleBlur('password')} 
+                                   innerRef={(input) => this.password=input} />
+                                   <FormFeedback>{errors.password}</FormFeedback>
+                            </FormGroup>
+                            <Link to={this.props.changedValue}><Button type="submit" value="submit" color="primary" onClick={this.handleSignUpClick} ><span className="fa fa-sign-in-alt fa-lg"></span>Sign Up</Button></Link>
+                        </Form>
+                    </ModalBody>
+                </Modal>
         </div>
     )
 }
@@ -177,10 +225,13 @@ class Bar extends Component {
 
 
 function LoginButton(props){
-    return (<Link className="nav-link" onClick={props.onClick}><span className="fa fa-sign-in-alt fa-lg"></span>Login</Link>);
+    return (<Link className="nav-link" onClick={props.onClick}><span className="fa fa-sign-in-alt fa-lg"></span> Login</Link>);
 }  
 function LogoutButton(props){
-    return (<Link to="/home" className="nav-link" onClick={props.onClick}><span className="fa fa-sign-out-alt fa-lg"></span>Logout</Link>);
+    return (<Link to="/home" className="nav-link" onClick={props.onClick}><span className="fa fa-sign-out-alt fa-lg"></span> Logout</Link>);
 }
 
+function SignupButton(props){
+    return (<Link className="nav-link" onClick={props.onClick}><span className="fa fa-sign-in-alt fa-lg"></span> SignUp</Link>);
+}
 export default Bar;
