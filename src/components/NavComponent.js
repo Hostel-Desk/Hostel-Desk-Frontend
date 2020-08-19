@@ -150,7 +150,7 @@ class Bar extends Component {
                     </div>
                 </Navbar>
                 <Modal backdrop="static" isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                    <ModalHeader>   
+                    <ModalHeader toggle={this.toggleModal}>   
                         Login         
                         <Button className="close me" variant="secondary" onClick={this.toggleModal} color="white">
                             <span aria-hidden="true" className="white-text"></span><i className="fa fa-times"></i>
@@ -167,12 +167,14 @@ class Bar extends Component {
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="password">Password</Label>
-                                <Input type="password" id="password" name="password"
-                                    innerRef={(input) => this.password=input} />
+                                <Input required type="password" id="password" name="password" value={this.state.password}
+                                   onChange={this.handleInputChange} valid={errors.password === ''} invalid={errors.password !== ''} onBlur={this.handleBlur('password')} 
+                                   innerRef={(input) => this.password=input} />
+                                   <FormFeedback>{errors.password}</FormFeedback>
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="select">Login As</Label>
-                                <Input type="select" id="select" name="select"
+                                <Input required type="select" id="select" name="select"
                                     innerRef={(input) => this.loginAs=input}  onChange={this.changelink} >
                                     <option value="">--Select--</option>
                                     <option value="Admin">Admin</option>
@@ -186,7 +188,7 @@ class Bar extends Component {
                                     Remember Me
                                 </Label>
                             </FormGroup>
-                            <Link to={this.props.changedValue}><Button type="submit" value="submit" color="primary" onClick={this.handleLoginClick} ><span className="fa fa-sign-in-alt fa-lg"></span>Login</Button></Link>
+                            <Link onClick={this.handleLoginClick} to={this.props.changedValue}><Button type="submit" value="submit" color="primary"  ><span className="fa fa-sign-in-alt fa-lg"></span>Login</Button></Link>
                         </Form>
                     </ModalBody>
                 </Modal>
@@ -213,7 +215,7 @@ class Bar extends Component {
                                    innerRef={(input) => this.password=input} />
                                    <FormFeedback>{errors.password}</FormFeedback>
                             </FormGroup>
-                            <Link to={this.props.changedValue}><Button type="submit" value="submit" color="primary" onClick={this.handleSignUpClick} ><span className="fa fa-sign-in-alt fa-lg"></span>Sign Up</Button></Link>
+                            <Button type="submit" value="submit" color="primary" onClick={this.handleSignUpClick} ><span className="fa fa-sign-in-alt fa-lg"></span>Sign Up</Button>
                         </Form>
                     </ModalBody>
                 </Modal>
