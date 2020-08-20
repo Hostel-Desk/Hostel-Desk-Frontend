@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import { Collapse, Navbar, Nav, NavItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input, NavbarToggler,FormFeedback } from 'reactstrap';
-import { BrowserRouter, Link, NavLink } from 'react-router-dom';
-
-
+import { BrowserRouter, Link, NavLink, withRouter } from 'react-router-dom';
+import axios from 'axios';
 
 
 class Bar extends Component {
@@ -18,34 +17,73 @@ class Bar extends Component {
                 username: false
             }
         };
+<<<<<<< Updated upstream
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.changelink = this.changelink.bind(this);
         this.handleLoginClick = this.handleLoginClick.bind(this);
         this.handleLogoutClick = this.handleLogoutClick.bind(this);
+=======
+>>>>>>> Stashed changes
     }
 
-    toggleNav() {
+    toggleNav = () => {
         this.setState({
             isNavOpen: !this.state.isNavOpen
         });
     }
 
-    toggleModal(){
+    toggleModal = () => {
         this.setState({
             isModalOpen: !this.state.isModalOpen,
         });
     }
+<<<<<<< Updated upstream
     handleLoginClick() {
         this.setState({isLoggedIn: true,isModalOpen: !this.state.isModalOpen,});
         
       }
+=======
+    toggleModal1 = () => {
+        this.setState({
+            isModalOpen1: !this.state.isModalOpen1,
+        });
+    }
+    handleLoginClick = (event) => {
+        event.preventDefault();
+        axios.post('http://localhost:3000/users/login', {
+            username: this.state.username,
+            password: this.state.password
+        })
+        .then(response => {
+            this.setState({
+                isLoggedIn: response.data.success,
+            })
+            this.props.getToken(response.data.token)
+            console.log(this.state);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        if(this.state.isLoggedIn) {
+            this.props.history.push(`http://localhost:3001/${this.props.changedValue}`)
+        }
+    }
+>>>>>>> Stashed changes
     
-      handleLogoutClick() {
+    handleLogoutClick = () => {
         this.setState({isLoggedIn: false});
-      }
+    }
 
+<<<<<<< Updated upstream
     changelink=(event)=>{
+=======
+    handleSignUpClick = () => {
+        this.setState({isModalOpen1: !this.state.isModalOpen1,});
+    }
+
+    changelink = (event) => {
+>>>>>>> Stashed changes
         if (event.target.value==="Admin"){
             this.props.changelink("/admin");
         }
@@ -121,15 +159,22 @@ class Bar extends Component {
                                     </Link>
                                 </NavItem>
                                 <NavItem>
-                                    {button}
+                                <Link className="nav-link" to="/login">
+                                    <span className="fa fa-sign-in-alt fa-lg"></span> Login 
+                                </Link>
                                 </NavItem>
                                 
                             </Nav>
                         </Collapse>
                     </div>
                 </Navbar>
+<<<<<<< Updated upstream
                 <Modal backdrop="static" isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader>   
+=======
+                {/* <Modal backdrop="static" isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                    <ModalHeader toggle={this.toggleModal}>   
+>>>>>>> Stashed changes
                         Login         
                         <Button className="close me" variant="secondary" onClick={this.toggleModal} color="white">
                             <span aria-hidden="true" className="white-text"></span><i className="fa fa-times"></i>
@@ -137,7 +182,7 @@ class Bar extends Component {
                     </ModalHeader>
                     
                     <ModalBody>
-                        <Form className="myForm" onSubmit={this.handleSubmit}>
+                        <Form className="myForm" onSubmit={this.handleLoginClick}>
                             <FormGroup>
                                 <Label htmlFor="username">Username</Label>
                                 <Input required type="text" id="username" name="username" value={this.state.username}
@@ -165,7 +210,38 @@ class Bar extends Component {
                                     Remember Me
                                 </Label>
                             </FormGroup>
+<<<<<<< Updated upstream
                             <Link to={this.props.changedValue}><Button type="submit" value="submit" color="primary" onClick={this.handleLoginClick} ><span className="fa fa-sign-in-alt fa-lg"></span>Login</Button></Link>
+=======
+                            <Link onClick={this.handleLoginClick} to={this.props.changedValue}><Button type="submit" value="submit" color="primary"  ><span className="fa fa-sign-in-alt fa-lg"></span>Login</Button></Link>
+                        </Form>
+                    </ModalBody>
+                </Modal> */}
+                <Modal backdrop="static" isOpen={this.state.isModalOpen1} toggle={this.toggleModal1}>
+                    <ModalHeader>   
+                        SignUp         
+                        <Button className="close me" variant="secondary" onClick={this.toggleModal1} color="white">
+                            <span aria-hidden="true" className="white-text"></span><i className="fa fa-times"></i>
+                        </Button>
+                    </ModalHeader>
+                    
+                    <ModalBody>
+                        <Form className="myForm" onSubmit={this.handleSubmit}>
+                            <FormGroup>
+                                <Label htmlFor="username">Set Username(Only SID)</Label>
+                                <Input required type="text" id="username" name="username" value={this.state.username}
+                                    onChange={this.handleInputChange} valid={errors.username === ''} invalid={errors.username !== ''} onBlur={this.handleBlur('username')} />
+                                    <FormFeedback>{errors.username}</FormFeedback>
+                            </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor="password">Set Password</Label>
+                                <Input required type="password" id="password" name="password" value={this.state.password}
+                                   onChange={this.handleInputChange} valid={errors.password === ''} invalid={errors.password !== ''} onBlur={this.handleBlur('password')} 
+                                   innerRef={(input) => this.password=input} />
+                                   <FormFeedback>{errors.password}</FormFeedback>
+                            </FormGroup>
+                            <Button type="submit" value="submit" color="primary" onClick={this.handleSignUpClick} ><span className="fa fa-sign-in-alt fa-lg"></span>Sign Up</Button>
+>>>>>>> Stashed changes
                         </Form>
                     </ModalBody>
                 </Modal>
@@ -183,4 +259,11 @@ function LogoutButton(props){
     return (<Link to="/home" className="nav-link" onClick={props.onClick}><span className="fa fa-sign-out-alt fa-lg"></span>Logout</Link>);
 }
 
+<<<<<<< Updated upstream
 export default Bar;
+=======
+function SignupButton(props){
+    return (<Link className="nav-link" onClick={props.onClick}><span className="fa fa-sign-in-alt fa-lg"></span> SignUp</Link>);
+}
+export default withRouter(Bar);
+>>>>>>> Stashed changes

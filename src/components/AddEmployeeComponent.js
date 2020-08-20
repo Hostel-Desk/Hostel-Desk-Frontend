@@ -30,9 +30,27 @@ class AddEmployee extends Component {
     }
 
     handleSubmit = (event) => {
+        
+        event.preventDefault();
+        this.props.authAxios.post('http://localhost:3000/employees', {
+            employeeName: this.state.name,
+            mobileNo: this.state.mobile,
+            gender: this.state.gender,
+            employeeType: this.state.type,
+            address: this.state.address,
+            designation: this.state.designation,
+            salary: this.state.salary,
+            joiningDate: this.state.joinDate,
+            photo: this.state.photo
+        })
+        .then(function (response) {
+        console.log(response);
+        })
+        .catch(function (error) {
+        console.log(error);
+        });
         console.log("Current State is: " + JSON.stringify(this.state));
         alert("Current State is: " + JSON.stringify(this.state));
-        event.preventDefault();
     }
     handleInputChange = (event) => {
         const target = event.target;

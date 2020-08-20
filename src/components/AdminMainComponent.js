@@ -18,6 +18,7 @@ import Seat from './SeatComponent';
 import AddMeal from './AddMeal';
 import Complaints from './Complaints';
 import ArchitectureView from './ArchitectureView';
+import axios from 'axios';
 import {Modal, ModalBody, Form, ModalHeader, FormGroup,Label, Input, Button, Row, Col} from 'reactstrap';
 class Admin extends Component {
     constructor(props) {
@@ -30,55 +31,55 @@ class Admin extends Component {
           isResolved: false,
           isArchitectureModalOpen: false,
             Meals: [
-                {
-                  day: 'Monday',
-                  breakfast: [
-                    'Bread-Jam + Corn Flakes',
-                    'Omlette + Fruit',
-                    'Milk/Tea + Butter',
-                    'Aloo Paratha'
-                  ],
-                  lunch: [
-                    'Kadhi Pakoda + Aloo Zeera',
-                    'Jeera Rice + Chapati',
-                    'Pickle + Salad'
-                  ],
-                  snacks: [
-                    'Samosa',
-                    'Tea',
-                    'Biscuit + Rusk'
-                  ],
-                  dinner: [
-                    'Butter Chicker + Masoor Sabut',
-                    'Paneer Bhurji/ Matar Paneer',
-                    'Simple Rice + Chapati',
-                    'Gulab Jabun'
-                  ] 
-                },
-                {
-                  day: 'Tuesday',
-                  breakfast: [
-                    'Bread-Jam + Corn Flakes',
-                    'Boiled Egg + Fruit',
-                    'Milk/Tea + Butter',
-                    'Mix Paratha'
-                  ],
-                  lunch: [
-                    'White Chole + Aloo Baingan',
-                    'Simple Rice + Chapati + Butter',
-                    'Pickle + Salad + Lassi(sweet)'
-                  ],
-                  snacks: [
-                    'Bread Roll/ Spring Roll',
-                    'Tea',
-                    'Cream Biscuit + Rusk'
-                  ],
-                  dinner: [
-                    'Dal Makhni + Aloo Gajar Matar',
-                    'Jeera Rice + Chapati + Curd',
-                    'Moongdal Halwa/ Suji Halwa'
-                  ] 
-                }
+                // {
+                //   day: 'Monday',
+                //   breakfast: [
+                //     'Bread-Jam + Corn Flakes',
+                //     'Omlette + Fruit',
+                //     'Milk/Tea + Butter',
+                //     'Aloo Paratha'
+                //   ],
+                //   lunch: [
+                //     'Kadhi Pakoda + Aloo Zeera',
+                //     'Jeera Rice + Chapati',
+                //     'Pickle + Salad'
+                //   ],
+                //   snacks: [
+                //     'Samosa',
+                //     'Tea',
+                //     'Biscuit + Rusk'
+                //   ],
+                //   dinner: [
+                //     'Butter Chicker + Masoor Sabut',
+                //     'Paneer Bhurji/ Matar Paneer',
+                //     'Simple Rice + Chapati',
+                //     'Gulab Jabun'
+                //   ] 
+                // },
+                // {
+                //   day: 'Tuesday',
+                //   breakfast: [
+                //     'Bread-Jam + Corn Flakes',
+                //     'Boiled Egg + Fruit',
+                //     'Milk/Tea + Butter',
+                //     'Mix Paratha'
+                //   ],
+                //   lunch: [
+                //     'White Chole + Aloo Baingan',
+                //     'Simple Rice + Chapati + Butter',
+                //     'Pickle + Salad + Lassi(sweet)'
+                //   ],
+                //   snacks: [
+                //     'Bread Roll/ Spring Roll',
+                //     'Tea',
+                //     'Cream Biscuit + Rusk'
+                //   ],
+                //   dinner: [
+                //     'Dal Makhni + Aloo Gajar Matar',
+                //     'Jeera Rice + Chapati + Curd',
+                //     'Moongdal Halwa/ Suji Halwa'
+                //   ] 
+                // }
             ],
             EmployeeSal: {
                 columns: [
@@ -718,8 +719,25 @@ class Admin extends Component {
       })
     }
 
+    componentDidMount() {
+      const authAxios = axios.create({
+        baseURL: 'http://localhost:3000',
+        headers: {Authorization: `Bearer ${this.props.token}`}
+      })
+      authAxios.get('/meals')
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    }
     render() {
-      console.log(this.props.changedValue);
+      const authAxios = axios.create({
+        baseURL: 'http://localhost:3000/',
+        headers: {'Authorization': `Bearer ${this.props.token}`}
+      })
+      //console.log(this.props.changedValue);
         return(
             <div className="feature admin">
                 <div className="row">
@@ -729,28 +747,29 @@ class Admin extends Component {
                     <div className="col-md-9">
 
                         <Switch>
-                            <Route path="/admin/dashboard" component={() => <DashBoard architectures={this.state.Architectures}
+                            <Route path="/admin/dashboard" component={() => <DashBoard  architectures={this.state.Architectures}
                                                                                         employees={this.state.Employees}
                                                                                         students={this.state.Students}
-                                                                                        changedValue={this.props.changedValue}/>}/>
-                            <Route exact path="/admin/students" component={()=><StudentView students={this.state.Students}/>}/>
-                            <Route exact path="/admin/rooms" component={() => <ArchitectureView architectures={this.state.Architectures}/>}/>
-                            <Route exact path="/admin/StudentManage/addnew" component={AddStudent}/>
-                            <Route exact path="/admin/employees" component={()=><EmployeeView employees={this.state.Employees}/>}/>
-                            <Route exact path="/admin/EmployeeManage/addnew" component={AddEmployee}/>
-                            <Route exact path="/admin/MealManage/view" component={() => <MealView meals={this.state.Meals}/>}/>
-                            <Route exact path="/admin/MealManage/add" component={AddMeal}/>
-                            <Route exact path="/admin/StudentManage/view" component={()=><StudentView students={this.state.Students}/>}/>
-                            <Route exact path="/admin/EmployeeManage/view" component={()=><EmployeeView employees={this.state.Employees}/>}/>
-                            <Route exact path="/admin/NoticeBoard" component={() => <NoticeBoard notices={this.state.Notices}/>}/>
-                            <Route exact path="/admin/Settings/updateprofile" component={Profile}/>
-                            <Route exact path="/admin/Architecture" component={() => <Architecture architectures={this.state.Architectures}/>}/>
-                            <Route exact path="/admin/StudentManagePayment/Add Bill" component={StudentPayment} />
-                            <Route exact path="/admin/StudentManagePayment/MessBill" component={()=><StudentMessBill messBills={this.state.MessBills}/>} />
-                            <Route exact path="/admin/EmployeeManagePayment/Add Salary" component={EmployeeSalary}/>
-                            <Route exact path="/admin/Complaints" component={() => <Complaints complaints={this.state.Complaints}/>}/>
-                            <Route exact path="/admin/EmployeeManagePayment/Salary" component={() => <EmployeeSalaryView employeeSal={this.state.EmployeeSal}/>}/>
-                            <Route exact path="/admin/StudentManage/seatallocation" component={()=> <Seat seats={this.state.Seats}/>}/>
+                                                                                        changedValue={this.props.changedValue}
+                                                                                        authAxios={authAxios}/>}/>
+                            <Route exact path="/admin/students" component={()=><StudentView students={this.state.Students} authAxios={authAxios}/>}/>
+                            <Route exact path="/admin/rooms" component={() => <ArchitectureView architectures={this.state.Architectures} authAxios={authAxios}/>}/>
+                            <Route exact path="/admin/StudentManage/addnew" component={() => <AddStudent authAxios={authAxios}/>}/>
+                            <Route exact path="/admin/employees" component={()=><EmployeeView employees={this.state.Employees} authAxios={authAxios}/>}/>
+                            <Route exact path="/admin/EmployeeManage/addnew" component={() => <AddEmployee authAxios={authAxios}/>}/>
+                            <Route exact path="/admin/MealManage/view" component={() => <MealView meals={this.state.Meals} authAxios={authAxios}/>}/>
+                            <Route exact path="/admin/MealManage/add" component={() => <AddMeal authAxios={authAxios}/>}/>
+                            <Route exact path="/admin/StudentManage/view" component={()=><StudentView students={this.state.Students} authAxios={authAxios}/>}/>
+                            <Route exact path="/admin/EmployeeManage/view" component={()=><EmployeeView employees={this.state.Employees} authAxios={authAxios}/>}/>
+                            <Route exact path="/admin/NoticeBoard" component={() => <NoticeBoard notices={this.state.Notices} authAxios={authAxios}/>}/>
+                            <Route exact path="/admin/Settings/updateprofile" component={() => <Profile authAxios={authAxios}/>}/>
+                            <Route exact path="/admin/Architecture" component={() => <Architecture architectures={this.state.Architectures} authAxios={authAxios}/>}/>
+                            <Route exact path="/admin/StudentManagePayment/Add Bill" component={() => <StudentPayment authAxios={authAxios}/>}/>
+                            <Route exact path="/admin/StudentManagePayment/MessBill" component={()=><StudentMessBill messBills={this.state.MessBills} authAxios={authAxios}/>} />
+                            <Route exact path="/admin/EmployeeManagePayment/Add Salary" component={() => <EmployeeSalary authAxios={authAxios}/>}/>
+                            <Route exact path="/admin/Complaints" component={() => <Complaints complaints={this.state.Complaints} authAxios={authAxios}/>}/>
+                            <Route exact path="/admin/EmployeeManagePayment/Salary" component={() => <EmployeeSalaryView employeeSal={this.state.EmployeeSal} authAxios={authAxios}/>}/>
+                            <Route exact path="/admin/StudentManage/seatallocation" component={()=> <Seat seats={this.state.Seats} authAxios={authAxios}/>}/>
                             <Redirect to="/admin/dashboard"/>
                         </Switch>
 
