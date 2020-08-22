@@ -99,6 +99,35 @@ export const fetchStudents = () => (dispatch) => {
     .catch(error => dispatch(studentsFailed(error.message)));
 }
 
+export const deleteStudent = (studentId) => (dispatch) => {
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'favorites/' + studentId, {
+        method: "DELETE",
+        headers: {
+          'Authorization': bearer
+        },
+        credentials: "same-origin"
+    })
+    .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+            throw error;
+      })
+    .then(response => response.json())
+    .then(students => { console.log('Student Deleted', students); dispatch(studentsSuccess(students)); })
+    .catch(error => dispatch(studentsFailed(error.message)));
+};
+
+
 export const requestLogin = (creds) => {
     return {
         type: ActionTypes.LOGIN_REQUEST,
