@@ -336,6 +336,33 @@ export const fetchNotices = () => (dispatch) => {
     .catch(error => dispatch(noticesFailed(error.message)));
 }
 
+export const deleteNotice = (noticeId) => (dispatch) => {
+    const bearer = 'Bearer' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'notices/' + noticeId, {
+        method: "DELETE",
+        headers:{
+            'Authorization': bearer
+        },
+        credentials: "same-origin"
+    })
+    .then(response => {
+        if(response.ok) {
+            return response;
+        } else {
+            var error = new Error('Error' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        throw error;
+    })
+    .then (response => response.json())
+    .then(notices => { console.log('Notice Deleted', notices); dispatch(noticesSuccess(notices)); })
+    .catch(error => dispatch(noticesFailed(error.message)));
+};
+
 export const salaryLoading = () => ({
     type: ActionTypes.SALARY_LOADING
 });
@@ -423,6 +450,33 @@ export const fetchSalaries = () => (dispatch) => {
     .then(salaries => dispatch(salarySuccess(salaries)))
     .catch(error => dispatch(salaryFailed(error.message)));
 }
+
+export const deleteSalary = (salaryId) => (dispatch) => {
+    const bearer = 'Bearer' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'salaries/' + salaryId, {
+        method: "DELETE",
+        headers:{
+            'Authorization': bearer
+        },
+        credentials: "same-origin"
+    })
+    .then(response => {
+        if(response.ok) {
+            return response;
+        } else {
+            var error = new Error('Error' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        throw error;
+    })
+    .then (response => response.json())
+    .then(salaries => { console.log('Salary Deleted', salaries); dispatch(salarySuccess(salaries)); })
+    .catch(error => dispatch(salaryFailed(error.message)));
+};
 
 export const requestLogin = (creds) => {
     return {
