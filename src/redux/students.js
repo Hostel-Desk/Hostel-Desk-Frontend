@@ -1,6 +1,7 @@
 import * as ActionTypes from './actionTypes'
 
 export const Students = (state = {
+    isLoading: true,
     errMess: null,
     students: []
 }, action) => {

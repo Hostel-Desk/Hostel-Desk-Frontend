@@ -103,12 +103,11 @@ export const deleteStudent = (studentId) => (dispatch) => {
 
     const bearer = 'Bearer ' + localStorage.getItem('token');
 
-    return fetch(baseUrl + 'favorites/' + studentId, {
+    return fetch(baseUrl + 'students/' + studentId, {
         method: "DELETE",
         headers: {
           'Authorization': bearer
-        },
-        credentials: "same-origin"
+        }
     })
     .then(response => {
         if (response.ok) {
@@ -125,6 +124,127 @@ export const deleteStudent = (studentId) => (dispatch) => {
     .then(response => response.json())
     .then(students => { console.log('Student Deleted', students); dispatch(studentsSuccess(students)); })
     .catch(error => dispatch(studentsFailed(error.message)));
+};
+
+export const employeesLoading = () => ({
+    type: ActionTypes.EMPLOYEES_LOADING
+});
+
+export const employeesFailed = (errmess) => ({
+    type: ActionTypes.EMPLOYEES_FAILED,
+    payload: errmess
+});
+
+export const employeesSuccess = (employees) => ({
+    type: ActionTypes.EMPLOYEES_SUCCESS,
+    payload: employees
+});
+
+export const addEmployee = (employee) => ({
+    type: ActionTypes.ADD_EMPLOYEE,
+    payload: employee
+}); 
+student
+export const postEmployee = (employee) => (dispatch) => {
+
+    const newEmployee = {
+        employeeName: employee.name,
+        employeeType: employee.type,
+        mobileNo: employee.mobile,
+        employeeType: employee.type,
+        gender: employee.gender,
+        designation: employee.designation,
+        address: employee.address,
+        joiningDate: employee.joinDate,
+        photo: employee.photo
+    }
+    console.log('Employee: ', newEmployee);
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'employees', {
+        method: 'POST',
+        body: JSON.stringify(newEmployee),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': bearer
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addEmployee(response)))
+    .catch(error => { console.log('Post employees ', error.message);
+        alert('Your employee could not be added\nError: '+ error.message); })
+}
+
+export const fetchEmployees = () => (dispatch) => {
+    dispatch(employeesLoading(true));
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'employees', {
+        headers: {
+            'method': 'GET',
+            'Authorization': bearer
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(employees => dispatch(employeesSuccess(employees)))
+    .catch(error => dispatch(employeesFailed(error.message)));
+}
+
+export const deleteEmployee = (employeeId) => (dispatch) => {
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'employees/' + employeeId, {
+        method: "DELETE",
+        headers: {
+          'Authorization': bearer
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+            throw error;
+      })
+    .then(response => response.json())
+    .then(employees => { console.log('Employee Deleted', employees); dispatch(employeesSuccess(employees)); })
+    .catch(error => dispatch(employeesFailed(error.message)));
 };
 
 export const noticesLoading = () => ({
@@ -221,8 +341,7 @@ export const deleteNotice = (noticeId) => (dispatch) => {
         method: "DELETE",
         headers:{
             'Authorization': bearer
-        },
-        credentials: "same-origin"
+        }
     })
     .then(response => {
         if(response.ok) {
@@ -230,7 +349,7 @@ export const deleteNotice = (noticeId) => (dispatch) => {
         } else {
             var error = new Error('Error' + response.status + ': ' + response.statusText);
             error.response = response;
-            throe error;
+            throw error;
         }
     },
     error => {
@@ -336,8 +455,7 @@ export const deleteSalary = (salaryId) => (dispatch) => {
         method: "DELETE",
         headers:{
             'Authorization': bearer
-        },
-        credentials: "same-origin"
+        }
     })
     .then(response => {
         if(response.ok) {
@@ -345,7 +463,7 @@ export const deleteSalary = (salaryId) => (dispatch) => {
         } else {
             var error = new Error('Error' + response.status + ': ' + response.statusText);
             error.response = response;
-            throe error;
+            throw error;
         }
     },
     error => {
@@ -399,7 +517,7 @@ export const loginUser = (creds) => (dispatch) => {
         },
         error => {
             throw error;
-        })
+    })
     .then(response => response.json())
     .then(response => {
         if (response.success) {
@@ -413,6 +531,8 @@ export const loginUser = (creds) => (dispatch) => {
             dispatch(fetchMeals());
             dispatch(fetchMealBills());
             dispatch(fetchNotices());
+            dispatch(fetchArchitecture());
+            dispatch(fetchComplaints())
             dispatch(receiveLogin(response));
         }
         else {
@@ -446,7 +566,570 @@ export const logoutUser = () => (dispatch) => {
     dispatch(mealsFailed("Error 401: Unauthorized"));
     dispatch(mealBillsFailed("Error 401: Unauthorized"));
     dispatch(employeesFailed("Error 401: Unauthorized"));
+    dispatch(architectureFailed("Error 401: Unauthorized"));
+    dispatch(complaintsFailed("Error 401: Unauthorized"))
     dispatch(receiveLogout())
 }
 
+export const mealsLoading = () => ({
+    type: ActionTypes.MEALS_LOADING
+});
 
+export const mealsFailed = (errmess) => ({
+    type: ActionTypes.MEALS_FAILED,
+    payload: errmess
+});
+
+export const mealsSuccess = (meals) => ({
+    type: ActionTypes.MEALS_SUCCESS,
+    payload: meals
+});
+
+export const addMeals = (meal) => ({
+    type: ActionTypes.ADD_MEAL,
+    payload: meal
+});
+
+export const postMeal = (meals) => (dispatch) => {
+
+    const newMeal = {
+        day:meals.day,
+        breakfast:meals.breakfast,
+        lunch:meals.lunch,
+        snacks:meals.snacks,
+        dinner:meals.dinner
+    }
+    console.log('Meal: ', newMeal);
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'meals', {
+        method: 'POST',
+        body: JSON.stringify(newMeal),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': bearer
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addMeals(response)))
+    .catch(error => { console.log('Post meals ', error.message);
+        alert('Your meal could not be added\nError: '+ error.message); })
+}
+
+export const fetchMeals = () => (dispatch) => {
+    dispatch(mealsLoading(true));
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'meals', {
+        headers: {
+            'method': 'GET',
+            'Authorization': bearer
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(meals => dispatch(mealsSuccess(meals)))
+    .catch(error => dispatch(studentsFailed(error.message)));
+}
+
+export const mealbillLoading = () => ({
+    type: ActionTypes.MEALBILL_LOADING
+});
+
+export const mealbillFailed = (errmess) => ({
+    type: ActionTypes.MEALBILL_FAILED,
+    payload: errmess
+});
+
+export const mealbillSuccess = (mealbill) => ({
+    type: ActionTypes.MEALBILL_SUCCESS,
+    payload: mealbill
+});
+
+export const addMealbill = (mealbill) => ({
+    type: ActionTypes.ADD_MEALBILL,
+    payload: mealbill
+}); 
+
+export const postMealbill = (mealbill) => (dispatch) => {
+
+    const newMealbill = {
+        name:mealbill.name,
+        sid:mealbill.id,
+        branch:mealbill.branch,
+        payment:mealbill.rupees,
+        paymentDate:mealbill.paymentduedate
+    }
+    console.log('Mealbill: ', newMealbill);
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'mealbill', {
+        method: 'POST',
+        body: JSON.stringify(newMealbill),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': bearer
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addMealbill(response)))
+    .catch(error => { console.log('Post Mealbill ', error.message);
+        alert('Meal bill could not be added\nError: '+ error.message); })
+}
+
+export const fetchMealbill = () => (dispatch) => {
+    dispatch(mealbillLoading(true));
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'mealbill', {
+        headers: {
+            'method': 'GET',
+            'Authorization': bearer
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(meals => dispatch(mealbillSuccess(meals)))
+    .catch(error => dispatch(mealbillFailed(error.message)));
+}
+
+export const mealsLoading = () => ({
+    type: ActionTypes.MEALS_LOADING
+});
+
+export const mealsFailed = (errmess) => ({
+    type: ActionTypes.MEALS_FAILED,
+    payload: errmess
+});
+
+export const mealsSuccess = (meals) => ({
+    type: ActionTypes.MEALS_SUCCESS,
+    payload: meals
+});
+
+export const addMeals = (meal) => ({
+    type: ActionTypes.ADD_MEAL,
+    payload: meal
+});
+
+export const postMeal = (meals) => (dispatch) => {
+
+    const newMeal = {
+        day:meals.day,
+        breakfast:meals.breakfast,
+        lunch:meals.lunch,
+        snacks:meals.snacks,
+        dinner:meals.dinner
+    }
+    console.log('Meal: ', newMeal);
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'meals', {
+        method: 'POST',
+        body: JSON.stringify(newMeal),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': bearer
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addMeals(response)))
+    .catch(error => { console.log('Post meals ', error.message);
+        alert('Your meal could not be added\nError: '+ error.message); })
+}
+
+export const fetchMeals = () => (dispatch) => {
+    dispatch(mealsLoading(true));
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'meals', {
+        headers: {
+            'method': 'GET',
+            'Authorization': bearer
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(meals => dispatch(mealsSuccess(meals)))
+    .catch(error => dispatch(studentsFailed(error.message)));
+}
+
+export const architectureLoading = () => ({
+    type: ActionTypes.ARCHITECTURE_LOADING
+});
+
+export const architectureFailed = (errmess) => ({
+    type: ActionTypes.ARCHITECTURE_FAILED,
+    payload: errmess
+});
+
+export const architectureSuccess = (architecture) => ({
+    type: ActionTypes.ARCHITECTURE_SUCCESS,
+    payload: architecture
+});
+
+export const addArchitecture = (architecture) => ({
+    type: ActionTypes.ADD_ARCHITECTURE,
+    payload: architecture
+}); 
+
+export const postArchitecture = (architecture) => (dispatch) => {
+
+    const newArchitecture = {
+        rooms:architecture.rooms,
+        blocks:architecture.blocks,
+        floors:architecture.floors
+    }
+    console.log('Architecture: ', newArchitecture);
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'architecture', {
+        method: 'PUT',
+        body: JSON.stringify(newArchitecture),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': bearer
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addArchitecture(response)))
+    .catch(error => { console.log('Post Architecture ', error.message);
+        alert('Architecture could not be added\nError: '+ error.message); })
+}
+
+export const fetchArchitecture = () => (dispatch) => {
+    dispatch(architectureLoading(true));
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'architecture', {
+        headers: {
+            'method': 'GET',
+            'Authorization': bearer
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(architecture => dispatch(architectureSuccess(architecture)))
+    .catch(error => dispatch(architectureFailed(error.message)));
+}
+
+
+export const seatallocationLoading = () => ({
+    type: ActionTypes.SEATALLOCATION_LOADING
+});
+
+export const seatallocationFailed = (errmess) => ({
+    type: ActionTypes.SEATALLOCATION_FAILED,
+    payload: errmess
+});
+
+export const seatallocationSuccess = (seatallocation) => ({
+    type: ActionTypes.SEATALLOCATION_SUCCESS,
+    payload: seatallocation
+});
+
+export const addseatallocation = (seatallocation) => ({
+    type: ActionTypes.ADD_SEATALLOCATION,
+    payload: seatallocation
+});
+
+export const postSeatallocation = (seats) => (dispatch) => {
+
+    const newSeatAllocation = {
+        name:seats.name,
+        block:seats.block,
+        room:seats.room,
+        monthlyRent:seats.rent,
+
+    }
+    console.log('SeatAllocation: ', newSeatAllocation);
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'seats', {
+        method: 'POST',
+        body: JSON.stringify(newSeatAllocation),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': bearer
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addseatallocation(response)))
+    .catch(error => { console.log('Post seats ', error.message);
+        alert('Your SealAllocation could not be added\nError: '+ error.message); })
+}
+
+export const fetchSeatallocation = () => (dispatch) => {
+    dispatch(seatallocationLoading(true));
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'seats', {
+        headers: {
+            'method': 'GET',
+            'Authorization': bearer
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(seats => dispatch(seatallocationSuccess(seats)))
+    .catch(error => dispatch(seatallocationFailed(error.message)));
+}
+
+export const complaintsLoading = () => ({
+    type: ActionTypes.COMPLAINTS_LOADING
+});
+
+export const complaintsFailed = (errmess) => ({
+    type: ActionTypes.COMPLAINTS_FAILED,
+    payload: errmess
+});
+
+export const complaintsSuccess = (students) => ({
+    type: ActionTypes.COMPLAINTS_SUCCESS,
+    payload: students
+});
+
+export const addComplaint = (student) => ({
+    type: ActionTypes.ADD_COMPLAINT,
+    payload: student
+}); 
+
+export const postComplaint = (complaint) => (dispatch) => {
+
+    const newComplaint = {
+        title: complaint.title,
+        complaint: complaint.description
+    }
+    console.log('Complaint: ', newComplaint);
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'complaints', {
+        method: 'POST',
+        body: JSON.stringify(newComplaint),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': bearer
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addComplaint(response)))
+    .catch(error => { console.log('Post complaints ', error.message);
+        alert('Your complaint could not be added\nError: '+ error.message); })
+}
+
+export const fetchComplaints = () => (dispatch) => {
+    dispatch(complaintsLoading(true));
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'complaints', {
+        headers: {
+            'method': 'GET',
+            'Authorization': bearer
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(complaints => dispatch(complaintsSuccess(complaints)))
+    .catch(error => dispatch(complaintsFailed(error.message)));
+}
+
+export const deleteComplaint = (complaintId) => (dispatch) => {
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'complaints/' + complaintId, {
+        method: "DELETE",
+        headers: {
+          'Authorization': bearer
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+            throw error;
+      })
+    .then(response => response.json())
+    .then(complaints => { console.log('Complaint Deleted', complaints); dispatch(complaintsSuccess(complaints)); })
+    .catch(error => dispatch(complaintsFailed(error.message)));
+};

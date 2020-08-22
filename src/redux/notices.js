@@ -1,6 +1,7 @@
 import * as ActionTypes from './actionTypes'
 
 export const Notices = (state = {
+    isLoading: true,
     errMess: null,
     notices: []
 }, action) => {
