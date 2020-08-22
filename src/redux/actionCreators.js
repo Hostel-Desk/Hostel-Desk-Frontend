@@ -103,7 +103,7 @@ export const deleteStudent = (studentId) => (dispatch) => {
 
     const bearer = 'Bearer ' + localStorage.getItem('token');
 
-    return fetch(baseUrl + 'favorites/' + studentId, {
+    return fetch(baseUrl + 'students/' + studentId, {
         method: "DELETE",
         headers: {
           'Authorization': bearer
