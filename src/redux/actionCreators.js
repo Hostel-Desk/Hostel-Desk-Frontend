@@ -535,6 +535,7 @@ export const loginUser = (creds) => (dispatch) => {
             dispatch(fetchMeals());
             dispatch(fetchMealBills());
             dispatch(fetchNotices());
+            dispatch(fetchArchitecture());
             dispatch(receiveLogin(response));
         }
         else {
@@ -568,6 +569,7 @@ export const logoutUser = () => (dispatch) => {
     dispatch(mealsFailed("Error 401: Unauthorized"));
     dispatch(mealBillsFailed("Error 401: Unauthorized"));
     dispatch(employeesFailed("Error 401: Unauthorized"));
+    dispatch(architectureFailed("Error 401: Unauthorized"));
     dispatch(receiveLogout())
 }
 
@@ -749,4 +751,182 @@ export const fetchMealbill = () => (dispatch) => {
     .then(response => response.json())
     .then(meals => dispatch(mealbillSuccess(meals)))
     .catch(error => dispatch(mealbillFailed(error.message)));
+}
+
+export const mealsLoading = () => ({
+    type: ActionTypes.MEALS_LOADING
+});
+
+export const mealsFailed = (errmess) => ({
+    type: ActionTypes.MEALS_FAILED,
+    payload: errmess
+});
+
+export const mealsSuccess = (meals) => ({
+    type: ActionTypes.MEALS_SUCCESS,
+    payload: meals
+});
+
+export const addMeals = (meal) => ({
+    type: ActionTypes.ADD_MEAL,
+    payload: meal
+});
+
+export const postMeal = (meals) => (dispatch) => {
+
+    const newMeal = {
+        day:meals.day,
+        breakfast:meals.breakfast,
+        lunch:meals.lunch,
+        snacks:meals.snacks,
+        dinner:meals.dinner
+    }
+    console.log('Meal: ', newMeal);
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'meals', {
+        method: 'POST',
+        body: JSON.stringify(newMeal),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': bearer
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addMeals(response)))
+    .catch(error => { console.log('Post meals ', error.message);
+        alert('Your meal could not be added\nError: '+ error.message); })
+}
+
+export const fetchMeals = () => (dispatch) => {
+    dispatch(mealsLoading(true));
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'meals', {
+        headers: {
+            'method': 'GET',
+            'Authorization': bearer
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(meals => dispatch(mealsSuccess(meals)))
+    .catch(error => dispatch(studentsFailed(error.message)));
+}
+
+export const architectureLoading = () => ({
+    type: ActionTypes.ARCHITECTURE_LOADING
+});
+
+export const architectureFailed = (errmess) => ({
+    type: ActionTypes.ARCHITECTURE_FAILED,
+    payload: errmess
+});
+
+export const architectureSuccess = (architecture) => ({
+    type: ActionTypes.ARCHITECTURE_SUCCESS,
+    payload: architecture
+});
+
+export const addArchitecture = (architecture) => ({
+    type: ActionTypes.ADD_ARCHITECTURE,
+    payload: architecture
+}); 
+
+export const postArchitecture = (architecture) => (dispatch) => {
+
+    const newArchitecture = {
+        rooms:architecture.rooms,
+        blocks:architecture.blocks,
+        floors:architecture.floors
+    }
+    console.log('Architecture: ', newArchitecture);
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'architecture', {
+        method: 'POST',
+        body: JSON.stringify(newArchitecture),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': bearer
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addArchitecture(response)))
+    .catch(error => { console.log('Post Architecture ', error.message);
+        alert('Architecture could not be added\nError: '+ error.message); })
+}
+
+export const fetchArchitecture = () => (dispatch) => {
+    dispatch(architectureLoading(true));
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'architecture', {
+        headers: {
+            'method': 'GET',
+            'Authorization': bearer
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(architecture => dispatch(architectureSuccess(architecture)))
+    .catch(error => dispatch(architectureFailed(error.message)));
 }
