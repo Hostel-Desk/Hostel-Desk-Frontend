@@ -1,6 +1,6 @@
 import * as ActionTypes from './actionTypes'
 
-export const Students = (state = {
+export const Meals = (state = {
     errMess: null,
     meals: []
 }, action) => {
