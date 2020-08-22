@@ -352,7 +352,7 @@ export const deleteNotice = (noticeId) => (dispatch) => {
         } else {
             var error = new Error('Error' + response.status + ': ' + response.statusText);
             error.response = response;
-            throe error;
+            throw error;
         }
     },
     error => {
@@ -467,7 +467,7 @@ export const deleteSalary = (salaryId) => (dispatch) => {
         } else {
             var error = new Error('Error' + response.status + ': ' + response.statusText);
             error.response = response;
-            throe error;
+            throw error;
         }
     },
     error => {
