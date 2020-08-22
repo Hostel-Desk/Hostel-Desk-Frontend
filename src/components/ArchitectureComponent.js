@@ -5,8 +5,24 @@ import ArchitectureView from './ArchitectureView'
 class Architecture extends Component {
     constructor(props){
         super(props);
+
+        this.state = {
+            rooms: this.props.architectures.rows[0].rooms,
+            blocks: this.props.architectures.rows[0].blocks,
+            floors: this.props.architectures.rows[0].floors
+        }
     }
     
+    handleInputChange = (event) => {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+
     handleSubmit = (event) => {
         console.log("State: " + JSON.stringify(this.props));
         alert("Current state: " + JSON.stringify(this.props));
@@ -29,13 +45,15 @@ class Architecture extends Component {
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="Rooms">Total Rooms</Label>
-                                    <Input required type="text" name="Rooms" id="rooms" placeholder="Rooms" value={this.props.architectures.rows[0].rooms} />
+                                    <Input required type="text" name="Rooms" id="rooms" placeholder="Rooms" 
+                                    onChange={this.handleInputChange} value={this.props.architectures.rows[0].rooms} />
                                 </FormGroup>
                                 </Col>
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="Blocks">Total Blocks</Label>
-                                    <Input required type="text" name="Blocks" id="blocks" placeholder="Blocks" value={this.props.architectures.rows[0].blocks} />
+                                    <Input required type="text" name="Blocks" id="blocks" placeholder="Blocks" 
+                                    onChange={this.handleInputChange} value={this.props.architectures.rows[0].blocks} />
                                 </FormGroup>
                                 </Col>
                             
@@ -43,7 +61,8 @@ class Architecture extends Component {
                                 <Col md={4}>
                                     <FormGroup>
                                         <Label for="Floor">Total Floors</Label>
-                                        <Input required type="text" name="Floors" id="floors" placeholder="Floors" value={this.props.architectures.rows[0].floors}/>
+                                        <Input required type="text" name="Floors" id="floors" placeholder="Floors" 
+                                        onChange={this.handleInputChange} value={this.props.architectures.rows[0].floors}/>
                                     </FormGroup>
                                 </Col>
                             
