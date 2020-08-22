@@ -127,6 +127,128 @@ export const deleteStudent = (studentId) => (dispatch) => {
     .catch(error => dispatch(studentsFailed(error.message)));
 };
 
+export const employeesLoading = () => ({
+    type: ActionTypes.EMPLOYEES_LOADING
+});
+
+export const employeesFailed = (errmess) => ({
+    type: ActionTypes.EMPLOYEES_FAILED,
+    payload: errmess
+});
+
+export const employeesSuccess = (employees) => ({
+    type: ActionTypes.EMPLOYEES_SUCCESS,
+    payload: employees
+});
+
+export const addEmployee = (employee) => ({
+    type: ActionTypes.ADD_EMPLOYEE,
+    payload: employee
+}); 
+student
+export const postEmployee = (employee) => (dispatch) => {
+
+    const newEmployee = {
+        employeeName: employee.name,
+        employeeType: employee.type,
+        mobileNo: employee.mobile,
+        employeeType: employee.type,
+        gender: employee.gender,
+        designation: employee.designation,
+        address: employee.address,
+        joiningDate: employee.joinDate,
+        photo: employee.photo
+    }
+    console.log('Employee: ', newEmployee);
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'employees', {
+        method: 'POST',
+        body: JSON.stringify(newEmployee),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': bearer
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addEmployee(response)))
+    .catch(error => { console.log('Post employees ', error.message);
+        alert('Your employee could not be added\nError: '+ error.message); })
+}
+
+export const fetchEmployees = () => (dispatch) => {
+    dispatch(employeesLoading(true));
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'employees', {
+        headers: {
+            'method': 'GET',
+            'Authorization': bearer
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(employees => dispatch(employeesSuccess(employees)))
+    .catch(error => dispatch(employeesFailed(error.message)));
+}
+
+export const deleteEmployee = (employeeId) => (dispatch) => {
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'employees/' + employeeId, {
+        method: "DELETE",
+        headers: {
+          'Authorization': bearer
+        },
+        credentials: "same-origin"
+    })
+    .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+            throw error;
+      })
+    .then(response => response.json())
+    .then(employees => { console.log('Employee Deleted', employees); dispatch(employeesSuccess(employees)); })
+    .catch(error => dispatch(employeesFailed(error.message)));
+};
+
 export const noticesLoading = () => ({
     type: ActionTypes.NOTICES_LOADING
 });
@@ -345,7 +467,7 @@ export const loginUser = (creds) => (dispatch) => {
         },
         error => {
             throw error;
-        })
+    })
     .then(response => response.json())
     .then(response => {
         if (response.success) {
