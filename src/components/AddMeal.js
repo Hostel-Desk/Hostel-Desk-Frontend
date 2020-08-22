@@ -6,8 +6,10 @@ export default class AddMeal extends Component {
 
         this.state={
             day:'',
-            time:'',
-            itemName:''
+            breakfast:'',
+            lunch:'',
+            snacks:'',
+            dinner:''
         }
 
     }
@@ -62,20 +64,31 @@ export default class AddMeal extends Component {
                             </Col>
                             <Col md={4}>
                             <FormGroup>
-                            <Label for="time">Time</Label>
-                                    <select name="time" id="time" value={this.state.time} onChange={this.handleInputChange}  required className="form-control" >
-                                        <option defaultValue>Select</option>
-                                        <option value="Breakfast">Breakfast</option>
-                                        <option value="Lunch">Lunch</option>
-                                        <option value="Snacks">Snacks</option>
-                                        <option value="Dinner">Dinner</option>
-                                    </select>  
+                            <Label for="breakfast">Breakfast</Label>
+                                <Input required type="text" name="breakfast" id="breakfast" placeholder="Breakfast" value={this.state.breakfast}
+                                onChange={this.handleInputChange} />
                             </FormGroup>
                             </Col>
                             <Col md={4}>
                             <FormGroup>
-                                <Label for="itemName">Item Name</Label>
-                                <Input required type="text" name="itemName" id="itemName" placeholder="Item Name" value={this.state.itemName}
+                                <Label for="lunch">Lunch</Label>
+                                <Input required type="text" name="lunch" id="lunch" placeholder="Lunch" value={this.state.lunch}
+                                onChange={this.handleInputChange} />
+                            </FormGroup>
+                            </Col>
+                        </Row>
+                        <Row form>
+                            <Col md={4}>
+                            <FormGroup>
+                            <Label for="snacks">Snacks</Label>
+                                <Input required type="text" name="snacks" id="snacks" placeholder="Snacks" value={this.state.snacks}
+                                onChange={this.handleInputChange} />
+                            </FormGroup>
+                            </Col>
+                            <Col md={4}>
+                            <FormGroup>
+                                <Label for="dinner">Dinner</Label>
+                                <Input required type="text" name="dinner" id="dinner" placeholder="Dinner" value={this.state.dinner}
                                 onChange={this.handleInputChange} />
                             </FormGroup>
                             </Col>

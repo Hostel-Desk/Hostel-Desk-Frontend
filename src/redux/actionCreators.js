@@ -570,5 +570,3 @@ export const logoutUser = () => (dispatch) => {
     dispatch(employeesFailed("Error 401: Unauthorized"));
     dispatch(receiveLogout())
 }
-
-
