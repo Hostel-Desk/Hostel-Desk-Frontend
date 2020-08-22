@@ -691,7 +691,7 @@ export const postMealbill = (mealbill) => (dispatch) => {
         payment:mealbill.rupees,
         paymentDate:mealbill.paymentduedate
     }
-    console.log('Meal: ', newMealbill);
+    console.log('Mealbill: ', newMealbill);
 
     const bearer = 'Bearer ' + localStorage.getItem('token');
 
@@ -929,4 +929,95 @@ export const fetchArchitecture = () => (dispatch) => {
     .then(response => response.json())
     .then(architecture => dispatch(architectureSuccess(architecture)))
     .catch(error => dispatch(architectureFailed(error.message)));
+}
+
+
+export const seatallocationLoading = () => ({
+    type: ActionTypes.SEATALLOCATION_LOADING
+});
+
+export const seatallocationFailed = (errmess) => ({
+    type: ActionTypes.SEATALLOCATION_FAILED,
+    payload: errmess
+});
+
+export const seatallocationSuccess = (seatallocation) => ({
+    type: ActionTypes.SEATALLOCATION_SUCCESS,
+    payload: seatallocation
+});
+
+export const addseatallocation = (seatallocation) => ({
+    type: ActionTypes.ADD_SEATALLOCATION,
+    payload: seatallocation
+});
+
+export const postSeatallocation = (seats) => (dispatch) => {
+
+    const newSeatAllocation = {
+        name:seats.name,
+        block:seats.block,
+        room:seats.room,
+        monthlyRent:seats.rent,
+
+    }
+    console.log('SeatAllocation: ', newSeatAllocation);
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'seats', {
+        method: 'POST',
+        body: JSON.stringify(newSeatAllocation),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': bearer
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addseatallocation(response)))
+    .catch(error => { console.log('Post seats ', error.message);
+        alert('Your SealAllocation could not be added\nError: '+ error.message); })
+}
+
+export const fetchSeatallocation = () => (dispatch) => {
+    dispatch(seatallocationLoading(true));
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'seats', {
+        headers: {
+            'method': 'GET',
+            'Authorization': bearer
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(seats => dispatch(seatallocationSuccess(seats)))
+    .catch(error => dispatch(seatallocationFailed(error.message)));
 }
