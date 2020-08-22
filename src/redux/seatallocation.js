@@ -15,8 +15,8 @@ export const SeatAllocation = (state = {
             return {...state, isLoading: true, errMess: [], seatAllocation: []};
 
         case ActionTypes.ADD_SEATALLOCATION:
-            var salary = action.payload;
-            return {...state, seatAllocation: state.seatAllocation.concat(salary)};
+            var seats = action.payload;
+            return {...state, seatAllocation: state.seatAllocation.concat(seats)};
 
         default:
             return state;

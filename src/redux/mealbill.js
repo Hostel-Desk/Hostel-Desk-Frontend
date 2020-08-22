@@ -1,6 +1,7 @@
 import * as ActionTypes from './actionTypes'
 
 export const MealBills = (state = {
+    isLoading: true,
     errMess: null,
     bills: []
 }, action) => {
@@ -23,4 +24,4 @@ export const MealBills = (state = {
     }
 }
 
-    students
+    

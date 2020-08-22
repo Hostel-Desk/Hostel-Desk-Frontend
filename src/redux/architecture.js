@@ -1,6 +1,7 @@
 import * as ActionTypes from './actionTypes'
 
 export const Architecture = (state = {
+    isLoading: true,
     errMess: null,
     architecture: []
 }, action) => {
@@ -14,7 +15,7 @@ export const Architecture = (state = {
         case ActionTypes.ARCHITECTURE_LOADING:
             return {...state, isLoading: true, errMess: [], architecture: []};
 
-        case ActionTypes.ARCHITECTURE_MEAL:
+        case ActionTypes.ADD_ARCHITECTURE:
             var architecture = action.payload;
             return {...state, architecture: state.architecture.concat(architecture)};
 

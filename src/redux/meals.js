@@ -1,6 +1,7 @@
 import * as ActionTypes from './actionTypes'
 
 export const Meals = (state = {
+    isLoading: true,
     errMess: null,
     meals: []
 }, action) => {

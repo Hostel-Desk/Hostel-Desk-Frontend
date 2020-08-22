@@ -107,8 +107,7 @@ export const deleteStudent = (studentId) => (dispatch) => {
         method: "DELETE",
         headers: {
           'Authorization': bearer
-        },
-        credentials: "same-origin"
+        }
     })
     .then(response => {
         if (response.ok) {
@@ -229,8 +228,7 @@ export const deleteEmployee = (employeeId) => (dispatch) => {
         method: "DELETE",
         headers: {
           'Authorization': bearer
-        },
-        credentials: "same-origin"
+        }
     })
     .then(response => {
         if (response.ok) {
@@ -343,8 +341,7 @@ export const deleteNotice = (noticeId) => (dispatch) => {
         method: "DELETE",
         headers:{
             'Authorization': bearer
-        },
-        credentials: "same-origin"
+        }
     })
     .then(response => {
         if(response.ok) {
@@ -458,8 +455,7 @@ export const deleteSalary = (salaryId) => (dispatch) => {
         method: "DELETE",
         headers:{
             'Authorization': bearer
-        },
-        credentials: "same-origin"
+        }
     })
     .then(response => {
         if(response.ok) {
@@ -536,6 +532,7 @@ export const loginUser = (creds) => (dispatch) => {
             dispatch(fetchMealBills());
             dispatch(fetchNotices());
             dispatch(fetchArchitecture());
+            dispatch(fetchComplaints())
             dispatch(receiveLogin(response));
         }
         else {
@@ -570,6 +567,7 @@ export const logoutUser = () => (dispatch) => {
     dispatch(mealBillsFailed("Error 401: Unauthorized"));
     dispatch(employeesFailed("Error 401: Unauthorized"));
     dispatch(architectureFailed("Error 401: Unauthorized"));
+    dispatch(complaintsFailed("Error 401: Unauthorized"))
     dispatch(receiveLogout())
 }
 
@@ -874,7 +872,7 @@ export const postArchitecture = (architecture) => (dispatch) => {
     const bearer = 'Bearer ' + localStorage.getItem('token');
 
     return fetch(baseUrl + 'architecture', {
-        method: 'POST',
+        method: 'PUT',
         body: JSON.stringify(newArchitecture),
         headers: {
             'Content-Type': 'application/json',
@@ -1021,3 +1019,117 @@ export const fetchSeatallocation = () => (dispatch) => {
     .then(seats => dispatch(seatallocationSuccess(seats)))
     .catch(error => dispatch(seatallocationFailed(error.message)));
 }
+
+export const complaintsLoading = () => ({
+    type: ActionTypes.COMPLAINTS_LOADING
+});
+
+export const complaintsFailed = (errmess) => ({
+    type: ActionTypes.COMPLAINTS_FAILED,
+    payload: errmess
+});
+
+export const complaintsSuccess = (students) => ({
+    type: ActionTypes.COMPLAINTS_SUCCESS,
+    payload: students
+});
+
+export const addComplaint = (student) => ({
+    type: ActionTypes.ADD_COMPLAINT,
+    payload: student
+}); 
+
+export const postComplaint = (complaint) => (dispatch) => {
+
+    const newComplaint = {
+        title: complaint.title,
+        complaint: complaint.description
+    }
+    console.log('Complaint: ', newComplaint);
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'complaints', {
+        method: 'POST',
+        body: JSON.stringify(newComplaint),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': bearer
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addComplaint(response)))
+    .catch(error => { console.log('Post complaints ', error.message);
+        alert('Your complaint could not be added\nError: '+ error.message); })
+}
+
+export const fetchComplaints = () => (dispatch) => {
+    dispatch(complaintsLoading(true));
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'complaints', {
+        headers: {
+            'method': 'GET',
+            'Authorization': bearer
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(complaints => dispatch(complaintsSuccess(complaints)))
+    .catch(error => dispatch(complaintsFailed(error.message)));
+}
+
+export const deleteComplaint = (complaintId) => (dispatch) => {
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'complaints/' + complaintId, {
+        method: "DELETE",
+        headers: {
+          'Authorization': bearer
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+            throw error;
+      })
+    .then(response => response.json())
+    .then(complaints => { console.log('Complaint Deleted', complaints); dispatch(complaintsSuccess(complaints)); })
+    .catch(error => dispatch(complaintsFailed(error.message)));
+};

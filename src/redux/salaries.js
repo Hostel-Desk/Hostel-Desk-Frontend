@@ -1,6 +1,7 @@
 import * as ActionTypes from './actionTypes'
 
 export const Salaries = (state = {
+    isLoading: true,
     errMess: null,
     salaries: []
 }, action) => {

@@ -1,4 +1,4 @@
-import * as ActionTypes from './ActionTypes';
+import * as ActionTypes from './actionTypes';
 
 export const Auth = (state = {
         isLoading: false,

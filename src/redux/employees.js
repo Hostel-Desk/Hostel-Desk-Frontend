@@ -1,6 +1,7 @@
 import * as ActionTypes from './actionTypes'
 
-export const Students = (state = {
+export const Employees = (state = {
+    isLoading: true,
     errMess: null,
     employees: []
 }, action) => {
@@ -15,8 +16,8 @@ export const Students = (state = {
             return {...state, isLoading: true, errMess: [], employess: []};
 
         case ActionTypes.ADD_EMPLOYEE:
-            var student = action.payload;
-            return {...state, employees: state.students.concat(student)};
+            var employee = action.payload;
+            return {...state, employees: state.students.concat(employee)};
 
         default:
             return state;
