@@ -13,20 +13,6 @@ import { postArchitecture, postComplaint, postEmployee, postMeal, postMealbill, 
     fetchMeals, fetchNotices, fetchSalaries, fetchSeatallocation, fetchStudents, deleteComplaint, 
     deleteEmployee, deleteNotice, deleteSalary, deleteStudent, logoutUser, loginUser } from '../redux/actionCreators';
 
-    const PrivateRoute = ({ component: Component, ...rest }) => (
-        <Route {...rest} render={(props) => (
-          fakeAuth.isAuthenticated
-            ? <Component {...props} />
-            : <Redirect to={{
-                pathname: '/home',
-                state: { from: props.location }
-              }} />
-        )} />
-    );
-    const fakeAuth = {
-        isAuthenticated: false,
-    };
-
     const mapDispatchToProps = (dispatch) => ({
         postArchitecture: (architecture) => dispatch(postArchitecture(architecture)),
         postComplaint: (complaint) => dispatch(postComplaint(complaint)), 
@@ -87,11 +73,25 @@ class Main extends Component {
     }
     
     render() {
+        // const fakeAuth = {
+        //     isAuthenticated: true,
+        // };
+        const PrivateRoute = ({ component: Component, ...rest }) => (
+            <Route {...rest} render={(props) => (
+              this.props.auth.isAuthenticated
+                ? <Component {...props} />
+                : <Redirect to={{
+                    pathname: '/home',
+                    state: { from: props.location }
+                  }} />
+            )} />
+        );
         return (
             <div>
                 <div className="container-fluid topSection">
                     <Header />
-                    <Bar changelink = {this.changelink} changedValue={this.state.changedValue}/>
+                    <Bar auth={this.props.auth} loginUser={this.props.loginUser} logoutUser={this.props.logoutUser} 
+                    changelink = {this.changelink} changedValue={this.state.changedValue}/>
                 </div>
     
                     <Switch >

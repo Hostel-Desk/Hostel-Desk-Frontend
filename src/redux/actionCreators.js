@@ -66,7 +66,7 @@ export const fetchMealbill = () => (dispatch) => {
 
     const bearer = 'Bearer ' + localStorage.getItem('token');
 
-    return fetch(baseUrl + 'mealbill', {
+    return fetch(baseUrl + 'mealbills', {
         headers: {
             'method': 'GET',
             'Authorization': bearer
@@ -610,6 +610,7 @@ export const loginUser = (creds) => (dispatch) => {
     })
     .then(response => response.json())
     .then(response => {
+        console.log(response);
         if (response.success) {
             // If login was successful, set the token in local storage
             localStorage.setItem('token', response.token);

@@ -2,9 +2,6 @@ import React, {Component} from 'react'
 import { Collapse, Navbar, Nav, NavItem, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input, NavbarToggler,FormFeedback } from 'reactstrap';
 import { BrowserRouter, Link, NavLink } from 'react-router-dom';
 
-
-
-
 class Bar extends Component {
     constructor(props) {
         super(props);
@@ -15,7 +12,7 @@ class Bar extends Component {
             username: '',
             password: '',
             id: '',
-            isLoggedIn: false,
+            isLoggedIn: this.props.auth.isAuthenticated,
             touched: {
                 username: false,
                 password: false
@@ -24,7 +21,6 @@ class Bar extends Component {
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.toggleModal1 = this.toggleModal1.bind(this);
-        this.changelink = this.changelink.bind(this);
         this.handleLoginClick = this.handleLoginClick.bind(this);
         this.handleLogoutClick = this.handleLogoutClick.bind(this);
         this.handleSignUpClick = this.handleSignUpClick.bind(this);
@@ -47,13 +43,14 @@ class Bar extends Component {
         });
     }
     handleLoginClick() {
-        this.setState({isLoggedIn: true,isModalOpen: !this.state.isModalOpen,});
-        
-      }
-    
-      handleLogoutClick() {
-        this.setState({isLoggedIn: false});
-      }
+        this.props.loginUser({username: this.state.username, password: this.state.password})
+        this.setState({isLoggedIn: this.props.auth.isAuthenticated, isModalOpen: !this.state.isModalOpen,});
+    }
+
+    handleLogoutClick() {
+        this.props.logoutUser();
+        this.setState({isLoggedIn: this.props.auth.isAuthenticated});
+    }
 
     handleSignUpClick() {
         this.setState({isModalOpen1: !this.state.isModalOpen1,});
