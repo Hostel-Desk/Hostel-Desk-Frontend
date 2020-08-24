@@ -61,16 +61,9 @@ class Main extends Component {
     
     constructor(props) {
         super(props);
-
-        this.state = {
-            changedValue: ''
-        }
     }
 
     render() {
-        // const fakeAuth = {
-        //     isAuthenticated: true,
-        // };
         const PrivateRoute = ({ component: Component, ...rest }) => (
             <Route {...rest} render={(props) => (
               this.props.auth.isAuthenticated
@@ -88,12 +81,16 @@ class Main extends Component {
                     <Bar auth={this.props.auth} loginUser={this.props.loginUser} logoutUser={this.props.logoutUser} />
                 </div>
     
-                    <Switch >
+                    <Switch>
                         <Route path="/home" component={() => <Home/>}/>
-                        <Route path="/login" component={() => <LoginForm auth={this.props.auth} loginUser={this.props.loginUser}/>}/>
-                        <PrivateRoute path="/admin" component={() => <Admin auth={this.props.auth}/>}/>
+                        <Route path="/login" component={() => <LoginForm auth={this.props.auth} loginUser={this.props.loginUser} />}/>
+                        <PrivateRoute path="/admin" component={() => <Admin auth={this.props.auth} 
+                        employees={this.props.employees} notices={this.props.notices} students={this.props.students} salaries={this.props.salaries}
+                        meals={this.props.meals} mealBills={this.props.mealBills} seatAllocation={this.props.seatAllocation} />}/>
                         <Route path="/contactus" component={Contact}/>
-                        <PrivateRoute path="/student" component={() => <Student auth={this.props.auth}/>}/>
+                        <PrivateRoute path="/student" component={() => <Student auth={this.props.auth} 
+                        employees={this.props.employees} notices={this.props.notices} students={this.props.students} salaries={this.props.salaries}
+                        meals={this.props.meals} mealBills={this.props.mealBills} seatAllocation={this.props.seatAllocation}/>}/>
                         <Redirect to="/home"/>
                     </Switch>
                 <Footer />
