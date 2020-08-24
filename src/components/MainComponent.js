@@ -91,9 +91,9 @@ class Main extends Component {
                     <Switch >
                         <Route path="/home" component={() => <Home/>}/>
                         <Route path="/login" component={() => <LoginForm auth={this.props.auth} loginUser={this.props.loginUser}/>}/>
-                        <PrivateRoute path="/admin" component={() => <Admin changedValue = {this.state.changedValue}/>}/>
+                        <PrivateRoute path="/admin" component={() => <Admin auth={this.props.auth}/>}/>
                         <Route path="/contactus" component={Contact}/>
-                        <PrivateRoute path="/student" component={() => <Student changedValue = {this.state.changedValue}/>}/>
+                        <PrivateRoute path="/student" component={() => <Student auth={this.props.auth}/>}/>
                         <Redirect to="/home"/>
                     </Switch>
                 <Footer />

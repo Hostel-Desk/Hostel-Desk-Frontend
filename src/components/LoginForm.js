@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Form, FormGroup, Label, Input, FormFeedback } from 'reactstrap';
+import { Form, FormGroup, Label, Input, FormFeedback, Button } from 'reactstrap';
 import { useHistory, withRouter } from 'react-router-dom';
 import {Card, CardBody, CardHeader } from 'reactstrap';
 
@@ -49,7 +49,7 @@ function LoginForm(props) {
             errors.username = 'Username should be of minimum length of 3 characters';
         if(initialState.touched.username && username.length > 30)
             errors.username = 'Username should not be greater than 30 characters';
-        if(initialState.touched.password && password.length < 8)
+        if(initialState.touched.password && password.length < 5)
             errors.password = 'Password should be of minimum length of 8 characters';
         return errors;
     }
@@ -80,7 +80,7 @@ function LoginForm(props) {
                         <p>Remember Me</p>
                     </Label>
                 </FormGroup>
-                {/*<Link onClick={this.handleLoginClick} to={this.props.changedValue}>*/}<button type="submit" value="submit" type="button" class="btn btn-primary btn-md btn-block mt-2" ><span className="fa fa-sign-in-alt fa-lg"></span>Login</button>{/*</Link>*/}
+                {/*<Link onClick={this.handleLoginClick} to={this.props.changedValue}>*/}<button onClick={handleLoginClick} type="submit" value="submit" type="button" class="btn btn-primary btn-md btn-block mt-2" ><span className="fa fa-sign-in-alt fa-lg"></span>Login</button>{/*</Link>*/}
             </Form>
                 </CardBody>
             </Card>
