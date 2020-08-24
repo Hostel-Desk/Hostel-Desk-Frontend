@@ -12,7 +12,6 @@ class Bar extends Component {
             username: '',
             password: '',
             id: '',
-            isLoggedIn: this.props.auth.isAuthenticated,
             touched: {
                 username: false,
                 password: false
@@ -44,12 +43,11 @@ class Bar extends Component {
     }
     handleLoginClick() {
         this.props.loginUser({username: this.state.username, password: this.state.password})
-        this.setState({isLoggedIn: this.props.auth.isAuthenticated, isModalOpen: !this.state.isModalOpen,});
+        this.setState({isModalOpen: !this.state.isModalOpen,});
     }
 
     handleLogoutClick() {
         this.props.logoutUser();
-        this.setState({isLoggedIn: this.props.auth.isAuthenticated});
     }
 
     handleSignUpClick() {
@@ -107,7 +105,7 @@ class Bar extends Component {
     render(){
         
         const errors = this.validate(this.state.username, this.state.password);
-        const isLoggedIn = this.state.isLoggedIn;
+        const isLoggedIn = this.props.auth.isAuthenticated;
         let button;
         let button1;
 
