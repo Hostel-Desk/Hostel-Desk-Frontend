@@ -54,15 +54,6 @@ class Bar extends Component {
         this.setState({isModalOpen1: !this.state.isModalOpen1,});
     }
 
-    changelink=(event)=>{
-        if (event.target.value==="Admin"){
-            this.props.changelink("/admin");
-        }
-        if (event.target.value==="Student"){
-            this.props.changelink("/student");
-        }
-    }
-
     handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;

@@ -67,13 +67,6 @@ class Main extends Component {
         }
     }
 
-    changelink = (value) => {
-        console.log(value);
-        this.setState({
-            changedValue: value,
-        })
-    }
-    
     render() {
         // const fakeAuth = {
         //     isAuthenticated: true,
@@ -92,8 +85,7 @@ class Main extends Component {
             <div>
                 <div className="container-fluid topSection">
                     <Header />
-                    <Bar auth={this.props.auth} loginUser={this.props.loginUser} logoutUser={this.props.logoutUser} 
-                    changelink = {this.changelink} changedValue={this.state.changedValue}/>
+                    <Bar auth={this.props.auth} loginUser={this.props.loginUser} logoutUser={this.props.logoutUser} />
                 </div>
     
                     <Switch >
