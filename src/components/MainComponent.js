@@ -8,10 +8,12 @@ import Admin from './AdminMainComponent';
 import Contact from './ContactComponent';
 import Student from './StudentMainComponent';
 import { connect } from 'react-redux';
+import LoginForm from './LoginForm';
 import { postArchitecture, postComplaint, postEmployee, postMeal, postMealbill, postNotice, postSalary, 
     postSeatallocation, postStudent, fetchArchitecture, fetchComplaints, fetchEmployees, fetchMealbill, 
     fetchMeals, fetchNotices, fetchSalaries, fetchSeatallocation, fetchStudents, deleteComplaint, 
     deleteEmployee, deleteNotice, deleteSalary, deleteStudent, logoutUser, loginUser } from '../redux/actionCreators';
+
 
     const mapDispatchToProps = (dispatch) => ({
         postArchitecture: (architecture) => dispatch(postArchitecture(architecture)),
@@ -96,6 +98,7 @@ class Main extends Component {
     
                     <Switch >
                         <Route path="/home" component={() => <Home/>}/>
+                        <Route path="/login" component={() => <LoginForm auth={this.props.auth} loginUser={this.props.loginUser}/>}/>
                         <PrivateRoute path="/admin" component={() => <Admin changedValue = {this.state.changedValue}/>}/>
                         <Route path="/contactus" component={Contact}/>
                         <PrivateRoute path="/student" component={() => <Student changedValue = {this.state.changedValue}/>}/>
