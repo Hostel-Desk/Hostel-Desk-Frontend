@@ -19,8 +19,7 @@ class DashBoard extends Component {
     }
 
     changeLink = () => {
-        console.log(this.props.changedValue)
-        if(this.props.changedValue === "/admin") {
+        if(this.props.auth.admin) {
             console.log('in if statement')
             this.setState({
                 employee: "/admin/EmployeeManage/view",
@@ -28,7 +27,7 @@ class DashBoard extends Component {
                 meals: "/admin/MealManage/view",
                 rooms: "/admin/rooms"
             })
-        } if(this.props.changedValue === "/student") {
+        } if(!this.props.auth.admin) {
             console.log('in if statement')
 
             this.setState({

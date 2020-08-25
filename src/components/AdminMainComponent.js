@@ -732,7 +732,7 @@ class Admin extends Component {
                             <Route path="/admin/dashboard" component={() => <DashBoard architectures={this.state.Architectures}
                                                                                         employees={this.state.Employees}
                                                                                         students={this.state.Students}
-                                                                                        changedValue={this.props.changedValue}/>}/>
+                                                                                        auth={this.props.auth}/>}/>
                             <Route exact path="/admin/students" component={()=><StudentView students={this.state.Students}/>}/>
                             <Route exact path="/admin/rooms" component={() => <ArchitectureView architectures={this.state.Architectures}/>}/>
                             <Route exact path="/admin/StudentManage/addnew" component={AddStudent}/>

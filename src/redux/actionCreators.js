@@ -140,6 +140,7 @@ export const postStudent = (student) => (dispatch) => {
         }
     })
     .then(response => {
+        console.log(response);
         if (response.ok) {
             return response;
         }
@@ -574,7 +575,8 @@ export const requestLogin = (creds) => {
 export const receiveLogin = (response) => {
     return {
         type: ActionTypes.LOGIN_SUCCESS,
-        token: response.token
+        token: response.token,
+        admin: response.admin
     }
 }
   

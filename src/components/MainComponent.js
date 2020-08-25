@@ -8,10 +8,12 @@ import Admin from './AdminMainComponent';
 import Contact from './ContactComponent';
 import Student from './StudentMainComponent';
 import { connect } from 'react-redux';
+import LoginForm from './LoginForm';
 import { postArchitecture, postComplaint, postEmployee, postMeal, postMealbill, postNotice, postSalary, 
     postSeatallocation, postStudent, fetchArchitecture, fetchComplaints, fetchEmployees, fetchMealbill, 
     fetchMeals, fetchNotices, fetchSalaries, fetchSeatallocation, fetchStudents, deleteComplaint, 
     deleteEmployee, deleteNotice, deleteSalary, deleteStudent, logoutUser, loginUser } from '../redux/actionCreators';
+
 
     const mapDispatchToProps = (dispatch) => ({
         postArchitecture: (architecture) => dispatch(postArchitecture(architecture)),
@@ -59,23 +61,9 @@ class Main extends Component {
     
     constructor(props) {
         super(props);
-
-        this.state = {
-            changedValue: ''
-        }
     }
 
-    changelink = (value) => {
-        console.log(value);
-        this.setState({
-            changedValue: value,
-        })
-    }
-    
     render() {
-        // const fakeAuth = {
-        //     isAuthenticated: true,
-        // };
         const PrivateRoute = ({ component: Component, ...rest }) => (
             <Route {...rest} render={(props) => (
               this.props.auth.isAuthenticated
@@ -90,17 +78,24 @@ class Main extends Component {
             <div>
                 <div className="container-fluid topSection">
                     <Header />
-                    <Bar auth={this.props.auth} loginUser={this.props.loginUser} logoutUser={this.props.logoutUser} 
-                    changelink = {this.changelink} changedValue={this.state.changedValue}/>
+                    <Bar auth={this.props.auth} loginUser={this.props.loginUser} logoutUser={this.props.logoutUser} />
                 </div>
     
-                    <Switch >
+                    <div className="mainSection">
+                    <Switch>
                         <Route path="/home" component={() => <Home/>}/>
-                        <PrivateRoute path="/admin" component={() => <Admin changedValue = {this.state.changedValue}/>}/>
+                        <Route path="/login" component={() => <LoginForm auth={this.props.auth} loginUser={this.props.loginUser} />}/>
+                        <PrivateRoute path="/admin" component={() => <Admin auth={this.props.auth} 
+                        employees={this.props.employees} notices={this.props.notices} students={this.props.students} 
+                        deleteStudent = {this.props.deleteStudent} salaries={this.props.salaries}
+                        meals={this.props.meals} mealBills={this.props.mealBills} seatAllocation={this.props.seatAllocation} />}/>
                         <Route path="/contactus" component={Contact}/>
-                        <PrivateRoute path="/student" component={() => <Student changedValue = {this.state.changedValue}/>}/>
+                        <PrivateRoute path="/student" component={() => <Student auth={this.props.auth} 
+                        employees={this.props.employees} notices={this.props.notices} students={this.props.students} salaries={this.props.salaries}
+                        meals={this.props.meals} mealBills={this.props.mealBills} seatAllocation={this.props.seatAllocation}/>}/>
                         <Redirect to="/home"/>
                     </Switch>
+                    </div>
                 <Footer />
             </div>
         )
