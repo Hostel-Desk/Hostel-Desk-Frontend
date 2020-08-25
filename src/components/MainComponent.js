@@ -87,7 +87,7 @@ class Main extends Component {
                         <Route path="/login" component={() => <LoginForm auth={this.props.auth} loginUser={this.props.loginUser} />}/>
                         <PrivateRoute path="/admin" component={() => <Admin auth={this.props.auth} 
                         employees={this.props.employees} notices={this.props.notices} students={this.props.students} 
-                        deleteStudent = {this.props.deleteStudent} salaries={this.props.salaries}
+                        deleteStudent = {this.props.deleteStudent} fetchStudents={this.props.fetchStudents} salaries={this.props.salaries}
                         meals={this.props.meals} mealBills={this.props.mealBills} seatAllocation={this.props.seatAllocation} />}/>
                         <Route path="/contactus" component={Contact}/>
                         <PrivateRoute path="/student" component={() => <Student auth={this.props.auth} 

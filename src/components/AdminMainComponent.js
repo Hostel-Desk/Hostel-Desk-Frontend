@@ -139,296 +139,8 @@ class Admin extends Component {
                 
               ],
             },
-            Students: {
-                columns: [
-                  {
-                    label: 'SID',
-                    field: 'sid',
-                    width: 150,
-                    sort: 'asc'
-                  },
-                    {
-                      label: 'Name',
-                      field: 'name',
-                      width: 150,
-                      attributes: {
-                        'aria-controls': 'DataTable',
-                        'aria-label': 'Name',
-                      },
-                    },
-                    {
-                      label: 'Mobile No.',
-                      field: 'mobile',
-                      width: 150,
-                    },
-                    {
-                      label: 'Program',
-                      field: 'program',
-                      width: 150,
-                    },
-                    {
-                      label: 'Guardian',
-                      field: 'guardian',
-                      sort: 'disabled',
-                      width: 100,
-                    },
-                    {
-                      label: 'G Mobile',
-                      field: 'gMob',
-                      sort: 'disabled',
-                      width: 150,
-                    },
-                    {
-                      label: 'P. Address',
-                      field: 'pAddress',
-                      sort: 'disabled',
-                      width: 100
-                    },
-                    {
-                      label: 'Actions',
-                      field: 'actions',
-                      sort: 'disabled',
-                      width: 100,
-                      default:  <div>
-                      <i className="fa fa-pencil-alt edit mr-2" onClick={() =>this.toggleStudentModal()}></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
-                    }
-                ],
-                rows: [
-                    {
-                        sid: 19104009,
-                        name: 'Jatin Bansal',
-                        mobile: '8729060249',
-                        program: 'ELEC',
-                        guardian: 'Mr Xyz',
-                        gMob: '8264554894',
-                        pAddress: 'Mullanpur',
-                        actions: <div>
-                        <i className="fa fa-pencil-alt edit mr-2" onClick={() =>this.toggleStudentModal()}></i>
-                        <i className="fa fa-trash-alt delete"></i>
-                      </div>
-                        
-                    },
-                    
-                ],
-            },
-            Employees: {
-                columns: [
-                  {
-                    label: 'Employee Id',
-                    field: 'eid',
-                    width: 150,
-                  },
-                    {
-                      label: 'Name',
-                      field: 'name',
-                      width: 150,
-                      attributes: {
-                        'aria-controls': 'DataTable',
-                        'aria-label': 'Name',
-                      },
-                    },
-                    {
-                      label: 'Gender',
-                      field: 'gender',
-                      width: 150,
-                    },
-                    {
-                      label: 'Employee Type',
-                      field: 'employeetype',
-                      width: 200,
-                    },
-                    {
-                      label: 'Designation',
-                      field: 'designation',
-                      
-                      width: 100,
-                    },
-                    {
-                      label: 'Join Date',
-                      field: 'date',
-                      sort: 'asc',
-                      width: 150,
-                    },
-                    {
-                      label: 'Salary',
-                      field: 'salary',
-                      sort: 'disabled',
-                      width: 100,
-                    },
-                    {
-                      label: 'Address',
-                      field: 'address',
-                      
-                      width: 100,
-                    },
-                    {
-                        label: 'Actions',
-                        field: 'actions',
-                        sort: 'disabled',
-                        width: 100,
-                        default: <div>
-                        <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
-                        <i className="fa fa-trash-alt delete"></i>
-                      </div>
-                      }
-              
-                  ],
-                  rows: [
-                    {
-                      eid: 'E-01',
-                      name: 'Tiger Nixon',
-                      gender: 'Male',
-                      employeetype: 'System Architect',
-                      designation: 'Edinburgh',
-                      
-                      date: '2011/04/25',
-                      salary: '$320',
-                      address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
-                    },
-                    {
-                      eid: 'E-02',
-                      name: 'Garrett Winters',
-                      gender: 'Male',
-                      employeetype: 'Accountant',
-                      designation: 'Tokyo',
-                      
-                      date: '2011/07/25',
-                      salary: '$170',
-                      address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
-                    },
-                    {
-                      eid: 'E-03',
-                      name: 'Ashton Cox',
-                      gender: 'Male',
-                      employeetype: 'Junior Technical Author',
-                      designation: 'San Francisco',
-                      
-                      date: '2009/01/12',
-                      salary: '$86',
-                      address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
-                    },
-                    {
-                      eid: 'E-04',
-                      name: 'Cedric Kelly',
-                      gender: 'Male',
-                      employeetype: 'Senior Javascript Developer',
-                      designation: 'Edinburgh',
-                      
-                      date: '2012/03/29',
-                      salary: '$433',
-                      address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>  
-                    },
-                    {
-                      eid: 'E-05',
-                      name: 'Airi Satou',
-                      gender: 'Male',
-                      employeetype: 'Accountant',
-                      designation: 'Tokyo',
-                      
-                      date: '2008/11/28',
-                      salary: '$162',
-                      address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
-                    },
-                    {
-                      eid: 'E-06',
-                      name: 'Brielle Williamson',
-                      gender: 'Male',
-                      employeetype: 'Integration Specialist',
-                      designation: 'New York',
-                      
-                      date: '2012/12/02',
-                      salary: '$372',
-                      address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
-                    },
-                    {
-                      eid: 'E-07',
-                      name: 'Herrod Chandler',
-                      gender: 'Male',
-                      employeetype: 'Sales Assistant',
-                      designation: 'San Francisco',
-                      
-                      date: '2012/08/06',
-                      salary: '$137',
-                      address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
-                    },
-                    {
-                      eid: 'E-08',
-                      name: 'Rhona Davidson',
-                      gender: 'Male',
-                      employeetype: 'Integration Specialist',
-                      designation: 'Tokyo',
-                      
-                      date: '2010/10/14',
-                      salary: '$327',
-                      address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
-                    },
-                    {
-                      eid: 'E-09',
-                      name: 'Colleen Hurst',
-                      gender: 'Male',
-                      employeetype: 'Javascript Developer',
-                      designation: 'San Francisco',
-                      
-                      date: '2009/09/15',
-                      salary: '$205',
-                      address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
-                    },
-                    {
-                      eid: 'E-10',
-                      name: 'Sonya Frost',
-                      gender: 'Male',
-                      employeetype: 'Software Engineer',
-                      designation: 'Edinburgh',
-                      
-                      date: '2008/12/13',
-                      salary: '$103',
-                      address: 'Shivalik Hostel',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
-                    },
-                  
-                ],
-            },
+            Students: [],
+            Employees: [],
             Notices: {
                 columns: [
                     {
@@ -682,6 +394,48 @@ class Admin extends Component {
         this.toggleNoticeModal= this.toggleNoticeModal.bind(this);
         this.toggleArchitectureModal= this.toggleArchitectureModal.bind(this);
     }
+
+    componentDidMount() {
+      let students = [];
+      this.props.students.students.forEach(element => {
+        students.push({
+          sid: element.sid,
+          name: element.studentName,
+          mobile: element.mobileNo,
+          program: element.branch,
+          gMob: element.fatherMobile,
+          guardian: element.fatherName,
+          pAddress: element.address,
+          actions: <div>
+            <i className="fa fa-pencil-alt edit mr-2" onClick={this.toggleStudentModal}/>
+            <i className="fa fa-trash-alt delete"></i>
+          </div>
+        })
+      });
+      const studentlist = this.state.Students.concat(students);
+      let employees = [];
+      this.props.employees.employees.forEach(element => {
+        employees.push({
+          name: element.employeeName,
+          gender: element.gender,
+          employeetype: element.employeeType,
+          designation: element.designation,
+          mobile: element.mobileNo,
+          date: element.joiningDate,
+          address: element.hostel.name,
+          actions: <div>
+          <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
+          <i className="fa fa-trash-alt delete"></i>
+        </div>
+        })
+      });
+      const employeeList = this.state.Students.concat(employees);
+      this.setState({
+        Students: studentlist,
+        Employees: employeeList
+      });
+      }
+    
     toggleStudentModal(){
       this.setState({
         isStudentModalOpen: !this.state.isStudentModalOpen
@@ -719,7 +473,6 @@ class Admin extends Component {
     }
 
     render() {
-      console.log(this.props.changedValue);
         return(
             <div className="feature admin">
                 <div className="row">
@@ -730,8 +483,8 @@ class Admin extends Component {
 
                         <Switch>
                             <Route path="/admin/dashboard" component={() => <DashBoard architectures={this.state.Architectures}
-                                                                                        employees={this.state.Employees}
-                                                                                        students={this.state.Students}
+                                                                                        employees={this.props.employees}
+                                                                                        students={this.props.students}
                                                                                         auth={this.props.auth}/>}/>
                             <Route exact path="/admin/students" component={()=><StudentView students={this.state.Students}/>}/>
                             <Route exact path="/admin/rooms" component={() => <ArchitectureView architectures={this.state.Architectures}/>}/>
