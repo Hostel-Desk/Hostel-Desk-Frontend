@@ -15,12 +15,10 @@ class DashBoard extends Component {
     }
     componentDidMount() {
         this.changeLink();
-        console.log('Component Mounted')
     }
 
     changeLink = () => {
         if(this.props.auth.admin) {
-            console.log('in if statement')
             this.setState({
                 employee: "/admin/EmployeeManage/view",
                 student: "/admin/StudentManage/view",
@@ -28,7 +26,6 @@ class DashBoard extends Component {
                 rooms: "/admin/rooms"
             })
         } if(!this.props.auth.admin) {
-            console.log('in if statement')
 
             this.setState({
                 employee: "/student/employeeView",
@@ -54,7 +51,7 @@ class DashBoard extends Component {
                         <CardHeader className="dashCard">
                             <div className="row">
                             <span className="col-7 fa fa-users fa-4x"></span>
-                            <h3>{this.props.employees.rows.length}</h3>
+                            <h3>{this.props.employees.employees.length}</h3>
                             </div> 
                             <div className="mt-3">
                                 <div>
@@ -71,7 +68,7 @@ class DashBoard extends Component {
                         <CardHeader className="dashCard">
                             <div className="row">
                             <span className="col-7 fa fa-users fa-4x"></span>
-                            <h3>{this.props.students.rows.length}</h3>
+                            <h3>{this.props.students.students.length}</h3>
                             </div> 
                             <div className="mt-3">
                                 <div>
