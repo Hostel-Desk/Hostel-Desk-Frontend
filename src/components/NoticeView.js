@@ -17,12 +17,6 @@ export default function NoticeView({notices}) {
               width: 200
           },
           {
-              label: 'Date',
-              field: 'date',
-              sort: 'disabled',
-              width: 80
-          },
-          {
               label: 'Actions',
               field: 'actions',
               sort: 'disabled',

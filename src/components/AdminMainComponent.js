@@ -392,7 +392,7 @@ class Admin extends Component {
       this.props.notices.notices.forEach(element => {
         notices.push({
           title: element.title,
-          description: element.descrition,
+          description: element.description,
           actions: <div>
           <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleNoticeModal()}></i>
           <i className="fa fa-trash-alt delete"></i>
