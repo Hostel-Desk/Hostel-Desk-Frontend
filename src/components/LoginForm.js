@@ -94,7 +94,7 @@ function LoginForm(props) {
                             <p>Remember Me</p>
                         </Label>
                     </FormGroup>
-                    <button onClick={handleLoginClick} type="submit" value="submit" class="btn btn-primary btn-md btn-block mt-2" ><span className="fa fa-sign-in-alt fa-lg"></span>Login</button>
+                    <button type="submit" value="submit" class="btn btn-primary btn-md btn-block mt-2" ><span className="fa fa-sign-in-alt fa-lg"></span>Login</button>
                 </Form>
                     </CardBody>}
                     {props.auth.isLoading && <Loading/>}

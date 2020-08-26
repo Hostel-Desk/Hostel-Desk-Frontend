@@ -3,7 +3,37 @@ import { MDBDataTableV5 } from 'mdbreact';
 
 export default function NoticeView({notices}) {
   const [datatable, setDatatable] = React.useState({
-    
+      columns: [
+          {
+              label: 'Title',
+              field: 'title',
+              sort: 'disabled',
+              width: 80,
+          },
+          {
+              label: 'Description',
+              field: 'description',
+              sort: 'disabled',
+              width: 200
+          },
+          {
+              label: 'Date',
+              field: 'date',
+              sort: 'disabled',
+              width: 80
+          },
+          {
+              label: 'Actions',
+              field: 'actions',
+              sort: 'disabled',
+              width: 80,
+              default:<div>
+              <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleNoticeModal()}></i>
+              <i className="fa fa-trash-alt delete"></i>
+            </div>
+          }
+      ],
+      rows: notices,
   });
 
   return (
@@ -13,7 +43,7 @@ export default function NoticeView({notices}) {
       entriesOptions={[5, 20, 25]}
       entries={5}
       pagesAmount={4}
-      data={notices}
+      data={datatable}
       pagingTop
       searchTop
       searchBottom={false}

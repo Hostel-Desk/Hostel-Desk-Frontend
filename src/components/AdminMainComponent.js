@@ -26,6 +26,7 @@ class Admin extends Component {
           isStudentModalOpen: false,
           isMessBillModalOpen: false,
           isEmployeeModalOpen: false,
+          isNoticeModalOpen: false,
           isSalaryModalOpen: false,
           isResolved: false,
           isArchitectureModalOpen: false,
@@ -141,50 +142,7 @@ class Admin extends Component {
             },
             Students: [],
             Employees: [],
-            Notices: {
-                columns: [
-                    {
-                        label: 'Title',
-                        field: 'title',
-                        sort: 'disabled',
-                        width: 80,
-                    },
-                    {
-                        label: 'Description',
-                        field: 'description',
-                        sort: 'disabled',
-                        width: 200
-                    },
-                    {
-                        label: 'Date',
-                        field: 'date',
-                        sort: 'disabled',
-                        width: 80
-                    },
-                    {
-                        label: 'Actions',
-                        field: 'actions',
-                        sort: 'disabled',
-                        width: 80,
-                        default:<div>
-                        <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleNoticeModal()}></i>
-                        <i className="fa fa-trash-alt delete"></i>
-                      </div>
-                    }
-                ],
-                rows: [
-                    {
-                        title: 'Notice 1',
-                        description: 'Description',
-                        date: '29/06/2020',
-                        actions: <div>
-                        <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleNoticeModal()}></i>
-                        <i className="fa fa-trash-alt delete"></i>
-                      </div>
-                    },
-                ],
-                
-            },
+            Notices: [],
             Architectures: {
                 columns: [
                     {
@@ -430,9 +388,22 @@ class Admin extends Component {
         })
       });
       const employeeList = this.state.Students.concat(employees);
+      let notices = [];
+      this.props.notices.notices.forEach(element => {
+        notices.push({
+          title: element.title,
+          description: element.descrition,
+          actions: <div>
+          <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleNoticeModal()}></i>
+          <i className="fa fa-trash-alt delete"></i>
+        </div>
+        })
+      });
+      const noticeList = this.state.Notices.concat(notices);
       this.setState({
         Students: studentlist,
-        Employees: employeeList
+        Employees: employeeList,
+        Notices: noticeList
       });
       }
     
