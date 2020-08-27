@@ -30,6 +30,7 @@ class Admin extends Component {
           isSalaryModalOpen: false,
           isResolved: false,
           isArchitectureModalOpen: false,
+          isSeatModalOpen: false,
             Meals: [
                 {
                   day: 'Monday',
@@ -81,175 +82,12 @@ class Admin extends Component {
                   ] 
                 }
             ],
-            EmployeeSal: {
-                columns: [
-                  {
-                    label: 'Employee Id',
-                    field: 'eid',
-                    width: 150,
-                  },
-                    {
-                      label: 'Name',
-                      field: 'name',
-                      width: 150,
-                      attributes: {
-                        'aria-controls': 'DataTable',
-                        'aria-label': 'Name',
-                      },
-                    },
-                    {
-                      label: 'Salary Month',
-                      field: 'month',
-                      width: 150,
-                    },
-                    {
-                      label: 'Amount',
-                      field: 'amount',
-                      width: 150,
-                    },
-                   
-                    {
-                      label: 'Paid Date',
-                      field: 'date',
-                      width: 150,
-                    },
-                    
-                    {
-                      label: 'Actions',
-                      field: 'actions',
-                      default: <div>
-                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleSalaryModal}></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>,
-                      width: 100,
-                    },
-              
-                  ],
-                  rows: [
-                      {
-                      eid: 'E-01',  
-                      name: 'Jatin Bansal',
-                      month: 'June-2020',
-                      amount: 5000.00,
-                      date: '29th June,2020',
-                      actions: <div>
-                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleSalaryModal()}></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
-                  },
-                
-              ],
-            },
+            EmployeeSal: [],
             Students: [],
             Employees: [],
             Notices: [],
-            Architectures: {
-                columns: [
-                    {
-                        label: 'Hostel Name',
-                        field: 'name',
-                        width: 150,
-                        attributes: {
-                        'aria-controls': 'DataTable',
-                        'aria-label': 'Hostel Name',
-                        },
-                    },
-                    {
-                        label: 'Total Rooms',
-                        field: 'rooms',
-                        width: 150,
-                    },
-                    {
-                        label: 'Total Blocks',
-                        field: 'blocks',
-                        width: 150,
-                        },
-                        {
-                        label: 'Total Floors',
-                        field: 'floors',
-                        width: 150,
-                        },
-                    
-                    {
-                        label: 'Actions',
-                        field: 'actions',
-                        sort: 'disabled',
-                        width: 100,
-                        default: <div>
-                        <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleArchitectureModal()}></i>
-                        <i className="fa fa-trash-alt delete"></i>
-                      </div>
-                    }
-                ],
-                rows: [
-                    {
-                        name: 'Shivalik Hostel',
-                        rooms: 200,
-                        blocks: 3,
-                        floors: 2,
-                       actions: <div>
-                       <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleArchitectureModal()}></i>
-                       <i className="fa fa-trash-alt delete"></i>
-                     </div>
-           
-                    },
-                
-                ],
-            },
-            Seats: {
-                columns: [
-                    {
-                      label: 'Name',
-                      field: 'name',
-                      width: 150,
-                      attributes: {
-                        'aria-controls': 'DataTable',
-                        'aria-label': 'Name',
-                      },
-                    },
-                    {
-                      label: 'Block No',
-                      field: 'block',
-                      width: 150,
-                    },
-                    {
-                      label: 'Room No',
-                      field: 'room',
-                      width: 150,
-                    },
-                   
-                    {
-                      label: 'Monthly Rent',
-                      field: 'rent',
-                      width: 150,
-                    },
-                    
-                    {
-                      label: 'Actions',
-                      field: 'actions',
-                      
-                      width: 100,
-                      default: <div>
-                      <i className="fa fa-pencil-alt edit mr-2"></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
-                    },
-              
-                ],
-                rows: [
-                    {
-                    name: 'Jatin Bansal',
-                    block: 'BL-01',
-                    room: 'R-01',
-                    rent: 7500.00,
-                    actions: <div>
-              <i className="fa fa-pencil-alt edit mr-2"></i>
-              <i className="fa fa-trash-alt delete"></i>
-            </div>
-                },
-                
-              ],
-            },
+            Architecture: [],
+            Seats: [],
             MessBills: {
                 columns: [
                     {
@@ -351,6 +189,7 @@ class Admin extends Component {
         this.toggleSalaryModal= this.toggleSalaryModal.bind(this);
         this.toggleNoticeModal= this.toggleNoticeModal.bind(this);
         this.toggleArchitectureModal= this.toggleArchitectureModal.bind(this);
+        this.toggleSeatModal= this.toggleSeatModal.bind(this);
     }
 
     componentDidMount() {
@@ -392,7 +231,7 @@ class Admin extends Component {
       this.props.notices.notices.forEach(element => {
         notices.push({
           title: element.title,
-          description: element.description,
+          description: element.descrpition,
           actions: <div>
           <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleNoticeModal()}></i>
           <i className="fa fa-trash-alt delete"></i>
@@ -400,10 +239,54 @@ class Admin extends Component {
         })
       });
       const noticeList = this.state.Notices.concat(notices);
+      let salaries = [];
+      this.props.salaries.salaries.forEach(element => {
+        salaries.push({
+          name: element.name,
+          month: element.month,
+          amount: element.salary,
+          actions: <div>
+          <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleSalaryModal()}></i>
+          <i className="fa fa-trash-alt delete"></i>
+        </div>
+        })
+      });
+      const salariesList = this.state.EmployeeSal.concat(salaries);
+      let architecture = [];
+      this.props.architecture.architecture.forEach(element => {
+        architecture.push({
+          name: element.hostel.name,
+          rooms: element.rooms,
+          blocks: element.blocks,
+          floors: element.floors,
+          actions: <div>
+          <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleArchitectureModal()}></i>
+          <i className="fa fa-trash-alt delete"></i>
+        </div>
+        })
+      });
+      const architectureList = this.state.Architecture.concat(architecture);
+      let seatAllocation = [];
+      this.props.seatAllocation.seatAllocation.forEach(element => {
+        seatAllocation.push({
+          name: element.name,
+          block: element.block,
+          room: element.room,
+          rent: element.monthlyRent,
+          actions: <div>
+          <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleSeatModal()}></i>
+          <i className="fa fa-trash-alt delete"></i>
+        </div>
+        })
+      });
+      const seatAllocationList = this.state.Seats.concat(seatAllocation);
       this.setState({
         Students: studentlist,
         Employees: employeeList,
-        Notices: noticeList
+        Notices: noticeList,
+        EmployeeSal: salariesList,
+        Architecture: architectureList,
+        Seats: seatAllocationList
       });
       }
     
@@ -440,6 +323,11 @@ class Admin extends Component {
     toggleArchitectureModal(){
       this.setState({
         isArchitectureModalOpen: !this.state.isArchitectureModalOpen
+      })
+    }
+    toggleSeatModal(){
+      this.setState({
+        isSeatModalOpen: !this.state.isSeatModalOpen
       })
     }
 

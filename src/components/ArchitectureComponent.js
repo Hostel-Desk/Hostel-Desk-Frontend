@@ -7,9 +7,9 @@ class Architecture extends Component {
         super(props);
 
         this.state = {
-            rooms: this.props.architectures.rows[0].rooms,
-            blocks: this.props.architectures.rows[0].blocks,
-            floors: this.props.architectures.rows[0].floors
+            rooms: this.props.rooms,
+            blocks: this.props.blocks,
+            floors: this.props.floors
         }
     }
     
@@ -46,14 +46,14 @@ class Architecture extends Component {
                                 <FormGroup>
                                     <Label for="Rooms">Total Rooms</Label>
                                     <Input required type="text" name="Rooms" id="rooms" placeholder="Rooms" 
-                                    onChange={this.handleInputChange} value={this.props.architectures.rows[0].rooms} />
+                                    onChange={this.handleInputChange} value={this.props.rooms} />
                                 </FormGroup>
                                 </Col>
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="Blocks">Total Blocks</Label>
                                     <Input required type="text" name="Blocks" id="blocks" placeholder="Blocks" 
-                                    onChange={this.handleInputChange} value={this.props.architectures.rows[0].blocks} />
+                                    onChange={this.handleInputChange} value={this.props.blocks} />
                                 </FormGroup>
                                 </Col>
                             
@@ -62,7 +62,7 @@ class Architecture extends Component {
                                     <FormGroup>
                                         <Label for="Floor">Total Floors</Label>
                                         <Input required type="text" name="Floors" id="floors" placeholder="Floors" 
-                                        onChange={this.handleInputChange} value={this.props.architectures.rows[0].floors}/>
+                                        onChange={this.handleInputChange} value={this.props.floors}/>
                                     </FormGroup>
                                 </Col>
                             
