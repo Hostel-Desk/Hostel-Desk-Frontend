@@ -13,7 +13,7 @@ export const Employees = (state = {
             return {...state, isLoading: false, errMess: action.payload, employees: []};
         
         case ActionTypes.EMPLOYEES_LOADING:
-            return {...state, isLoading: true, errMess: [], employess: []};
+            return {...state, isLoading: true, errMess: [], employees: []};
 
         case ActionTypes.ADD_EMPLOYEE:
             var employee = action.payload;
