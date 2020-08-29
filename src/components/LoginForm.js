@@ -68,7 +68,7 @@ function LoginForm(props) {
     {
         return (
             <div>
-                <Card className="col-6 offset-3 mt-5 mb-5">
+                <Card className="col-md-6 offset-md-3 mt-5 mb-5">
                     <CardHeader className="mt-3 self-align-center"><h4 className="mt-2">Login</h4></CardHeader>
                     
                     { 

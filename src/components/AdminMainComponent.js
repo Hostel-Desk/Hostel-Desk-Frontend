@@ -134,53 +134,7 @@ class Admin extends Component {
                     
                   ],
             },
-            Complaints :{
-                columns: [
-                    {
-                      label: 'Student Name',
-                      field: 'name',
-                      width: 150,
-                      attributes: {
-                        'aria-controls': 'DataTable',
-                        'aria-label': 'Name',
-                      },
-                    },
-                    {
-                      label: 'Room No',
-                      field: 'room',
-                      width: 150,
-                    },
-                    {
-                      label: 'Complaint',
-                      field: 'complaint',
-                      width: 150,
-                    },
-                    
-                    {
-                      label: 'Actions',
-                      field: 'actions',
-                      default: <div>
-                      <i className= "fa fa-check-circle resolve mr-2" onClick={() => this.toggleResolve}></i>
-                      <i  className="fa fa-trash-alt delete"></i>
-                    </div>,
-                      width: 100,
-                    },
-              
-                  ],
-                  rows: [
-                      {
-                      name: 'Jatin Bansal',
-                      room: '2021',
-                      complaint: 'darwaaza sahi kraayo mera',
-                      actions: <div>
-                      <i className= "fa fa-check-circle resolve mr-2" onClick={() => this.toggleResolve}></i>
-                      <i  className="fa fa-trash-alt delete"></i>
-                    </div>
-                      
-                  },
-                
-              ],
-            }
+            Complaints :[],
             
         };
         this.toggleStudentModal = this.toggleStudentModal.bind(this);
@@ -266,6 +220,7 @@ class Admin extends Component {
         })
       });
       const architectureList = this.state.Architecture.concat(architecture);
+      //console.log(this.props.architecture.architecture);
       let seatAllocation = [];
       this.props.seatAllocation.seatAllocation.forEach(element => {
         seatAllocation.push({
@@ -280,13 +235,29 @@ class Admin extends Component {
         })
       });
       const seatAllocationList = this.state.Seats.concat(seatAllocation);
+      
+      let complaints = [];
+      this.props.complaints.complaints.forEach(element => {
+        complaints.push({
+          name: element.studentName.username,
+          title: element.title,
+          complaint: element.complaint,
+          actions: <div>
+          <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleSeatModal()}></i>
+          <i className="fa fa-trash-alt delete"></i>
+        </div>
+        })
+      });
+      const complaintsList = this.state.Complaints.concat(complaints);
+      
       this.setState({
         Students: studentlist,
         Employees: employeeList,
         Notices: noticeList,
         EmployeeSal: salariesList,
         Architecture: architectureList,
-        Seats: seatAllocationList
+        Seats: seatAllocationList,
+        Complaints: complaintsList,
       });
       }
     
@@ -346,7 +317,7 @@ class Admin extends Component {
                                                                                         students={this.props.students}
                                                                                         auth={this.props.auth}/>}/>
                             <Route exact path="/admin/students" component={()=><StudentView students={this.state.Students}/>}/>
-                            <Route exact path="/admin/rooms" component={() => <ArchitectureView architectures={this.state.Architectures}/>}/>
+                            <Route exact path="/admin/rooms" component={() => <ArchitectureView architectures={this.state.Architecture}/>}/>
                             <Route exact path="/admin/StudentManage/addnew" component={AddStudent}/>
                             <Route exact path="/admin/employees" component={()=><EmployeeView employees={this.state.Employees}/>}/>
                             <Route exact path="/admin/EmployeeManage/addnew" component={AddEmployee}/>
@@ -356,7 +327,7 @@ class Admin extends Component {
                             <Route exact path="/admin/EmployeeManage/view" component={()=><EmployeeView employees={this.state.Employees}/>}/>
                             <Route exact path="/admin/NoticeBoard" component={() => <NoticeBoard notices={this.state.Notices}/>}/>
                             <Route exact path="/admin/Settings/updateprofile" component={Profile}/>
-                            <Route exact path="/admin/Architecture" component={() => <Architecture architectures={this.state.Architectures}/>}/>
+                            <Route exact path="/admin/Architecture" component={() => <Architecture architectures={this.state.Architecture}/>}/>
                             <Route exact path="/admin/StudentManagePayment/Add Bill" component={StudentPayment} />
                             <Route exact path="/admin/StudentManagePayment/MessBill" component={()=><StudentMessBill messBills={this.state.MessBills}/>} />
                             <Route exact path="/admin/EmployeeManagePayment/Add Salary" component={EmployeeSalary}/>

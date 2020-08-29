@@ -53,6 +53,7 @@ const mapStateToProps = (state) => {
         salaries: state.salaries,
         architecture: state.architecture,
         seatAllocation: state.seatAllocation,
+        complaints: state.complaints,
         auth: state.auth,
     }
 }
@@ -87,7 +88,7 @@ class Main extends Component {
                         <Route path="/login" component={() => <LoginForm auth={this.props.auth} loginUser={this.props.loginUser} />}/>
                         <PrivateRoute path="/admin" component={() => <Admin auth={this.props.auth} 
                         employees={this.props.employees} notices={this.props.notices} students={this.props.students} 
-                        deleteStudent = {this.props.deleteStudent} fetchStudents={this.props.fetchStudents} salaries={this.props.salaries}
+                        deleteStudent = {this.props.deleteStudent} fetchStudents={this.props.fetchStudents} salaries={this.props.salaries} complaints = {this.props.complaints}
                         meals={this.props.meals} mealBills={this.props.mealBills} seatAllocation={this.props.seatAllocation} architecture={this.props.architecture}/>}/>
                         <Route path="/contactus" component={Contact}/>
                         <PrivateRoute path="/student" component={() => <Student auth={this.props.auth} 

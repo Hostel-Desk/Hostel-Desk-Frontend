@@ -10,6 +10,7 @@ import { SeatAllocation } from './seatallocation';
 import { Auth } from './auth';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import { Complaints } from './complaints';
 
 export const ConfigureStore = () => {
     const store = createStore(
@@ -22,6 +23,7 @@ export const ConfigureStore = () => {
             salaries: Salaries,
             architecture: Architecture,
             seatAllocation: SeatAllocation,
+            complaints: Complaints,
             auth: Auth,
         }),
         applyMiddleware(thunk, logger)

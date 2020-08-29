@@ -7,9 +7,9 @@ class Architecture extends Component {
         super(props);
 
         this.state = {
-            rooms: this.props.rooms,
-            blocks: this.props.blocks,
-            floors: this.props.floors
+            rooms: this.props.architectures.rooms,
+            blocks: this.props.architectures.blocks,
+            floors: this.props.architectures.floors
         }
     }
     
@@ -46,14 +46,14 @@ class Architecture extends Component {
                                 <FormGroup>
                                     <Label for="Rooms">Total Rooms</Label>
                                     <Input required type="text" name="Rooms" id="rooms" placeholder="Rooms" 
-                                    onChange={this.handleInputChange} value={this.props.rooms} />
+                                    onChange={this.handleInputChange} value={this.state.rooms} />
                                 </FormGroup>
                                 </Col>
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="Blocks">Total Blocks</Label>
                                     <Input required type="text" name="Blocks" id="blocks" placeholder="Blocks" 
-                                    onChange={this.handleInputChange} value={this.props.blocks} />
+                                    onChange={this.handleInputChange} value={this.state.blocks} />
                                 </FormGroup>
                                 </Col>
                             
@@ -62,7 +62,7 @@ class Architecture extends Component {
                                     <FormGroup>
                                         <Label for="Floor">Total Floors</Label>
                                         <Input required type="text" name="Floors" id="floors" placeholder="Floors" 
-                                        onChange={this.handleInputChange} value={this.props.floors}/>
+                                        onChange={this.handleInputChange} value={this.state.floors}/>
                                     </FormGroup>
                                 </Col>
                             
