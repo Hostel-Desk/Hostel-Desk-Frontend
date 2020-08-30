@@ -7,11 +7,19 @@ class Architecture extends Component {
         super(props);
 
         this.state = {
-            rooms: this.props.architectures.rooms,
-            blocks: this.props.architectures.blocks,
-            floors: this.props.architectures.floors
+            rooms: this.props.architectures.map((element)=> {
+                return element.rooms;
+            }),
+            blocks: this.props.architectures.map((element)=> {
+                return element.blocks;
+            }),
+            floors: this.props.architectures.map((element)=> {
+                return element.floors;
+            })
         }
     }
+
+    
     
     handleInputChange = (event) => {
         const target = event.target;
@@ -45,14 +53,14 @@ class Architecture extends Component {
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="Rooms">Total Rooms</Label>
-                                    <Input required type="text" name="Rooms" id="rooms" placeholder="Rooms" 
+                                    <Input required type="text" name="rooms" id="rooms" placeholder="Rooms" 
                                     onChange={this.handleInputChange} value={this.state.rooms} />
                                 </FormGroup>
                                 </Col>
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="Blocks">Total Blocks</Label>
-                                    <Input required type="text" name="Blocks" id="blocks" placeholder="Blocks" 
+                                    <Input required type="text" name="blocks" id="blocks" placeholder="Blocks" 
                                     onChange={this.handleInputChange} value={this.state.blocks} />
                                 </FormGroup>
                                 </Col>
@@ -61,7 +69,7 @@ class Architecture extends Component {
                                 <Col md={4}>
                                     <FormGroup>
                                         <Label for="Floor">Total Floors</Label>
-                                        <Input required type="text" name="Floors" id="floors" placeholder="Floors" 
+                                        <Input required type="text" name="floors" id="floors" placeholder="Floors" 
                                         onChange={this.handleInputChange} value={this.state.floors}/>
                                     </FormGroup>
                                 </Col>

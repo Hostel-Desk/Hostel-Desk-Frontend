@@ -85,7 +85,9 @@ class DashBoard extends Component {
                         <CardHeader className="dashCard">
                             <div className="row">
                             <span className="col-7 fa fa-building fa-4x"></span>
-                            <h3>{this.props.rooms}</h3>
+                            <h3>{this.props.architectures.map((element) => {
+                                return element.rooms;
+                            })}</h3>
                             </div> 
                             <div className="mt-3">
                                 <div>
@@ -120,12 +122,17 @@ class DashBoard extends Component {
                     <Card>
                         <CardHeader mb="0" mt="0"><span><h4>Notices</h4></span></CardHeader>
                         <CardBody>
-                        <Alert color="primary" className="mb-1 mt-1">
-                            Kive aa
-                        </Alert>
-                        <Alert color="primary" className="mb-1 mt-1">
-                            Hor v
-                        </Alert>
+                        
+                        {
+                            this.props.notices.map((element) => {
+                                return (
+                                    <Alert color="primary" className="mb-1 mt-1">
+                                        <p>{element.description}</p>
+                                    </Alert>
+                                )
+                            })
+                        }
+                        
                         </CardBody>
                     </Card>
                 </div>

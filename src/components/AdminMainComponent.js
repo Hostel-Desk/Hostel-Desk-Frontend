@@ -31,6 +31,13 @@ class Admin extends Component {
           isResolved: false,
           isArchitectureModalOpen: false,
           isSeatModalOpen: false,
+          EmployeeSal: [],
+          Students: [],
+          Employees: [],
+          Notices: [],
+          Architecture: [],
+          Seats: [],
+          Complaints :[],
             Meals: [
                 {
                   day: 'Monday',
@@ -82,12 +89,7 @@ class Admin extends Component {
                   ] 
                 }
             ],
-            EmployeeSal: [],
-            Students: [],
-            Employees: [],
-            Notices: [],
-            Architecture: [],
-            Seats: [],
+            
             MessBills: {
                 columns: [
                     {
@@ -134,7 +136,7 @@ class Admin extends Component {
                     
                   ],
             },
-            Complaints :[],
+            
             
         };
         this.toggleStudentModal = this.toggleStudentModal.bind(this);
@@ -147,6 +149,7 @@ class Admin extends Component {
     }
 
     componentDidMount() {
+      //this.props.fetchEmployees();
       let students = [];
       this.props.students.students.forEach(element => {
         students.push({
@@ -249,7 +252,7 @@ class Admin extends Component {
         })
       });
       const complaintsList = this.state.Complaints.concat(complaints);
-      
+  
       this.setState({
         Students: studentlist,
         Employees: employeeList,
@@ -260,7 +263,7 @@ class Admin extends Component {
         Complaints: complaintsList,
       });
       }
-    
+
     toggleStudentModal(){
       this.setState({
         isStudentModalOpen: !this.state.isStudentModalOpen
@@ -312,10 +315,11 @@ class Admin extends Component {
                     <div className="col-md-9">
 
                         <Switch>
-                            <Route path="/admin/dashboard" component={() => <DashBoard architectures={this.state.Architectures}
+                            <Route path="/admin/dashboard" component={() => <DashBoard architectures={this.props.architecture.architecture}
                                                                                         employees={this.props.employees}
                                                                                         students={this.props.students}
-                                                                                        auth={this.props.auth}/>}/>
+                                                                                        auth={this.props.auth}
+                                                                                        notices={this.props.notices.notices}/>}/>
                             <Route exact path="/admin/students" component={()=><StudentView students={this.state.Students}/>}/>
                             <Route exact path="/admin/rooms" component={() => <ArchitectureView architectures={this.state.Architecture}/>}/>
                             <Route exact path="/admin/StudentManage/addnew" component={AddStudent}/>

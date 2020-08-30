@@ -15,33 +15,33 @@ import { postArchitecture, postComplaint, postEmployee, postMeal, postMealbill, 
     deleteEmployee, deleteNotice, deleteSalary, deleteStudent, logoutUser, loginUser } from '../redux/actionCreators';
 
 
-    const mapDispatchToProps = (dispatch) => ({
-        postArchitecture: (architecture) => dispatch(postArchitecture(architecture)),
-        postComplaint: (complaint) => dispatch(postComplaint(complaint)), 
-        postEmployee: (employee) => dispatch(postEmployee(employee)), 
-        postMeal: (meal) => dispatch(postMeal(meal)), 
-        postMealbill: (mealBill) => dispatch(postMealbill(mealBill)), 
-        postNotice: (notice) => dispatch(postNotice(notice)), 
-        postSalary: (salary) => dispatch(postSalary(salary)), 
-        postSeatallocation: (seat) => dispatch(postSeatallocation(seat)), 
-        postStudent: (notice) => dispatch(postStudent(notice)), 
-        fetchArchitecture: () => dispatch(fetchArchitecture()), 
-        fetchComplaints: () => dispatch(fetchComplaints()), 
-        fetchEmployees: () => dispatch(fetchEmployees()), 
-        fetchMealbill: () => dispatch(fetchMealbill()), 
-        fetchMeals: () => dispatch(fetchMeals()), 
-        fetchNotices: () => dispatch(fetchNotices()), 
-        fetchSalaries: () => dispatch(fetchSalaries()), 
-        fetchSeatallocation: () => dispatch(fetchSeatallocation()), 
-        fetchStudents: () => dispatch(fetchStudents()), 
-        deleteComplaint: (complaintId) => dispatch(deleteComplaint(complaintId)), 
-        deleteEmployee: (employeeId) => dispatch(deleteEmployee(employeeId)), 
-        deleteNotice: (noticeId) => dispatch(deleteNotice(noticeId)), 
-        deleteSalary: (salaryId) => dispatch(deleteSalary(salaryId)), 
-        deleteStudent: (studentId) => dispatch(deleteStudent(studentId)),
-        loginUser: (creds) => dispatch(loginUser(creds)),
-        logoutUser: () => dispatch(logoutUser())
-    })
+const mapDispatchToProps = (dispatch) => ({
+    postArchitecture: (architecture) => dispatch(postArchitecture(architecture)),
+    postComplaint: (complaint) => dispatch(postComplaint(complaint)), 
+    postEmployee: (employee) => dispatch(postEmployee(employee)), 
+    postMeal: (meal) => dispatch(postMeal(meal)), 
+    postMealbill: (mealBill) => dispatch(postMealbill(mealBill)), 
+    postNotice: (notice) => dispatch(postNotice(notice)), 
+    postSalary: (salary) => dispatch(postSalary(salary)), 
+    postSeatallocation: (seat) => dispatch(postSeatallocation(seat)), 
+    postStudent: (notice) => dispatch(postStudent(notice)), 
+    fetchArchitecture: () => dispatch(fetchArchitecture()), 
+    fetchComplaints: () => dispatch(fetchComplaints()), 
+    fetchEmployees: () => dispatch(fetchEmployees()), 
+    fetchMealbill: () => dispatch(fetchMealbill()), 
+    fetchMeals: () => dispatch(fetchMeals()), 
+    fetchNotices: () => dispatch(fetchNotices()), 
+    fetchSalaries: () => dispatch(fetchSalaries()), 
+    fetchSeatallocation: () => dispatch(fetchSeatallocation()), 
+    fetchStudents: () => dispatch(fetchStudents()), 
+    deleteComplaint: (complaintId) => dispatch(deleteComplaint(complaintId)), 
+    deleteEmployee: (employeeId) => dispatch(deleteEmployee(employeeId)), 
+    deleteNotice: (noticeId) => dispatch(deleteNotice(noticeId)), 
+    deleteSalary: (salaryId) => dispatch(deleteSalary(salaryId)), 
+    deleteStudent: (studentId) => dispatch(deleteStudent(studentId)),
+    loginUser: (creds) => dispatch(loginUser(creds)),
+    logoutUser: () => dispatch(logoutUser())
+})
 
 const mapStateToProps = (state) => {
     return {
@@ -62,6 +62,20 @@ class Main extends Component {
     
     constructor(props) {
         super(props);
+    }
+
+    componentDidMount() {
+       if(this.props.auth.isAuthenticated) {
+        this.props.fetchEmployees();
+        this.props.fetchStudents();
+        this.props.fetchArchitecture();
+        this.props.fetchSalaries();
+        this.props.fetchComplaints();
+        this.props.fetchNotices();
+        this.props.fetchSeatallocation();
+        this.props.fetchMeals();
+        this.props.fetchMealbill();
+       }
     }
 
     render() {
@@ -89,7 +103,7 @@ class Main extends Component {
                         <PrivateRoute path="/admin" component={() => <Admin auth={this.props.auth} 
                         employees={this.props.employees} notices={this.props.notices} students={this.props.students} 
                         deleteStudent = {this.props.deleteStudent} fetchStudents={this.props.fetchStudents} salaries={this.props.salaries} complaints = {this.props.complaints}
-                        meals={this.props.meals} mealBills={this.props.mealBills} seatAllocation={this.props.seatAllocation} architecture={this.props.architecture}/>}/>
+                        meals={this.props.meals} mealBills={this.props.mealBills} fetchEmployees={this.props.fetchEmployees} seatAllocation={this.props.seatAllocation} architecture={this.props.architecture}/>}/>
                         <Route path="/contactus" component={Contact}/>
                         <PrivateRoute path="/student" component={() => <Student auth={this.props.auth} 
                         employees={this.props.employees} notices={this.props.notices} students={this.props.students} salaries={this.props.salaries}
