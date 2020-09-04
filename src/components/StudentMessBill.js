@@ -3,8 +3,50 @@ import { MDBDataTableV5 } from 'mdbreact';
 
 export default function StudentMessBill({messBills}) {
   const [datatable, setDatatable] = React.useState({
-    
-  });
+    columns: [
+        {
+          label: 'Name',
+          field: 'name',
+          width: 150,
+          attributes: {
+            'aria-controls': 'DataTable',
+            'aria-label': 'Name',
+          },
+        },
+        {
+          label: 'Sid',
+          field: 'sid',
+          width: 150,
+        },
+        {
+          label: 'Branch',
+          field: 'branch',
+          width: 150,
+        },
+        {
+          label: 'Amount',
+          field: 'amount',
+          width: 150,
+        },
+        {
+          label: 'Deposit Date',
+          field: 'date',
+          width: 200,
+        },
+        
+        {
+          label: 'Actions',
+          field: 'actions',
+          sort: 'disabled',
+          width: 100,
+          default: <div>
+          <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleMessBillModal()}></i>
+          <i className="fa fa-trash-alt delete"></i>
+        </div>
+        }
+      ],
+      rows: messBills
+});
 
   return (
     <div>
@@ -21,7 +63,7 @@ export default function StudentMessBill({messBills}) {
       entriesOptions={[5, 20, 25]}
       entries={5}
       pagesAmount={4}
-      data={messBills}
+      data={datatable}
       pagingTop
       searchTop
       searchBottom={false}

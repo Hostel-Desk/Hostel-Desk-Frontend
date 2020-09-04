@@ -38,107 +38,9 @@ class Admin extends Component {
           Architecture: [],
           Seats: [],
           Complaints :[],
-            Meals: [
-                {
-                  day: 'Monday',
-                  breakfast: [
-                    'Bread-Jam + Corn Flakes',
-                    'Omlette + Fruit',
-                    'Milk/Tea + Butter',
-                    'Aloo Paratha'
-                  ],
-                  lunch: [
-                    'Kadhi Pakoda + Aloo Zeera',
-                    'Jeera Rice + Chapati',
-                    'Pickle + Salad'
-                  ],
-                  snacks: [
-                    'Samosa',
-                    'Tea',
-                    'Biscuit + Rusk'
-                  ],
-                  dinner: [
-                    'Butter Chicker + Masoor Sabut',
-                    'Paneer Bhurji/ Matar Paneer',
-                    'Simple Rice + Chapati',
-                    'Gulab Jabun'
-                  ] 
-                },
-                {
-                  day: 'Tuesday',
-                  breakfast: [
-                    'Bread-Jam + Corn Flakes',
-                    'Boiled Egg + Fruit',
-                    'Milk/Tea + Butter',
-                    'Mix Paratha'
-                  ],
-                  lunch: [
-                    'White Chole + Aloo Baingan',
-                    'Simple Rice + Chapati + Butter',
-                    'Pickle + Salad + Lassi(sweet)'
-                  ],
-                  snacks: [
-                    'Bread Roll/ Spring Roll',
-                    'Tea',
-                    'Cream Biscuit + Rusk'
-                  ],
-                  dinner: [
-                    'Dal Makhni + Aloo Gajar Matar',
-                    'Jeera Rice + Chapati + Curd',
-                    'Moongdal Halwa/ Suji Halwa'
-                  ] 
-                }
-            ],
-            
-            MessBills: {
-                columns: [
-                    {
-                      label: 'Name',
-                      field: 'name',
-                      width: 150,
-                      attributes: {
-                        'aria-controls': 'DataTable',
-                        'aria-label': 'Name',
-                      },
-                    },
-                    {
-                      label: 'Amount',
-                      field: 'amount',
-                      width: 150,
-                    },
-                    {
-                      label: 'Deposit Date',
-                      field: 'date',
-                      width: 200,
-                    },
-                    
-                    {
-                      label: 'Actions',
-                      field: 'actions',
-                      sort: 'disabled',
-                      width: 100,
-                      default: <div>
-                      <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleMessBillModal()}></i>
-                      <i className="fa fa-trash-alt delete"></i>
-                    </div>
-                    }
-                  ],
-                  rows: [
-                      {
-                          name: 'Jatin Bansal',
-                          amount: 2000.00,
-                          date: '29th June, 2020',
-                          actions: <div>
-              <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleMessBillModal()}></i>
-              <i className="fa fa-trash-alt delete"></i>
-            </div>
-                      },
-                    
-                  ],
-            },
-            
-            
-        };
+            Meals: [],
+            MessBills: []
+         };
         this.toggleStudentModal = this.toggleStudentModal.bind(this);
         this.toggleMessBillModal= this.toggleMessBillModal.bind(this);
         this.toggleEmployeeModal= this.toggleEmployeeModal.bind(this);
@@ -188,7 +90,7 @@ class Admin extends Component {
       this.props.notices.notices.forEach(element => {
         notices.push({
           title: element.title,
-          description: element.descrpition,
+          description: element.description,
           actions: <div>
           <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleNoticeModal()}></i>
           <i className="fa fa-trash-alt delete"></i>
@@ -252,6 +154,23 @@ class Admin extends Component {
         })
       });
       const complaintsList = this.state.Complaints.concat(complaints);
+
+      let mealBills = [];
+      this.props.mealBills.bills.forEach(element => {
+        mealBills.push({
+          name: element.name,
+          sid: element.sid,
+          branch: element.branch,
+          amount: element.payment,
+          date: element.paymentDate,
+          actions: <div>
+          <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleSeatModal()}></i>
+          <i className="fa fa-trash-alt delete"></i>
+        </div>
+        })
+      });
+      const mealBillsList = this.state.MessBills.concat(mealBills);
+      const mealsList = this.state.Meals.concat(this.props.meals.meals);
   
       this.setState({
         Students: studentlist,
@@ -261,6 +180,8 @@ class Admin extends Component {
         Architecture: architectureList,
         Seats: seatAllocationList,
         Complaints: complaintsList,
+        MealsBills: mealBillsList,
+        Meals: mealsList
       });
       }
 
