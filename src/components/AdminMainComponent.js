@@ -180,7 +180,7 @@ class Admin extends Component {
         Architecture: architectureList,
         Seats: seatAllocationList,
         Complaints: complaintsList,
-        MealsBills: mealBillsList,
+        MessBills: mealBillsList,
         Meals: mealsList
       });
       }

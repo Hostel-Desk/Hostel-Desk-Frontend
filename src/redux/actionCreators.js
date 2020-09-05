@@ -242,7 +242,6 @@ export const postEmployee = (employee) => (dispatch) => {
         employeeName: employee.name,
         employeeType: employee.type,
         mobileNo: employee.mobile,
-        employeeType: employee.type,
         gender: employee.gender,
         designation: employee.designation,
         address: employee.address,
