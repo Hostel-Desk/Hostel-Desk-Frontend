@@ -6,7 +6,7 @@ export const Auth = (state = {
         token: localStorage.getItem('token'),
         user: localStorage.getItem('creds') ? JSON.parse(localStorage.getItem('creds')) : null,
         errMess: null,
-        admin: false
+        admin: localStorage.getItem('admin')
     }, action) => {
     switch (action.type) {
         case ActionTypes.LOGIN_REQUEST:

@@ -616,6 +616,7 @@ export const loginUser = (creds) => (dispatch) => {
             // If login was successful, set the token in local storage
             localStorage.setItem('token', response.token);
             localStorage.setItem('creds', JSON.stringify(creds));
+            localStorage.setItem('admin', response.admin);
             // Dispatch the success action
             dispatch(fetchStudents());
             dispatch(fetchEmployees());
@@ -653,6 +654,7 @@ export const logoutUser = () => (dispatch) => {
     dispatch(requestLogout())
     localStorage.removeItem('token');
     localStorage.removeItem('creds');
+    localStorage.removeItem('admin');
     dispatch(studentsFailed("Error 401: Unauthorized"));
     dispatch(noticesFailed("Error 401: Unauthorized"));
     dispatch(mealsFailed("Error 401: Unauthorized"));

@@ -79,9 +79,9 @@ class Main extends Component {
     }
 
     render() {
-        const PrivateRoute = ({ component: Component, ...rest }) => (
+        const AdminRoute = ({ component: Component, ...rest }) => (
             <Route {...rest} render={(props) => (
-              this.props.auth.isAuthenticated
+              this.props.auth.isAuthenticated && this.props.auth.admin
                 ? <Component {...props} />
                 : <Redirect to={{
                     pathname: '/home',
@@ -89,6 +89,19 @@ class Main extends Component {
                   }} />
             )} />
         );
+
+        const StudentRoute = ({ component: Component, ...rest }) => (
+            <Route {...rest} render={(props) => (
+              this.props.auth.isAuthenticated && !this.props.auth.admin
+                ? <Component {...props} />
+                : <Redirect to={{
+                    pathname: '/home',
+                    state: { from: props.location }
+                  }} />
+            )} />
+        );
+
+
         return (
             <div>
                 <div className="container-fluid topSection">
@@ -100,12 +113,12 @@ class Main extends Component {
                     <Switch>
                         <Route path="/home" component={() => <Home/>}/>
                         <Route path="/login" component={() => <LoginForm auth={this.props.auth} loginUser={this.props.loginUser} />}/>
-                        <PrivateRoute path="/admin" component={() => <Admin auth={this.props.auth} 
+                        <AdminRoute path="/admin" component={() => <Admin auth={this.props.auth} 
                         employees={this.props.employees} notices={this.props.notices} students={this.props.students} 
                         deleteStudent = {this.props.deleteStudent} fetchStudents={this.props.fetchStudents} salaries={this.props.salaries} complaints = {this.props.complaints}
                         meals={this.props.meals} mealBills={this.props.mealBills} fetchEmployees={this.props.fetchEmployees} seatAllocation={this.props.seatAllocation} architecture={this.props.architecture}/>}/>
                         <Route path="/contactus" component={Contact}/>
-                        <PrivateRoute path="/student" component={() => <Student auth={this.props.auth} 
+                        <StudentRoute path="/student" component={() => <Student auth={this.props.auth} 
                         employees={this.props.employees} notices={this.props.notices} students={this.props.students} salaries={this.props.salaries}
                         meals={this.props.meals} mealBills={this.props.mealBills} seatAllocation={this.props.seatAllocation} architecture={this.props.architecture}/>}/>
                         <Redirect to="/home"/>
