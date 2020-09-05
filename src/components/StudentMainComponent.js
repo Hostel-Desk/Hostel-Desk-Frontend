@@ -15,468 +15,110 @@ class Student extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            Meals: [
-                {
-                  day: 'Monday',
-                  breakfast: [
-                    'Bread-Jam + Corn Flakes',
-                    'Omlette + Fruit',
-                    'Milk/Tea + Butter',
-                    'Aloo Paratha'
-                  ],
-                  lunch: [
-                    'Kadhi Pakoda + Aloo Zeera',
-                    'Jeera Rice + Chapati',
-                    'Pickle + Salad'
-                  ],
-                  snacks: [
-                    'Samosa',
-                    'Tea',
-                    'Biscuit + Rusk'
-                  ],
-                  dinner: [
-                    'Butter Chicker + Masoor Sabut',
-                    'Paneer Bhurji/ Matar Paneer',
-                    'Simple Rice + Chapati',
-                    'Gulab Jabun'
-                  ] 
-                },
-                {
-                  day: 'Tuesday',
-                  breakfast: [
-                    'Bread-Jam + Corn Flakes',
-                    'Boiled Egg + Fruit',
-                    'Milk/Tea + Butter',
-                    'Mix Paratha'
-                  ],
-                  lunch: [
-                    'White Chole + Aloo Baingan',
-                    'Simple Rice + Chapati + Butter',
-                    'Pickle + Salad + Lassi(sweet)'
-                  ],
-                  snacks: [
-                    'Bread Roll/ Spring Roll',
-                    'Tea',
-                    'Cream Biscuit + Rusk'
-                  ],
-                  dinner: [
-                    'Dal Makhni + Aloo Gajar Matar',
-                    'Jeera Rice + Chapati + Curd',
-                    'Moongdal Halwa/ Suji Halwa'
-                  ] 
-                }
-            ],
-            EmployeeSal: {
-                columns: [
-                    {
-                      label: 'Name',
-                      field: 'name',
-                      width: 150,
-                      attributes: {
-                        'aria-controls': 'DataTable',
-                        'aria-label': 'Name',
-                      },
-                    },
-                    {
-                      label: 'Salary Month',
-                      field: 'month',
-                      width: 150,
-                    },
-                    {
-                      label: 'Amount',
-                      field: 'amount',
-                      width: 150,
-                    },
-                   
-                    {
-                      label: 'Paid Date',
-                      field: 'date',
-                      width: 150,
-                    },
-                    
-                    
-              
-                  ],
-                  rows: [
-                      {
-                      name: 'Jatin Bansal',
-                      month: 'June-2020',
-                      amount: 5000.00,
-                      date: '29th June,2020',
-                     
-                  },
-                
-              ],
-            },
-            Students: {
-                columns: [
-                    {
-                      label: 'Name',
-                      field: 'name',
-                      width: 150,
-                      attributes: {
-                        'aria-controls': 'DataTable',
-                        'aria-label': 'Name',
-                      },
-                    },
-                    {
-                      label: 'Mobile No.',
-                      field: 'mobile',
-                      width: 150,
-                    },
-                    {
-                      label: 'Program',
-                      field: 'program',
-                      width: 150,
-                    },
-                    {
-                      label: 'Guardian',
-                      field: 'guardian',
-                      sort: 'disabled',
-                      width: 100,
-                    },
-                    {
-                      label: 'G Mobile',
-                      field: 'gMob',
-                      sort: 'disabled',
-                      width: 150,
-                    },
-                    {
-                      label: 'P. Address',
-                      field: 'pAddress',
-                      sort: 'disabled',
-                      width: 100
-                    },
-                    
-                ],
-                rows: [
-                    {
-                        name: 'Jatin Bansal',
-                        mobile: '8729060249',
-                        program: 'ELEC',
-                        guardian: 'Mr Xyz',
-                        gMob: '8264554894',
-                        pAddress: 'Mullanpur',
-                       
-                        
-                    },
-                    
-                ],
-            },
-            Employees: {
-                columns: [
-                    {
-                      label: 'Name',
-                      field: 'name',
-                      width: 150,
-                      attributes: {
-                        'aria-controls': 'DataTable',
-                        'aria-label': 'Name',
-                      },
-                    },
-                    {
-                      label: 'Gender',
-                      field: 'gender',
-                      width: 150,
-                    },
-                    {
-                      label: 'Employee Type',
-                      field: 'employeetype',
-                      width: 200,
-                    },
-                    {
-                      label: 'Designation',
-                      field: 'designation',
-                      
-                      width: 100,
-                    },
-                    {
-                      label: 'Join Date',
-                      field: 'date',
-                      sort: 'asc',
-                      width: 150,
-                    },
-                    {
-                      label: 'Salary',
-                      field: 'salary',
-                      sort: 'disabled',
-                      width: 100,
-                    },
-                    {
-                      label: 'Address',
-                      field: 'address',
-                      
-                      width: 100,
-                    },
-                    
-              
-                  ],
-                  rows: [
-                    {
-                      name: 'Tiger Nixon',
-                      gender: 'Male',
-                      employeetype: 'System Architect',
-                      designation: 'Edinburgh',
-                      
-                      date: '2011/04/25',
-                      salary: '$320',
-                      address: 'Shivalik Hostel',
-                      
-                    },
-                    {
-                      name: 'Garrett Winters',
-                      gender: 'Male',
-                      employeetype: 'Accountant',
-                      designation: 'Tokyo',
-                      
-                      date: '2011/07/25',
-                      salary: '$170',
-                      address: 'Shivalik Hostel',
-                      
-                    },
-                    {
-                      name: 'Ashton Cox',
-                      gender: 'Male',
-                      employeetype: 'Junior Technical Author',
-                      designation: 'San Francisco',
-                      
-                      date: '2009/01/12',
-                      salary: '$86',
-                      address: 'Shivalik Hostel',
-                      
-                    },
-                    {
-                      name: 'Cedric Kelly',
-                      gender: 'Male',
-                      employeetype: 'Senior Javascript Developer',
-                      designation: 'Edinburgh',
-                      
-                      date: '2012/03/29',
-                      salary: '$433',
-                      address: 'Shivalik Hostel',
-                      
-                    },
-                    {
-                      name: 'Airi Satou',
-                      gender: 'Male',
-                      employeetype: 'Accountant',
-                      designation: 'Tokyo',
-                      
-                      date: '2008/11/28',
-                      salary: '$162',
-                      address: 'Shivalik Hostel',
-                      
-                    },
-                    {
-                      name: 'Brielle Williamson',
-                      gender: 'Male',
-                      employeetype: 'Integration Specialist',
-                      designation: 'New York',
-                      
-                      date: '2012/12/02',
-                      salary: '$372',
-                      address: 'Shivalik Hostel',
-                     
-                    },
-                    {
-                      name: 'Herrod Chandler',
-                      gender: 'Male',
-                      employeetype: 'Sales Assistant',
-                      designation: 'San Francisco',
-                      
-                      date: '2012/08/06',
-                      salary: '$137',
-                      address: 'Shivalik Hostel',
-                      
-                    },
-                    {
-                      name: 'Rhona Davidson',
-                      gender: 'Male',
-                      employeetype: 'Integration Specialist',
-                      designation: 'Tokyo',
-                      
-                      date: '2010/10/14',
-                      salary: '$327',
-                      address: 'Shivalik Hostel',
-                      
-                    },
-                    {
-                      name: 'Colleen Hurst',
-                      gender: 'Male',
-                      employeetype: 'Javascript Developer',
-                      designation: 'San Francisco',
-                      
-                      date: '2009/09/15',
-                      salary: '$205',
-                      address: 'Shivalik Hostel',
-                      
-                    },
-                    {
-                      name: 'Sonya Frost',
-                      gender: 'Male',
-                      employeetype: 'Software Engineer',
-                      designation: 'Edinburgh',
-                      
-                      date: '2008/12/13',
-                      salary: '$103',
-                      address: 'Shivalik Hostel',
-                      
-                    },
-                  
-                ],
-            },
-            Notices: {
-                columns: [
-                    {
-                        label: 'Title',
-                        field: 'title',
-                        sort: 'disabled',
-                        width: 80,
-                    },
-                    {
-                        label: 'Description',
-                        field: 'description',
-                        sort: 'disabled',
-                        width: 200
-                    },
-                    {
-                        label: 'Date',
-                        field: 'date',
-                        sort: 'disabled',
-                        width: 80
-                    },
-                    
-                ],
-                rows: [
-                    {
-                        title: 'Notice 1',
-                        description: 'Description',
-                        date: '29/06/2020',
-                        
-                    },
-                ],
-                
-            },
-            Architectures: {
-                columns: [
-                    {
-                        label: 'Hostel Name',
-                        field: 'name',
-                        width: 150,
-                        attributes: {
-                        'aria-controls': 'DataTable',
-                        'aria-label': 'Hostel Name',
-                        },
-                    },
-                    {
-                        label: 'Total Rooms',
-                        field: 'rooms',
-                        width: 150,
-                    },
-                    {
-                        label: 'Total Blocks',
-                        field: 'blocks',
-                        width: 150,
-                        },
-                        {
-                        label: 'Total Floors',
-                        field: 'floors',
-                        width: 150,
-                        },
-                    
-                   
-                ],
-                rows: [
-                    {
-                        name: 'Shivalik Hostel',
-                        rooms: 200,
-                        blocks: 3,
-                        floors: 2,
-                        
-                    },
-                
-                ],
-            },
-            Seats: {
-                columns: [
-                    {
-                      label: 'Name',
-                      field: 'name',
-                      width: 150,
-                      attributes: {
-                        'aria-controls': 'DataTable',
-                        'aria-label': 'Name',
-                      },
-                    },
-                    {
-                      label: 'Block No',
-                      field: 'block',
-                      width: 150,
-                    },
-                    {
-                      label: 'Room No',
-                      field: 'room',
-                      width: 150,
-                    },
-                   
-                    {
-                      label: 'Monthly Rent',
-                      field: 'rent',
-                      width: 150,
-                    },
-                    
-                    
-              
-                ],
-                rows: [
-                    {
-                    name: 'Jatin Bansal',
-                    block: 'BL-01',
-                    room: 'R-01',
-                    rent: 7500.00,
-                   
-                },
-                
-              ],
-            },
-            MessBills: {
-                columns: [
-                    {
-                      label: 'Name',
-                      field: 'name',
-                      width: 150,
-                      attributes: {
-                        'aria-controls': 'DataTable',
-                        'aria-label': 'Name',
-                      },
-                    },
-                    {
-                      label: 'Amount',
-                      field: 'amount',
-                      width: 150,
-                    },
-                    {
-                      label: 'Deposit Date',
-                      field: 'date',
-                      width: 200,
-                    },
-                    
-                   
-                  ],
-                  rows: [
-                      {
-                          name: 'Jatin Bansal',
-                          amount: 2000.00,
-                          date: '29th June, 2020',
-                         
-                      },
-                    
-                  ],
-            },
-           
-            
+          EmployeeSal: [],
+          Students: [],
+          Employees: [],
+          Notices: [],
+          Architecture: [],
+          Seats: [],
+          Meals: [],
+          MessBills: [] 
         }
     }
+
+    componentDidMount() {
+      //this.props.fetchEmployees();
+      let students = [];
+      this.props.students.students.forEach(element => {
+        students.push({
+          sid: element.sid,
+          name: element.studentName,
+          mobile: element.mobileNo,
+          program: element.branch,
+          gMob: element.fatherMobile,
+          guardian: element.fatherName,
+          pAddress: element.address,
+         
+        })
+      });
+      const studentlist = this.state.Students.concat(students);
+      let employees = [];
+      this.props.employees.employees.forEach(element => {
+        employees.push({
+          name: element.employeeName,
+          gender: element.gender,
+          employeetype: element.employeeType,
+          designation: element.designation,
+          mobile: element.mobileNo,
+          date: element.joiningDate,
+          address: element.hostel.name
+        })
+      });
+      const employeeList = this.state.Students.concat(employees);
+      let notices = [];
+      this.props.notices.notices.forEach(element => {
+        notices.push({
+          title: element.title,
+          description: element.description,
+          
+        })
+      });
+      const noticeList = this.state.Notices.concat(notices);
+      let salaries = [];
+      this.props.salaries.salaries.forEach(element => {
+        salaries.push({
+          name: element.name,
+          month: element.month,
+          amount: element.salary,
+          })
+      });
+      const salariesList = this.state.EmployeeSal.concat(salaries);
+      let architecture = [];
+      this.props.architecture.architecture.forEach(element => {
+        architecture.push({
+          name: element.hostel.name,
+          rooms: element.rooms,
+          blocks: element.blocks,
+          floors: element.floors,
+          })
+      });
+      const architectureList = this.state.Architecture.concat(architecture);
+      //console.log(this.props.architecture.architecture);
+      let seatAllocation = [];
+      this.props.seatAllocation.seatAllocation.forEach(element => {
+        seatAllocation.push({
+          name: element.name,
+          block: element.block,
+          room: element.room,
+          rent: element.monthlyRent,
+          })
+      });
+      const seatAllocationList = this.state.Seats.concat(seatAllocation);
+
+      let mealBills = [];
+      this.props.mealBills.bills.forEach(element => {
+        mealBills.push({
+          name: element.name,
+          sid: element.sid,
+          branch: element.branch,
+          amount: element.payment,
+          date: element.paymentDate,
+          })
+      });
+      const mealBillsList = this.state.MessBills.concat(mealBills);
+      const mealsList = this.state.Meals.concat(this.props.meals.meals);
+  
+      this.setState({
+        Students: studentlist,
+        Employees: employeeList,
+        Notices: noticeList,
+        EmployeeSal: salariesList,
+        Architecture: architectureList,
+        Seats: seatAllocationList,
+        MealsBills: mealBillsList,
+        Meals: mealsList
+      });
+      }
 
     render() {
         return(
@@ -488,20 +130,21 @@ class Student extends Component {
                     <div className="col-md-9">
 
                         <Switch>
-                            <Route path="/student/dashboard" component={() => <DashBoard architectures={this.state.Architectures}
-                                                                                        employees={this.state.Employees}
-                                                                                        students={this.state.Students}
-                                                                                        auth={this.props.auth}/>}/>
+                            <Route path="/student/dashboard"  component={() => <DashBoard architectures={this.props.architecture.architecture}
+                                                                                        employees={this.props.employees}
+                                                                                        students={this.props.students}
+                                                                                        auth={this.props.auth}
+                                                                                        notices={this.props.notices.notices}/>}/>
                             <Route exact path="/student/profile" component={StudentProfile}/>
                             <Route exact path="/student/Meal" component={() => <MealView meals={this.state.Meals}/>}/>
                             
                             <Route exact path="/student/payment" component={()=><StudentMessBill messBills={this.state.MessBills}/>}/>
                             <Route exact path="/student/Noticeboard" component={() => <NoticeView notices={this.state.Notices}/>}/>
-                            <Route exact path="/student/Architecture" component={() => <ArchitectureView architectures={this.state.Architectures}/>}/>
+                            <Route exact path="/student/Architecture" component={() => <ArchitectureView architectures={this.state.Architecture}/>}/>
                             <Route exact path="/student/Complaints" component={SubmitComplaint} />
                             <Route exact path="/student/mealview" component={() => <MealView meals={this.state.Meals}/>} />
                             <Route exact path="/student/studentView"  component={()=><StudentView students={this.state.Students}/>} />
-                            <Route exact path="/student/rooms" component={() => <ArchitectureView architectures={this.state.Architectures}/>}/>
+                            <Route exact path="/student/rooms" component={() => <ArchitectureView architectures={this.state.Architecture}/>}/>
                             <Route exact path="/student/employeeView" component={()=><EmployeeView employees={this.state.Employees}/>}/>
                             <Redirect to="/student/dashboard"/>
                         </Switch>

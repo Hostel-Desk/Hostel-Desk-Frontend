@@ -107,7 +107,7 @@ class Main extends Component {
                         <Route path="/contactus" component={Contact}/>
                         <PrivateRoute path="/student" component={() => <Student auth={this.props.auth} 
                         employees={this.props.employees} notices={this.props.notices} students={this.props.students} salaries={this.props.salaries}
-                        meals={this.props.meals} mealBills={this.props.mealBills} seatAllocation={this.props.seatAllocation}/>}/>
+                        meals={this.props.meals} mealBills={this.props.mealBills} seatAllocation={this.props.seatAllocation} architecture={this.props.architecture}/>}/>
                         <Redirect to="/home"/>
                     </Switch>
                     </div>
