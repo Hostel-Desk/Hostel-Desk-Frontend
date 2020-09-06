@@ -243,14 +243,14 @@ class Admin extends Component {
                                                                                         notices={this.props.notices.notices}/>}/>
                             <Route exact path="/admin/students" component={()=><StudentView students={this.state.Students}/>}/>
                             <Route exact path="/admin/rooms" component={() => <ArchitectureView architectures={this.state.Architecture}/>}/>
-                            <Route exact path="/admin/StudentManage/addnew" component={AddStudent}/>
+                            <Route exact path="/admin/StudentManage/addnew" component={() => <AddStudent postStudent={this.props.postStudent}/>}/>
                             <Route exact path="/admin/employees" component={()=><EmployeeView employees={this.state.Employees}/>}/>
-                            <Route exact path="/admin/EmployeeManage/addnew" component={AddEmployee}/>
+                            <Route exact path="/admin/EmployeeManage/addnew" component={() => <AddEmployee postEmployee={this.props.post}/>}/>
                             <Route exact path="/admin/MealManage/view" component={() => <MealView meals={this.state.Meals}/>}/>
                             <Route exact path="/admin/MealManage/add" component={AddMeal}/>
                             <Route exact path="/admin/StudentManage/view" component={()=><StudentView students={this.state.Students}/>}/>
                             <Route exact path="/admin/EmployeeManage/view" component={()=><EmployeeView employees={this.state.Employees}/>}/>
-                            <Route exact path="/admin/NoticeBoard" component={() => <NoticeBoard notices={this.state.Notices}/>}/>
+                            <Route exact path="/admin/NoticeBoard" component={() => <NoticeBoard notices={this.state.Notices} postNotice={this.props.postNotice}/>}/>
                             <Route exact path="/admin/Settings/updateprofile" component={Profile}/>
                             <Route exact path="/admin/Architecture" component={() => <Architecture architectures={this.state.Architecture}/>}/>
                             <Route exact path="/admin/StudentManagePayment/Add Bill" component={StudentPayment} />

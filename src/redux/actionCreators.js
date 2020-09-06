@@ -133,11 +133,12 @@ export const postStudent = (student) => (dispatch) => {
 
     return fetch(baseUrl + 'students', {
         method: 'POST',
-        body: JSON.stringify(newStudent),
         headers: {
             'Content-Type': 'application/json',
             'Authorization': bearer
-        }
+        },
+        body: JSON.stringify(newStudent),
+        credentials: "same-origin"
     })
     .then(response => {
         console.log(response);
@@ -248,7 +249,7 @@ export const postEmployee = (employee) => (dispatch) => {
         joiningDate: employee.joinDate,
         photo: employee.photo
     }
-    console.log('Employee: ', newEmployee);
+    console.log('Employee: ', JSON.stringify(newEmployee));
 
     const bearer = 'Bearer ' + localStorage.getItem('token');
 
