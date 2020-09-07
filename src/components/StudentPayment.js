@@ -30,9 +30,10 @@ class StudentPayment extends Component {
     }
 
     handleSubmit = (event) => {
+        event.preventDefault();
+        this.props.postMealbill(this.state);
         console.log("State: " + JSON.stringify(this.state));
         alert("Current state: " + JSON.stringify(this.state));
-        event.preventDefault();
     }
 
     handleBlur = (field) => (evt) => {

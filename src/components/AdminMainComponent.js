@@ -253,7 +253,7 @@ class Admin extends Component {
                             <Route exact path="/admin/NoticeBoard" component={() => <NoticeBoard notices={this.state.Notices} postNotice={this.props.postNotice} isLoading={this.props.notices.isLoading} errMess={this.props.notices.errMess}/>}/>
                             <Route exact path="/admin/Settings/updateprofile" component={Profile}/>
                             <Route exact path="/admin/Architecture" component={() => <Architecture postArchitecture={this.props.postArchitecture} architecture={this.props.architecture.architecture} isLoading={this.props.architecture.isLoading} errMess={this.props.architecture.errMess}/>}/>
-                            <Route exact path="/admin/StudentManagePayment/Add Bill" component={StudentPayment} />
+                            <Route exact path="/admin/StudentManagePayment/Add Bill" component={() => <StudentPayment postMealbill={this.props.postMealbill}/>} />
                             <Route exact path="/admin/StudentManagePayment/MessBill" component={()=><StudentMessBill messBills={this.state.MessBills} isLoading={this.props.mealBills.isLoading} errMess={this.props.mealBills.errMess} />} />
                             <Route exact path="/admin/EmployeeManagePayment/Add Salary" component={() => <EmployeeSalary postSalary={this.props.postSalary}/>}/>
                             <Route exact path="/admin/Complaints" component={() => <Complaints complaints={this.state.Complaints} isLoading={this.props.complaints.isLoading} errMess={this.props.complaints.errMess}/>}/>

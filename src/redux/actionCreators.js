@@ -34,7 +34,7 @@ export const postMealbill = (mealbill) => (dispatch) => {
 
     const bearer = 'Bearer ' + localStorage.getItem('token');
 
-    return fetch(baseUrl + 'mealbill', {
+    return fetch(baseUrl + 'mealBills', {
         method: 'POST',
         body: JSON.stringify(newMealbill),
         headers: {
