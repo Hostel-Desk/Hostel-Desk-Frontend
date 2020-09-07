@@ -132,7 +132,7 @@ export const postStudent = (student) => (dispatch) => {
 
     const bearer = 'Bearer ' + localStorage.getItem('token');
 
-    return axios(baseUrl + 'students', {
+    return fetch(baseUrl + 'students', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
