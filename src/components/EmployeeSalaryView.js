@@ -1,7 +1,8 @@
 import React from 'react';
 import { MDBDataTableV5} from 'mdbreact';
+import { Loading } from './LoadingComponent';
 
-export default function EmployeeSalaryView({employeeSal}) {
+export default function EmployeeSalaryView({employeeSal,isLoading,errMess}) {
   const [datatable, setDatatable] = React.useState({
     columns: [
       {
@@ -42,7 +43,15 @@ export default function EmployeeSalaryView({employeeSal}) {
       ],
       rows: employeeSal,
 });
-return (
+
+if(isLoading){
+  return(<Loading/>);
+}
+else if(errMess){
+  return(<div><p>{errMess} Please try again</p></div>);
+}
+else{
+return(
 <div>
 <div className="row">
                 <div className="col-12 container-fluid">
@@ -66,4 +75,4 @@ return (
 </div>
 </div>
 );
-}
+}}

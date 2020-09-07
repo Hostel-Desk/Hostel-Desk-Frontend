@@ -1,7 +1,8 @@
 import React from 'react';
 import { MDBDataTableV5 } from 'mdbreact';
+import { Loading } from './LoadingComponent';
 
-export default function NoticeView({notices}) {
+export default function NoticeView({notices,isLoading,errMess}) {
   const [datatable, setDatatable] = React.useState({
       columns: [
           {
@@ -29,7 +30,13 @@ export default function NoticeView({notices}) {
       ],
       rows: notices,
   });
-
+  if(isLoading){
+    return(<Loading/>);
+  }
+  else if(errMess){
+    return(<div><p>{errMess} Please try again</p></div>);
+  }
+  else{
   return (
     <MDBDataTableV5
       hover
@@ -44,4 +51,4 @@ export default function NoticeView({notices}) {
       scrollX
     />
   );
-}
+}}

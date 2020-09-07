@@ -75,6 +75,7 @@ class Main extends Component {
         this.props.fetchSeatallocation();
         this.props.fetchMeals();
         this.props.fetchMealbill();
+        this.props.loginUser(JSON.parse(localStorage.getItem('creds')));
        }
     }
 

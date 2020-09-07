@@ -6,7 +6,7 @@ export const Auth = (state = {
         token: localStorage.getItem('token'),
         user: localStorage.getItem('creds') ? JSON.parse(localStorage.getItem('creds')) : null,
         errMess: null,
-        admin: localStorage.getItem('admin')
+        admin: false
     }, action) => {
     switch (action.type) {
         case ActionTypes.LOGIN_REQUEST:
@@ -39,7 +39,8 @@ export const Auth = (state = {
                 isLoading: false,
                 isAuthenticated: false,
                 token: '',
-                user: null
+                user: null,
+                admin: false
             };
         default:
             return state
