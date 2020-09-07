@@ -127,9 +127,12 @@ class Seat extends Component {
                             </FormGroup>
                     </Form>
                 </div>
-                <div>
-                    <SeatAllocationView seats={this.props.seats}/>
+                <div className="row">
+                <div className="col-12 container-fluid">
+                    <SeatAllocationView seats={this.props.seats} isLoading={this.props.isLoading} errMess={this.props.errMess}/>
                 </div>
+                </div>
+                
             </div>
 
         )

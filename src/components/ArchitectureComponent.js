@@ -80,7 +80,7 @@ class Architecture extends Component {
                             </Row>
                     </Form>
                 </div>
-                <div><ArchitectureView architectures={this.props.architecture}/></div>
+                <div className="col-12 container-fluid" ><ArchitectureView architectures={this.props.architecture} isLoading={this.props.isLoading} errMess={this.props.errMess} /></div>
                
                     
             </div>

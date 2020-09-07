@@ -1,7 +1,8 @@
 import React from 'react';
 import { MDBDataTableV5} from 'mdbreact';
+import { Loading } from './LoadingComponent';
 
-export default function ArchitectureView(props) {
+export default function ArchitectureView({architectures,isLoading,errMess}) {
     const [datatable, setDatatable] = React.useState({
         columns: [
             {
@@ -33,9 +34,9 @@ export default function ArchitectureView(props) {
         ],
         rows: [
           {
-            rooms: props.architectures.rooms,
-            blocks: props.architectures.blocks,
-            floors: props.architectures.floors,
+            rooms: architectures.rooms,
+            blocks: architectures.blocks,
+            floors: architectures.floors,
             actions: <div>
             <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleArchitectureModal()}></i>
             <i className="fa fa-trash-alt delete"></i>
@@ -43,7 +44,13 @@ export default function ArchitectureView(props) {
           }
         ],
     });
-  
+    if(isLoading){
+      return(<Loading/>);
+    }
+    else if(errMess){
+      return(<div><p>{errMess} Please try again</p></div>);
+    }
+    else{
     return (
       <MDBDataTableV5
         responsiveMd
@@ -58,4 +65,4 @@ export default function ArchitectureView(props) {
         scrollX
       />
     );
-  }
+  }}

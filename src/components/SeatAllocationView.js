@@ -1,7 +1,8 @@
 import React from 'react';
 import { MDBDataTableV5} from 'mdbreact';
 
-export default function SeatAllocationView({seats}) {
+import { Loading } from './LoadingComponent';
+export default function SeatAllocationView({seats,isLoading,errMess}) {
   const [datatable, setDatatable] = React.useState({
       columns: [
           {
@@ -44,7 +45,13 @@ export default function SeatAllocationView({seats}) {
       ],
       rows: seats,
 });
-
+if(isLoading){
+  return(<Loading/>);
+}
+else if(errMess){
+  return(<div><p>{errMess} Please try again</p></div>);
+}
+else{
 return (
 
 <MDBDataTableV5
@@ -61,4 +68,4 @@ return (
 />
 
 );
-}
+}}

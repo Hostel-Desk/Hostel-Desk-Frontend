@@ -92,8 +92,8 @@ class NoticeBoard extends Component {
                         </FormGroup>
                     </Form>
                 </div>
-                <div>
-                    <NoticeView notices={this.props.notices}/>
+                <div className="col-12 container-fluid">
+                    <NoticeView notices={this.props.notices} isLoading={this.props.isLoading} errMess={this.props.errMess}/>
                 </div>
             </div>
         )
