@@ -17,8 +17,10 @@ class SubmitComplaint extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        this.props.postComplaint(this.state)
         console.log("Current State is: " + JSON.stringify(this.state));
         alert("Current State is: " + JSON.stringify(this.state));
+        
     }
     handleInputChange = (event) => {
         const target = event.target;

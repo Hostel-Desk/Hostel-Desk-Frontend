@@ -5,11 +5,6 @@ import { Loading } from './LoadingComponent';
 export default function EmployeeSalaryView({employeeSal,isLoading,errMess}) {
   const [datatable, setDatatable] = React.useState({
     columns: [
-      {
-        label: 'Employee Id',
-        field: 'eid',
-        width: 150,
-      },
         {
           label: 'Name',
           field: 'name',

@@ -115,11 +115,11 @@ class Main extends Component {
                         <Route path="/home" component={() => <Home/>}/>
                         <Route path="/login" component={() => <LoginForm auth={this.props.auth} loginUser={this.props.loginUser} />}/>
                         <AdminRoute path="/admin" component={() => <Admin auth={this.props.auth} postNotice={this.props.postNotice} postArchitecture={this.props.postArchitecture}
-                        employees={this.props.employees} notices={this.props.notices} students={this.props.students} postStudent={this.props.postStudent} 
+                        employees={this.props.employees} notices={this.props.notices} students={this.props.students} postStudent={this.props.postStudent} postSalary={this.props.postSalary}
                         deleteStudent = {this.props.deleteStudent} fetchStudents={this.props.fetchStudents} salaries={this.props.salaries} complaints = {this.props.complaints} postEmployee={this.props.postEmployee}
                         meals={this.props.meals} mealBills={this.props.mealBills} fetchEmployees={this.props.fetchEmployees} seatAllocation={this.props.seatAllocation} architecture={this.props.architecture}/>}/>
                         <Route path="/contactus" component={Contact}/>
-                        <StudentRoute path="/student" component={() => <Student auth={this.props.auth} 
+                        <StudentRoute path="/student" component={() => <Student auth={this.props.auth} postComplaint={this.props.postComplaint}
                         employees={this.props.employees} notices={this.props.notices} students={this.props.students} salaries={this.props.salaries}
                         meals={this.props.meals} mealBills={this.props.mealBills} seatAllocation={this.props.seatAllocation} architecture={this.props.architecture}/>}/>
                         <Redirect to="/home"/>
