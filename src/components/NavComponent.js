@@ -22,7 +22,7 @@ class Bar extends Component {
         this.toggleModal1 = this.toggleModal1.bind(this);
         //this.handleLoginClick = this.handleLoginClick.bind(this);
         this.handleLogoutClick = this.handleLogoutClick.bind(this);
-        this.handleSignUpClick = this.handleSignUpClick.bind(this);
+        //this.handleSignUpClick = this.handleSignUpClick.bind(this);
     }
 
     toggleNav() {
@@ -50,9 +50,9 @@ class Bar extends Component {
         this.props.logoutUser();
     }
 
-    handleSignUpClick() {
+    /*handleSignUpClick() {
         this.setState({isModalOpen1: !this.state.isModalOpen1,});
-    }
+    }*/
 
     handleInputChange = (event) => {
         const target = event.target;
@@ -98,13 +98,13 @@ class Bar extends Component {
         const errors = this.validate(this.state.username, this.state.password);
         const isLoggedIn = this.props.auth.isAuthenticated;
         let button;
-        let button1;
+        /*let button1;*/
 
     if (isLoggedIn) {
       button = <LogoutButton onClick={this.handleLogoutClick} />;
     } else {
       button = <LoginButton/>;
-      button1 = <SignupButton onClick={this.toggleModal1}/>
+      /*button1 = <SignupButton onClick={this.toggleModal1}/>*/
     }
     return (
         <div>
@@ -126,9 +126,6 @@ class Bar extends Component {
                                 </NavItem>
                                 <NavItem>
                                     {button}
-                                </NavItem>
-                                <NavItem>
-                                    {button1}
                                 </NavItem>
                                 <NavItem className="navbar-expand-lg ">
                                     <Link className="nav-link" to="/login">
@@ -183,7 +180,7 @@ class Bar extends Component {
                         </Form>
                     </ModalBody>
                 </Modal> */}
-                <Modal backdrop="static" isOpen={this.state.isModalOpen1} toggle={this.toggleModal1}>
+                {/*<Modal backdrop="static" isOpen={this.state.isModalOpen1} toggle={this.toggleModal1}>
                     <ModalHeader>   
                         SignUp         
                         <Button className="close me" variant="secondary" onClick={this.toggleModal1} color="white">
@@ -209,7 +206,7 @@ class Bar extends Component {
                             <Button type="submit" value="submit" color="primary" onClick={this.handleSignUpClick} ><span className="fa fa-sign-in-alt fa-lg"></span>Sign Up</Button>
                         </Form>
                     </ModalBody>
-                </Modal>
+            </Modal>*/}
         </div>
     )
 }
@@ -224,7 +221,7 @@ function LogoutButton(props){
     return (<Link to="/home" className="nav-link" onClick={props.onClick}><span className="fa fa-sign-out-alt fa-lg"></span> Logout</Link>);
 }
 
-function SignupButton(props){
-    return (<Link className="nav-link" onClick={props.onClick}><span className="fa fa-sign-in-alt fa-lg"></span> SignUp</Link>);
-}
+//function SignupButton(props){
+//    return (<Link className="nav-link" onClick={props.onClick}><span className="fa fa-sign-in-alt fa-lg"></span> SignUp</Link>);
+//}
 export default Bar;
