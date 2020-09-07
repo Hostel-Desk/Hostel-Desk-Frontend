@@ -17,7 +17,7 @@ export const Architecture = (state = {
 
         case ActionTypes.ADD_ARCHITECTURE:
             var architecture = action.payload;
-            return {...state, architecture: state.architecture.concat(architecture)};
+            return {...state, architecture: architecture};
 
         default:
             return state;
