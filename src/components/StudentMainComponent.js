@@ -141,7 +141,7 @@ class Student extends Component {
                             <Route exact path="/student/payment" component={()=><StudentMessBill messBills={this.state.MessBills} isLoading={this.props.mealBills.isLoading} errMess={this.props.mealBills.errMess}/>}/>
                             <Route exact path="/student/Noticeboard" component={() => <NoticeView notices={this.state.Notices} isLoading={this.props.notices.isLoading} errMess={this.props.notices.errMess}/>}/>
                             <Route exact path="/student/Architecture" component={() => <ArchitectureView architectures={this.props.architecture.architecture} isLoading={this.props.architecture.isLoading} errMess={this.props.architecture.errMess}/>}/>
-                            <Route exact path="/student/Complaints" component={SubmitComplaint} />
+                            <Route exact path="/student/Complaints" component={() => <SubmitComplaint postComplaint={this.props.postComplaint}/>} />
                             <Route exact path="/student/mealview" component={() => <MealView meals={this.state.Meals} isLoading={this.props.meals.isLoading} errMess={this.props.meals.errMess}/>} />
                             <Route exact path="/student/studentView"  component={()=><StudentView students={this.state.Students} isLoading={this.props.students.isLoading} errMess={this.props.students.errMess}/>} />
                             <Route exact path="/student/rooms" component={() => <ArchitectureView architectures={this.state.Architecture} isLoading={this.props.architecture.isLoading} errMess={this.props.architecture.errMess}/>}/>

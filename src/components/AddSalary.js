@@ -7,20 +7,22 @@ class EmployeeSalary extends Component {
 
         this.state = {
             rupees: '',
-            salaryMonth: '',
+            date: '',
             name: '',
             touched: {
                 rupees: false,
-                salaryMonth: false,
+                date: false,
                 name: false,
             }
         }
     }
 
     handleSubmit = (event) => {
+        event.preventDefault();
+        this.props.postSalary(this.state);
         console.log("Current State is: " + JSON.stringify(this.state));
         alert("Current State is: " + JSON.stringify(this.state));
-        event.preventDefault();
+        
     }
     handleInputChange = (event) => {
         const target = event.target;
@@ -37,18 +39,18 @@ class EmployeeSalary extends Component {
         });
     }
 
-    validate = (name, salaryMonth, rupees) => {
+    validate = (name, date, rupees) => {
         const errors = {
             rupees: '',
-            salaryMonth: '',
+            date: '',
             name: ''
         }
         if(this.state.touched.name && name.length < 3)
             errors.name = 'Name should be of minimum length of 3 characters';
         else if(this.state.touched.name && name.length > 30)
             errors.name = 'Name should not be greater than 30 characters';
-        if(this.state.touched.salaryMonth && salaryMonth.length === 0)
-            errors.salaryMonth = 'Specify Month';
+        if(this.state.touched.date && date.length === 0)
+            errors.date = 'Specify Month';
         if(this.state.touched.rupees && rupees.length === 0)
             errors.rupees = 'Specify salary';
 
@@ -56,7 +58,7 @@ class EmployeeSalary extends Component {
     }   
 
     render(){
-        const errors = this.validate(this.state.name, this.state.salaryMonth, this.state.rupees);
+        const errors = this.validate(this.state.name, this.state.date, this.state.rupees);
         return (
             <div>
                 <div className="row">
@@ -84,11 +86,11 @@ class EmployeeSalary extends Component {
                             
                             <Col md={4}>
                                     <FormGroup>
-                                        <Label for="salarymonth">Salary Month</Label>
-                                        <Input type="month" name="salaryMonth" value={this.state.salaryMonth} id="salarymonth" placeholder="Month"
-                                        onBlur={this.handleBlur('salaryMonth')} onChange={this.handleInputChange}
-                                        valid={errors.salaryMonth === ''} invalid={errors.salaryMonth !== ''}/>
-                                        <FormFeedback>{errors.salaryMonth}</FormFeedback>
+                                        <Label for="date">Date</Label>
+                                        <Input type="date" name="date" value={this.state.date} id="date" placeholder="Date"
+                                        onBlur={this.handleBlur('date')} onChange={this.handleInputChange}
+                                        valid={errors.date === ''} invalid={errors.date !== ''}/>
+                                        <FormFeedback>{errors.date}</FormFeedback>
                                     </FormGroup>
                                 </Col>
                                 

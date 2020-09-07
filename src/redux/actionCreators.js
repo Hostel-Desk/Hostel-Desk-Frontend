@@ -475,14 +475,14 @@ export const postSalary = (salary) => (dispatch) => {
 
     const newSalary = {
         name: salary.name,
-        month: salary.salaryMonth,
+        month: salary.date,
         salary: salary.rupees
     }
     console.log('Salary: ', newSalary);
 
     const bearer = 'Bearer ' + localStorage.getItem('token');
 
-    return fetch(baseUrl + 'salaries', {
+    return fetch(baseUrl + 'salary', {
         method: 'POST',
         body: JSON.stringify(newSalary),
         headers: {
@@ -515,7 +515,7 @@ export const fetchSalaries = () => (dispatch) => {
 
     const bearer = 'Bearer ' + localStorage.getItem('token');
 
-    return fetch(baseUrl + 'salaries', {
+    return fetch(baseUrl + 'salary', {
         headers: {
             'method': 'GET',
             'Authorization': bearer
