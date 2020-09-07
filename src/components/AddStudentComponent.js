@@ -14,7 +14,7 @@ class AddStudent extends Component {
             branch: '',
             nationality: '',
             address: '',
-            photo: '',
+            //photo: '',
             father: '',
             mother: '',
             Fnum: '',
@@ -198,12 +198,12 @@ class AddStudent extends Component {
                         </Row>
                         <Row form>
                             <Col md={4}>
-                                <FormGroup>
+                                {/*<FormGroup>
                                     <Label for="photo">Photo</Label>
                                     <Input required type="file" name="photo" id="photo" 
                                     onChange={this.handleInputChange} value={this.state.photo}/>
-                                </FormGroup>
-                            </Col>
+                                </FormGroup>*/}
+                                </Col>
                         </Row>
                     <div>
                         <h3>Parent's Details</h3>

@@ -13,7 +13,7 @@ class AddEmployee extends Component {
             designation: '',
             salary: '',
             joinDate: '',
-            photo: '',
+            //photo: '',
             eid:'',
             touched: {
                 name: false,
@@ -187,11 +187,11 @@ class AddEmployee extends Component {
                                 </FormGroup>
                                 </Col>
                                 <Col md={4}>
-                                    <FormGroup>
+                                    {/*<FormGroup>
                                         <Label for="photo">Photo</Label>
                                         <Input type="file" name="photo" value={this.state.photo} 
                                         onChange={this.handleInputChange} id="photo" />
-                                    </FormGroup>
+                                    </FormGroup>*/}
                                 </Col>
                             </Row>
                             <Row form>

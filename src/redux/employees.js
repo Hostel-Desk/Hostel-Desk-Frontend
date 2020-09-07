@@ -17,7 +17,7 @@ export const Employees = (state = {
 
         case ActionTypes.ADD_EMPLOYEE:
             var employee = action.payload;
-            return {...state, employees: state.students.concat(employee)};
+            return {...state, employees: state.employees.concat(employee)};
 
         default:
             return state;
