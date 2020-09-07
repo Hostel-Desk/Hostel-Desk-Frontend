@@ -15,7 +15,7 @@ class NoticeBoard extends Component {
         }
     }
 
-    handleSubmit(event) {
+    handleSubmit =(event) => {
         event.preventDefault();
         console.log("Current State is: " + JSON.stringify(this.state));
         alert("Current State is: " + JSON.stringify(this.state));
