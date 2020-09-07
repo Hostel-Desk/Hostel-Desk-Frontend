@@ -73,16 +73,16 @@ class Student extends Component {
           })
       });
       const salariesList = this.state.EmployeeSal.concat(salaries);
-      let architecture = [];
-      this.props.architecture.architecture.forEach(element => {
-        architecture.push({
-          name: element.hostel.name,
-          rooms: element.rooms,
-          blocks: element.blocks,
-          floors: element.floors,
-          })
-      });
-      const architectureList = this.state.Architecture.concat(architecture);
+      // let architecture = [];
+      // this.props.architecture.architecture.forEach(element => {
+      //   architecture.push({
+      //     name: element.hostel.name,
+      //     rooms: element.rooms,
+      //     blocks: element.blocks,
+      //     floors: element.floors,
+      //     })
+      // });
+      // const architectureList = this.state.Architecture.concat(architecture);
       //console.log(this.props.architecture.architecture);
       let seatAllocation = [];
       this.props.seatAllocation.seatAllocation.forEach(element => {
@@ -113,7 +113,7 @@ class Student extends Component {
         Employees: employeeList,
         Notices: noticeList,
         EmployeeSal: salariesList,
-        Architecture: architectureList,
+        //Architecture: architectureList,
         Seats: seatAllocationList,
         MealsBills: mealBillsList,
         Meals: mealsList
@@ -140,7 +140,7 @@ class Student extends Component {
                             
                             <Route exact path="/student/payment" component={()=><StudentMessBill messBills={this.state.MessBills}/>}/>
                             <Route exact path="/student/Noticeboard" component={() => <NoticeView notices={this.state.Notices}/>}/>
-                            <Route exact path="/student/Architecture" component={() => <ArchitectureView architectures={this.state.Architecture}/>}/>
+                            <Route exact path="/student/Architecture" component={() => <ArchitectureView architectures={this.props.architecture.architecture}/>}/>
                             <Route exact path="/student/Complaints" component={SubmitComplaint} />
                             <Route exact path="/student/mealview" component={() => <MealView meals={this.state.Meals}/>} />
                             <Route exact path="/student/studentView"  component={()=><StudentView students={this.state.Students}/>} />

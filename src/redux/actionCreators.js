@@ -126,7 +126,7 @@ export const postStudent = (student) => (dispatch) => {
         motherName: student.mother,
         fatherMobile: student.Fnum,
         dob: student.dob,
-        photo: student.photo
+        //photo: student.photo
     }
     console.log('Student: ', newStudent);
 

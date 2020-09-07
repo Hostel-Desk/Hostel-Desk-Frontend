@@ -1,18 +1,9 @@
 import React from 'react';
 import { MDBDataTableV5} from 'mdbreact';
 
-export default function ArchitectureView({architectures}) {
+export default function ArchitectureView(props) {
     const [datatable, setDatatable] = React.useState({
         columns: [
-            {
-                label: 'Hostel Name',
-                field: 'name',
-                width: 150,
-                attributes: {
-                'aria-controls': 'DataTable',
-                'aria-label': 'Hostel Name',
-                },
-            },
             {
                 label: 'Total Rooms',
                 field: 'rooms',
@@ -40,7 +31,17 @@ export default function ArchitectureView({architectures}) {
               </div>
             }
         ],
-        rows: architectures,
+        rows: [
+          {
+            rooms: props.architectures.rooms,
+            blocks: props.architectures.blocks,
+            floors: props.architectures.floors,
+            actions: <div>
+            <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleArchitectureModal()}></i>
+            <i className="fa fa-trash-alt delete"></i>
+            </div> 
+          }
+        ],
     });
   
     return (
