@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
-
+import { Loading } from './LoadingComponent';
 export default class MealView extends Component {
   constructor(props) {
     super(props)
@@ -66,7 +66,16 @@ export default class MealView extends Component {
   }
 
   render() {
-    return( 
+    if (this.props.isLoading){
+      return(<Loading/>);
+    }
+    else if(this.props.errMess){
+      return(
+        <div><p>{this.props.errMess} Please try again</p></div>);
+    }
+    
+    else{
+      return( 
         <div className="mealTable">
             <div className="row">
             <div className="col-12 container-fluid">
@@ -88,5 +97,7 @@ export default class MealView extends Component {
         </MDBTable>
         </div>
      );
+    }
+    
   }
 }

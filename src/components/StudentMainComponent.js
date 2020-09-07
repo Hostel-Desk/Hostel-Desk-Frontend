@@ -51,7 +51,7 @@ class Student extends Component {
           designation: element.designation,
           mobile: element.mobileNo,
           date: element.joiningDate,
-          address: element.hostel.name
+          address:element.hostel.name
         })
       });
       const employeeList = this.state.Students.concat(employees);
@@ -136,16 +136,16 @@ class Student extends Component {
                                                                                         auth={this.props.auth}
                                                                                         notices={this.props.notices.notices}/>}/>
                             <Route exact path="/student/profile" component={StudentProfile}/>
-                            <Route exact path="/student/Meal" component={() => <MealView meals={this.state.Meals}/>}/>
+                            <Route exact path="/student/Meal" component={() => <MealView meals={this.state.Meals} isLoading={this.props.meals.isLoading} errMess={this.props.meals.errMess}/>}/>
                             
-                            <Route exact path="/student/payment" component={()=><StudentMessBill messBills={this.state.MessBills}/>}/>
-                            <Route exact path="/student/Noticeboard" component={() => <NoticeView notices={this.state.Notices}/>}/>
-                            <Route exact path="/student/Architecture" component={() => <ArchitectureView architectures={this.state.Architecture}/>}/>
+                            <Route exact path="/student/payment" component={()=><StudentMessBill messBills={this.state.MessBills} isLoading={this.props.mealBills.isLoading} errMess={this.props.mealBills.errMess}/>}/>
+                            <Route exact path="/student/Noticeboard" component={() => <NoticeView notices={this.state.Notices} isLoading={this.props.notices.isLoading} errMess={this.props.notices.errMess}/>}/>
+                            <Route exact path="/student/Architecture" component={() => <ArchitectureView architectures={this.state.Architecture} isLoading={this.props.architecture.isLoading} errMess={this.props.architecture.errMess}/>}/>
                             <Route exact path="/student/Complaints" component={SubmitComplaint} />
-                            <Route exact path="/student/mealview" component={() => <MealView meals={this.state.Meals}/>} />
-                            <Route exact path="/student/studentView"  component={()=><StudentView students={this.state.Students}/>} />
-                            <Route exact path="/student/rooms" component={() => <ArchitectureView architectures={this.state.Architecture}/>}/>
-                            <Route exact path="/student/employeeView" component={()=><EmployeeView employees={this.state.Employees}/>}/>
+                            <Route exact path="/student/mealview" component={() => <MealView meals={this.state.Meals} isLoading={this.props.meals.isLoading} errMess={this.props.meals.errMess}/>} />
+                            <Route exact path="/student/studentView"  component={()=><StudentView students={this.state.Students} isLoading={this.props.students.isLoading} errMess={this.props.students.errMess}/>} />
+                            <Route exact path="/student/rooms" component={() => <ArchitectureView architectures={this.state.Architecture} isLoading={this.props.architecture.isLoading} errMess={this.props.architecture.errMess}/>}/>
+                            <Route exact path="/student/employeeView" component={()=><EmployeeView employees={this.state.Employees} isLoading={this.props.employees.isLoading} errMess={this.props.employees.errMess}/>}/>
                             <Redirect to="/student/dashboard"/>
                         </Switch>
 

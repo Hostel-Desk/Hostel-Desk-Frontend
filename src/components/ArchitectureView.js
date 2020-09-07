@@ -1,7 +1,8 @@
 import React from 'react';
 import { MDBDataTableV5} from 'mdbreact';
+import { Loading } from './LoadingComponent';
 
-export default function ArchitectureView({architectures}) {
+export default function ArchitectureView({architectures,isLoading,errMess}) {
     const [datatable, setDatatable] = React.useState({
         columns: [
             {
@@ -42,7 +43,13 @@ export default function ArchitectureView({architectures}) {
         ],
         rows: architectures,
     });
-  
+    if(isLoading){
+      return(<Loading/>);
+    }
+    else if(errMess){
+      return(<div><p>{errMess} Please try again</p></div>);
+    }
+    else{
     return (
       <MDBDataTableV5
         responsiveMd
@@ -57,4 +64,4 @@ export default function ArchitectureView({architectures}) {
         scrollX
       />
     );
-  }
+  }}

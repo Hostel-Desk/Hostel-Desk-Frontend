@@ -1,7 +1,8 @@
 import React from 'react';
 import { MDBDataTableV5 } from 'mdbreact';
+import { Loading } from './LoadingComponent';
 
-export default function StudentMessBill({messBills}) {
+export default function StudentMessBill({messBills,isLoading,errMess}) {
   const [datatable, setDatatable] = React.useState({
     columns: [
         {
@@ -47,7 +48,13 @@ export default function StudentMessBill({messBills}) {
       ],
       rows: messBills
 });
-
+if(isLoading){
+  return(<Loading/>);
+}
+else if(errMess){
+  return(<div><p>{errMess} Please try again</p></div>);
+}
+else{
   return (
     <div>
     <div className="row">
@@ -72,4 +79,4 @@ export default function StudentMessBill({messBills}) {
     </div>
     </div>
   );
-}
+}}
