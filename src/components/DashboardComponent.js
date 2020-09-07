@@ -85,9 +85,8 @@ class DashBoard extends Component {
                         <CardHeader className="dashCard">
                             <div className="row">
                             <span className="col-7 fa fa-building fa-4x"></span>
-                            <h3>{this.props.architectures.map((element) => {
-                                return element.rooms;
-                            })}</h3>
+                            <h3>{this.props.architectures.rooms
+                            }</h3>
                             </div> 
                             <div className="mt-3">
                                 <div>
