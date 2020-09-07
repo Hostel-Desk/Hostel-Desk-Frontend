@@ -117,6 +117,7 @@ export const postStudent = (student) => (dispatch) => {
         studentName: student.name,
         sid: student.id,
         mobileNo: student.mobile,
+        dob: student.dob,
         gender: student.gender,
         email: student.email,
         branch: student.branch,
@@ -125,7 +126,6 @@ export const postStudent = (student) => (dispatch) => {
         fatherName: student.father,
         motherName: student.mother,
         fatherMobile: student.Fnum,
-        dob: student.dob,
         //photo: student.photo
     }
     console.log('Student: ', newStudent);
@@ -248,7 +248,9 @@ export const postEmployee = (employee) => (dispatch) => {
         designation: employee.designation,
         address: employee.address,
         joiningDate: employee.joinDate,
-        photo: employee.photo
+        salary: employee.salary,
+        //photo: employee.photo,
+        eid: employee.eid
     }
     console.log('Employee: ', JSON.stringify(newEmployee));
 
