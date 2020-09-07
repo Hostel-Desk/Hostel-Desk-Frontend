@@ -130,6 +130,11 @@ class Bar extends Component {
                                 <NavItem>
                                     {button1}
                                 </NavItem>
+                                <NavItem className="navbar-expand-lg ">
+                                    <Link className="nav-link" to="/login">
+                                    <span className="fa fa-tachometer-alt"></span>Go to DashBoard
+                                    </Link>
+                                </NavItem>
                                 
                             </Nav>
                         </Collapse>
