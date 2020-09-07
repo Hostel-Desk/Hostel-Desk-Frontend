@@ -1,5 +1,6 @@
 import * as ActionTypes from './actionTypes';
 import { baseUrl } from '../shared/baseUrl';
+import axios from 'axios'
 
 export const mealbillLoading = () => ({
     type: ActionTypes.MEALBILL_LOADING
@@ -131,7 +132,7 @@ export const postStudent = (student) => (dispatch) => {
 
     const bearer = 'Bearer ' + localStorage.getItem('token');
 
-    return fetch(baseUrl + 'students', {
+    return axios(baseUrl + 'students', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

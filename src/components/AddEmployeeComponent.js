@@ -30,11 +30,11 @@ class AddEmployee extends Component {
     }
 
     handleSubmit = (event) => {
-       
-        // console.log("Current State is: " + JSON.stringify(this.state));
-        // alert("Current State is: " + JSON.stringify(this.state));
-        this.props.postEmployee(this.state);
         event.preventDefault();
+        console.log("Current State is: " + JSON.stringify(this.state));
+        alert("Current State is: " + JSON.stringify(this.state));
+        this.props.postEmployee(this.state);
+       
     }
     handleInputChange = (event) => {
         const target = event.target;

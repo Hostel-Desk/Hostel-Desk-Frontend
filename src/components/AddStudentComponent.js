@@ -41,10 +41,10 @@ class AddStudent extends Component {
     }
 
     handleSubmit = (event) => {
+        event.preventDefault();
         this.props.postStudent(this.state);
         console.log("State: " + JSON.stringify(this.state));
         alert("Current state: " + JSON.stringify(this.state));
-        event.preventDefault();
     }
 
     handleBlur = (field) => (evt) => {
