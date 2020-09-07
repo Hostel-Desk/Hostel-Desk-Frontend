@@ -15,11 +15,11 @@ class NoticeBoard extends Component {
         }
     }
 
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         event.preventDefault();
+        this.props.postNotice(this.state);
         console.log("Current State is: " + JSON.stringify(this.state));
         alert("Current State is: " + JSON.stringify(this.state));
-        this.props.postNotice(this.state);
 
     }
     handleInputChange = (event) => {

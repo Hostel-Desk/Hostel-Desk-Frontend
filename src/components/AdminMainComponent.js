@@ -111,20 +111,20 @@ class Admin extends Component {
         })
       });
       const salariesList = this.state.EmployeeSal.concat(salaries);
-      let architecture = [];
-      this.props.architecture.architecture.forEach(element => {
-        architecture.push({
-          name: element.hostel.name,
-          rooms: element.rooms,
-          blocks: element.blocks,
-          floors: element.floors,
-          actions: <div>
-          <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleArchitectureModal()}></i>
-          <i className="fa fa-trash-alt delete"></i>
-        </div>
-        })
-      });
-      const architectureList = this.state.Architecture.concat(architecture);
+      // let architecture = [];
+      // this.props.architecture.architecture.forEach(element => {
+      //   architecture.push({
+      //     name: element.hostel.name,
+      //     rooms: element.rooms,
+      //     blocks: element.blocks,
+      //     floors: element.floors,
+      //     actions: <div>
+      //     <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleArchitectureModal()}></i>
+      //     <i className="fa fa-trash-alt delete"></i>
+      //   </div>
+      //   })
+      // });
+      //const architectureList = this.state.Architecture.concat(architecture);
       //console.log(this.props.architecture.architecture);
       let seatAllocation = [];
       this.props.seatAllocation.seatAllocation.forEach(element => {
@@ -177,7 +177,7 @@ class Admin extends Component {
         Employees: employeeList,
         Notices: noticeList,
         EmployeeSal: salariesList,
-        Architecture: architectureList,
+        //Architecture: architectureList,
         Seats: seatAllocationList,
         Complaints: complaintsList,
         MessBills: mealBillsList,
@@ -252,7 +252,7 @@ class Admin extends Component {
                             <Route exact path="/admin/EmployeeManage/view" component={()=><EmployeeView employees={this.state.Employees}/>}/>
                             <Route exact path="/admin/NoticeBoard" component={() => <NoticeBoard notices={this.state.Notices} postNotice={this.props.postNotice}/>}/>
                             <Route exact path="/admin/Settings/updateprofile" component={Profile}/>
-                            <Route exact path="/admin/Architecture" component={() => <Architecture architectures={this.state.Architecture}/>}/>
+                            <Route exact path="/admin/Architecture" component={() => <Architecture postArchitecture={this.props.postArchitecture} architecture={this.props.architecture.architecture}/>}/>
                             <Route exact path="/admin/StudentManagePayment/Add Bill" component={StudentPayment} />
                             <Route exact path="/admin/StudentManagePayment/MessBill" component={()=><StudentMessBill messBills={this.state.MessBills}/>} />
                             <Route exact path="/admin/EmployeeManagePayment/Add Salary" component={EmployeeSalary}/>

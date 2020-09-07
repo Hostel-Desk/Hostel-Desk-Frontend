@@ -7,15 +7,9 @@ class Architecture extends Component {
         super(props);
 
         this.state = {
-            rooms: this.props.architectures.map((element)=> {
-                return element.rooms;
-            }),
-            blocks: this.props.architectures.map((element)=> {
-                return element.blocks;
-            }),
-            floors: this.props.architectures.map((element)=> {
-                return element.floors;
-            })
+            rooms: this.props.architecture.rooms,
+            blocks: this.props.architecture.blocks,
+            floors: this.props.architecture.floors
         }
     }
 
@@ -32,9 +26,11 @@ class Architecture extends Component {
     }
 
     handleSubmit = (event) => {
-        console.log("State: " + JSON.stringify(this.props));
-        alert("Current state: " + JSON.stringify(this.props));
         event.preventDefault();
+        this.props.postArchitecture(this.state);
+        console.log("State: " + JSON.stringify(this.state));
+        alert("Current state: " + JSON.stringify(this.state));
+        
     }
 
 
