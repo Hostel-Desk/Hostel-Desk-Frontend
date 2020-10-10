@@ -53,38 +53,42 @@ class Admin extends Component {
     componentDidMount() {
       //this.props.fetchEmployees();
       let students = [];
-      this.props.students.students.forEach(element => {
-        students.push({
-          sid: element.sid,
-          name: element.studentName,
-          mobile: element.mobileNo,
-          program: element.branch,
-          gMob: element.fatherMobile,
-          guardian: element.fatherName,
-          pAddress: element.address,
-          actions: <div>
-            <i className="fa fa-pencil-alt edit mr-2" onClick={this.toggleStudentModal}/>
-            <i className="fa fa-trash-alt delete"></i>
-          </div>
-        })
-      });
+      if(this.props.students.students != null) {
+        this.props.students.students.forEach(element => {
+          students.push({
+            sid: element.sid,
+            name: element.studentName,
+            mobile: element.mobileNo,
+            program: element.branch,
+            gMob: element.fatherMobile,
+            guardian: element.fatherName,
+            pAddress: element.address,
+            actions: <div>
+              <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleStudentModal}/>
+              <i className="fa fa-trash-alt delete" onClick={() => this.props.deleteStudent(element._id)}></i>
+            </div>
+          })
+        });
+      }
       const studentlist = this.state.Students.concat(students);
       let employees = [];
-      this.props.employees.employees.forEach(element => {
-        employees.push({
-          name: element.employeeName,
-          gender: element.gender,
-          employeetype: element.employeeType,
-          designation: element.designation,
-          mobile: element.mobileNo,
-          date: element.joiningDate,
-          address: element.hostel.name,
-          actions: <div>
-          <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
-          <i className="fa fa-trash-alt delete"></i>
-        </div>
-        })
-      });
+      if(this.props.employees.employees != null) {
+        this.props.employees.employees.forEach(element => {
+          employees.push({
+            name: element.employeeName,
+            gender: element.gender,
+            employeetype: element.employeeType,
+            designation: element.designation,
+            mobile: element.mobileNo,
+            date: element.joiningDate,
+            address: element.hostel.name,
+            actions: <div>
+            <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleEmployeeModal()}></i>
+            <i className="fa fa-trash-alt delete" onClick={() => this.props.deleteEmployee(element._id)}></i>
+          </div>
+          })
+        });
+      }
       const employeeList = this.state.Students.concat(employees);
       let notices = [];
       this.props.notices.notices.forEach(element => {
@@ -93,7 +97,7 @@ class Admin extends Component {
           description: element.description,
           actions: <div>
           <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleNoticeModal()}></i>
-          <i className="fa fa-trash-alt delete"></i>
+          <i className="fa fa-trash-alt delete" onClick={() => this.props.deleteNotice(element._id)}></i>
         </div>
         })
       });
@@ -106,26 +110,12 @@ class Admin extends Component {
           amount: element.salary,
           actions: <div>
           <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleSalaryModal()}></i>
-          <i className="fa fa-trash-alt delete"></i>
+          <i className="fa fa-trash-alt delete" onClick={() => this.props.deleteSalary(element._id)}></i>
         </div>
         })
       });
       const salariesList = this.state.EmployeeSal.concat(salaries);
-      // let architecture = [];
-      // this.props.architecture.architecture.forEach(element => {
-      //   architecture.push({
-      //     name: element.hostel.name,
-      //     rooms: element.rooms,
-      //     blocks: element.blocks,
-      //     floors: element.floors,
-      //     actions: <div>
-      //     <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleArchitectureModal()}></i>
-      //     <i className="fa fa-trash-alt delete"></i>
-      //   </div>
-      //   })
-      // });
-      //const architectureList = this.state.Architecture.concat(architecture);
-      //console.log(this.props.architecture.architecture);
+      
       let seatAllocation = [];
       this.props.seatAllocation.seatAllocation.forEach(element => {
         seatAllocation.push({
@@ -149,26 +139,28 @@ class Admin extends Component {
           complaint: element.complaint,
           actions: <div>
           <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleSeatModal()}></i>
-          <i className="fa fa-trash-alt delete"></i>
+          <i className="fa fa-trash-alt delete" onClick={() => this.props.deleteComplaint(element._id)}></i>
         </div>
         })
       });
       const complaintsList = this.state.Complaints.concat(complaints);
 
       let mealBills = [];
-      this.props.mealBills.bills.forEach(element => {
-        mealBills.push({
-          name: element.name,
-          sid: element.sid,
-          branch: element.branch,
-          amount: element.payment,
-          date: element.paymentDate,
-          actions: <div>
-          <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleSeatModal()}></i>
-          <i className="fa fa-trash-alt delete"></i>
-        </div>
-        })
-      });
+      if(this.props.mealBills.bills != null) {
+        this.props.mealBills.bills.forEach(element => {
+          mealBills.push({
+            name: element.name,
+            sid: element.sid,
+            branch: element.branch,
+            amount: element.payment,
+            date: element.paymentDate,
+            actions: <div>
+            <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleSeatModal()}></i>
+            <i className="fa fa-trash-alt delete"></i>
+          </div>
+          })
+        });
+      }
       const mealBillsList = this.state.MessBills.concat(mealBills);
       const mealsList = this.state.Meals.concat(this.props.meals.meals);
   

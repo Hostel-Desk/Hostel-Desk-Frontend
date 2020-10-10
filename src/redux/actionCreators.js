@@ -215,7 +215,7 @@ export const deleteStudent = (studentId) => (dispatch) => {
             throw error;
       })
     .then(response => response.json())
-    .then(students => { console.log('Student Deleted', students); dispatch(studentsSuccess(students)); })
+    .then(students => { console.log('Student Deleted', students); dispatch(fetchStudents()); })
     .catch(error => dispatch(studentsFailed(error.message)));
 };
 
@@ -337,7 +337,7 @@ export const deleteEmployee = (employeeId) => (dispatch) => {
             throw error;
       })
     .then(response => response.json())
-    .then(employees => { console.log('Employee Deleted', employees); dispatch(employeesSuccess(employees)); })
+    .then(employees => { console.log('Employee Deleted', employees); dispatch(fetchEmployees()); })
     .catch(error => dispatch(employeesFailed(error.message)));
 };
 
@@ -438,6 +438,7 @@ export const deleteNotice = (noticeId) => (dispatch) => {
         }
     })
     .then(response => {
+        console.log(response);
         if(response.ok) {
             return response;
         } else {
@@ -450,7 +451,7 @@ export const deleteNotice = (noticeId) => (dispatch) => {
         throw error;
     })
     .then (response => response.json())
-    .then(notices => { console.log('Notice Deleted', notices); dispatch(noticesSuccess(notices)); })
+    .then(notices => { console.log('Notice Deleted', notices); dispatch(fetchNotices()); })
     .catch(error => dispatch(noticesFailed(error.message)));
 };
 
@@ -564,7 +565,7 @@ export const deleteSalary = (salaryId) => (dispatch) => {
         throw error;
     })
     .then (response => response.json())
-    .then(salaries => { console.log('Salary Deleted', salaries); dispatch(salarySuccess(salaries)); })
+    .then(salaries => { console.log('Salary Deleted', salaries); dispatch(fetchSalaries()); })
     .catch(error => dispatch(salaryFailed(error.message)));
 };
 
@@ -629,7 +630,7 @@ export const loginUser = (creds) => (dispatch) => {
             dispatch(fetchMealbill());
             dispatch(fetchNotices());
             dispatch(fetchArchitecture());
-            dispatch(fetchComplaints())
+            dispatch(fetchComplaints());
             dispatch(receiveLogin(response));
         }
         else {
@@ -1048,6 +1049,6 @@ export const deleteComplaint = (complaintId) => (dispatch) => {
             throw error;
       })
     .then(response => response.json())
-    .then(complaints => { console.log('Complaint Deleted', complaints); dispatch(complaintsSuccess(complaints)); })
+    .then(complaints => { console.log('Complaint Deleted', complaints); dispatch(fetchComplaints());})
     .catch(error => dispatch(complaintsFailed(error.message)));
 };
