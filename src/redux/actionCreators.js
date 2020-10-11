@@ -57,7 +57,7 @@ export const postMealbill = (mealbill) => (dispatch) => {
         throw errmess;
     })
     .then(response => response.json())
-    .then(response => dispatch(addMealbill(response)))
+    .then(response => {dispatch(addMealbill(response));  dispatch(fetchMealbill());})
     .catch(error => { console.log('Post Mealbill ', error.message);
         alert('Meal bill could not be added\nError: '+ error.message); })
 }
@@ -157,7 +157,7 @@ export const postStudent = (student) => (dispatch) => {
         throw errmess;
     })
     .then(response => response.json())
-    .then(response => dispatch(addStudent(response)))
+    .then(response => {dispatch(addStudent(response));  dispatch(fetchStudents()); })
     .catch(error => { console.log('Post students ', error.message);
         alert('Your student could not be added\nError: '+ error.message); })
 }
@@ -279,7 +279,7 @@ export const postEmployee = (employee) => (dispatch) => {
         throw errmess;
     })
     .then(response => response.json())
-    .then(response => dispatch(addEmployee(response)))
+    .then(response => {dispatch(addEmployee(response));  dispatch(fetchEmployees());})
     .catch(error => { console.log('Post employees ', error.message);
         alert('Your employee could not be added\nError: '+ error.message); })
 }
@@ -393,7 +393,7 @@ export const postNotice = (notice) => (dispatch) => {
         throw errmess;
     })
     .then(response => response.json())
-    .then(response => dispatch(addNotice(response)))
+    .then(response => {dispatch(addNotice(response)); dispatch(fetchNotices());})
     .catch(error => { console.log('Post notices ', error.message);
         alert('Your notice could not be added\nError: '+ error.message); })
 }
