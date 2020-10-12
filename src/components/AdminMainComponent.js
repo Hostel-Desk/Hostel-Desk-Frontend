@@ -89,7 +89,7 @@ class Admin extends Component {
           })
         });
       }
-      const employeeList = this.state.Students.concat(employees);
+      const employeeList = this.state.Employees.concat(employees);
       let notices = [];
       this.props.notices.notices.forEach(element => {
         notices.push({
@@ -138,7 +138,7 @@ class Admin extends Component {
           title: element.title,
           complaint: element.complaint,
           actions: <div>
-          <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleSeatModal()}></i>
+          <i className="fa fa-pencil-alt edit mr-2"></i>
           <i className="fa fa-trash-alt delete" onClick={() => this.props.deleteComplaint(element._id)}></i>
         </div>
         })
@@ -155,7 +155,7 @@ class Admin extends Component {
             amount: element.payment,
             date: element.paymentDate,
             actions: <div>
-            <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleSeatModal()}></i>
+            <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleMessBillModal()}></i>
             <i className="fa fa-trash-alt delete"></i>
           </div>
           })

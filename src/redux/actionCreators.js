@@ -429,7 +429,7 @@ export const fetchNotices = () => (dispatch) => {
 }
 
 export const deleteNotice = (noticeId) => (dispatch) => {
-    const bearer = 'Bearer' + localStorage.getItem('token');
+    const bearer = 'Bearer ' + localStorage.getItem('token');
 
     return fetch(baseUrl + 'notices/' + noticeId, {
         method: "DELETE",
