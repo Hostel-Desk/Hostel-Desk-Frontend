@@ -6,6 +6,7 @@ class StudentUpdateForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: this.props.match.params.id,
             sid: '',
             fullname: '',
             mobile: '',
@@ -28,7 +29,9 @@ class StudentUpdateForm extends Component {
             }
         }
     }
-
+    componentDidMount() {
+        console.log(this.props.match.params.id)
+    }
     handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;

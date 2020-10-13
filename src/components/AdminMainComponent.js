@@ -247,7 +247,7 @@ class Admin extends Component {
                             <Route exact path="/admin/Complaints" component={() => <Complaints complaints={this.state.Complaints} isLoading={this.props.complaints.isLoading} errMess={this.props.complaints.errMess}/>}/>
                             <Route exact path="/admin/EmployeeManagePayment/Salary" component={() => <EmployeeSalaryView employeeSal={this.state.EmployeeSal} isLoading={this.props.salaries.isLoading} errMess={this.props.salaries.errMess}/>}/>
                             <Route exact path="/admin/StudentManage/seatallocation" component={()=> <Seat seats={this.state.Seats} isLoading={this.props.seatAllocation.isLoading} errMess={this.props.seatAllocation.errMess}/>}/>
-                            <Route exact path="/admin/updateStudent/:id" component={() => <StudentUpdateForm updateStudent={this.props.updateStudent}/>}/>
+                            <Route exact path="/admin/updateStudent/:id" component={(props) => <StudentUpdateForm {...props} updateStudent={this.props.updateStudent}/>}/>
                             <Redirect to="/admin/dashboard"/>
                         </Switch>
 
