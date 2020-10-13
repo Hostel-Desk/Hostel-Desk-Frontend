@@ -162,6 +162,60 @@ export const postStudent = (student) => (dispatch) => {
         alert('Your student could not be added\nError: '+ error.message); })
 }
 
+export const updateStudent = (id, 
+    fullname,
+    sid,
+    mobile,
+    program,
+    father,
+    mother,
+    fnum,
+    email,
+    address) => (dispatch) => {
+    const newStudent = {
+        studentName: fullname,
+        sid: sid,
+        mobileNo: mobile,
+        email: email,
+        branch: program,
+        address: address,
+        fatherName: father,
+        motherName: mother,
+        fatherMobile: fnum,
+    }
+    console.log('Student: ', newStudent);
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'students/' + id, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': bearer
+        },
+        body: JSON.stringify(newStudent),
+    })
+    .then(response => {
+        console.log(response);
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => { dispatch(fetchStudents()); })
+    .catch(error => { console.log('Post students ', error.message);
+        alert('Your student could not be added\nError: '+ error.message); })
+}
+
 export const fetchStudents = () => (dispatch) => {
     dispatch(studentsLoading(true));
 

@@ -12,7 +12,7 @@ import LoginForm from './LoginForm';
 import { postArchitecture, postComplaint, postEmployee, postMeal, postMealbill, postNotice, postSalary, 
     postSeatallocation, postStudent, fetchArchitecture, fetchComplaints, fetchEmployees, fetchMealbill, 
     fetchMeals, fetchNotices, fetchSalaries, fetchSeatallocation, fetchStudents, deleteComplaint, 
-    deleteEmployee, deleteNotice, deleteSalary, deleteStudent, logoutUser, loginUser } from '../redux/actionCreators';
+    deleteEmployee, deleteNotice, deleteSalary, deleteStudent, logoutUser, loginUser, updateStudent } from '../redux/actionCreators';
 
 
 const mapDispatchToProps = (dispatch) => ({
@@ -40,7 +40,8 @@ const mapDispatchToProps = (dispatch) => ({
     deleteSalary: (salaryId) => dispatch(deleteSalary(salaryId)), 
     deleteStudent: (studentId) => dispatch(deleteStudent(studentId)),
     loginUser: (creds) => dispatch(loginUser(creds)),
-    logoutUser: () => dispatch(logoutUser())
+    logoutUser: () => dispatch(logoutUser()),
+    updateStudent: () => dispatch(updateStudent())
 })
 
 const mapStateToProps = (state) => {
@@ -114,7 +115,7 @@ class Main extends Component {
                     <Switch>
                         <Route path="/home" component={() => <Home/>}/>
                         <Route path="/login" component={() => <LoginForm auth={this.props.auth} loginUser={this.props.loginUser} />}/>
-                        <AdminRoute path="/admin" component={() => <Admin auth={this.props.auth} postNotice={this.props.postNotice} postArchitecture={this.props.postArchitecture} postMealbill={this.props.postMealbill}
+                        <AdminRoute path="/admin" component={() => <Admin auth={this.props.auth} postNotice={this.props.postNotice} postArchitecture={this.props.postArchitecture} postMealbill={this.props.postMealbill} updateStudent={this.props.updateStudent}
                         employees={this.props.employees} notices={this.props.notices} students={this.props.students} postStudent={this.props.postStudent} postSalary={this.props.postSalary} deleteNotice={this.props.deleteNotice} deleteComplaint={this.props.deleteComplaint}
                         deleteStudent = {this.props.deleteStudent} fetchStudents={this.props.fetchStudents} salaries={this.props.salaries} complaints = {this.props.complaints} postEmployee={this.props.postEmployee} deleteEmployee={this.props.deleteEmployee}
                         meals={this.props.meals} mealBills={this.props.mealBills} fetchEmployees={this.props.fetchEmployees} seatAllocation={this.props.seatAllocation} architecture={this.props.architecture} deleteSalary={this.props.deleteSalary} />}/>

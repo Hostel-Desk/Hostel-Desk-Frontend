@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import DashBoard from './DashboardComponent';
-import {Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
+import {Switch, Route, Redirect, BrowserRouter, Link } from 'react-router-dom';
 import LeftNav from './LeftNav';
 import Profile from './ProfileComponent'
 import Architecture from './ArchitectureComponent'
@@ -19,6 +19,7 @@ import AddMeal from './AddMeal';
 import Complaints from './Complaints';
 import ArchitectureView from './ArchitectureView';
 import {Modal, ModalBody, Form, ModalHeader, FormGroup,Label, Input, Button, Row, Col} from 'reactstrap';
+import StudentUpdateForm from './StudentUpdateForm';
 class Admin extends Component {
     constructor(props) {
         super(props);
@@ -64,7 +65,7 @@ class Admin extends Component {
             guardian: element.fatherName,
             pAddress: element.address,
             actions: <div>
-              <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleStudentModal}/>
+              <Link className="fa fa-pencil-alt edit mr-2" to={`/admin/updateStudent/${element._id}`}></Link>
               <i className="fa fa-trash-alt delete" onClick={() => this.props.deleteStudent(element._id)}></i>
             </div>
           })
@@ -138,7 +139,6 @@ class Admin extends Component {
           title: element.title,
           complaint: element.complaint,
           actions: <div>
-          <i className="fa fa-pencil-alt edit mr-2"></i>
           <i className="fa fa-trash-alt delete" onClick={() => this.props.deleteComplaint(element._id)}></i>
         </div>
         })
@@ -228,11 +228,7 @@ class Admin extends Component {
                     <div className="col-md-9">
 
                         <Switch>
-                            <Route path="/admin/dashboard" component={() => <DashBoard architectures={this.props.architecture.architecture}
-                                                                                        employees={this.props.employees}
-                                                                                        students={this.props.students}
-                                                                                        auth={this.props.auth}
-                                                                                        notices={this.props.notices.notices}/>}/>
+                            <Route path="/admin/dashboard" component={() => <DashBoard architectures={this.props.architecture.architecture} students={this.props.students} employees={this.props.employees} auth={this.props.auth} notices={this.props.notices.notices}/>}/>                                                                                                                                                             
                             <Route exact path="/admin/students" component={()=><StudentView students={this.state.Students}/>}/>
                             <Route exact path="/admin/rooms" component={() => <ArchitectureView architectures={this.state.Architecture}/>}/>
                             <Route exact path="/admin/StudentManage/addnew" component={() => <AddStudent postStudent={this.props.postStudent}/>}/>
@@ -251,6 +247,7 @@ class Admin extends Component {
                             <Route exact path="/admin/Complaints" component={() => <Complaints complaints={this.state.Complaints} isLoading={this.props.complaints.isLoading} errMess={this.props.complaints.errMess}/>}/>
                             <Route exact path="/admin/EmployeeManagePayment/Salary" component={() => <EmployeeSalaryView employeeSal={this.state.EmployeeSal} isLoading={this.props.salaries.isLoading} errMess={this.props.salaries.errMess}/>}/>
                             <Route exact path="/admin/StudentManage/seatallocation" component={()=> <Seat seats={this.state.Seats} isLoading={this.props.seatAllocation.isLoading} errMess={this.props.seatAllocation.errMess}/>}/>
+                            <Route exact path="/admin/updateStudent/:id" component={() => <StudentUpdateForm updateStudent={this.props.updateStudent}/>}/>
                             <Redirect to="/admin/dashboard"/>
                         </Switch>
 
@@ -261,7 +258,7 @@ class Admin extends Component {
                             <span aria-hidden="true" className="white-text"></span><i className="fa fa-times"></i>
                         </Button></ModalHeader>
                 <ModalBody>
-                  <Form>
+                  {/* <Form>
                     <Row form>
                       <Col md={6}>
                   <FormGroup>
@@ -319,7 +316,7 @@ class Admin extends Component {
                             <Button type="submit" color="primary">
                                     Update
                                 </Button> 
-                  </Form>
+                  </Form> */}
                 </ModalBody>
                 </Modal>
                 <Modal isOpen={this.state.isMessBillModalOpen} toggle={this.toggleMessBillModal}>
