@@ -4,9 +4,10 @@ import {Form, Input, Button, Label, Col, Row, FormGroup, FormFeedback} from 'rea
 
 
 function StudentUpdateForm(props) {
-    let id = useParams();
-    console.log(typeof(id.id));
+    const id = useParams();
+    //console.log(typeof(id.id));
     const [initialState, setState] = useState({
+        id: id.id,
         sid: '',
         fullname: '',
         mobile: '',
@@ -32,7 +33,7 @@ function StudentUpdateForm(props) {
     const handleBlur = (field) => (event) => {
         setState({
             ...initialState,
-            touchedL: {...initialState.touched, [field]: true}
+            touched: {...initialState.touched, [field]: true}
         })
     }
     const handleInputChange = (event) => {
@@ -49,20 +50,12 @@ function StudentUpdateForm(props) {
     const handleSubmit = (event) => {
         event.preventDefault();
         props.updateStudent(
-            id.id, 
-            initialState.fullname,
-            initialState.sid,
-            initialState.mobile,
-            initialState.program,
-            initialState.father,
-            initialState.mother,
-            initialState.fnum,
-            initialState.email,
-            initialState.address
+            initialState
         );
     }
  
-    const validate = (sid,
+    const validate = (
+        sid,
         fullname,
         mobile,
         program,
@@ -70,7 +63,8 @@ function StudentUpdateForm(props) {
         mother,
         fnum,
         email,
-        address) => {
+        address
+        ) => {
             const errors = {
                 sid: '',
                 fullname: '',
@@ -89,27 +83,30 @@ function StudentUpdateForm(props) {
                 errors.fullname = 'Name should be greater than 3 characters';
             if(initialState.touched.program && program.length < 3)
                 errors.program = 'Program should be of minimum length of 3 characters';
-            if(initialState.touched.mother && mother.length > 30 && mother.length < 3)
+            if(initialState.touched.mother && mother.length > 30 || mother.length < 3)
                 errors.mother = 'Name should not be greater than 30 characters and smaller than 3 characters';
-            if(initialState.touched.father && father.length > 30 && father.length < 3)
+            if(initialState.touched.father && father.length > 30 || father.length < 3)
                 errors.mother = 'Name should not be greater than 30 characters and smaller than 3 characters';
-            if(initialState.touched.address && address.length < 5 && address.length > 50) 
+            if(initialState.touched.address && address.length < 5 || address.length > 50) 
                 errors.address = 'Address length should lie between 5 and 50 characters'
             const reg = /^\d{10}$/;
             if(initialState.touched.mobile && !reg.test(mobile)) 
                 errors.mobile = 'Enter a valid Mobile Number';
-            if(initialState.touched.Fnum && !reg.test(fnum)) 
-                errors.Fnum = 'Enter a valid Mobile Number';
+            if(initialState.touched.fnum && !reg.test(fnum)) 
+                errors.fnum = 'Enter a valid Mobile Number';
             if(initialState.touched.email && email.split('').filter(x=>x === '@').length!=1)
                 errors.email = 'Enter a valid email';
+            
             return errors;
         }
 
-    const errors = validate(initialState.fullname,
+    const errors = validate(
+        initialState.sid,
+        initialState.fullname,
         initialState.mobile,
         initialState.program,
-        initialState.father,
         initialState.mother,
+        initialState.father,
         initialState.fnum,
         initialState.email,
         initialState.address);
@@ -158,7 +155,7 @@ function StudentUpdateForm(props) {
                                 <Label htmlFor="program">Program</Label>
                                 <Input type="text" id="program" name="program"
                                     value={initialState.program}
-                                    onChange={handleInputChange} valid={errors.sid === ''} invalid={errors.sid !== ''} onBlur={handleBlur('sid')} />
+                                    onChange={handleInputChange} valid={errors.sid === ''} invalid={errors.sid !== ''} onBlur={handleBlur('program')} />
                                 <FormFeedback>{errors.program}</FormFeedback>
                             </FormGroup>
                             </Col>

@@ -41,7 +41,7 @@ const mapDispatchToProps = (dispatch) => ({
     deleteStudent: (studentId) => dispatch(deleteStudent(studentId)),
     loginUser: (creds) => dispatch(loginUser(creds)),
     logoutUser: () => dispatch(logoutUser()),
-    updateStudent: () => dispatch(updateStudent())
+    updateStudent: (student) => dispatch(updateStudent(student))
 })
 
 const mapStateToProps = (state) => {

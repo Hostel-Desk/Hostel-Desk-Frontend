@@ -162,32 +162,25 @@ export const postStudent = (student) => (dispatch) => {
         alert('Your student could not be added\nError: '+ error.message); })
 }
 
-export const updateStudent = (id, 
-    fullname,
-    sid,
-    mobile,
-    program,
-    father,
-    mother,
-    fnum,
-    email,
-    address) => (dispatch) => {
+export const updateStudent = (student) => (dispatch) => {
+    console.log(student.id);
+    console.log(student)
     const newStudent = {
-        studentName: fullname,
-        sid: sid,
-        mobileNo: mobile,
-        email: email,
-        branch: program,
-        address: address,
-        fatherName: father,
-        motherName: mother,
-        fatherMobile: fnum,
+        studentName: student.fullname,
+        sid: student.sid,
+        mobileNo: student.mobile,
+        email: student.email,
+        branch: student.program,
+        address: student.address,
+        fatherName: student.father,
+        motherName: student.mother,
+        fatherMobile: student.fnum,
     }
     console.log('Student: ', newStudent);
 
     const bearer = 'Bearer ' + localStorage.getItem('token');
 
-    return fetch(baseUrl + 'students/' + id, {
+    return fetch(baseUrl + 'students/' + student.id, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
