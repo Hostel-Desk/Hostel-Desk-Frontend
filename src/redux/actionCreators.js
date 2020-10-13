@@ -205,8 +205,8 @@ export const updateStudent = (student) => (dispatch) => {
     })
     .then(response => response.json())
     .then(response => { dispatch(fetchStudents()); })
-    .catch(error => { console.log('Post students ', error.message);
-        alert('Your student could not be added\nError: '+ error.message); })
+    .catch(error => { console.log('Update students ', error.message);
+        alert('Your student could not be updated\nError: '+ error.message); })
 }
 
 export const fetchStudents = () => (dispatch) => {
@@ -285,6 +285,52 @@ export const addEmployee = (employee) => ({
     payload: employee
 }); 
 
+export const updateEmployee = (employee) => (dispatch) => {
+    console.log(employee.id);
+    console.log(employee)
+    const newemployee = {
+        employeeName: employee.fullname,
+        eid: employee.eid,
+        mobileNo: employee.mobile,
+        gender:employee.gender,
+        employeeType:employee.type,
+        designation:employee.designation,
+        joiningDate:employee.joinDate,
+        salary:employee.salary,
+        address: employee.address,
+    }
+    console.log('Employee: ', newemployee);
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'employees/' + employee.id, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': bearer
+        },
+        body: JSON.stringify(newemployee),
+    })
+    .then(response => {
+        console.log(response);
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => { dispatch(fetchEmployees()); })
+    .catch(error => { console.log('Update students ', error.message);
+        alert('Your employee could not be updated\nError: '+ error.message); })
+}
 export const postEmployee = (employee) => (dispatch) => {
 
     const newEmployee = {
