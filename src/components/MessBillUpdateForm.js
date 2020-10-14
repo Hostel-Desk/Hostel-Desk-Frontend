@@ -6,19 +6,22 @@ class MessBillUpdateForm extends Component {
         super(props);
         this.state = {
             name: '',
-            id: '',
+            id: this.props.match.params.id,
+            sid: '',
             rupees: '',
             branch: '',
             paymentduedate:'',
             touched: {
                 name: false,
-                id: false,
+                sid: false,
                 rupees: false,
                 paymentduedate: false,
             }
         }
     }
-    
+    componentDidMount() {
+        console.log(this.props.match.params.id)
+    }
     handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
@@ -31,7 +34,8 @@ class MessBillUpdateForm extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.postMealbill(this.state);
+        console.log(this.state)
+        this.props.updateMealbill(this.state);
         console.log("State: " + JSON.stringify(this.state));
         alert("Current state: " + JSON.stringify(this.state));
     }
@@ -42,20 +46,20 @@ class MessBillUpdateForm extends Component {
         });
     }
 
-    validate = (name, id,paymentduedate, rupees) => {
+    validate = (name, sid,paymentduedate, rupees) => {
         const errors = {
             name: '',
             rupees: '',
             paymentduedate: '',
-            id: ''
+            sid: ''
         }
         if(this.state.touched.name && name.length < 3)
             errors.name = 'Name should be of minimum length of 3 characters';
         else if(this.state.touched.name && name.length > 30)
             errors.name = 'Name should not be greater than 30 characters';
         
-        if(this.state.touched.id && id.length != 8) {
-            errors.id = 'Length of the student id should be equal to 8';
+        if(this.state.touched.sid && sid.length != 8) {
+            errors.sid = 'Length of the student sid should be equal to 8';
         }
         if(this.state.touched.paymentduedate && paymentduedate.length === 0)
             errors.paymentduedate = 'Specify Date';
@@ -66,7 +70,7 @@ class MessBillUpdateForm extends Component {
     }
 
     render(){
-        const errors = this.validate(this.state.name, this.state.id,this.state.paymentduedate,this.state.rupees);
+        const errors = this.validate(this.state.name, this.state.sid,this.state.paymentduedate,this.state.rupees);
         return (
             <div>
                 <div className="row">
@@ -76,7 +80,7 @@ class MessBillUpdateForm extends Component {
                     </div>  
                 </div>
                 <div>
-                    <h3>Student Details</h3>
+                    <h3>Update MessBill</h3>
                 </div>
                 <div >
                     <Form className="myForm" onSubmit={this.handleSubmit}>
@@ -84,24 +88,24 @@ class MessBillUpdateForm extends Component {
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="name">Full Name</Label>
-                                    <Input required type="text" name="name" id="name" placeholder="Name" value={this.state.name}
+                                    <Input required type="text" name="name" sid="name" placeholder="Name" value={this.state.name}
                                 onChange={this.handleInputChange} valid={errors.name === ''} invalid={errors.name !== ''} onBlur={this.handleBlur('name')} />
                                 <FormFeedback>{errors.name}</FormFeedback>
                                 </FormGroup>
                                 </Col>
                                 <Col md={3}>
                                 <FormGroup>
-                                    <Label for="id">Student Id</Label>
-                                    <Input required type="number" name="id" id="id" placeholder="Student Id" value={this.state.id}
-                                onChange={this.handleInputChange} valid={errors.id === ''} invalid={errors.id !== ''} onBlur={this.handleBlur('id')} />
-                                <FormFeedback>{errors.id}</FormFeedback>
+                                    <Label for="sid">Student Id</Label>
+                                    <Input required type="number" name="sid" sid="sid" placeholder="Student Id" value={this.state.sid}
+                                onChange={this.handleInputChange} valid={errors.sid === ''} invalid={errors.sid !== ''} onBlur={this.handleBlur('sid')} />
+                                <FormFeedback>{errors.sid}</FormFeedback>
                                 </FormGroup>
                                 </Col>  
                             
                                 <Col md={3}>
                                 <FormGroup>
                                 <Label for="branch">Branch</Label>
-                                <Input required type="select" name="branch" id="branch" value={this.state.branch} className="form-control"
+                                <Input required type="select" name="branch" sid="branch" value={this.state.branch} className="form-control"
                                 onChange={this.handleInputChange}>
                                         <option defaultValue>Select</option>
                                         <option>CSE</option>
@@ -120,7 +124,7 @@ class MessBillUpdateForm extends Component {
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="rupees">Payment</Label>
-                                    <Input required type="number" name="rupees" id="rupees" placeholder="Payment" value={this.state.rupees} id="rupees" placeholder="Amount" 
+                                    <Input required type="number" name="rupees" sid="rupees" placeholder="Payment" value={this.state.rupees} sid="rupees" placeholder="Amount" 
                                     onBlur={this.handleBlur('rupees')} onChange={this.handleInputChange}
                                     valid={errors.rupees === ''} invalid={errors.rupees !== ''} />
                                     <FormFeedback>{errors.rupees}</FormFeedback>
@@ -129,7 +133,7 @@ class MessBillUpdateForm extends Component {
                                 <Col md={3}>
                                     <FormGroup>
                                         <Label for="paymentduedate">Payment Due Date</Label>
-                                        <Input required type="date" name="paymentduedate" id="paymentduedate" placeholder="Payment Due Date" value={this.state.paymentduedate}
+                                        <Input required type="date" name="paymentduedate" sid="paymentduedate" placeholder="Payment Due Date" value={this.state.paymentduedate}
                                     onBlur={this.handleBlur('paymentduedate')} onChange={this.handleInputChange}
                                     valid={errors.paymentduedate === ''} invalid={errors.paymentduedate !== ''}/>
                                     

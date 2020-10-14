@@ -157,7 +157,7 @@ class Admin extends Component {
             amount: element.payment,
             date: element.paymentDate,
             actions: <div>
-            <Link className="fa fa-pencil-alt edit mr-2" to={`/admin/updateMessBill/${element._id}`}></Link>
+            <Link className="fa fa-pencil-alt edit mr-2" to={`/admin/updateMealBill/${element._id}`}></Link>
             <i className="fa fa-trash-alt delete"></i>
           </div>
           })
@@ -251,6 +251,7 @@ class Admin extends Component {
                             <Route exact path="/admin/StudentManage/seatallocation" component={()=> <Seat seats={this.state.Seats} isLoading={this.props.seatAllocation.isLoading} errMess={this.props.seatAllocation.errMess}/>}/>
                             <Route exact path="/admin/updateStudent/:id" component={(props) => <StudentUpdateForm {...props} updateStudent={this.props.updateStudent}/>}/>
                             <Route exact path="/admin/updateEmployee/:id" component={(props) => <EmployeeUpdateForm {...props} updateEmployee={this.props.updateEmployee}/>}/>
+                            <Route exact path="/admin/updateMealbill/:id" component={(props) => <MessBillUpdateForm {...props} updateMealbill={this.props.updateMealbill}/>}/>
                             <Redirect to="/admin/dashboard"/>
                         </Switch>
 
