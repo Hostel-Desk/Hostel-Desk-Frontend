@@ -289,7 +289,7 @@ export const updateEmployee = (employee) => (dispatch) => {
     console.log(employee.id);
     console.log(employee)
     const newemployee = {
-        employeeName: employee.fullname,
+        employeeName: employee.name,
         eid: employee.eid,
         mobileNo: employee.mobile,
         gender:employee.gender,

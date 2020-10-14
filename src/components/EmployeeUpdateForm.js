@@ -5,7 +5,7 @@ class EmployeeUpdateForm extends Component {
     constructor(props){
         super(props);
         this.state = {
-            id:'',
+            id: this.props.match.params.id,
             name: '',
             mobile: '',
             gender: '',

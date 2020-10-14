@@ -85,7 +85,7 @@ class Admin extends Component {
             date: element.joiningDate,
             address: element.hostel.name,
             actions: <div>
-            <Link className="fa fa-pencil-alt edit mr-2" to={`/admin/updateemployee/${element._id}`}></Link>
+            <Link className="fa fa-pencil-alt edit mr-2" to={`/admin/updateEmployee/${element._id}`}></Link>
             <i className="fa fa-trash-alt delete" onClick={() => this.props.deleteEmployee(element._id)}></i>
           </div>
           })
@@ -249,7 +249,7 @@ class Admin extends Component {
                             <Route exact path="/admin/EmployeeManagePayment/Salary" component={() => <EmployeeSalaryView employeeSal={this.state.EmployeeSal} isLoading={this.props.salaries.isLoading} errMess={this.props.salaries.errMess}/>}/>
                             <Route exact path="/admin/StudentManage/seatallocation" component={()=> <Seat seats={this.state.Seats} isLoading={this.props.seatAllocation.isLoading} errMess={this.props.seatAllocation.errMess}/>}/>
                             <Route exact path="/admin/updateStudent/:id" component={(props) => <StudentUpdateForm {...props} updateStudent={this.props.updateStudent}/>}/>
-                            <Route exact path="/admin/updateemployee/:id" component={(props) => <EmployeeUpdateForm {...props} updateEmployee={this.props.updateEmployee}/>}/>
+                            <Route exact path="/admin/updateEmployee/:id" component={(props) => <EmployeeUpdateForm {...props} updateEmployee={this.props.updateEmployee}/>}/>
                             <Redirect to="/admin/dashboard"/>
                         </Switch>
 
