@@ -65,11 +65,11 @@ export const postMealbill = (mealbill) => (dispatch) => {
 export const updateMealbill = (mealbill) => (dispatch) => {
 
     const newMealbill = {
-        name:mealbill.name,
-        sid:mealbill.id,
-        branch:mealbill.branch,
-        payment:mealbill.rupees,
-        paymentDate:mealbill.paymentduedate
+        name: mealbill.name,
+        sid: mealbill.sid,
+        branch: mealbill.branch,
+        payment: mealbill.rupees,
+        paymentDate: mealbill.paymentduedate
     }
     console.log('Mealbill: ', newMealbill);
 
