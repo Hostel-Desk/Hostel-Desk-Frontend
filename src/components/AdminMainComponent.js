@@ -21,6 +21,7 @@ import ArchitectureView from './ArchitectureView';
 import {Modal, ModalBody, Form, ModalHeader, FormGroup,Label, Input, Button, Row, Col} from 'reactstrap';
 import StudentUpdateForm from './StudentUpdateForm';
 import EmployeeUpdateForm from './EmployeeUpdateForm';
+import MessBillUpdateForm from './MessBillUpdateForm';
 class Admin extends Component {
     constructor(props) {
         super(props);
@@ -156,7 +157,7 @@ class Admin extends Component {
             amount: element.payment,
             date: element.paymentDate,
             actions: <div>
-            <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleMessBillModal()}></i>
+            <Link className="fa fa-pencil-alt edit mr-2" to={`/admin/updateMessBill/${element._id}`}></Link>
             <i className="fa fa-trash-alt delete"></i>
           </div>
           })
@@ -326,6 +327,7 @@ class Admin extends Component {
                             <span aria-hidden="true" className="white-text"></span><i className="fa fa-times"></i>
                         </Button></ModalHeader>
                 <ModalBody>
+                  {/*
                   <Form>
                 
                   <FormGroup>
@@ -358,6 +360,7 @@ class Admin extends Component {
                                     Update
                                 </Button> 
                   </Form>
+                  */}
                 </ModalBody>
                 </Modal>
                 <Modal isOpen={this.state.isEmployeeModalOpen} toggle={this.toggleEmployeeModal}>
