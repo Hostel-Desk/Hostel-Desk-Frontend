@@ -5,12 +5,12 @@ class MessBillUpdateForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
-            id: this.props.match.params.id,
-            sid: '',
-            rupees: '',
-            branch: '',
-            paymentduedate:'',
+            name: this.props.mealBill.name,
+            id: this.props.id,
+            sid: this.props.mealBill.sid,
+            rupees: this.props.mealBill.payment,
+            branch: this.props.mealBill.branch,
+            paymentduedate: this.props.mealBill.paymentDate,
             touched: {
                 name: false,
                 sid: false,
@@ -19,9 +19,7 @@ class MessBillUpdateForm extends Component {
             }
         }
     }
-    componentDidMount() {
-        console.log(this.props.match.params.id)
-    }
+    
     handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;

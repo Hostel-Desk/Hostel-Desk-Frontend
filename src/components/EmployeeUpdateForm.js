@@ -5,15 +5,15 @@ class EmployeeUpdateForm extends Component {
     constructor(props){
         super(props);
         this.state = {
-            id: this.props.match.params.id,
-            name: '',
-            mobile: '',
-            gender: '',
-            type: '',
-            address: '',
-            designation: '',
-            salary: '',
-            joinDate: '',
+            id: this.props.id,
+            name: this.props.employeeName,
+            mobile: this.props.employee.mobile,
+            gender: this.props.employee.gender,
+            type: this.props.employee.employeeType,
+            address: this.props.employee.hostel.name,
+            designation: this.props.employee.designation,
+            salary: this.props.employee.salary,
+            joinDate: this.props.employee.joiningDate,
             eid:'',
             touched: {
                 name: false,

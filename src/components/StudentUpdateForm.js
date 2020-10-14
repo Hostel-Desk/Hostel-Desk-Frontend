@@ -6,16 +6,16 @@ class StudentUpdateForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: this.props.match.params.id,
-            sid: '',
-            fullname: '',
-            mobile: '',
-            program: '',
-            father: '',
-            mother: '',
-            fnum: '',
-            address: '',
-            email: '',
+            id: this.props.id,
+            sid: this.props.student.sid,
+            fullname: this.props.student.studentName,
+            mobile: this.props.student.mobileNo,
+            program: this.props.student.branch,
+            father: this.props.student.fatherMobile,
+            mother: this.props.student.motherName,
+            fnum: this.props.student.fatherMobile,
+            address: this.props.student.address,
+            email: this.props.student.email,
             touched: {
                 sid: false,
                 fullname: false,
@@ -29,9 +29,7 @@ class StudentUpdateForm extends Component {
             }
         }
     }
-    componentDidMount() {
-        console.log(this.props.match.params.id)
-    }
+   
     handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
