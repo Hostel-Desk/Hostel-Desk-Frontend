@@ -12,7 +12,7 @@ import LoginForm from './LoginForm';
 import { postArchitecture, postComplaint, postEmployee, postMeal, postMealbill, postNotice, postSalary, 
     postSeatallocation, postStudent, fetchArchitecture, fetchComplaints, fetchEmployees, fetchMealbill, 
     fetchMeals, fetchNotices, fetchSalaries, fetchSeatallocation, fetchStudents, deleteComplaint, 
-    deleteEmployee, deleteNotice, deleteSalary, deleteStudent, logoutUser, loginUser, updateStudent,updateEmployee,updateMealbill } from '../redux/actionCreators';
+    deleteEmployee, deleteNotice, deleteSalary, deleteStudent, logoutUser, loginUser, updateStudent,updateEmployee,updateMealbill, updateSeatAllocation, updateSalary } from '../redux/actionCreators';
 
 
 const mapDispatchToProps = (dispatch) => ({
@@ -44,6 +44,8 @@ const mapDispatchToProps = (dispatch) => ({
     updateStudent: (student) => dispatch(updateStudent(student)),
     updateEmployee: (employee) => dispatch(updateEmployee(employee)),
     updateMealbill: (mealBill) => dispatch(updateMealbill(mealBill)),
+    //updateSeatAllocation: (seat) => dispatch(updateSeatAllocation(seat)),
+    updateSalary: (salary) => dispatch(updateSalary(salary)),
     
 })
 
@@ -121,7 +123,8 @@ class Main extends Component {
                         <AdminRoute path="/admin" component={() => <Admin auth={this.props.auth} postNotice={this.props.postNotice} postArchitecture={this.props.postArchitecture} postMealbill={this.props.postMealbill} updateStudent={this.props.updateStudent} updateEmployee = {this.props.updateEmployee}
                         employees={this.props.employees} notices={this.props.notices} students={this.props.students} postStudent={this.props.postStudent} postSalary={this.props.postSalary} deleteNotice={this.props.deleteNotice} deleteComplaint={this.props.deleteComplaint}
                         deleteStudent = {this.props.deleteStudent} fetchStudents={this.props.fetchStudents} salaries={this.props.salaries} complaints = {this.props.complaints} postEmployee={this.props.postEmployee} deleteEmployee={this.props.deleteEmployee}
-                        meals={this.props.meals} mealBills={this.props.mealBills} fetchEmployees={this.props.fetchEmployees} seatAllocation={this.props.seatAllocation} architecture={this.props.architecture} deleteSalary={this.props.deleteSalary} updateMealbill={this.props.updateMealbill} />}/>
+                        meals={this.props.meals} mealBills={this.props.mealBills} fetchEmployees={this.props.fetchEmployees} seatAllocation={this.props.seatAllocation} architecture={this.props.architecture} deleteSalary={this.props.deleteSalary} updateMealbill={this.props.updateMealbill} 
+                        updateSeatAllocation={this.props.updateSeatAllocation} updateSalary={this.props.updateSalary} postSeatallocation={this.props.postSeatallocation} />}/>
                         <Route path="/contactus" component={Contact}/>
                         <StudentRoute path="/student" component={() => <Student auth={this.props.auth} postComplaint={this.props.postComplaint}
                         employees={this.props.employees} notices={this.props.notices} students={this.props.students} salaries={this.props.salaries}

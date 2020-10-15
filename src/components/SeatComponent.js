@@ -19,10 +19,11 @@ class Seat extends Component {
         }
 
     }
-    handleSubmit(event) {
+    handleSubmit=(event) => {
+        event.preventDefault();
         console.log("Current State is: " + JSON.stringify(this.state));
         alert("Current State is: " + JSON.stringify(this.state));
-        event.preventDefault();
+        this.props.postSeatallocation(this.state);
     }
     handleInputChange = (event) => {
         const target = event.target;

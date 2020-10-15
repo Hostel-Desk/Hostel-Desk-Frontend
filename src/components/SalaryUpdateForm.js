@@ -1,0 +1,130 @@
+import React, {Component} from 'react'
+import {Form, Input, Button, Label, Col, Row, FormGroup, Select, FormFeedback} from 'reactstrap'
+
+class SalaryUpdateForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            id: this.props.match.params.id,
+            rupees: '',
+            date: '',
+            name: '',
+            touched: {
+                id: false,
+                rupees: false,
+                date: false,
+                name: false,
+            }
+        }
+    }
+
+    componentDidMount() {
+        console.log(this.props.match.params.id)
+    }
+
+    handleInputChange = (event) => {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(this.state)
+        this.props.updateSalary(this.state);
+        console.log("Current State is: " + JSON.stringify(this.state));
+        alert("Current State is: " + JSON.stringify(this.state));
+        
+    }
+
+    handleBlur = (field) => (evt) => {
+        this.setState({
+            touched: {...this.state.touched, [field]: true}
+        });
+    }
+
+    validate = (name, date, rupees) => {
+        const errors = {
+            rupees: '',
+            date: '',
+            name: ''
+        }
+        if(this.state.touched.name && name.length < 3)
+            errors.name = 'Name should be of minimum length of 3 characters';
+        else if(this.state.touched.name && name.length > 30)
+            errors.name = 'Name should not be greater than 30 characters';
+        if(this.state.touched.date && date.length === 0)
+            errors.date = 'Specify Month';
+        if(this.state.touched.rupees && rupees.length === 0)
+            errors.rupees = 'Specify salary';
+
+        return errors;
+    }   
+
+    render(){
+        const errors = this.validate(this.state.name, this.state.date, this.state.rupees);
+        return (
+            <div>
+                <div className="row">
+                    <div className="col-12 container-fluid">
+                        <h2 className="feature-heading ">Update Employee Salary</h2>
+                        <hr className="feature-line" /> 
+                    </div>  
+                </div>
+                <div >
+                    <Form className="myForm" onSubmit={this.handleSubmit}>
+                            <Row form>
+                                <Col md={4}>
+                                <FormGroup>
+                                    <Label for="name">Employee Name</Label>
+                                    <Input type="text" name="name" value={this.state.name} id="name" placeholder="Full Name" 
+                                    onBlur={this.handleBlur('name')} onChange={this.handleInputChange}
+                                    valid={errors.name === ''} invalid={errors.name !== ''}/>
+                                    <FormFeedback>{errors.name}</FormFeedback>
+                                </FormGroup>
+                                </Col>
+                           
+                            
+                            <Col md={4}>
+                                    <FormGroup>
+                                        <Label for="date">Date</Label>
+                                        <Input type="date" name="date" value={this.state.date} id="date" placeholder="Date"
+                                        onBlur={this.handleBlur('date')} onChange={this.handleInputChange}
+                                        valid={errors.date === ''} invalid={errors.date !== ''}/>
+                                        <FormFeedback>{errors.date}</FormFeedback>
+                                    </FormGroup>
+                                </Col>
+                                
+                        
+                                <Col md={4}>
+                                <FormGroup>
+                                    <Label for="rupees">Salary</Label>
+                                    <Input type="number" name="rupees" value={this.state.rupees} id="rupees" placeholder="Amount" 
+                                    onBlur={this.handleBlur('rupees')} onChange={this.handleInputChange}
+                                    valid={errors.rupees === ''} invalid={errors.rupees !== ''}/>
+                                    <FormFeedback>{errors.rupees}</FormFeedback>
+                                </FormGroup>
+                                </Col>
+                                
+                                
+                            </Row>
+                            <FormGroup row>
+                                <Col md={{size: 10}}>
+                                    <Button type="submit" color="primary">
+                                        Save
+                                    </Button> 
+                                </Col>
+                            </FormGroup>
+                            
+                    </Form>
+                </div>
+            </div>
+        )
+    }
+}
+
+export default SalaryUpdateForm;

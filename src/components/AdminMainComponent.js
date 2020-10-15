@@ -22,6 +22,9 @@ import {Modal, ModalBody, Form, ModalHeader, FormGroup,Label, Input, Button, Row
 import StudentUpdateForm from './StudentUpdateForm';
 import EmployeeUpdateForm from './EmployeeUpdateForm';
 import MessBillUpdateForm from './MessBillUpdateForm';
+import SeatAllocationUpdateForm from './SeatAllocationUpdateForm';
+import SalaryUpdateForm from './SalaryUpdateForm';
+
 class Admin extends Component {
     constructor(props) {
         super(props);
@@ -112,7 +115,7 @@ class Admin extends Component {
           month: element.month,
           amount: element.salary,
           actions: <div>
-          <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleSalaryModal()}></i>
+          <Link className="fa fa-pencil-alt edit mr-2" to={`/admin/updateSalary/${element._id}`}></Link>
           <i className="fa fa-trash-alt delete" onClick={() => this.props.deleteSalary(element._id)}></i>
         </div>
         })
@@ -127,7 +130,7 @@ class Admin extends Component {
           room: element.room,
           rent: element.monthlyRent,
           actions: <div>
-          <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleSeatModal()}></i>
+          <Link className="fa fa-pencil-alt edit mr-2" to={`/admin/updateSeatAllocation/${element._id}`}></Link>
           <i className="fa fa-trash-alt delete"></i>
         </div>
         })
@@ -284,6 +287,7 @@ class Admin extends Component {
                             <Route exact path="/admin/updateStudent/:id" component={StudentDetail}/>
                             <Route exact path="/admin/updateEmployee/:id" component={EmployeeDetail}/>
                             <Route exact path="/admin/updateMealbill/:id" component={MealBillDetail}/>
+                            <Route exact path="/admin/updateSalary/:id" component={(props) => <SalaryUpdateForm {...props} updateSalary={this.props.updateSalary}/>}/>
                             <Redirect to="/admin/dashboard"/>
                         </Switch>
 

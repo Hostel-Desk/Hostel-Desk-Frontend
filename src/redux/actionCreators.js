@@ -647,6 +647,44 @@ export const postSalary = (salary) => (dispatch) => {
         alert('Your salary could not be added\nError: '+ error.message); })
 }
 
+export const updateSalary = (salary) => (dispatch) => {
+    const newSalary = {
+        name: salary.name,
+        month: salary.date,
+        salary: salary.rupees
+    }
+    console.log('Salary: ', newSalary);
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'salary/' + salary.id, {
+        method: 'PUT',
+        body: JSON.stringify(newSalary),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorisation': bearer
+        }
+    })
+    .then(response => {
+        if(response.ok){
+            return response;
+        }
+        else{
+            var error = new Error('Error' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => {dispatch(fetchSalaries());})
+    .catch(error => {console.log('Update Salary ', error.message);
+        alert('Salary could not be updated\nError: ' + error.message);})
+}
+
 export const fetchSalaries = () => (dispatch) => {
     dispatch(salaryLoading(true));
 
