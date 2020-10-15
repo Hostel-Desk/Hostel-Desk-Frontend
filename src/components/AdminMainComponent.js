@@ -176,7 +176,10 @@ class Admin extends Component {
             date: element.paymentDate,
             actions: <div>
             <Link className="fa fa-pencil-alt edit mr-2" to={`/admin/updateMealBill/${element._id}`}></Link>
-            <i className="fa fa-trash-alt delete"></i>
+            <i className="fa fa-trash-alt delete" onClick={() =>{
+                 if (window.confirm("Are u sure u want to delete ?"))
+                    this.props.deleteMealbill(element._id)
+                 }}></i>
           </div>
           })
         });

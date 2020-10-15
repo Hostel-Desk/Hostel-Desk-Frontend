@@ -62,6 +62,33 @@ export const postMealbill = (mealbill) => (dispatch) => {
         alert('Meal bill could not be added\nError: '+ error.message); })
 }
 
+export const deleteMealbill = (mealId) => (dispatch) => {
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'mealBills/' + mealId, {
+        method: "DELETE",
+        headers: {
+          'Authorization': bearer
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+            throw error;
+      })
+    .then(response => response.json())
+    .then(complaints => { console.log('Bill Deleted', complaints); dispatch(fetchMealbill());})
+    .catch(error => dispatch(mealbillFailed(error.message)));
+};
+
 export const updateMealbill = (mealbill) => (dispatch) => {
 
     const newMealbill = {
