@@ -71,7 +71,10 @@ class Admin extends Component {
             pAddress: element.address,
             actions: <div>
               <Link className="fa fa-pencil-alt edit mr-2" to={`/admin/updateStudent/${element._id}`}></Link>
-              <i className="fa fa-trash-alt delete" onClick={() => this.props.deleteStudent(element._id)}></i>
+              <i className="fa fa-trash-alt delete" onClick={() =>{
+                 if (window.confirm("Are u sure u want to delete ?"))
+                    this.props.deleteStudent(element._id)
+                 }}></i>
             </div>
           })
         });
@@ -90,7 +93,10 @@ class Admin extends Component {
             address: element.hostel.name,
             actions: <div>
             <Link className="fa fa-pencil-alt edit mr-2" to={`/admin/updateEmployee/${element._id}`}></Link>
-            <i className="fa fa-trash-alt delete" onClick={() => this.props.deleteEmployee(element._id)}></i>
+            <i className="fa fa-trash-alt delete" onClick={() =>{
+                 if (window.confirm("Are u sure u want to delete ?"))
+                    this.props.deleteEmployee(element._id)
+                 }}></i>
           </div>
           })
         });
@@ -103,7 +109,10 @@ class Admin extends Component {
           description: element.description,
           actions: <div>
           <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleNoticeModal()}></i>
-          <i className="fa fa-trash-alt delete" onClick={() => this.props.deleteNotice(element._id)}></i>
+          <i className="fa fa-trash-alt delete" onClick={() =>{
+                 if (window.confirm("Are u sure u want to delete ?"))
+                    this.props.deleteNotice(element._id)
+                 }}></i>
         </div>
         })
       });
@@ -116,7 +125,10 @@ class Admin extends Component {
           amount: element.salary,
           actions: <div>
           <Link className="fa fa-pencil-alt edit mr-2" to={`/admin/updateSalary/${element._id}`}></Link>
-          <i className="fa fa-trash-alt delete" onClick={() => this.props.deleteSalary(element._id)}></i>
+          <i className="fa fa-trash-alt delete" onClick={() =>{
+                 if (window.confirm("Are u sure u want to delete ?"))
+                    this.props.deleteSalary(element._id)
+                 }}></i>
         </div>
         })
       });
@@ -144,7 +156,10 @@ class Admin extends Component {
           title: element.title,
           complaint: element.complaint,
           actions: <div>
-          <i className="fa fa-trash-alt delete" onClick={() => this.props.deleteComplaint(element._id)}></i>
+          <i className="fa fa-trash-alt delete" onClick={() =>{
+                 if (window.confirm("Are u sure u want to delete ?"))
+                    this.props.deleteComplaint(element._id)
+                 }}></i>
         </div>
         })
       });
