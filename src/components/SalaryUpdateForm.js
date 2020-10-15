@@ -5,10 +5,10 @@ class SalaryUpdateForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: this.props.match.params.id,
-            rupees: '',
-            date: '',
-            name: '',
+            id: this.props.id,
+            rupees: this.props.salary.salary,
+            date: this.props.salary.month,
+            name: this.props.salary.name,
             touched: {
                 id: false,
                 rupees: false,
@@ -16,10 +16,6 @@ class SalaryUpdateForm extends Component {
                 name: false,
             }
         }
-    }
-
-    componentDidMount() {
-        console.log(this.props.match.params.id)
     }
 
     handleInputChange = (event) => {

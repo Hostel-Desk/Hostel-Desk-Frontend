@@ -255,6 +255,15 @@ class Admin extends Component {
           )
         }
 
+        const SalaryDetail = ({match}) => {
+          return(
+            <SalaryUpdateForm
+              updateSalary={this.props.updateSalary}
+              id={match.params.id}
+              salary={this.props.salaries.salaries.filter((salary) => (salary._id === match.params.id))[0]}
+            />
+          )
+        }
 
         return(
             <div className="feature admin">
@@ -283,11 +292,11 @@ class Admin extends Component {
                             <Route exact path="/admin/EmployeeManagePayment/Add Salary" component={() => <EmployeeSalary postSalary={this.props.postSalary}/>}/>
                             <Route exact path="/admin/Complaints" component={() => <Complaints complaints={this.state.Complaints} isLoading={this.props.complaints.isLoading} errMess={this.props.complaints.errMess}/>}/>
                             <Route exact path="/admin/EmployeeManagePayment/Salary" component={() => <EmployeeSalaryView employeeSal={this.state.EmployeeSal} isLoading={this.props.salaries.isLoading} errMess={this.props.salaries.errMess}/>}/>
-                            <Route exact path="/admin/StudentManage/seatallocation" component={()=> <Seat seats={this.state.Seats} isLoading={this.props.seatAllocation.isLoading} errMess={this.props.seatAllocation.errMess}/>}/>
+                            <Route exact path="/admin/StudentManage/seatallocation" component={()=> <Seat seats={this.state.Seats} isLoading={this.props.seatAllocation.isLoading} errMess={this.props.seatAllocation.errMess} postSeatallocation={this.props.postSeatallocation}/>}/>
                             <Route exact path="/admin/updateStudent/:id" component={StudentDetail}/>
                             <Route exact path="/admin/updateEmployee/:id" component={EmployeeDetail}/>
                             <Route exact path="/admin/updateMealbill/:id" component={MealBillDetail}/>
-                            <Route exact path="/admin/updateSalary/:id" component={(props) => <SalaryUpdateForm {...props} updateSalary={this.props.updateSalary}/>}/>
+                            <Route exact path="/admin/updateSalary/:id" component={SalaryDetail}/>
                             <Redirect to="/admin/dashboard"/>
                         </Switch>
 
