@@ -235,6 +235,16 @@ class Admin extends Component {
           )
         }
 
+        const SeatDetail = ({match}) => {
+          return(
+            <SeatAllocationUpdateForm
+              updateSeatAllocation={this.props.updateSeatAllocation}
+              id={match.params.id}
+              seat={this.props.seatAllocation.seatAllocation.filter((seat) => (seat._id === match.params.id))[0]}
+            />
+          )
+        }
+
         return(
             <div className="feature admin">
                 <div className="row">
@@ -267,6 +277,7 @@ class Admin extends Component {
                             <Route exact path="/admin/updateEmployee/:id" component={EmployeeDetail}/>
                             <Route exact path="/admin/updateMealbill/:id" component={MealBillDetail}/>
                             <Route exact path="/admin/updateSalary/:id" component={SalaryDetail}/>
+                            <Route exact path="/admin/updateSeatAllocation/:id" component={SeatDetail}/>
                             <Redirect to="/admin/dashboard"/>
                         </Switch>
 

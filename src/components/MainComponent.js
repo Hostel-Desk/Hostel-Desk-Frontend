@@ -12,7 +12,7 @@ import LoginForm from './LoginForm';
 import { postArchitecture, postComplaint, postEmployee, postMeal, postMealbill, postNotice, postSalary, 
     postSeatallocation, postStudent, fetchArchitecture, fetchComplaints, fetchEmployees, fetchMealbill, 
     fetchMeals, fetchNotices, fetchSalaries, fetchSeatallocation, fetchStudents, deleteComplaint, 
-    deleteEmployee, deleteNotice, deleteMealbill, deleteSalary, deleteStudent, logoutUser, loginUser, updateStudent,updateEmployee,updateMealbill, updateSeatAllocation, updateSalary } from '../redux/actionCreators';
+    deleteEmployee, deleteNotice, deleteMealbill, deleteSalary, deleteStudent, logoutUser, loginUser, updateStudent,updateEmployee,updateMealbill, updateSeatAllocation,  updateSalary } from '../redux/actionCreators';
 
 
 const mapDispatchToProps = (dispatch) => ({
@@ -45,7 +45,7 @@ const mapDispatchToProps = (dispatch) => ({
     updateStudent: (student) => dispatch(updateStudent(student)),
     updateEmployee: (employee) => dispatch(updateEmployee(employee)),
     updateMealbill: (mealBill) => dispatch(updateMealbill(mealBill)),
-    //updateSeatAllocation: (seat) => dispatch(updateSeatAllocation(seat)),
+    updateSeatAllocation: (seat) => dispatch(updateSeatAllocation(seat)),
     updateSalary: (salary) => dispatch(updateSalary(salary)),
     
 })
