@@ -85,7 +85,7 @@ export const deleteMealbill = (mealId) => (dispatch) => {
             throw error;
       })
     .then(response => response.json())
-    .then(complaints => { console.log('Bill Deleted', complaints); dispatch(fetchMealbill());})
+    .then(bill => { console.log('Bill Deleted', bill); dispatch(fetchMealbill());})
     .catch(error => dispatch(mealbillFailed(error.message)));
 };
 

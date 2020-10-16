@@ -185,7 +185,6 @@ class Admin extends Component {
         Employees: employeeList,
         Notices: noticeList,
         EmployeeSal: salariesList,
-        //Architecture: architectureList,
         Seats: seatAllocationList,
         Complaints: complaintsList,
         MessBills: mealBillsList,
