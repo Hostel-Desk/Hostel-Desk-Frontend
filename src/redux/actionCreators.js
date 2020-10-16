@@ -231,8 +231,7 @@ export const postStudent = (student) => (dispatch) => {
 }
 
 export const updateStudent = (student) => (dispatch) => {
-    console.log(student.id);
-    console.log(student)
+    
     const newStudent = {
         studentName: student.fullname,
         sid: student.sid,
@@ -689,7 +688,7 @@ export const updateSalary = (salary) => (dispatch) => {
         body: JSON.stringify(newSalary),
         headers: {
             'Content-Type': 'application/json',
-            'Authorisation': bearer
+            'Authorization': bearer
         }
     })
     .then(response => {
@@ -1119,13 +1118,13 @@ export const updateSeatAllocation = (seat) => (dispatch) => {
 
     const bearer = 'Bearer ' + localStorage.getItem('token');
 
-    return fetch(baseUrl + 'seatAllocate/' + seat.id, {
+    return fetch(baseUrl + 'seats/' + seat.id, {
         method: 'PUT',
-        body: JSON.stringify(newSeat),
         headers: {
             'Content-Type': 'application/json',
-            'Authorisation': bearer
-        }
+            'Authorization': bearer
+        },
+        body: JSON.stringify(newSeat),
     })
     .then(response => {
         if(response.ok){

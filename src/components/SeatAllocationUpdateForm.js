@@ -7,10 +7,11 @@ class SeatAllocationUpdateForm extends Component {
 
         this.state = {
             id: this.props.id,
-            name: this.props.seat.name,
             block: this.props.seat.block,
             room: this.props.seat.room,
             rent: this.props.seat.monthlyRent,
+            name: this.props.seat.name,
+
             touched: {
                 id: false,
                 name: false,
@@ -73,12 +74,9 @@ class SeatAllocationUpdateForm extends Component {
             <div>
                 <div className="row">
                     <div className="col-12 container-fluid">
-                        <h2 className="feature-heading ">Seat Allocation</h2>
+                        <h2 className="feature-heading ">Update Seat Allocation</h2>
                         <hr className="feature-line" /> 
                     </div>  
-                </div>
-                <div>
-                    <h4>Student's Seat Allocation</h4>
                 </div>
                 <div >
                     <Form className="myForm" onSubmit={this.handleSubmit}>
