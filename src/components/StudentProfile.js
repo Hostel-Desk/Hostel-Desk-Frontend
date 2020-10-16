@@ -5,8 +5,12 @@ class StudentProfile extends Component {
     constructor(props) {
         super(props);
     }
-
+    
     render(){
+        const student = this.props.students.students.filter((stud)=>stud.sid==this.props.auth.user.username)[0]
+        console.log(student)
+
+        
         return (
             <div>
                 <div className="row">
@@ -21,7 +25,7 @@ class StudentProfile extends Component {
                     </div>
                     <div className="col-md-4 " >
                         <br />
-                        <h4>Name:</h4>
+        <h4>Name: </h4>
                         <br />
                         <h4>Student ID:</h4>
                         <br />

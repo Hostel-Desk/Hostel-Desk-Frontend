@@ -10,6 +10,7 @@ import NoticeView from './NoticeView';
 import SubmitComplaint from './SubmitComplaint';
 import StudentView from './StudentsComponent';
 import EmployeeView from './EmployeeView';
+import Profile from './ProfileComponent';
 
 class Student extends Component {
     constructor(props) {
@@ -135,7 +136,7 @@ class Student extends Component {
                                                                                         students={this.props.students}
                                                                                         auth={this.props.auth}
                                                                                         notices={this.props.notices.notices}/>}/>
-                            <Route exact path="/student/profile" component={StudentProfile}/>
+                            <Route exact path="/student/profile" component={()=><StudentProfile students = {this.props.students} auth={this.props.auth}/>}/>
                             <Route exact path="/student/Meal" component={() => <MealView meals={this.state.Meals} isLoading={this.props.meals.isLoading} errMess={this.props.meals.errMess}/>}/>
                             
                             <Route exact path="/student/payment" component={()=><StudentMessBill messBills={this.state.MessBills} isLoading={this.props.mealBills.isLoading} errMess={this.props.mealBills.errMess}/>}/>
