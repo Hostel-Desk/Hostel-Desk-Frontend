@@ -4,12 +4,21 @@ import { Component } from 'react';
 class StudentProfile extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            student: null
+        }
     }
-    
+    componentDidMount() {
+        this.setState({
+            student: this.props.students.students.filter((stud)=>stud.sid == '12345678')[0]
+        })
+    }
     render(){
-        const student = this.props.students.students.filter((stud)=>stud.sid==this.props.auth.user.username)[0]
-        console.log(student)
-
+        //console.log(this.props.auth.user.username);
+        let student = null;
+        if(this.state.student != null) {
+            student = this.state.student
+        }
         
         return (
             <div>
@@ -23,25 +32,25 @@ class StudentProfile extends Component {
                     <div className="col-md-3" >
                         <img src="" alt="Student Photo" />
                     </div>
-                    <div className="col-md-4 " >
+                    <div className="col-md-4">
                         <br />
-        <h4>Name: </h4>
+                        <h6>Name: {student!==null && student.studentName}</h6>
                         <br />
-                        <h4>Student ID:</h4>
+                        <h6>Student ID: {student!==null && student.sid}</h6>
                         <br />
-                        <h4>Date of Birth:</h4>
+                        <h6>Date of Birth: {student!==null && student.dob.split('T')[0]}</h6>
                         <br />
-                        <h4>Nationality:</h4>
+                        <h6>Nationality: {student!==null && student.nationality}</h6>
                     </div>
-                    <div className="col-md-4 " >
+                    <div className="col-md-4">
                         <br />
-                        <h4>Father's Name:</h4>
+                        <h6>Father's Name: {student!==null && student.fatherName}</h6>
                         <br />
-                        <h4>Email:</h4>
+                        <h6>Email: {student!==null && student.email}</h6>
                         <br />
-                        <h4>Branch:</h4>
+                        <h6>Branch: {student!==null && student.branch}</h6>
                         <br />
-                        <h4>Address:</h4>
+                        <h6>Address: {student!==null && student.address}</h6>
                     </div>
                 </div>
             </div>

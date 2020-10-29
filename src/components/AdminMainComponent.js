@@ -82,7 +82,7 @@ class Admin extends Component {
             employeetype: element.employeeType,
             designation: element.designation,
             mobile: element.mobileNo,
-            date: element.joiningDate,
+            date: element.joiningDate.split('T')[0],
             address: element.hostel.name,
             actions: <div>
             <Link className="fa fa-pencil-alt edit mr-2" to={`/admin/updateEmployee/${element._id}`}></Link>
@@ -114,7 +114,7 @@ class Admin extends Component {
       this.props.salaries.salaries.forEach(element => {
         salaries.push({
           name: element.name,
-          month: element.month,
+          month: element.month.split('T')[0],
           amount: element.salary,
           actions: <div>
           <Link className="fa fa-pencil-alt edit mr-2" to={`/admin/updateSalary/${element._id}`}></Link>
@@ -166,7 +166,7 @@ class Admin extends Component {
             sid: element.sid,
             branch: element.branch,
             amount: element.payment,
-            date: element.paymentDate,
+            date: element.paymentDate.split('T')[0],
             actions: <div>
             <Link className="fa fa-pencil-alt edit mr-2" to={`/admin/updateMealBill/${element._id}`}></Link>
             <i className="fa fa-trash-alt delete" onClick={() =>{

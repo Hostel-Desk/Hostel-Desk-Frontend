@@ -5,12 +5,12 @@ class MessBillUpdateForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: this.props.mealBill.name,
+            name: (typeof this.props.millBill === 'undefined') ? '': this.props.mealBill.name,
             id: this.props.id,
-            sid: this.props.mealBill.sid,
-            rupees: this.props.mealBill.payment,
-            branch: this.props.mealBill.branch,
-            paymentduedate: this.props.mealBill.paymentDate,
+            sid: (typeof this.props.mealBill === 'undefined') ? '': this.props.mealBill.sid,
+            rupees: (typeof this.props.mealBill === 'undefined') ? '': this.props.mealBill.payment,
+            branch: (typeof this.props.mealBill === 'undefined') ? '': this.props.mealBill.branch,
+            paymentduedate: (typeof this.props.mealBill === 'undefined') ? '': this.props.mealBill.paymentDate,
             touched: {
                 name: false,
                 sid: false,

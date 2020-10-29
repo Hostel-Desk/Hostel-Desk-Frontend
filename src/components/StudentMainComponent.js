@@ -39,10 +39,11 @@ class Student extends Component {
           gMob: element.fatherMobile,
           guardian: element.fatherName,
           pAddress: element.address,
-         
+          
         })
       });
       const studentlist = this.state.Students.concat(students);
+      console.log(studentlist);
       let employees = [];
       this.props.employees.employees.forEach(element => {
         employees.push({
