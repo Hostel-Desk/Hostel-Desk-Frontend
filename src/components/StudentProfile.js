@@ -28,11 +28,8 @@ class StudentProfile extends Component {
                         <hr className="feature-line" /> 
                     </div>  
                 </div>
-                <div className="row">
-                    <div className="col-md-3" >
-                        <img src="" alt="Student Photo" />
-                    </div>
-                    <div className="col-md-4">
+                <div className="row profile">
+                    <div className="col-md-4 offset-3">
                         <br />
                         <h6>Name: {student!==null && student.studentName}</h6>
                         <br />
