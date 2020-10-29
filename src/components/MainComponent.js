@@ -127,7 +127,7 @@ class Main extends Component {
                         meals={this.props.meals} mealBills={this.props.mealBills} fetchEmployees={this.props.fetchEmployees} seatAllocation={this.props.seatAllocation} architecture={this.props.architecture} deleteSalary={this.props.deleteSalary} updateMealbill={this.props.updateMealbill} 
                         updateSeatAllocation={this.props.updateSeatAllocation} updateSalary={this.props.updateSalary} postSeatallocation={this.props.postSeatallocation} />}/>
                         <Route path="/contactus" component={Contact}/>
-                        <StudentRoute path="/student" component={() => <Student auth={this.props.auth} postComplaint={this.props.postComplaint}
+                        <StudentRoute path="/student" component={() => <Student auth={this.props.auth} postComplaint={this.props.postComplaint} complaints = {this.props.complaints}
                         employees={this.props.employees} notices={this.props.notices} students={this.props.students} salaries={this.props.salaries}
                         meals={this.props.meals} mealBills={this.props.mealBills} seatAllocation={this.props.seatAllocation} architecture={this.props.architecture}/>}/>
                         <Redirect to="/home"/>
