@@ -160,7 +160,7 @@ class Student extends Component {
                             <Route exact path="/student/Complaints" component={() => <SubmitComplaint postComplaint={this.props.postComplaint} auth={this.props.auth} complaints = {this.state.complaints} />} />
                             <Route exact path="/student/mealview" component={() => <MealView meals={this.state.Meals} isLoading={this.props.meals.isLoading} errMess={this.props.meals.errMess}/>} />
                             <Route exact path="/student/studentView"  component={()=><StudentView students={this.state.Students} isLoading={this.props.students.isLoading} errMess={this.props.students.errMess}/>} />
-                            <Route exact path="/student/rooms" component={() => <ArchitectureView architectures={this.state.Architecture} isLoading={this.props.architecture.isLoading} errMess={this.props.architecture.errMess}/>}/>
+                            <Route exact path="/student/rooms" component={() => <ArchitectureView architectures={this.props.architecture.architecture} isLoading={this.props.architecture.isLoading} errMess={this.props.architecture.errMess}/>}/>
                             <Route exact path="/student/employeeView" component={()=><EmployeeView employees={this.state.Employees} isLoading={this.props.employees.isLoading} errMess={this.props.employees.errMess}/>}/>
                             <Redirect to="/student/dashboard"/>
                         </Switch>

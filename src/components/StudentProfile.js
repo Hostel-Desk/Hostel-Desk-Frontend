@@ -10,7 +10,7 @@ class StudentProfile extends Component {
     }
     componentDidMount() {
         this.setState({
-            student: this.props.students.students.filter((stud)=>stud.sid == '12345678')[0]
+            student: this.props.students.students.filter((stud)=>stud.sid == this.props.auth.user.username)[0]
         })
     }
     render(){

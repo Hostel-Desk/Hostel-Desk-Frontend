@@ -255,7 +255,7 @@ class Admin extends Component {
                         <Switch>
                             <Route path="/admin/dashboard" component={() => <DashBoard architectures={this.props.architecture.architecture} students={this.props.students} employees={this.props.employees} auth={this.props.auth} notices={this.props.notices.notices}/>}/>                                                                                                                                                             
                             <Route exact path="/admin/students" component={()=><StudentView students={this.state.Students}/>}/>
-                            <Route exact path="/admin/rooms" component={() => <ArchitectureView architectures={this.state.Architecture}/>}/>
+                            <Route exact path="/admin/rooms" component={() => <ArchitectureView architectures={this.props.architecture.architecture}/>}/>
                             <Route exact path="/admin/StudentManage/addnew" component={() => <AddStudent postStudent={this.props.postStudent}/>}/>
                             <Route exact path="/admin/employees" component={()=><EmployeeView employees={this.state.Employees}/>}/>
                             <Route exact path="/admin/EmployeeManage/addnew" component={() => <AddEmployee postEmployee={this.props.postEmployee}/>}/>
