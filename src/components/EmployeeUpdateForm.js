@@ -6,15 +6,15 @@ class EmployeeUpdateForm extends Component {
         super(props);
         this.state = {
             id: this.props.id,
-            name: this.props.employeeName,
-            mobile: this.props.employee.mobile,
+            name: this.props.employee.employeeName,
+            mobile: this.props.employee.mobileNo,
             gender: this.props.employee.gender,
             type: this.props.employee.employeeType,
             address: this.props.employee.hostel.name,
             designation: this.props.employee.designation,
             salary: this.props.employee.salary,
             joinDate: this.props.employee.joiningDate,
-            eid:'',
+            eid: this.props.employee.eid,
             touched: {
                 name: false,
                 mobile: false,
