@@ -100,13 +100,15 @@ class Student extends Component {
 
       let mealBills = [];
       this.props.mealBills.bills.forEach(element => {
-        mealBills.push({
-          name: element.name,
-          sid: element.sid,
-          branch: element.branch,
-          amount: element.payment,
-          date: element.paymentDate,
+        if(element.sid === this.props.auth.user.username) {
+          mealBills.push({
+            name: element.name,
+            sid: element.sid,
+            branch: element.branch,
+            amount: element.payment,
+            date: element.paymentDate,
           })
+        }
       });
       const mealBillsList = this.state.MessBills.concat(mealBills);
       const mealsList = this.state.Meals.concat(this.props.meals.meals);
@@ -154,7 +156,7 @@ class Student extends Component {
                             <Route exact path="/student/profile" component={()=><StudentProfile students = {this.props.students} auth={this.props.auth}/>}/>
                             <Route exact path="/student/Meal" component={() => <MealView meals={this.state.Meals} isLoading={this.props.meals.isLoading} errMess={this.props.meals.errMess}/>}/>
                             
-                            <Route exact path="/student/payment" component={()=><StudentMessBill messBills={this.state.MessBills} isLoading={this.props.mealBills.isLoading} errMess={this.props.mealBills.errMess}/>}/>
+                            <Route exact path="/student/payment" component={()=><StudentMessBill messBills={this.state.MealsBills} isLoading={this.props.mealBills.isLoading} errMess={this.props.mealBills.errMess}/>}/>
                             <Route exact path="/student/Noticeboard" component={() => <NoticeView notices={this.state.Notices} isLoading={this.props.notices.isLoading} errMess={this.props.notices.errMess}/>}/>
                             <Route exact path="/student/Architecture" component={() => <ArchitectureView architectures={this.props.architecture.architecture} isLoading={this.props.architecture.isLoading} errMess={this.props.architecture.errMess}/>}/>
                             <Route exact path="/student/Complaints" component={() => <SubmitComplaint postComplaint={this.props.postComplaint} auth={this.props.auth} complaints = {this.state.complaints} />} />
