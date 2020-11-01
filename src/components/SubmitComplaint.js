@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Form, Input, Button, Label, Col, Row, FormGroup, FormFeedback} from 'reactstrap';
+import ComplaintsView from './StudentsComplaintsView';
 
 class SubmitComplaint extends Component {
     constructor(props) {
@@ -52,6 +53,7 @@ class SubmitComplaint extends Component {
     }
 
     render(){
+        const complaint = this.props.complaints.filter((element)=>element.name==this.props.auth.user.username)
         const errors = this.validate(this.state.title, this.state.description); 
         return ( 
             <div>
@@ -91,6 +93,9 @@ class SubmitComplaint extends Component {
                             </Col>
                         </FormGroup>
                     </Form>
+                </div>
+                <div>
+                    <ComplaintsView complaints={complaint}/>
                 </div>
             </div>
         )

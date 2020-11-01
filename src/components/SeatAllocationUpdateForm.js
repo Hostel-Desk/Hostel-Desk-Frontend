@@ -7,10 +7,10 @@ class SeatAllocationUpdateForm extends Component {
 
         this.state = {
             id: this.props.id,
-            block: this.props.seat.block,
-            room: this.props.seat.room,
-            rent: this.props.seat.monthlyRent,
-            name: this.props.seat.name,
+            block: (typeof this.props.seat === 'undefined') ? '': this.props.seat.block,
+            room: (typeof this.props.seat === 'undefined') ? '': this.props.seat.room,
+            rent: (typeof this.props.seat === 'undefined') ? '': this.props.seat.monthlyRent,
+            name: (typeof this.props.seat === 'undefined') ? '': this.props.seat.name,
 
             touched: {
                 id: false,
@@ -69,6 +69,7 @@ class SeatAllocationUpdateForm extends Component {
     }
 
     render() {
+        console.log(this.props.seat);
         const errors = this.validate(this.state.name, this.state.block, this.state.room, this.state.rent);
         return (
             <div>
@@ -102,7 +103,7 @@ class SeatAllocationUpdateForm extends Component {
                                 <Col md={4}>
                                 <FormGroup>
                                     <Label for="room">Room No</Label>
-                                    <Input required type="text" name="room" id="room" vlaue={this.state.room} placeholder="Room No" 
+                                    <Input required type="text" name="room" id="room" value={this.state.room} placeholder="Room No" 
                                     onBlur={this.handleBlur('room')} onChange={this.handleInputChange}
                                     valid={errors.room === ''} invalid={errors.room !== ''}/>
                                     <FormFeedback>{errors.room}</FormFeedback>

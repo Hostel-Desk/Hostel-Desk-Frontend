@@ -6,9 +6,9 @@ class SalaryUpdateForm extends Component {
         super(props);
         this.state = {
             id: this.props.id,
-            rupees: this.props.salary.salary,
-            date: this.props.salary.month,
-            name: this.props.salary.name,
+            rupees: (typeof this.props.salary === 'undefined') ? '': this.props.salary.salary,
+            date: (typeof this.props.salary === 'undefined') ? '': this.props.salary.month.split('T')[0],
+            name: (typeof this.props.salary === 'undefined') ? '': this.props.salary.name,
             touched: {
                 id: false,
                 rupees: false,

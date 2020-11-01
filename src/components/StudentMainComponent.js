@@ -23,7 +23,8 @@ class Student extends Component {
           Architecture: [],
           Seats: [],
           Meals: [],
-          MessBills: [] 
+          MessBills: [],
+          complaints:[]
         }
     }
 
@@ -39,10 +40,11 @@ class Student extends Component {
           gMob: element.fatherMobile,
           guardian: element.fatherName,
           pAddress: element.address,
-         
+          
         })
       });
       const studentlist = this.state.Students.concat(students);
+      console.log(studentlist);
       let employees = [];
       this.props.employees.employees.forEach(element => {
         employees.push({
@@ -98,17 +100,31 @@ class Student extends Component {
 
       let mealBills = [];
       this.props.mealBills.bills.forEach(element => {
-        mealBills.push({
-          name: element.name,
-          sid: element.sid,
-          branch: element.branch,
-          amount: element.payment,
-          date: element.paymentDate,
+        if(element.sid === this.props.auth.user.username) {
+          mealBills.push({
+            name: element.name,
+            sid: element.sid,
+            branch: element.branch,
+            amount: element.payment,
+            date: element.paymentDate,
           })
+        }
       });
       const mealBillsList = this.state.MessBills.concat(mealBills);
       const mealsList = this.state.Meals.concat(this.props.meals.meals);
   
+
+      let complaints = [];
+      this.props.complaints.complaints.forEach(element => {
+        complaints.push({
+          name: element.studentName.username,
+          title: element.title,
+          complaint: element.complaint
+        })
+      });
+      const complaintsList = this.state.complaints.concat(complaints);
+
+
       this.setState({
         Students: studentlist,
         Employees: employeeList,
@@ -117,7 +133,8 @@ class Student extends Component {
         //Architecture: architectureList,
         Seats: seatAllocationList,
         MealsBills: mealBillsList,
-        Meals: mealsList
+        Meals: mealsList,
+        complaints:complaintsList
       });
       }
 
@@ -139,13 +156,13 @@ class Student extends Component {
                             <Route exact path="/student/profile" component={()=><StudentProfile students = {this.props.students} auth={this.props.auth}/>}/>
                             <Route exact path="/student/Meal" component={() => <MealView meals={this.state.Meals} isLoading={this.props.meals.isLoading} errMess={this.props.meals.errMess}/>}/>
                             
-                            <Route exact path="/student/payment" component={()=><StudentMessBill messBills={this.state.MessBills} isLoading={this.props.mealBills.isLoading} errMess={this.props.mealBills.errMess}/>}/>
+                            <Route exact path="/student/payment" component={()=><StudentMessBill messBills={this.state.MealsBills} isLoading={this.props.mealBills.isLoading} errMess={this.props.mealBills.errMess}/>}/>
                             <Route exact path="/student/Noticeboard" component={() => <NoticeView notices={this.state.Notices} isLoading={this.props.notices.isLoading} errMess={this.props.notices.errMess}/>}/>
                             <Route exact path="/student/Architecture" component={() => <ArchitectureView architectures={this.props.architecture.architecture} isLoading={this.props.architecture.isLoading} errMess={this.props.architecture.errMess}/>}/>
-                            <Route exact path="/student/Complaints" component={() => <SubmitComplaint postComplaint={this.props.postComplaint}/>} />
+                            <Route exact path="/student/Complaints" component={() => <SubmitComplaint postComplaint={this.props.postComplaint} auth={this.props.auth} complaints = {this.state.complaints} />} />
                             <Route exact path="/student/mealview" component={() => <MealView meals={this.state.Meals} isLoading={this.props.meals.isLoading} errMess={this.props.meals.errMess}/>} />
                             <Route exact path="/student/studentView"  component={()=><StudentView students={this.state.Students} isLoading={this.props.students.isLoading} errMess={this.props.students.errMess}/>} />
-                            <Route exact path="/student/rooms" component={() => <ArchitectureView architectures={this.state.Architecture} isLoading={this.props.architecture.isLoading} errMess={this.props.architecture.errMess}/>}/>
+                            <Route exact path="/student/rooms" component={() => <ArchitectureView architectures={this.props.architecture.architecture} isLoading={this.props.architecture.isLoading} errMess={this.props.architecture.errMess}/>}/>
                             <Route exact path="/student/employeeView" component={()=><EmployeeView employees={this.state.Employees} isLoading={this.props.employees.isLoading} errMess={this.props.employees.errMess}/>}/>
                             <Redirect to="/student/dashboard"/>
                         </Switch>

@@ -82,7 +82,7 @@ class Admin extends Component {
             employeetype: element.employeeType,
             designation: element.designation,
             mobile: element.mobileNo,
-            date: element.joiningDate,
+            date: element.joiningDate.split('T')[0],
             address: element.hostel.name,
             actions: <div>
             <Link className="fa fa-pencil-alt edit mr-2" to={`/admin/updateEmployee/${element._id}`}></Link>
@@ -114,7 +114,7 @@ class Admin extends Component {
       this.props.salaries.salaries.forEach(element => {
         salaries.push({
           name: element.name,
-          month: element.month,
+          month: element.month.split('T')[0],
           amount: element.salary,
           actions: <div>
           <Link className="fa fa-pencil-alt edit mr-2" to={`/admin/updateSalary/${element._id}`}></Link>
@@ -166,7 +166,7 @@ class Admin extends Component {
             sid: element.sid,
             branch: element.branch,
             amount: element.payment,
-            date: element.paymentDate,
+            date: element.paymentDate.split('T')[0],
             actions: <div>
             <Link className="fa fa-pencil-alt edit mr-2" to={`/admin/updateMealBill/${element._id}`}></Link>
             <i className="fa fa-trash-alt delete" onClick={() =>{
@@ -255,7 +255,7 @@ class Admin extends Component {
                         <Switch>
                             <Route path="/admin/dashboard" component={() => <DashBoard architectures={this.props.architecture.architecture} students={this.props.students} employees={this.props.employees} auth={this.props.auth} notices={this.props.notices.notices}/>}/>                                                                                                                                                             
                             <Route exact path="/admin/students" component={()=><StudentView students={this.state.Students}/>}/>
-                            <Route exact path="/admin/rooms" component={() => <ArchitectureView architectures={this.state.Architecture}/>}/>
+                            <Route exact path="/admin/rooms" component={() => <ArchitectureView architectures={this.props.architecture.architecture}/>}/>
                             <Route exact path="/admin/StudentManage/addnew" component={() => <AddStudent postStudent={this.props.postStudent}/>}/>
                             <Route exact path="/admin/employees" component={()=><EmployeeView employees={this.state.Employees}/>}/>
                             <Route exact path="/admin/EmployeeManage/addnew" component={() => <AddEmployee postEmployee={this.props.postEmployee}/>}/>
