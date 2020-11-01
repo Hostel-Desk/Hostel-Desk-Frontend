@@ -11,7 +11,7 @@ class StudentUpdateForm extends Component {
             fullname: this.props.student.studentName,
             mobile: this.props.student.mobileNo,
             program: this.props.student.branch,
-            father: this.props.student.fatherMobile,
+            father: this.props.student.fatherName,
             mother: this.props.student.motherName,
             fnum: this.props.student.fatherMobile,
             address: this.props.student.address,
