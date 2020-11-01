@@ -6,10 +6,8 @@ export default class AddMeal extends Component {
 
         this.state={
             day:'',
-            breakfast:'',
-            lunch:'',
-            snacks:'',
-            dinner:''
+            time:'',
+            rows:[]
         }
 
     }
@@ -22,6 +20,26 @@ export default class AddMeal extends Component {
         this.setState({
             [name]: value
         });
+    }
+    handleInputChange1 = (i) => (event) => {
+        const values = [...this.state.rows];
+        values[i] = event.target.value
+        
+        this.setState({
+            rows: values
+        })
+    }
+
+    handleAddClick = () => {
+        this.setState({
+            rows: [...this.state.rows, '']
+        })
+    }
+
+    handleDelete = (i) => {
+        let values = [...this.state.rows];
+        values.splice(i,1);
+        this.setState({ rows: values });
     }
 
     handleSubmit = (event) => {
@@ -36,6 +54,7 @@ export default class AddMeal extends Component {
     }
 
     render(){
+        console.log(this.state.rows);
         return (
             <div>
                 <div className="row">
@@ -47,7 +66,7 @@ export default class AddMeal extends Component {
                 <div >
                     <Form className="myForm" onSubmit={this.handleSubmit}>
                         <Row form>
-                            <Col md={4}>
+                            <Col md={{size: 4, offset: 2}}>
                             <FormGroup>
                                     <Label  for="day">Day</Label>
                                     <select className="form-control" name="day" id="day" value={this.state.day} onChange={this.handleInputChange}  required>
@@ -64,44 +83,46 @@ export default class AddMeal extends Component {
                             </Col>
                             <Col md={4}>
                             <FormGroup>
-                            <Label for="breakfast">Breakfast</Label>
-                                <Input required type="text" name="breakfast" id="breakfast" placeholder="Breakfast" value={this.state.breakfast}
-                                onChange={this.handleInputChange} />
-                            </FormGroup>
-                            </Col>
-                            <Col md={4}>
-                            <FormGroup>
-                                <Label for="lunch">Lunch</Label>
-                                <Input required type="text" name="lunch" id="lunch" placeholder="Lunch" value={this.state.lunch}
-                                onChange={this.handleInputChange} />
-                            </FormGroup>
-                            </Col>
-                        </Row>
-                        <Row form>
-                            <Col md={4}>
-                            <FormGroup>
-                            <Label for="snacks">Snacks</Label>
-                                <Input required type="text" name="snacks" id="snacks" placeholder="Snacks" value={this.state.snacks}
-                                onChange={this.handleInputChange} />
-                            </FormGroup>
-                            </Col>
-                            <Col md={4}>
-                            <FormGroup>
-                                <Label for="dinner">Dinner</Label>
-                                <Input required type="text" name="dinner" id="dinner" placeholder="Dinner" value={this.state.dinner}
-                                onChange={this.handleInputChange} />
+                            <Label for="breakfast">Time</Label>
+                                <select className="form-control" name="time" id="time" value={this.state.time} onChange={this.handleInputChange}  required>
+                                    <option defaultValue>Select</option>
+                                    <option value="Breakfast">Breakfast</option>
+                                    <option value="Lunch">Lunch</option>
+                                    <option value="Evening Snacks">Evening Snacks</option>
+                                    <option value="Dinner">Dinner</option>
+                                </select>  
                             </FormGroup>
                             </Col>
                         </Row>
+                        {
+                            this.state.rows.map((el, i) => {
+                                return(
+                                    <Row form>
+                                        <Col md={{size: 6, offset: 2}}>
+                                            <FormGroup>
+                                                <Label for="snacks">{`Row ${i + 1}`}</Label>
+                                                <Input required type="text" name={`${i}`} id={`${i}`} placeholder={`Add Item`} value={this.state.rows[i]}
+                                                onChange={this.handleInputChange1(i)} />
+                                            </FormGroup>
+                                        </Col>
+                                        <Button color="primary" onClick={(i = i) => this.handleDelete(i)}>
+                                            Delete
+                                        </Button>
+                                    </Row>
+                                )
+                            })
+                        }
                         <FormGroup row>
-                            <Col md={{size: 10}}>
-                                <Button type="submit" color="primary">
-                                    Add
+                            <Col md={{size: 10, offset: 2}}>
+                                <Button color="primary" onClick={this.handleAddClick}>
+                                    Add Row
                                 </Button> 
-                                <Button type="submit" color="primary">
-                                    Delete
-                                </Button>
                             </Col>
+                        </FormGroup>
+                        <FormGroup>
+                            <Button type="submit" color="primary">
+                                Add Data
+                            </Button>
                         </FormGroup>
                     </Form>
                 </div>
