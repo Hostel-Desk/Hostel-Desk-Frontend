@@ -99,15 +99,23 @@ export default class AddMeal extends Component {
                                 return(
                                     <Row form>
                                         <Col md={{size: 6, offset: 2}}>
+                                            
                                             <FormGroup>
                                                 <Label for="snacks">{`Row ${i + 1}`}</Label>
+                                                <Row>
+                                                    <Col md={{size:9}}>
                                                 <Input required type="text" name={`${i}`} id={`${i}`} placeholder={`Add Item`} value={this.state.rows[i]}
                                                 onChange={this.handleInputChange1(i)} />
+                                                </Col>
+                                                <Col className="class-col">
+                                               
+                                                <Button className="float-right class-col" color="primary" onClick={(i = i) => this.handleDelete(i)}>
+                                                Delete
+                                                </Button>
+                                                </Col>
+                                                </Row>    
                                             </FormGroup>
-                                        </Col>
-                                        <Button color="primary" onClick={(i = i) => this.handleDelete(i)}>
-                                            Delete
-                                        </Button>
+                                        </Col>  
                                     </Row>
                                 )
                             })
