@@ -155,18 +155,7 @@ export default class LeftNav extends Component {
           </div>
             <NavItem>
               <Link className="nav-link" to="/admin/NoticeBoard"> <i className="fa fa-newspaper-o" aria-hidden="true"></i> Notice Board</Link>
-            </NavItem>
-            <NavItem>
-              <Link className="nav-link" id="toggler3" onClick={this.toggleSettings} to="/admin/Settings"><i className="fa fa-cog" aria-hidden="true"></i> Settings<Carrot open={this.state.issettingsopen}/></Link>
-            </NavItem>
-            <div>
-            <UncontrolledCollapse toggler="#toggler3">
-                  <NavItem>
-                    <Link className="nav-link offset-2" to="/admin/Settings/updateprofile"><i className="fa fa-user" aria-hidden="true"></i> Update Profile</Link>
-                  </NavItem>  
-            </UncontrolledCollapse>
-          </div>
-            
+            </NavItem>        
             <NavItem>
               <Link className="nav-link"  to="/admin/Architecture"><i className="fa fa-server" aria-hidden="true"></i>Architecture</Link>
             </NavItem>

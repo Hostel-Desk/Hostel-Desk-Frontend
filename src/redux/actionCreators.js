@@ -742,9 +742,9 @@ export const fetchSalaries = () => (dispatch) => {
 }
 
 export const deleteSalary = (salaryId) => (dispatch) => {
-    const bearer = 'Bearer' + localStorage.getItem('token');
+    const bearer = 'Bearer ' + localStorage.getItem('token');
 
-    return fetch(baseUrl + 'salaries/' + salaryId, {
+    return fetch(baseUrl + 'salary/' + salaryId, {
         method: "DELETE",
         headers:{
             'Authorization': bearer
@@ -1228,7 +1228,7 @@ export const postComplaint = (complaint) => (dispatch) => {
         throw errmess;
     })
     .then(response => response.json())
-    .then(response => dispatch(addComplaint(response)))
+    .then(response =>{ dispatch(addComplaint(response)); dispatch(fetchComplaints());})
     .catch(error => { console.log('Post complaints ', error.message);
         alert('Your complaint could not be added\nError: '+ error.message); })
 }

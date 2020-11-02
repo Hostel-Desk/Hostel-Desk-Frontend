@@ -6,7 +6,7 @@ import StudentMessBill from './StudentMessBill';
 import ArchitectureV from './StudentArchitecture';
 import StudentProfile from './StudentProfile';
 import StudentLeftNav from './Studentleftnav';
-import NoticeView from './NoticeView';
+import NoticeV from './StudentNoticeV';
 import SubmitComplaint from './SubmitComplaint';
 import StudentView from './StudentsComponent';
 import EmployeeView from './EmployeeView';
@@ -157,7 +157,7 @@ class Student extends Component {
                             <Route exact path="/student/Meal" component={() => <MealView meals={this.state.Meals} isLoading={this.props.meals.isLoading} errMess={this.props.meals.errMess}/>}/>
                             
                             <Route exact path="/student/payment" component={()=><StudentMessBill messBills={this.state.MealsBills} isLoading={this.props.mealBills.isLoading} errMess={this.props.mealBills.errMess}/>}/>
-                            <Route exact path="/student/Noticeboard" component={() => <NoticeView notices={this.state.Notices} isLoading={this.props.notices.isLoading} errMess={this.props.notices.errMess}/>}/>
+                            <Route exact path="/student/Noticeboard" component={() => <NoticeV notices={this.state.Notices} isLoading={this.props.notices.isLoading} errMess={this.props.notices.errMess}/>}/>
                             <Route exact path="/student/Architecture" component={() => <ArchitectureV architectures={this.props.architecture.architecture} isLoading={this.props.architecture.isLoading} errMess={this.props.architecture.errMess}/>}/>
                             <Route exact path="/student/Complaints" component={() => <SubmitComplaint postComplaint={this.props.postComplaint} auth={this.props.auth} complaints = {this.state.complaints} />} />
                             <Route exact path="/student/mealview" component={() => <MealView meals={this.state.Meals} isLoading={this.props.meals.isLoading} errMess={this.props.meals.errMess}/>} />
