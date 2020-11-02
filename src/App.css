@@ -17,6 +17,8 @@ body{
 }
 .header{
     padding-top: 10px;
+    padding-right: 0;
+    padding-left: 30px;
 }
 .hms{
     height: 25%;
@@ -26,6 +28,17 @@ body{
     padding-top: 1.5%;
     height: 15%;
     width: 15%;
+}
+
+@media (max-width: 768px){
+    .hms{
+        height: 40%;
+        width: 40%;
+    }
+    .pec{
+        height: 30%;
+        width: 30%;
+    }
 }
 
 /* Nav Component */

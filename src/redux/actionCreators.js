@@ -135,7 +135,7 @@ export const fetchMealbill = () => (dispatch) => {
 
     const bearer = 'Bearer ' + localStorage.getItem('token');
 
-    return fetch(baseUrl + 'mealbills', {
+    return fetch(baseUrl + 'mealBills', {
         headers: {
             'method': 'GET',
             'Authorization': bearer
