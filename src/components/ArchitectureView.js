@@ -20,27 +20,12 @@ export default function ArchitectureView({architectures,isLoading,errMess}) {
                 field: 'floors',
                 width: 150,
                 },
-            
-            {
-                label: 'Actions',
-                field: 'actions',
-                sort: 'disabled',
-                width: 100,
-                default: <div>
-                <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleArchitectureModal()}></i>
-                <i className="fa fa-trash-alt delete"></i>
-              </div>
-            }
         ],
         rows: [
           {
             rooms: architectures.rooms,
             blocks: architectures.blocks,
-            floors: architectures.floors,
-            actions: <div>
-            <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleArchitectureModal()}></i>
-            <i className="fa fa-trash-alt delete"></i>
-            </div> 
+            floors: architectures.floors 
           }
         ],
     });

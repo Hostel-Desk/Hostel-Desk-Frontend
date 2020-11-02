@@ -101,7 +101,6 @@ class Admin extends Component {
           title: element.title,
           description: element.description,
           actions: <div>
-          <i className="fa fa-pencil-alt edit mr-2" onClick={() => this.toggleNoticeModal()}></i>
           <i className="fa fa-trash-alt delete" onClick={() =>{
                  if (window.confirm("Are u sure u want to delete ?"))
                     this.props.deleteNotice(element._id)
@@ -264,7 +263,6 @@ class Admin extends Component {
                             <Route exact path="/admin/StudentManage/view" component={()=><StudentView students={this.state.Students} isLoading={this.props.students.isLoading} errMess={this.props.students.errMess} />}/>
                             <Route exact path="/admin/EmployeeManage/view" component={()=><EmployeeView employees={this.state.Employees} isLoading={this.props.employees.isLoading} errMess={this.props.employees.errMess}/>}/>
                             <Route exact path="/admin/NoticeBoard" component={() => <NoticeBoard notices={this.state.Notices} postNotice={this.props.postNotice} isLoading={this.props.notices.isLoading} errMess={this.props.notices.errMess}/>}/>
-                            <Route exact path="/admin/Settings/updateprofile" component={Profile}/>
                             <Route exact path="/admin/Architecture" component={() => <Architecture postArchitecture={this.props.postArchitecture} architecture={this.props.architecture.architecture} isLoading={this.props.architecture.isLoading} errMess={this.props.architecture.errMess}/>}/>
                             <Route exact path="/admin/StudentManagePayment/Add Bill" component={() => <StudentPayment postMealbill={this.props.postMealbill}/>} />
                             <Route exact path="/admin/StudentManagePayment/MessBill" component={()=><StudentMessBill messBills={this.state.MessBills} isLoading={this.props.mealBills.isLoading} errMess={this.props.mealBills.errMess} />} />

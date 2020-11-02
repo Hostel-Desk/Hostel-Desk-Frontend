@@ -2,7 +2,7 @@ import React from 'react';
 import { MDBDataTableV5 } from 'mdbreact';
 import { Loading } from './LoadingComponent';
 
-export default function NoticeView({notices,isLoading,errMess}) {
+export default function NoticeV({notices,isLoading,errMess}) {
   const [datatable, setDatatable] = React.useState({
       columns: [
           {
@@ -17,15 +17,6 @@ export default function NoticeView({notices,isLoading,errMess}) {
               sort: 'disabled',
               width: 200
           },
-          {
-              label: 'Actions',
-              field: 'actions',
-              sort: 'disabled',
-              width: 80,
-              default:<div>
-              <i className="fa fa-trash-alt delete"></i>
-            </div>
-          }
       ],
       rows: notices,
   });
@@ -37,6 +28,15 @@ export default function NoticeView({notices,isLoading,errMess}) {
   }
   else{
   return (
+    <>
+    <div className="row">
+                <div className="col-12 container-fluid">
+                    <h2 className="feature-heading ">Architecture</h2>
+                    <hr className="feature-line" /> 
+                </div>
+            
+    </div>
+    <div className="col-12 container-fluid">
     <MDBDataTableV5
       hover
       responsiveMd
@@ -49,5 +49,7 @@ export default function NoticeView({notices,isLoading,errMess}) {
       searchBottom={false}
       scrollX
     />
+    </div>
+    </>
   );
 }}
