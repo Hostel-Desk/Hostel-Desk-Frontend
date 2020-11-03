@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, {useState,useEffect} from 'react';
 import {Breadcrumb, BreadcrumbItem, Form, Input, Button, Label, Col, Row, FormGroup, FormFeedback} from 'reactstrap';
+import { useHistory, withRouter } from "react-router-dom";
 
-class Contact extends Component{
-    constructor(props){
-        super(props);
-        this.state={
+function Contact(props) {
+    
+        const [initialState, setState] = useState({
             name: '',
             email: '',
             subject: '',
@@ -15,55 +15,58 @@ class Contact extends Component{
                 subject: false,
                 message: false
             }
-        }
-    }
-
-    handleSubmit(event) {
-        console.log("Current State is: " + JSON.stringify(this.state));
-        alert("Current State is: " + JSON.stringify(this.state));
+        })
+   
+    const history = useHistory();
+    const handleSubmit = (event) => {
+        //const history = useHistory();
+        console.log("Current State is: " + JSON.stringify(initialState));
+        alert("Current State is: " + JSON.stringify(initialState));
+        history.push(`https://mail.google.com/mail/?view=cm&fs=1&to=tanveersodhi17@gmail.com&su=${initialState.subject}&body=${initialState.message}`)
         event.preventDefault();
     }
-    handleInputChange = (event) => {
+    const handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
         const name = target.name;
 
-        this.setState({
+        setState({
+            ...initialState,
             [name]: value
         });
     }
-    handleBlur = (field) => (evt) => {
-        this.setState({
-            touched: {...this.state.touched, [field]: true}
+    const handleBlur = (field) => (evt) => {
+        setState({
+            ...initialState,
+            touched: {...initialState.touched, [field]: true}
         });
     }
 
-    validate = (name, email, subject, message) => {
+    const validate = (name, email, subject, message) => {
         const errors = {
             name: '',
             email: '',
             subject: '',
             message: ''
         }
-        if(this.state.touched.name && name.length < 3)
+        if(initialState.touched.name && name.length < 3)
             errors.name = 'Name should be of minimum length of 3 characters';
-        else if(this.state.touched.name && name.length > 30)
+        else if(initialState.touched.name && name.length > 30)
             errors.name = 'Name should not be greater than 30 characters';
-        if(this.state.touched.email && email.split('').filter(x=>x === '@').length!=1)
+        if(initialState.touched.email && email.split('').filter(x=>x === '@').length!=1)
             errors.email = 'Enter a valid email';
-        if(this.state.touched.subject && subject.length < 10) 
+        if(initialState.touched.subject && subject.length < 10) 
             errors.subject = 'Subject should contain a minimum of 10 characters';
-        if(this.state.touched.subject && subject.length > 30) 
+        if(initialState.touched.subject && subject.length > 30) 
             errors.subject = 'Subject should contain a maximum of 30 characters';
-        if(this.state.touched.subject && message.length < 50) 
+        if(initialState.touched.subject && message.length < 50) 
             errors.message = 'Description should contain a minimum of 50 characters';
 
         return errors;
         
     }   
-
-    render(){
-        const errors = this.validate(this.state.name, this.state.email, this.state.subject, this.state.message);
+    const errors = validate(initialState.name, initialState.email, initialState.subject, initialState.message);
+    {
         return(
             <div className ="container-fluid contact">
                 <div className="row">
@@ -77,30 +80,30 @@ class Contact extends Component{
                         <div className="col-12 col-md-4 offset-md-2">
                         
                         <a href="http://maps.google.com/?q=Punjab Engineering College, Sector-12" target="_blank" ><i className="fa fa-map-marker-alt fa-2x info"></i></a><div className="text"><p><strong>Location:</strong><br/>Punjab Engineering College, Sector-12,<br/>Chandigarh, 160012</p></div>
-                         <a href="mailto:deansw@pec.edu.in" target="_blank"> <i className="fa fa-envelope fa-2x info"></i></a><div className="text"><p><strong>Email:</strong><br/>deansw@pec.edu.in</p></div>
+                         <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=deansw@pec.edu.in" target="_blank"> <i className="fa fa-envelope fa-2x info"></i></a><div className="text"><p><strong>Email:</strong><br/>deansw@pec.edu.in</p></div>
                         <a href="tel:+1722753071"target="_blank"> <i className="fa fa-phone-alt fa-2x info"></i></a><div className="text"><p><strong>Call:</strong><br/>+1722753071</p></div>
 
  
                         </div>
                         <div className="col-12 col-md-5">
 
-                        <Form className="myForm" onSubmit={this.handleSubmit}>
+                        <Form className="myForm" onSubmit={handleSubmit}>
                             <Row form>
                                 <Col md={6}>
                                 <FormGroup>
                                     <Label for="name">Your Name</Label>
-                                    <Input onChange={this.handleInputChange} type="text" name="name" id="name" 
+                                    <Input onChange={handleInputChange} type="text" name="name" id="name" 
                                     valid={errors.name === ''} invalid={errors.name !== ''}
-                                    onBlur={this.handleBlur('name')} placeholder="Your Name" />
+                                    onBlur={handleBlur('name')} placeholder="Your Name" />
                                     <FormFeedback>{errors.name}</FormFeedback>
                                 </FormGroup>
                                 </Col>
                                 <Col md={6}>
                                 <FormGroup>
                                     <Label for="email">Your Email</Label>
-                                    <Input onChange={this.handleInputChange} type="email" name="email" id="email" 
+                                    <Input onChange={handleInputChange} type="email" name="email" id="email" 
                                     valid={errors.email === ''} invalid={errors.email !== ''}
-                                    onBlur={this.handleBlur('email')} placeholder="Your Email"/>
+                                    onBlur={handleBlur('email')} placeholder="Your Email"/>
                                     <FormFeedback>{errors.email}</FormFeedback>
                                 </FormGroup>
                                 </Col>
@@ -108,9 +111,9 @@ class Contact extends Component{
                             <FormGroup row>
                                 <Col>
                                 <Label for="subject">Subject</Label>
-                                <Input onChange={this.handleInputChange} type="text" name="subject" id="subject" 
+                                <Input onChange={handleInputChange} type="text" name="subject" id="subject" 
                                 valid={errors.subject === ''} invalid={errors.subject !== ''}
-                                onBlur={this.handleBlur('subject')} placeholder="Subject"/>
+                                onBlur={handleBlur('subject')} placeholder="Subject"/>
                                 <FormFeedback>{errors.subject}</FormFeedback>
                                 </Col>
                             </FormGroup>
@@ -118,7 +121,7 @@ class Contact extends Component{
                             <FormGroup row>
                                 <Col>
                                 <Label for="message">Message</Label>
-                                <Input onChange={this.handleInputChange} onBlur={this.handleBlur('message')} 
+                                <Input onChange={handleInputChange} onBlur={handleBlur('message')} 
                                 valid={errors.message === ''} invalid={errors.message !== ''} 
                                 type="textarea" name="message" id="message" placeholder="Message"
                                  rows="3"/>
@@ -144,8 +147,8 @@ class Contact extends Component{
                             
                
             
-        );
+        )
     }
 }
-export default Contact;
+export default withRouter(Contact);
 
