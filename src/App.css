@@ -181,6 +181,7 @@ strong{
 }
 .me{
     box-shadow: none;
+    color:black;
 }
 .card{
     border-radius: 0;

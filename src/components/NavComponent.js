@@ -110,31 +110,40 @@ class Bar extends Component {
         <div>
             <Navbar light expand="md" className="me">
             <div className="container-fluid">
-                <NavbarToggler onClick={this.toggleNav}/>
+                {/* <NavbarToggler onClick={this.toggleNav}/> */}
                     
-                        <Collapse isOpen={this.state.isNavOpen} navbar>
-                            <Nav navbar className="navbar-expand-lg">
-                                <NavItem className="navbar-expand-lg ">
-                                    <Link className="nav-link" to="/home">
+                        {/* <Collapse isOpen={this.state.isNavOpen} navbar> */}
+                            {/* <Nav navbar className="navbar-expand-lg"> */}
+                            <ul className= "mr-auto nav me">
+                                {/* <NavItem className="navbar-expand-lg "> */}
+                                <li className="nav-item">
+                                    <Link className="nav-link me" to="/home">
                                         <span className="fa fa-home fa-lg"></span> Home 
                                     </Link>
-                                </NavItem>
-                                <NavItem className="navbar-expand-lg ">
-                                    <Link className="nav-link" to="/contactus">
+                                </li>
+                                {/* </NavItem> */}
+                                {/* <NavItem className="navbar-expand-lg "> */}
+                                <li className="nav-item">
+                                    <Link className="nav-link me" to="/contactus">
                                         <span className="fa fa-address-book fa-lg"></span> Contact Us
                                     </Link>
-                                </NavItem>
-                                <NavItem>
+                                </li>
+                                {/* </NavItem> */}
+                                {/* <NavItem> */}
+                                <li className="nav-item">
                                     {button}
-                                </NavItem>
-                                <NavItem className="navbar-expand-lg ">
-                                    <Link className="nav-link" to="/login">
+                                </li>
+                                {/* </NavItem> */}
+                                {/* <NavItem className="navbar-expand-lg "> */}
+                                <li className="nav-item">
+                                    <Link className="nav-link me" to="/login">
                                     <span className="fa fa-tachometer-alt"></span>Go to DashBoard
                                     </Link>
-                                </NavItem>
-                                
-                            </Nav>
-                        </Collapse>
+                                </li>
+                                {/* </NavItem> */}
+                            </ul>
+                            {/* </Nav> */}
+                        {/* </Collapse> */}
                     </div>
                 </Navbar>
                 {/* <Modal backdrop="static" isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
@@ -215,10 +224,10 @@ class Bar extends Component {
 
 
 function LoginButton(props){
-    return (<Link className="nav-link" to="/login"><span className="fa fa-sign-in-alt fa-lg"></span> Login</Link>);
+    return (<Link className="nav-link me" to="/login"><span className="fa fa-sign-in-alt fa-lg"></span> Login</Link>);
 }  
 function LogoutButton(props){
-    return (<Link to="/home" className="nav-link" onClick={props.onClick}><span className="fa fa-sign-out-alt fa-lg"></span> Logout</Link>);
+    return (<Link to="/home" className="nav-link me" onClick={props.onClick}><span className="fa fa-sign-out-alt fa-lg"></span> Logout</Link>);
 }
 
 //function SignupButton(props){
