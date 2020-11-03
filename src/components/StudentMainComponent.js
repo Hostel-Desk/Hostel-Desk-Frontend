@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import DashBoard from './DashboardComponent';
 import {Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
 import MealView from './MealTable';
-import StudentMessBill from './StudentMessBill';
+import StudentMessBill from './StudentMessBillV';
 import ArchitectureV from './StudentArchitecture';
 import StudentProfile from './StudentProfile';
 import StudentLeftNav from './Studentleftnav';
