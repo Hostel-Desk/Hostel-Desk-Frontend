@@ -2,22 +2,20 @@ import React, { Component } from 'react';
 import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
 import { Loading } from './LoadingComponent';
 export default class MealView extends Component {
-  constructor(props) {
-    super(props)
-  }
+
   RenderMenu() {
-    return(
+    return (
       <MDBTableBody>
         {
-          this.props.meals.map((meal)=>{
-            return(
+          this.props.meals.map((meal) => {
+            return (
               <tr>
                 <td>{meal.day}</td>
                 <td>
                   <ul>
                     {
                       meal.breakfast.map((Break) => {
-                        return(
+                        return (
                           <li>{Break}</li>
                         )
                       })
@@ -28,7 +26,7 @@ export default class MealView extends Component {
                   <ul>
                     {
                       meal.lunch.map((Lunch) => {
-                        return(
+                        return (
                           <li>{Lunch}</li>
                         )
                       })
@@ -39,7 +37,7 @@ export default class MealView extends Component {
                   <ul>
                     {
                       meal.snacks.map((Snack) => {
-                        return(
+                        return (
                           <li>{Snack}</li>
                         )
                       })
@@ -50,7 +48,7 @@ export default class MealView extends Component {
                   <ul>
                     {
                       meal.dinner.map((Dine) => {
-                        return(
+                        return (
                           <li>{Dine}</li>
                         )
                       })
@@ -66,38 +64,38 @@ export default class MealView extends Component {
   }
 
   render() {
-    if (this.props.isLoading){
-      return(<Loading/>);
+    if (this.props.isLoading) {
+      return (<Loading />);
     }
-    else if(this.props.errMess){
-      return(
+    else if (this.props.errMess) {
+      return (
         <div><p>{this.props.errMess} Please try again</p></div>);
     }
-    
-    else{
-      return( 
+
+    else {
+      return (
         <div className="mealTable">
-            <div className="row">
+          <div className="row">
             <div className="col-12 container-fluid">
-                <h4 className="feature-heading ">Menu</h4>
-                <hr className="feature-line" /> 
-            </div>  
+              <h4 className="feature-heading ">Menu</h4>
+              <hr className="feature-line" />
+            </div>
+          </div>
+          <MDBTable hover responsive>
+            <MDBTableHead>
+              <tr>
+                <th>Day</th>
+                <th>Breakfast</th>
+                <th>Lunch</th>
+                <th>Snacks</th>
+                <th>Dinner</th>
+              </tr>
+            </MDBTableHead>
+            {this.RenderMenu()}
+          </MDBTable>
         </div>
-        <MDBTable hover responsive>
-          <MDBTableHead>
-            <tr>
-              <th>Day</th>
-              <th>Breakfast</th>
-              <th>Lunch</th>
-              <th>Snacks</th>
-              <th>Dinner</th>
-            </tr>
-          </MDBTableHead>
-          {this.RenderMenu()}
-        </MDBTable>
-        </div>
-     );
+      );
     }
-    
+
   }
 }

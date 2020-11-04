@@ -5,19 +5,19 @@ export const Complaints = (state = {
     errMess: null,
     complaints: []
 }, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case ActionTypes.COMPLAINTS_SUCCESS:
-            return {...state, isLoading: false, errMess: null, complaints: action.payload};
+            return { ...state, isLoading: false, errMess: null, complaints: action.payload };
 
         case ActionTypes.COMPLAINTS_FAILED:
-            return {...state, isLoading: false, errMess: action.payload, complaints: []};
-        
+            return { ...state, isLoading: false, errMess: action.payload, complaints: [] };
+
         case ActionTypes.COMPLAINTS_LOADING:
-            return {...state, isLoading: true, errMess: [], complaints: []};
+            return { ...state, isLoading: true, errMess: [], complaints: [] };
 
         case ActionTypes.ADD_COMPLAINT:
             var complaint = action.payload;
-            return {...state, bills: state.complaints.concat(complaint)};
+            return { ...state, bills: state.complaints.concat(complaint) };
 
         default:
             return state;
