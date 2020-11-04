@@ -20,7 +20,7 @@ function Contact(props) {
     //const history = useHistory();
     const handleSubmit = (event) => {
         //const history = useHistory();
-        window.location.href = `https://mail.google.com/mail/?view=cm&fs=1&to=tanveersodhi17@gmail.com&su=${initialState.subject}&body=${initialState.message}`; event.preventDefault();
+        window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=tanveersodhi17@gmail.com&su=${initialState.subject}&body=${initialState.message}`); event.preventDefault();
     }
     const handleInputChange = (event) => {
         const target = event.target;
