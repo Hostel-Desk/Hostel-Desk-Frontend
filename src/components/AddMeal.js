@@ -133,7 +133,7 @@ export default class AddMeal extends Component {
                                     </select>
                                 </FormGroup>
                             </Col>
-                            <Col md={2}>
+                            <Col md={2} className="meal-col">
                                 <Button onClick={() => {this.clickHandle()}}>Search</Button>
                             </Col>
                         </Row>
