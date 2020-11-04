@@ -247,7 +247,7 @@ class Admin extends Component {
         />
       )
     }
-
+    console.log(this.state.Meals);
     return (
       <div className="feature admin">
         <div className="row">
@@ -264,7 +264,7 @@ class Admin extends Component {
               <Route exact path="/admin/employees" component={() => <EmployeeView employees={this.state.Employees} />} />
               <Route exact path="/admin/EmployeeManage/addnew" component={() => <AddEmployee postEmployee={this.props.postEmployee} />} />
               <Route exact path="/admin/MealManage/view" component={() => <MealView meals={this.state.Meals} isLoading={this.props.meals.isLoading} errMess={this.props.meals.errMess} />} />
-              <Route exact path="/admin/MealManage/add" component={AddMeal} />
+              <Route exact path="/admin/MealManage/add" component={() => <AddMeal meals={this.state.Meals} updateMeal={this.props.updateMeal}/>} />
               <Route exact path="/admin/StudentManage/view" component={() => <StudentView students={this.state.Students} isLoading={this.props.students.isLoading} errMess={this.props.students.errMess} />} />
               <Route exact path="/admin/EmployeeManage/view" component={() => <EmployeeView employees={this.state.Employees} isLoading={this.props.employees.isLoading} errMess={this.props.employees.errMess} />} />
               <Route exact path="/admin/NoticeBoard" component={() => <NoticeBoard notices={this.state.Notices} postNotice={this.props.postNotice} isLoading={this.props.notices.isLoading} errMess={this.props.notices.errMess} />} />

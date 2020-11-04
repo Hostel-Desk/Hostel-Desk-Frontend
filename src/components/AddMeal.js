@@ -6,7 +6,9 @@ export default class AddMeal extends Component {
         this.state = {
             day: '',
             time: '',
-            rows: []
+            rows: [],
+            id: (typeof this.props.meals[0] === 'undefined') ? '' : this.props.meals[0]._id,
+            enabled: false
         }
     }
 
@@ -18,6 +20,7 @@ export default class AddMeal extends Component {
         this.setState({
             [name]: value
         });
+
     }
 
     handleInputChange1 = (i) => (event) => {
@@ -31,7 +34,7 @@ export default class AddMeal extends Component {
 
     handleAddClick = () => {
         this.setState({
-            rows: [...this.state.rows, '']
+            rows: this.state.rows.concat('')
         })
     }
 
@@ -42,7 +45,8 @@ export default class AddMeal extends Component {
     }
 
     handleSubmit = (event) => {
-        event.preventDefault();
+        console.log(this.state);
+        this.props.updateMeal(this.state);
     }
 
     handleBlur = (field) => (evt) => {
@@ -51,8 +55,46 @@ export default class AddMeal extends Component {
         });
     }
 
+    clickHandle = () => {
+        if(this.state.day !== '' && this.state.time !== '') {
+            const row = this.props.meals.filter((meal) => meal.day === this.state.day)[0];
+            switch (this.state.time) {
+                case 'breakfast': (
+                    this.setState({
+                        rows: row.breakfast
+                    })
+                ) 
+                    break;
+                case 'lunch': (
+                    this.setState({
+                        rows: row.lunch
+                    })
+                ) 
+                    break;
+                case 'evening snacks': (
+                    this.setState({
+                        rows: row.snacks
+                    })
+                ) 
+                    break;
+                case 'dinner': (
+                    this.setState({
+                        rows: row.dinner
+                    })
+                ) 
+                    break;
+                default:
+                    break;
+            }
+            this.setState({
+                enabled: true
+            })
+        }
+        console.log(this.props);
+    }
+
     render() {
-        console.log(this.state.rows);
+        
         return (
             <div>
                 <div className="row">
@@ -64,7 +106,7 @@ export default class AddMeal extends Component {
                 <div >
                     <Form className="myForm" onSubmit={this.handleSubmit}>
                         <Row form>
-                            <Col md={{ size: 4, offset: 2 }}>
+                            <Col md={{ size: 3, offset: 2 }}>
                                 <FormGroup>
                                     <Label for="day">Day</Label>
                                     <select className="form-control" name="day" id="day" value={this.state.day} onChange={this.handleInputChange} required>
@@ -79,17 +121,20 @@ export default class AddMeal extends Component {
                                     </select>
                                 </FormGroup>
                             </Col>
-                            <Col md={4}>
+                            <Col md={3}>
                                 <FormGroup>
                                     <Label for="breakfast">Time</Label>
                                     <select className="form-control" name="time" id="time" value={this.state.time} onChange={this.handleInputChange} required>
                                         <option defaultValue>Select</option>
-                                        <option value="Breakfast">Breakfast</option>
-                                        <option value="Lunch">Lunch</option>
-                                        <option value="Evening Snacks">Evening Snacks</option>
-                                        <option value="Dinner">Dinner</option>
+                                        <option value="breakfast">Breakfast</option>
+                                        <option value="lunch">Lunch</option>
+                                        <option value="evening snacks">Evening Snacks</option>
+                                        <option value="dinner">Dinner</option>
                                     </select>
                                 </FormGroup>
+                            </Col>
+                            <Col md={2}>
+                                <Button onClick={() => {this.clickHandle()}}>Search</Button>
                             </Col>
                         </Row>
                         {
@@ -120,9 +165,9 @@ export default class AddMeal extends Component {
                         }
                         <FormGroup row>
                             <Col md={{ size: 10, offset: 2 }}>
-                                <Button color="primary" onClick={this.handleAddClick}>
+                                {this.state.enabled && <Button color="primary" onClick={this.handleAddClick}>
                                     Add Row
-                                </Button>
+                                </Button>}
                             </Col>
                         </FormGroup>
                         <FormGroup>

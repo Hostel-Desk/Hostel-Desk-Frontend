@@ -12,7 +12,7 @@ import LoginForm from './LoginForm';
 import {
     postArchitecture, postComplaint, postEmployee, postMeal, postMealbill, postNotice, postSalary,
     postSeatallocation, postStudent, fetchArchitecture, fetchComplaints, fetchEmployees, fetchMealbill,
-    fetchMeals, fetchNotices, fetchSalaries, fetchSeatallocation, fetchStudents, deleteComplaint, deleteSeatAllocation,
+    fetchMeals, updateMeal, fetchNotices, fetchSalaries, fetchSeatallocation, fetchStudents, deleteComplaint, deleteSeatAllocation,
     deleteEmployee, deleteNotice, deleteMealbill, deleteSalary, deleteStudent, logoutUser, loginUser, updateStudent, updateEmployee, updateMealbill, updateSeatAllocation, updateSalary
 } from '../redux/actionCreators';
 
@@ -50,6 +50,7 @@ const mapDispatchToProps = (dispatch) => ({
     updateMealbill: (mealBill) => dispatch(updateMealbill(mealBill)),
     updateSeatAllocation: (seat) => dispatch(updateSeatAllocation(seat)),
     updateSalary: (salary) => dispatch(updateSalary(salary)),
+    updateMeal: (meal) => dispatch(updateMeal(meal))
 
 })
 
@@ -124,7 +125,7 @@ class Main extends Component {
                             employees={this.props.employees} notices={this.props.notices} students={this.props.students} postStudent={this.props.postStudent} postSalary={this.props.postSalary} deleteNotice={this.props.deleteNotice} deleteComplaint={this.props.deleteComplaint}
                             deleteStudent={this.props.deleteStudent} deleteSeatAllocation={this.props.deleteSeatAllocation} fetchStudents={this.props.fetchStudents} salaries={this.props.salaries} complaints={this.props.complaints} postEmployee={this.props.postEmployee} deleteEmployee={this.props.deleteEmployee} deleteMealbill={this.props.deleteMealbill}
                             meals={this.props.meals} mealBills={this.props.mealBills} fetchEmployees={this.props.fetchEmployees} seatAllocation={this.props.seatAllocation} architecture={this.props.architecture} deleteSalary={this.props.deleteSalary} updateMealbill={this.props.updateMealbill}
-                            updateSeatAllocation={this.props.updateSeatAllocation} updateSalary={this.props.updateSalary} postSeatallocation={this.props.postSeatallocation} />} />
+                            updateSeatAllocation={this.props.updateSeatAllocation} updateSalary={this.props.updateSalary} updateMeal={this.props.updateMeal} postSeatallocation={this.props.postSeatallocation} />} />
                         <Route path="/contactus" component={Contact} />
                         <StudentRoute path="/student" component={() => <Student auth={this.props.auth} postComplaint={this.props.postComplaint} complaints={this.props.complaints}
                             employees={this.props.employees} notices={this.props.notices} students={this.props.students} salaries={this.props.salaries}
