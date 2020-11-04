@@ -82,9 +82,10 @@ function Contact(props) {
                         <a href="http://maps.google.com/?q=Punjab Engineering College, Sector-12" target="_blank" ><i className="fa fa-map-marker-alt fa-2x info"></i></a><div className="text"><p><strong>Location:</strong><br/>Punjab Engineering College, Sector-12,<br/>Chandigarh, 160012</p></div>
                          <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=deansw@pec.edu.in" target="_blank"> <i className="fa fa-envelope fa-2x info"></i></a><div className="text"><p><strong>Email:</strong><br/>deansw@pec.edu.in</p></div>
                         <a href="tel:+1722753071"target="_blank"> <i className="fa fa-phone-alt fa-2x info"></i></a><div className="text"><p><strong>Call:</strong><br/>+1722753071</p></div>
-                        </div>
 
-                    <div className="col-12 col-md-5">
+ 
+                        </div>
+                        <div className="col-12 col-md-5">
 
                         <Form className="myForm" onSubmit={handleSubmit}>
                             <Row form>
@@ -107,7 +108,6 @@ function Contact(props) {
                                 </FormGroup>
                                 </Col>
                             </Row>
-
                             <FormGroup row>
                                 <Col>
                                 <Label for="subject">Subject</Label>
@@ -117,7 +117,7 @@ function Contact(props) {
                                 <FormFeedback>{errors.subject}</FormFeedback>
                                 </Col>
                             </FormGroup>
-
+                            
                             <FormGroup row>
                                 <Col>
                                 <Label for="message">Message</Label>
@@ -128,27 +128,26 @@ function Contact(props) {
                                  <FormFeedback>{errors.message}</FormFeedback>
                                 </Col>
                             </FormGroup>
-
+                            
                             <FormGroup row>
-                                <Col md={{ size: 10 }}>
+                                <Col md={{size: 10}}>
                                     <Button type="submit" color="primary">
                                         Send Message
                                     </Button>
                                 </Col>
                             </FormGroup>
-                        </Form>
+                            </Form>
+                        </div>
                     </div>
                     
                     
                         </div>
-                        </div>
-                    
                         
                            
                             
                
             
-        );
+        )
     }
 }
 export default withRouter(Contact);

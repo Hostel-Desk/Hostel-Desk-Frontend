@@ -1,5 +1,6 @@
 import * as ActionTypes from './actionTypes';
 import { baseUrl } from '../shared/baseUrl';
+import axios from 'axios'
 
 export const mealbillLoading = () => ({
     type: ActionTypes.MEALBILL_LOADING
@@ -18,16 +19,16 @@ export const mealbillSuccess = (mealbill) => ({
 export const addMealbill = (mealbill) => ({
     type: ActionTypes.ADD_MEALBILL,
     payload: mealbill
-});
+}); 
 
 export const postMealbill = (mealbill) => (dispatch) => {
 
     const newMealbill = {
-        name: mealbill.name,
-        sid: mealbill.id,
-        branch: mealbill.branch,
-        payment: mealbill.rupees,
-        paymentDate: mealbill.paymentduedate
+        name:mealbill.name,
+        sid:mealbill.id,
+        branch:mealbill.branch,
+        payment:mealbill.rupees,
+        paymentDate:mealbill.paymentduedate
     }
     console.log('Mealbill: ', newMealbill);
 
@@ -41,26 +42,24 @@ export const postMealbill = (mealbill) => (dispatch) => {
             'Authorization': bearer
         }
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(response => { alert("Mess Bill added Successfully!!"); dispatch(addMealbill(response)); dispatch(fetchMealbill()); })
-        .catch(error => {
-            console.log('Post Mealbill ', error.message);
-            alert('Meal bill could not be added\nError: ' + error.message);
-        })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => {dispatch(addMealbill(response));  dispatch(fetchMealbill());})
+    .catch(error => { console.log('Post Mealbill ', error.message);
+        alert('Meal bill could not be added\nError: '+ error.message); })
 }
 
 export const deleteMealbill = (mealId) => (dispatch) => {
@@ -70,24 +69,24 @@ export const deleteMealbill = (mealId) => (dispatch) => {
     return fetch(baseUrl + 'mealBills/' + mealId, {
         method: "DELETE",
         headers: {
-            'Authorization': bearer
+          'Authorization': bearer
         }
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            } else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                throw error;
-            })
-        .then(response => response.json())
-        .then(bill => { console.log('Bill Deleted', bill); dispatch(fetchMealbill()); })
-        .catch(error => dispatch(mealbillFailed(error.message)));
+    .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+            throw error;
+      })
+    .then(response => response.json())
+    .then(bill => { console.log('Bill Deleted', bill); dispatch(fetchMealbill());})
+    .catch(error => dispatch(mealbillFailed(error.message)));
 };
 
 export const updateMealbill = (mealbill) => (dispatch) => {
@@ -111,26 +110,24 @@ export const updateMealbill = (mealbill) => (dispatch) => {
             'Authorization': bearer
         }
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(response => { alert("Meal Bill Updated!"); dispatch(fetchMealbill()); })
-        .catch(error => {
-            console.log('Update Mealbill ', error.message);
-            alert('Meal bill could not be updated\nError: ' + error.message);
-        })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => { dispatch(fetchMealbill());})
+    .catch(error => { console.log('Update Mealbill ', error.message);
+        alert('Meal bill could not be updated\nError: '+ error.message); })
 }
 
 export const fetchMealbill = () => (dispatch) => {
@@ -144,23 +141,23 @@ export const fetchMealbill = () => (dispatch) => {
             'Authorization': bearer
         },
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(meals => dispatch(mealbillSuccess(meals)))
-        .catch(error => dispatch(mealbillFailed(error.message)));
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(meals => dispatch(mealbillSuccess(meals)))
+    .catch(error => dispatch(mealbillFailed(error.message)));
 }
 
 export const studentsLoading = () => ({
@@ -180,7 +177,7 @@ export const studentsSuccess = (students) => ({
 export const addStudent = (student) => ({
     type: ActionTypes.ADD_STUDENT,
     payload: student
-});
+}); 
 
 export const postStudent = (student) => (dispatch) => {
 
@@ -212,31 +209,29 @@ export const postStudent = (student) => (dispatch) => {
         body: JSON.stringify(newStudent),
         credentials: "same-origin"
     })
-        .then(response => {
-            console.log(response);
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(response => { alert("Student has been added Successfully!!"); dispatch(addStudent(response)); dispatch(fetchStudents()); })
-        .catch(error => {
-            console.log('Post students ', error.message);
-            alert('Your student could not be added\nError: ' + error.message);
-        })
+    .then(response => {
+        console.log(response);
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => {dispatch(addStudent(response));  dispatch(fetchStudents()); })
+    .catch(error => { console.log('Post students ', error.message);
+        alert('Your student could not be added\nError: '+ error.message); })
 }
 
 export const updateStudent = (student) => (dispatch) => {
-
+    
     const newStudent = {
         studentName: student.fullname,
         sid: student.sid,
@@ -260,27 +255,25 @@ export const updateStudent = (student) => (dispatch) => {
         },
         body: JSON.stringify(newStudent),
     })
-        .then(response => {
-            console.log(response);
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(response => { alert("Student Updated!"); dispatch(fetchStudents()); })
-        .catch(error => {
-            console.log('Update students ', error.message);
-            alert('Your student could not be updated\nError: ' + error.message);
-        })
+    .then(response => {
+        console.log(response);
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => { dispatch(fetchStudents()); })
+    .catch(error => { console.log('Update students ', error.message);
+        alert('Your student could not be updated\nError: '+ error.message); })
 }
 
 export const fetchStudents = () => (dispatch) => {
@@ -294,23 +287,23 @@ export const fetchStudents = () => (dispatch) => {
             'Authorization': bearer
         },
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(students => dispatch(studentsSuccess(students)))
-        .catch(error => dispatch(studentsFailed(error.message)));
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(students => dispatch(studentsSuccess(students)))
+    .catch(error => dispatch(studentsFailed(error.message)));
 }
 
 export const deleteStudent = (studentId) => (dispatch) => {
@@ -320,24 +313,24 @@ export const deleteStudent = (studentId) => (dispatch) => {
     return fetch(baseUrl + 'students/' + studentId, {
         method: "DELETE",
         headers: {
-            'Authorization': bearer
+          'Authorization': bearer
         }
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            } else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                throw error;
-            })
-        .then(response => response.json())
-        .then(students => { console.log('Student Deleted', students); dispatch(fetchStudents()); })
-        .catch(error => dispatch(studentsFailed(error.message)));
+    .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+            throw error;
+      })
+    .then(response => response.json())
+    .then(students => { console.log('Student Deleted', students); dispatch(fetchStudents()); })
+    .catch(error => dispatch(studentsFailed(error.message)));
 };
 
 export const employeesLoading = () => ({
@@ -357,7 +350,7 @@ export const employeesSuccess = (employees) => ({
 export const addEmployee = (employee) => ({
     type: ActionTypes.ADD_EMPLOYEE,
     payload: employee
-});
+}); 
 
 export const updateEmployee = (employee) => (dispatch) => {
     console.log(employee.id);
@@ -366,11 +359,11 @@ export const updateEmployee = (employee) => (dispatch) => {
         employeeName: employee.name,
         eid: employee.eid,
         mobileNo: employee.mobile,
-        gender: employee.gender,
-        employeeType: employee.type,
-        designation: employee.designation,
-        joiningDate: employee.joinDate,
-        salary: employee.salary,
+        gender:employee.gender,
+        employeeType:employee.type,
+        designation:employee.designation,
+        joiningDate:employee.joinDate,
+        salary:employee.salary,
         address: employee.address,
     }
     console.log('Employee: ', newemployee);
@@ -385,27 +378,25 @@ export const updateEmployee = (employee) => (dispatch) => {
         },
         body: JSON.stringify(newemployee),
     })
-        .then(response => {
-            console.log(response);
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(response => { alert("Employee Updated!"); dispatch(fetchEmployees()); })
-        .catch(error => {
-            console.log('Update students ', error.message);
-            alert('Your employee could not be updated\nError: ' + error.message);
-        })
+    .then(response => {
+        console.log(response);
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => { dispatch(fetchEmployees()); })
+    .catch(error => { console.log('Update students ', error.message);
+        alert('Your employee could not be updated\nError: '+ error.message); })
 }
 export const postEmployee = (employee) => (dispatch) => {
 
@@ -418,6 +409,7 @@ export const postEmployee = (employee) => (dispatch) => {
         address: employee.address,
         joiningDate: employee.joinDate,
         salary: employee.salary,
+        //photo: employee.photo,
         eid: employee.eid
     }
     console.log('Employee: ', JSON.stringify(newEmployee));
@@ -432,26 +424,24 @@ export const postEmployee = (employee) => (dispatch) => {
             'Authorization': bearer
         }
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(response => { alert("Employee has been added Successfully!!"); dispatch(addEmployee(response)); dispatch(fetchEmployees()); })
-        .catch(error => {
-            console.log('Post employees ', error.message);
-            alert('Your employee could not be added\nError: ' + error.message);
-        })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => {dispatch(addEmployee(response));  dispatch(fetchEmployees());})
+    .catch(error => { console.log('Post employees ', error.message);
+        alert('Your employee could not be added\nError: '+ error.message); })
 }
 
 export const fetchEmployees = () => (dispatch) => {
@@ -465,23 +455,23 @@ export const fetchEmployees = () => (dispatch) => {
             'Authorization': bearer
         },
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(employees => dispatch(employeesSuccess(employees)))
-        .catch(error => dispatch(employeesFailed(error.message)));
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(employees => dispatch(employeesSuccess(employees)))
+    .catch(error => dispatch(employeesFailed(error.message)));
 }
 
 export const deleteEmployee = (employeeId) => (dispatch) => {
@@ -491,24 +481,24 @@ export const deleteEmployee = (employeeId) => (dispatch) => {
     return fetch(baseUrl + 'employees/' + employeeId, {
         method: "DELETE",
         headers: {
-            'Authorization': bearer
+          'Authorization': bearer
         }
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            } else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                throw error;
-            })
-        .then(response => response.json())
-        .then(employees => { console.log('Employee Deleted', employees); dispatch(fetchEmployees()); })
-        .catch(error => dispatch(employeesFailed(error.message)));
+    .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+            throw error;
+      })
+    .then(response => response.json())
+    .then(employees => { console.log('Employee Deleted', employees); dispatch(fetchEmployees()); })
+    .catch(error => dispatch(employeesFailed(error.message)));
 };
 
 export const noticesLoading = () => ({
@@ -528,7 +518,7 @@ export const noticesSuccess = (notices) => ({
 export const addNotice = (notice) => ({
     type: ActionTypes.ADD_NOTICE,
     payload: notice
-});
+}); 
 
 export const postNotice = (notice) => (dispatch) => {
 
@@ -548,26 +538,24 @@ export const postNotice = (notice) => (dispatch) => {
             'Authorization': bearer
         }
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(response => { alert("Notice added Successfully!!"); dispatch(addNotice(response)); dispatch(fetchNotices()); })
-        .catch(error => {
-            console.log('Post notices ', error.message);
-            alert('Your notice could not be added\nError: ' + error.message);
-        })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => {dispatch(addNotice(response)); dispatch(fetchNotices());})
+    .catch(error => { console.log('Post notices ', error.message);
+        alert('Your notice could not be added\nError: '+ error.message); })
 }
 
 export const fetchNotices = () => (dispatch) => {
@@ -581,23 +569,23 @@ export const fetchNotices = () => (dispatch) => {
             'Authorization': bearer
         },
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(notices => dispatch(noticesSuccess(notices)))
-        .catch(error => dispatch(noticesFailed(error.message)));
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(notices => dispatch(noticesSuccess(notices)))
+    .catch(error => dispatch(noticesFailed(error.message)));
 }
 
 export const deleteNotice = (noticeId) => (dispatch) => {
@@ -605,26 +593,26 @@ export const deleteNotice = (noticeId) => (dispatch) => {
 
     return fetch(baseUrl + 'notices/' + noticeId, {
         method: "DELETE",
-        headers: {
+        headers:{
             'Authorization': bearer
         }
     })
-        .then(response => {
-            console.log(response);
-            if (response.ok) {
-                return response;
-            } else {
-                var error = new Error('Error' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                throw error;
-            })
-        .then(response => response.json())
-        .then(notices => { console.log('Notice Deleted', notices); dispatch(fetchNotices()); })
-        .catch(error => dispatch(noticesFailed(error.message)));
+    .then(response => {
+        console.log(response);
+        if(response.ok) {
+            return response;
+        } else {
+            var error = new Error('Error' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        throw error;
+    })
+    .then (response => response.json())
+    .then(notices => { console.log('Notice Deleted', notices); dispatch(fetchNotices()); })
+    .catch(error => dispatch(noticesFailed(error.message)));
 };
 
 export const salaryLoading = () => ({
@@ -644,7 +632,7 @@ export const salarySuccess = (salaries) => ({
 export const addSalary = (salary) => ({
     type: ActionTypes.ADD_SALARY,
     payload: salary
-});
+}); 
 
 export const postSalary = (salary) => (dispatch) => {
 
@@ -665,26 +653,24 @@ export const postSalary = (salary) => (dispatch) => {
             'Authorization': bearer
         }
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(response => { alert("Employee Salary added Successfully!!"); dispatch(addSalary(response)) })
-        .catch(error => {
-            console.log('Post salary', error.message);
-            alert('Your salary could not be added\nError: ' + error.message);
-        })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addSalary(response)))
+    .catch(error => { console.log('Post salary', error.message);
+        alert('Your salary could not be added\nError: '+ error.message); })
 }
 
 export const updateSalary = (salary) => (dispatch) => {
@@ -705,26 +691,24 @@ export const updateSalary = (salary) => (dispatch) => {
             'Authorization': bearer
         }
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(response => { alert("Employee Salary Updated!"); dispatch(fetchSalaries()); })
-        .catch(error => {
-            console.log('Update Salary ', error.message);
-            alert('Salary could not be updated\nError: ' + error.message);
-        })
+    .then(response => {
+        if(response.ok){
+            return response;
+        }
+        else{
+            var error = new Error('Error' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => {dispatch(fetchSalaries());})
+    .catch(error => {console.log('Update Salary ', error.message);
+        alert('Salary could not be updated\nError: ' + error.message);})
 }
 
 export const fetchSalaries = () => (dispatch) => {
@@ -738,23 +722,23 @@ export const fetchSalaries = () => (dispatch) => {
             'Authorization': bearer
         },
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(salaries => dispatch(salarySuccess(salaries)))
-        .catch(error => dispatch(salaryFailed(error.message)));
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(salaries => dispatch(salarySuccess(salaries)))
+    .catch(error => dispatch(salaryFailed(error.message)));
 }
 
 export const deleteSalary = (salaryId) => (dispatch) => {
@@ -762,25 +746,25 @@ export const deleteSalary = (salaryId) => (dispatch) => {
 
     return fetch(baseUrl + 'salary/' + salaryId, {
         method: "DELETE",
-        headers: {
+        headers:{
             'Authorization': bearer
         }
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            } else {
-                var error = new Error('Error' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                throw error;
-            })
-        .then(response => response.json())
-        .then(salaries => { console.log('Salary Deleted', salaries); dispatch(fetchSalaries()); })
-        .catch(error => dispatch(salaryFailed(error.message)));
+    .then(response => {
+        if(response.ok) {
+            return response;
+        } else {
+            var error = new Error('Error' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        throw error;
+    })
+    .then (response => response.json())
+    .then(salaries => { console.log('Salary Deleted', salaries); dispatch(fetchSalaries()); })
+    .catch(error => dispatch(salaryFailed(error.message)));
 };
 
 export const requestLogin = (creds) => {
@@ -789,7 +773,7 @@ export const requestLogin = (creds) => {
         creds
     }
 }
-
+  
 export const receiveLogin = (response) => {
     return {
         type: ActionTypes.LOGIN_SUCCESS,
@@ -797,7 +781,7 @@ export const receiveLogin = (response) => {
         admin: response.admin
     }
 }
-
+  
 export const loginError = (message) => {
     return {
         type: ActionTypes.LOGIN_FAILURE,
@@ -811,59 +795,60 @@ export const loginUser = (creds) => (dispatch) => {
 
     return fetch(baseUrl + 'users/login', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
+        headers: { 
+            'Content-Type':'application/json' 
         },
         body: JSON.stringify(creds)
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            } else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
+    .then(response => {
+        if (response.ok) {
+            return response;
+        } else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
         },
-            error => {
-                throw error;
-            })
-        .then(response => response.json())
-        .then(response => {
-            if (response.success) {
-                // If login was successful, set the token in local storage
-                localStorage.setItem('token', response.token);
-                localStorage.setItem('creds', JSON.stringify(creds));
-                localStorage.setItem('admin', response.admin);
-                // Dispatch the success action
-                dispatch(fetchStudents());
-                dispatch(fetchEmployees());
-                dispatch(fetchNotices());
-                dispatch(fetchMeals());
-                dispatch(fetchMealbill());
-                dispatch(fetchNotices());
-                dispatch(fetchArchitecture());
-                dispatch(fetchComplaints());
-                dispatch(receiveLogin(response));
-            }
-            else {
-                var error = new Error('Error ' + response.status);
-                error.response = response;
-                throw error;
-            }
-        })
-        .catch(error => dispatch(loginError(error.message)))
+        error => {
+            throw error;
+    })
+    .then(response => response.json())
+    .then(response => {
+        console.log(response);
+        if (response.success) {
+            // If login was successful, set the token in local storage
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('creds', JSON.stringify(creds));
+            localStorage.setItem('admin', response.admin);
+            // Dispatch the success action
+            dispatch(fetchStudents());
+            dispatch(fetchEmployees());
+            dispatch(fetchNotices());
+            dispatch(fetchMeals());
+            dispatch(fetchMealbill());
+            dispatch(fetchNotices());
+            dispatch(fetchArchitecture());
+            dispatch(fetchComplaints());
+            dispatch(receiveLogin(response));
+        }
+        else {
+            var error = new Error('Error ' + response.status);
+            error.response = response;
+            throw error;
+        }
+    })
+    .catch(error => dispatch(loginError(error.message)))
 };
 
 export const requestLogout = () => {
     return {
-        type: ActionTypes.LOGOUT_REQUEST
+      type: ActionTypes.LOGOUT_REQUEST
     }
 }
-
+  
 export const receiveLogout = () => {
     return {
-        type: ActionTypes.LOGOUT_SUCCESS
+      type: ActionTypes.LOGOUT_SUCCESS
     }
 }
 
@@ -905,11 +890,11 @@ export const addMeals = (meal) => ({
 export const postMeal = (meals) => (dispatch) => {
 
     const newMeal = {
-        day: meals.day,
-        breakfast: meals.breakfast,
-        lunch: meals.lunch,
-        snacks: meals.snacks,
-        dinner: meals.dinner
+        day:meals.day,
+        breakfast:meals.breakfast,
+        lunch:meals.lunch,
+        snacks:meals.snacks,
+        dinner:meals.dinner
     }
     console.log('Meal: ', newMeal);
 
@@ -923,26 +908,24 @@ export const postMeal = (meals) => (dispatch) => {
             'Authorization': bearer
         }
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(response => { alert("Meal added Successfully!!"); dispatch(addMeals(response)) })
-        .catch(error => {
-            console.log('Post meals ', error.message);
-            alert('Your meal could not be added\nError: ' + error.message);
-        })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addMeals(response)))
+    .catch(error => { console.log('Post meals ', error.message);
+        alert('Your meal could not be added\nError: '+ error.message); })
 }
 
 export const fetchMeals = () => (dispatch) => {
@@ -956,23 +939,23 @@ export const fetchMeals = () => (dispatch) => {
             'Authorization': bearer
         },
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(meals => dispatch(mealsSuccess(meals)))
-        .catch(error => dispatch(studentsFailed(error.message)));
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(meals => dispatch(mealsSuccess(meals)))
+    .catch(error => dispatch(studentsFailed(error.message)));
 }
 
 export const architectureLoading = () => ({
@@ -992,14 +975,14 @@ export const architectureSuccess = (architecture) => ({
 export const addArchitecture = (architecture) => ({
     type: ActionTypes.ADD_ARCHITECTURE,
     payload: architecture
-});
+}); 
 
 export const postArchitecture = (architecture) => (dispatch) => {
 
     const newArchitecture = {
-        rooms: architecture.rooms,
-        blocks: architecture.blocks,
-        floors: architecture.floors
+        rooms:architecture.rooms,
+        blocks:architecture.blocks,
+        floors:architecture.floors
     }
     console.log('Architecture: ', newArchitecture);
 
@@ -1013,26 +996,24 @@ export const postArchitecture = (architecture) => (dispatch) => {
             'Authorization': bearer
         }
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(response => dispatch(addArchitecture(response)))
-        .catch(error => {
-            console.log('Post Architecture ', error.message);
-            alert('Architecture could not be added\nError: ' + error.message);
-        })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addArchitecture(response)))
+    .catch(error => { console.log('Post Architecture ', error.message);
+        alert('Architecture could not be added\nError: '+ error.message); })
 }
 
 export const fetchArchitecture = () => (dispatch) => {
@@ -1046,23 +1027,23 @@ export const fetchArchitecture = () => (dispatch) => {
             'Authorization': bearer
         },
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(architecture => dispatch(architectureSuccess(architecture)))
-        .catch(error => dispatch(architectureFailed(error.message)));
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(architecture => dispatch(architectureSuccess(architecture)))
+    .catch(error => dispatch(architectureFailed(error.message)));
 }
 
 
@@ -1088,10 +1069,10 @@ export const addseatallocation = (seatallocation) => ({
 export const postSeatallocation = (seats) => (dispatch) => {
 
     const newSeatAllocation = {
-        name: seats.name,
-        block: seats.block,
-        room: seats.room,
-        monthlyRent: seats.rent,
+        name:seats.name,
+        block:seats.block,
+        room:seats.room,
+        monthlyRent:seats.rent,
 
     }
     console.log('SeatAllocation: ', newSeatAllocation);
@@ -1106,26 +1087,24 @@ export const postSeatallocation = (seats) => (dispatch) => {
             'Authorization': bearer
         }
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(response => { alert("Seat has been alloted Successfully!!"); dispatch(addseatallocation(response)) })
-        .catch(error => {
-            console.log('Post seats ', error.message);
-            alert('Your SealAllocation could not be added\nError: ' + error.message);
-        })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addseatallocation(response)))
+    .catch(error => { console.log('Post seats ', error.message);
+        alert('Your SealAllocation could not be added\nError: '+ error.message); })
 }
 
 export const updateSeatAllocation = (seat) => (dispatch) => {
@@ -1147,53 +1126,24 @@ export const updateSeatAllocation = (seat) => (dispatch) => {
         },
         body: JSON.stringify(newSeat),
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(response => { dispatch(fetchSeatallocation()); alert("Seat allocation details updated!"); })
-        .catch(error => {
-            console.log('Update Seat ', error.message);
-            alert('Seat could not be updated\nError: ' + error.message);
-        })
-}
-
-export const deleteSeatAllocation = (seatId) => (dispatch) => {
-
-    const bearer = 'Bearer ' + localStorage.getItem('token');
-
-    return fetch(baseUrl + 'seats/' + seatId, {
-        method: "DELETE",
-        headers: {
-            'Authorization': bearer
+    .then(response => {
+        if(response.ok){
+            return response;
         }
+        else{
+            var error = new Error('Error' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            } else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                throw error;
-            })
-        .then(response => response.json())
-        .then(seat => { console.log('Seat Deleted', seat); dispatch(fetchSeatallocation()); })
-        .catch(error => dispatch(seatallocationFailed(error.message)));
+    .then(response => response.json())
+    .then(response => {dispatch(fetchSeatallocation());})
+    .catch(error => {console.log('Update Seat ', error.message);
+        alert('Seat could not be updated\nError: ' + error.message);})
 }
 
 export const fetchSeatallocation = () => (dispatch) => {
@@ -1207,23 +1157,23 @@ export const fetchSeatallocation = () => (dispatch) => {
             'Authorization': bearer
         },
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(seats => dispatch(seatallocationSuccess(seats)))
-        .catch(error => dispatch(seatallocationFailed(error.message)));
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(seats => dispatch(seatallocationSuccess(seats)))
+    .catch(error => dispatch(seatallocationFailed(error.message)));
 }
 
 export const complaintsLoading = () => ({
@@ -1243,7 +1193,7 @@ export const complaintsSuccess = (students) => ({
 export const addComplaint = (student) => ({
     type: ActionTypes.ADD_COMPLAINT,
     payload: student
-});
+}); 
 
 export const postComplaint = (complaint) => (dispatch) => {
 
@@ -1263,26 +1213,24 @@ export const postComplaint = (complaint) => (dispatch) => {
             'Authorization': bearer
         }
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(response => { alert("Complaint registered Successfully!!"); dispatch(addComplaint(response)); dispatch(fetchComplaints()); })
-        .catch(error => {
-            console.log('Post complaints ', error.message);
-            alert('Your complaint could not be added\nError: ' + error.message);
-        })
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response =>{ dispatch(addComplaint(response)); dispatch(fetchComplaints());})
+    .catch(error => { console.log('Post complaints ', error.message);
+        alert('Your complaint could not be added\nError: '+ error.message); })
 }
 
 export const fetchComplaints = () => (dispatch) => {
@@ -1296,23 +1244,23 @@ export const fetchComplaints = () => (dispatch) => {
             'Authorization': bearer
         },
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            }
-            else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                var errmess = new Error(error.message);
-                throw errmess;
-            })
-        .then(response => response.json())
-        .then(complaints => dispatch(complaintsSuccess(complaints)))
-        .catch(error => dispatch(complaintsFailed(error.message)));
+    .then(response => {
+        if (response.ok) {
+            return response;
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(complaints => dispatch(complaintsSuccess(complaints)))
+    .catch(error => dispatch(complaintsFailed(error.message)));
 }
 
 export const deleteComplaint = (complaintId) => (dispatch) => {
@@ -1322,22 +1270,22 @@ export const deleteComplaint = (complaintId) => (dispatch) => {
     return fetch(baseUrl + 'complaints/' + complaintId, {
         method: "DELETE",
         headers: {
-            'Authorization': bearer
+          'Authorization': bearer
         }
     })
-        .then(response => {
-            if (response.ok) {
-                return response;
-            } else {
-                var error = new Error('Error ' + response.status + ': ' + response.statusText);
-                error.response = response;
-                throw error;
-            }
-        },
-            error => {
-                throw error;
-            })
-        .then(response => response.json())
-        .then(complaints => { console.log('Complaint Deleted', complaints); dispatch(fetchComplaints()); })
-        .catch(error => dispatch(complaintsFailed(error.message)));
+    .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+            throw error;
+      })
+    .then(response => response.json())
+    .then(complaints => { console.log('Complaint Deleted', complaints); dispatch(fetchComplaints());})
+    .catch(error => dispatch(complaintsFailed(error.message)));
 };

@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-import { Form, Input, Button, Label, Col, Row, FormGroup } from 'reactstrap';
+import {Form, Input, Button, Label, Col, Row, FormGroup} from 'reactstrap';
 export default class AddMeal extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            day: '',
-            time: '',
-            rows: []
+
+        this.state={
+            day:'',
+            time:'',
+            rows:[]
         }
+
     }
 
     handleInputChange = (event) => {
@@ -19,11 +21,10 @@ export default class AddMeal extends Component {
             [name]: value
         });
     }
-
     handleInputChange1 = (i) => (event) => {
         const values = [...this.state.rows];
         values[i] = event.target.value
-
+        
         this.setState({
             rows: values
         })
@@ -37,37 +38,38 @@ export default class AddMeal extends Component {
 
     handleDelete = (i) => {
         let values = [...this.state.rows];
-        values.splice(i, 1);
+        values.splice(i,1);
         this.setState({ rows: values });
     }
 
     handleSubmit = (event) => {
+        console.log("State: " + JSON.stringify(this.state));
+        alert("Current state: " + JSON.stringify(this.state));
         event.preventDefault();
     }
-
     handleBlur = (field) => (evt) => {
         this.setState({
-            touched: { ...this.state.touched, [field]: true }
+            touched: {...this.state.touched, [field]: true}
         });
     }
 
-    render() {
+    render(){
         console.log(this.state.rows);
         return (
             <div>
                 <div className="row">
                     <div className="col-12 container-fluid">
                         <h3 className="feature-heading ">Add/Delete Items</h3>
-                        <hr className="feature-line" />
-                    </div>
+                        <hr className="feature-line" /> 
+                    </div>  
                 </div>
                 <div >
                     <Form className="myForm" onSubmit={this.handleSubmit}>
                         <Row form>
-                            <Col md={{ size: 4, offset: 2 }}>
-                                <FormGroup>
-                                    <Label for="day">Day</Label>
-                                    <select className="form-control" name="day" id="day" value={this.state.day} onChange={this.handleInputChange} required>
+                            <Col md={{size: 4, offset: 2}}>
+                            <FormGroup>
+                                    <Label  for="day">Day</Label>
+                                    <select className="form-control" name="day" id="day" value={this.state.day} onChange={this.handleInputChange}  required>
                                         <option defaultValue>Select</option>
                                         <option value="Monday">Monday</option>
                                         <option value="Tuesday">Tuesday</option>
@@ -76,53 +78,53 @@ export default class AddMeal extends Component {
                                         <option value="Friday">Friday</option>
                                         <option Value="Saturday">Saturday</option>
                                         <option value="Sunday">Sunday</option>
-                                    </select>
+                                    </select>  
                                 </FormGroup>
                             </Col>
                             <Col md={4}>
-                                <FormGroup>
-                                    <Label for="breakfast">Time</Label>
-                                    <select className="form-control" name="time" id="time" value={this.state.time} onChange={this.handleInputChange} required>
-                                        <option defaultValue>Select</option>
-                                        <option value="Breakfast">Breakfast</option>
-                                        <option value="Lunch">Lunch</option>
-                                        <option value="Evening Snacks">Evening Snacks</option>
-                                        <option value="Dinner">Dinner</option>
-                                    </select>
-                                </FormGroup>
+                            <FormGroup>
+                            <Label for="breakfast">Time</Label>
+                                <select className="form-control" name="time" id="time" value={this.state.time} onChange={this.handleInputChange}  required>
+                                    <option defaultValue>Select</option>
+                                    <option value="Breakfast">Breakfast</option>
+                                    <option value="Lunch">Lunch</option>
+                                    <option value="Evening Snacks">Evening Snacks</option>
+                                    <option value="Dinner">Dinner</option>
+                                </select>  
+                            </FormGroup>
                             </Col>
                         </Row>
                         {
                             this.state.rows.map((el, i) => {
-                                return (
+                                return(
                                     <Row form>
-                                        <Col md={{ size: 6, offset: 2 }}>
-
+                                        <Col md={{size: 6, offset: 2}}>
+                                            
                                             <FormGroup>
                                                 <Label for="snacks">{`Row ${i + 1}`}</Label>
                                                 <Row>
-                                                    <Col md={{ size: 9 }}>
-                                                        <Input required type="text" name={`${i}`} id={`${i}`} placeholder={`Add Item`} value={this.state.rows[i]}
-                                                            onChange={this.handleInputChange1(i)} />
-                                                    </Col>
-                                                    <Col className="class-col">
-
-                                                        <Button className="float-right class-col" color="primary" onClick={(e = i) => this.handleDelete(e)}>
-                                                            Delete
-                                                        </Button>
-                                                    </Col>
-                                                </Row>
+                                                    <Col md={{size:9}}>
+                                                <Input required type="text" name={`${i}`} id={`${i}`} placeholder={`Add Item`} value={this.state.rows[i]}
+                                                onChange={this.handleInputChange1(i)} />
+                                                </Col>
+                                                <Col className="class-col">
+                                               
+                                                <Button className="float-right class-col" color="primary" onClick={(i = i) => this.handleDelete(i)}>
+                                                Delete
+                                                </Button>
+                                                </Col>
+                                                </Row>    
                                             </FormGroup>
-                                        </Col>
+                                        </Col>  
                                     </Row>
                                 )
                             })
                         }
                         <FormGroup row>
-                            <Col md={{ size: 10, offset: 2 }}>
+                            <Col md={{size: 10, offset: 2}}>
                                 <Button color="primary" onClick={this.handleAddClick}>
                                     Add Row
-                                </Button>
+                                </Button> 
                             </Col>
                         </FormGroup>
                         <FormGroup>

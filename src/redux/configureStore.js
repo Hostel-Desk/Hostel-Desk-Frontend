@@ -9,6 +9,7 @@ import { Architecture } from './architecture';
 import { SeatAllocation } from './seatallocation';
 import { Auth } from './auth';
 import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 import { Complaints } from './complaints';
 
 export const ConfigureStore = () => {
@@ -25,7 +26,7 @@ export const ConfigureStore = () => {
             complaints: Complaints,
             auth: Auth,
         }, +  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()),
-        applyMiddleware(thunk)
+        applyMiddleware(thunk, logger)
     );
 
     return store;
