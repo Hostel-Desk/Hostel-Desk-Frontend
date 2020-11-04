@@ -136,7 +136,10 @@ class Admin extends Component {
         rent: element.monthlyRent,
         actions: <div>
           <Link className="fa fa-pencil-alt edit mr-2" to={`/admin/updateSeatAllocation/${element._id}`}></Link>
-          <i className="fa fa-trash-alt delete"></i>
+          <i className="fa fa-trash-alt delete" onClick={() => {
+            if (window.confirm("Are u sure u want to delete ?"))
+              this.props.deleteSeatAllocation(element._id)
+          }}></i>
         </div>
       })
     });

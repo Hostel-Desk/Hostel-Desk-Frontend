@@ -680,7 +680,7 @@ export const postSalary = (salary) => (dispatch) => {
                 throw errmess;
             })
         .then(response => response.json())
-        .then(response => {alert("Employee Salary added Successfully!!"); dispatch(addSalary(response))})
+        .then(response => { alert("Employee Salary added Successfully!!"); dispatch(addSalary(response)) })
         .catch(error => {
             console.log('Post salary', error.message);
             alert('Your salary could not be added\nError: ' + error.message);
@@ -830,7 +830,6 @@ export const loginUser = (creds) => (dispatch) => {
             })
         .then(response => response.json())
         .then(response => {
-            console.log(response);
             if (response.success) {
                 // If login was successful, set the token in local storage
                 localStorage.setItem('token', response.token);
@@ -939,7 +938,7 @@ export const postMeal = (meals) => (dispatch) => {
                 throw errmess;
             })
         .then(response => response.json())
-        .then(response => {alert("Meal added Successfully!!"); dispatch(addMeals(response))})
+        .then(response => { alert("Meal added Successfully!!"); dispatch(addMeals(response)) })
         .catch(error => {
             console.log('Post meals ', error.message);
             alert('Your meal could not be added\nError: ' + error.message);
@@ -1122,7 +1121,7 @@ export const postSeatallocation = (seats) => (dispatch) => {
                 throw errmess;
             })
         .then(response => response.json())
-        .then(response => {alert("Seat has been alloted Successfully!!"); dispatch(addseatallocation(response))})
+        .then(response => { alert("Seat has been alloted Successfully!!"); dispatch(addseatallocation(response)) })
         .catch(error => {
             console.log('Post seats ', error.message);
             alert('Your SealAllocation could not be added\nError: ' + error.message);
@@ -1163,11 +1162,38 @@ export const updateSeatAllocation = (seat) => (dispatch) => {
                 throw errmess;
             })
         .then(response => response.json())
-        .then(response => { alert("Seat allocation details updated!"); dispatch(fetchSeatallocation()); })
+        .then(response => { dispatch(fetchSeatallocation()); alert("Seat allocation details updated!"); })
         .catch(error => {
             console.log('Update Seat ', error.message);
             alert('Seat could not be updated\nError: ' + error.message);
         })
+}
+
+export const deleteSeatAllocation = (seatId) => (dispatch) => {
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'seats/' + seatId, {
+        method: "DELETE",
+        headers: {
+            'Authorization': bearer
+        }
+    })
+        .then(response => {
+            if (response.ok) {
+                return response;
+            } else {
+                var error = new Error('Error ' + response.status + ': ' + response.statusText);
+                error.response = response;
+                throw error;
+            }
+        },
+            error => {
+                throw error;
+            })
+        .then(response => response.json())
+        .then(seat => { console.log('Seat Deleted', seat); dispatch(fetchSeatallocation()); })
+        .catch(error => dispatch(seatallocationFailed(error.message)));
 }
 
 export const fetchSeatallocation = () => (dispatch) => {
@@ -1252,7 +1278,7 @@ export const postComplaint = (complaint) => (dispatch) => {
                 throw errmess;
             })
         .then(response => response.json())
-        .then(response => {alert("Complaint registered Successfully!!"); dispatch(addComplaint(response)); dispatch(fetchComplaints()); })
+        .then(response => { alert("Complaint registered Successfully!!"); dispatch(addComplaint(response)); dispatch(fetchComplaints()); })
         .catch(error => {
             console.log('Post complaints ', error.message);
             alert('Your complaint could not be added\nError: ' + error.message);

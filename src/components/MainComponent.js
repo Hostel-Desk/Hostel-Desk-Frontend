@@ -12,7 +12,7 @@ import LoginForm from './LoginForm';
 import {
     postArchitecture, postComplaint, postEmployee, postMeal, postMealbill, postNotice, postSalary,
     postSeatallocation, postStudent, fetchArchitecture, fetchComplaints, fetchEmployees, fetchMealbill,
-    fetchMeals, fetchNotices, fetchSalaries, fetchSeatallocation, fetchStudents, deleteComplaint,
+    fetchMeals, fetchNotices, fetchSalaries, fetchSeatallocation, fetchStudents, deleteComplaint, deleteSeatAllocation,
     deleteEmployee, deleteNotice, deleteMealbill, deleteSalary, deleteStudent, logoutUser, loginUser, updateStudent, updateEmployee, updateMealbill, updateSeatAllocation, updateSalary
 } from '../redux/actionCreators';
 
@@ -42,6 +42,7 @@ const mapDispatchToProps = (dispatch) => ({
     deleteSalary: (salaryId) => dispatch(deleteSalary(salaryId)),
     deleteStudent: (studentId) => dispatch(deleteStudent(studentId)),
     deleteMealbill: (billId) => dispatch(deleteMealbill(billId)),
+    deleteSeatAllocation: (seatId) => dispatch(deleteSeatAllocation(seatId)),
     loginUser: (creds) => dispatch(loginUser(creds)),
     logoutUser: () => dispatch(logoutUser()),
     updateStudent: (student) => dispatch(updateStudent(student)),
@@ -121,7 +122,7 @@ class Main extends Component {
                         <Route path="/login" component={() => <LoginForm auth={this.props.auth} loginUser={this.props.loginUser} />} />
                         <AdminRoute path="/admin" component={() => <Admin auth={this.props.auth} postNotice={this.props.postNotice} postArchitecture={this.props.postArchitecture} postMealbill={this.props.postMealbill} updateStudent={this.props.updateStudent} updateEmployee={this.props.updateEmployee}
                             employees={this.props.employees} notices={this.props.notices} students={this.props.students} postStudent={this.props.postStudent} postSalary={this.props.postSalary} deleteNotice={this.props.deleteNotice} deleteComplaint={this.props.deleteComplaint}
-                            deleteStudent={this.props.deleteStudent} fetchStudents={this.props.fetchStudents} salaries={this.props.salaries} complaints={this.props.complaints} postEmployee={this.props.postEmployee} deleteEmployee={this.props.deleteEmployee} deleteMealbill={this.props.deleteMealbill}
+                            deleteStudent={this.props.deleteStudent} deleteSeatAllocation={this.props.deleteSeatAllocation} fetchStudents={this.props.fetchStudents} salaries={this.props.salaries} complaints={this.props.complaints} postEmployee={this.props.postEmployee} deleteEmployee={this.props.deleteEmployee} deleteMealbill={this.props.deleteMealbill}
                             meals={this.props.meals} mealBills={this.props.mealBills} fetchEmployees={this.props.fetchEmployees} seatAllocation={this.props.seatAllocation} architecture={this.props.architecture} deleteSalary={this.props.deleteSalary} updateMealbill={this.props.updateMealbill}
                             updateSeatAllocation={this.props.updateSeatAllocation} updateSalary={this.props.updateSalary} postSeatallocation={this.props.postSeatallocation} />} />
                         <Route path="/contactus" component={Contact} />
