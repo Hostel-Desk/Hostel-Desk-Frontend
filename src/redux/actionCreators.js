@@ -1341,3 +1341,45 @@ export const deleteComplaint = (complaintId) => (dispatch) => {
         .then(complaints => { console.log('Complaint Deleted', complaints); dispatch(fetchComplaints()); })
         .catch(error => dispatch(complaintsFailed(error.message)));
 };
+
+
+export const updateMeal = (meal) => (dispatch) => {
+    
+    const time = meal.time;
+    const newMeal = {
+        day: meal.day,
+        [time]: meal.rows
+    }
+    console.log('Meal: ', newMeal);
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'meals/' + meal.id, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': bearer
+        },
+        body: JSON.stringify(newMeal),
+    })
+        .then(response => {
+            if (response.ok) {
+                return response;
+            }
+            else {
+                var error = new Error('Error' + response.status + ': ' + response.statusText);
+                error.response = response;
+                throw error;
+            }
+        },
+            error => {
+                var errmess = new Error(error.message);
+                throw errmess;
+            })
+        .then(response => response.json())
+        .then(response => { dispatch(fetchMeals()); alert("Meal updated!"); })
+        .catch(error => {
+            console.log('Update Meal ', error.message);
+            alert('Meal could not be updated\nError: ' + error.message);
+        })
+}
