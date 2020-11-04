@@ -45,7 +45,7 @@ export default class AddMeal extends Component {
     }
 
     handleSubmit = (event) => {
-        console.log(this.state);
+        event.preventDefault();
         this.props.updateMeal(this.state);
     }
 
