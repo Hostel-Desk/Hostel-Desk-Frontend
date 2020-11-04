@@ -152,7 +152,7 @@ export default class AddMeal extends Component {
                                                     </Col>
                                                     <Col className="class-col">
 
-                                                        <Button className="float-right class-col" color="primary" onClick={(e = i) => this.handleDelete(e)}>
+                                                        <Button className="float-right class-col" color="primary" onClick={() => this.handleDelete(i)}>
                                                             Delete
                                                         </Button>
                                                     </Col>
