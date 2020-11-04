@@ -4,7 +4,7 @@ import { Loading } from './LoadingComponent';
 
 export default function Complaints({ complaints, isLoading, errMess }) {
 
-  const [datatable, setDatatable] = React.useState({
+  const [datatable] = React.useState({
     columns: [
       {
         label: 'Student Name',

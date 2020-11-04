@@ -3,7 +3,7 @@ import { MDBDataTableV5 } from 'mdbreact';
 import { Loading } from './LoadingComponent';
 export default function EmployeeView({ employees, isLoading, errMess }) {
 
-  const [datatable, setDatatable] = React.useState({
+  const [datatable] = React.useState({
 
     columns: [
       {

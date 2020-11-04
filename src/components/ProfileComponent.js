@@ -46,7 +46,7 @@ class Profile extends Component {
         else if (this.state.touched.name && name.length > 30)
             errors.name = 'Name should not be greater than 30 characters';
 
-        if (this.state.touched.id && id.length != 8) {
+        if (this.state.touched.id && id.length !== 8) {
             errors.id = 'Length of the student id should be equal to 8';
         }
         return errors;

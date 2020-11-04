@@ -2,7 +2,7 @@ import React from 'react';
 import { MDBDataTableV5 } from 'mdbreact';
 import { Loading } from './LoadingComponent';
 export default function StudentView({ students, isLoading, errMess }) {
-  const [datatable, setDatatable] = React.useState({
+  const [datatable] = React.useState({
     columns: [
       {
         label: 'Name',

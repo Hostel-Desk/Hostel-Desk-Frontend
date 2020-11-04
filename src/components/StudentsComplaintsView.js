@@ -3,7 +3,7 @@ import { MDBDataTableV5 } from 'mdbreact';
 
 export default function ComplaintsView({ complaints }) {
 
-  const [datatable, setDatatable] = React.useState({
+  const [datatable] = React.useState({
     columns: [
       {
         label: 'Student SID',
