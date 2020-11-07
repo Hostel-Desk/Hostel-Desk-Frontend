@@ -8,8 +8,8 @@ import StudentProfile from './StudentProfile';
 import StudentLeftNav from './Studentleftnav';
 import NoticeV from './StudentNoticeV';
 import SubmitComplaint from './SubmitComplaint';
-import StudentView from './StudentsComponent';
-import EmployeeView from './EmployeeView';
+import StudentView from './StudentsComponentView';
+import EmployeeView from './StudentEmployeeView';
 
 class Student extends Component {
   constructor(props) {
@@ -96,7 +96,7 @@ class Student extends Component {
           sid: element.sid,
           branch: element.branch,
           amount: element.payment,
-          date: element.paymentDate,
+          date: element.paymentDate.split('T')[0].split("-")[2] + "-" + element.paymentDate.split('T')[0].split("-")[1] + "-" + element.paymentDate.split('T')[0].split("-")[0],
         })
       }
     });
