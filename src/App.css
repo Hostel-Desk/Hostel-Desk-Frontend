@@ -47,13 +47,21 @@ body{
     position: relative;
     left: 60%;
 }
+
 .nav-item{
   padding: 0 18px;
 }
+
 .nav-link{
     font-size: 1rem;
     font-family: "Montserrat";
 }
+
+.nav-link:hover{
+    color: white
+}
+
+
 .close{
     position: relative;
     left: 370px;
