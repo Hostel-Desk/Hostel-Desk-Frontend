@@ -1,7 +1,40 @@
+# Hostel Management System
+
+It is a system developed for managing various activities in the hostel. This project also keeps details of the hostellers. It is headed by Hostel head. He will be the administrator. This system is designed in favour of the hostel management which helps them to save the records of the students about their rooms and other things.
+
+## Motivation
+
+The number of hostels are increasing for the accommodation of the students studying in Colleges. And hence there is a lot of strain on the person who are running the hostel and software’s are not usually used in this context. This particular project deals with the problems on managing a hostel and avoids the problems which occur when carried manually. Identification of the drawbacks of the existing system leads to the designing of computerized system that will be compatible to the existing system with the system which is more user friendly.
+
+## Screenshots
+
+![Home Page](public\assets\home_page.png)
+
+![Admin](public\assets\admin.png)
+
+
+#### Watch the Video for reference by clicking [here](https://drive.google.com/file/d/11zBc0fQSxPZX0lr9nEDH1M7aGh7w1IYq/view?usp=sharing)
+
+## Tech/Framework used
+
+- MERN Stack
+- Reactstrap
+- Redux
+- JWT Authentication
+
+
+## Features
+
+- This project is aimed at developing a system for keeping records and showing information of a hostel.
+- This system will help the hostel officer to be able to manage the affairs of the hostel.
+- This system will provide full information about a student in the hostel.
+- There will also be an administrator module which will accessed by the administrator and has the ability to delete, add and edit employee records.
+- Hostellers can view notice board, hostel fee and mess menu or register complaints by login into the online system.
+
+
+## Installation
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
 In the project directory, you can run:
 
 ### `npm start`
@@ -36,33 +69,13 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+ 
 
-## Learn More
+## Team Members
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [Jatin Bansal](https://github.com/bansaljatin05)
+- [Puneet Bansal](https://github.com/bansalpuneet15)
+- [Aaryan Sharma](https://github.com/Aaryan8751)
+- [Tanveer Sodhi](https://github.com/TanveerSodhi)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

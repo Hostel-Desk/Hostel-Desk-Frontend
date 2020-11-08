@@ -20,7 +20,7 @@ function Contact(props) {
     //const history = useHistory();
     const handleSubmit = (event) => {
         //const history = useHistory();
-        const message = initialState.message+"  "+"With Regards "+initialState.name + "  "+ initialState.email
+        const message = initialState.message+"%0AWith Regards%0A"+initialState.name + "%0A"+ initialState.email
         window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=tanveersodhi17@gmail.com&su=${initialState.subject}&body=${message}`); event.preventDefault();
     }
     const handleInputChange = (event) => {
