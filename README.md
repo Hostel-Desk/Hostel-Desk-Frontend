@@ -8,9 +8,9 @@ The number of hostels are increasing for the accommodation of the students study
 
 ## Screenshots
 
-![Home Page](public\assets\home_page.png)
+![Home Page](https://github.com/bansaljatin05/Hostel-Management/blob/master/public/assets/home_page.png)
 
-![Admin](public\assets\admin.png)
+![Admin](https://github.com/bansaljatin05/Hostel-Management/blob/master/public/assets/admin.png)
 
 
 #### Watch the Video for reference by clicking [here](https://drive.google.com/file/d/11zBc0fQSxPZX0lr9nEDH1M7aGh7w1IYq/view?usp=sharing)
