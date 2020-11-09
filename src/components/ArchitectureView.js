@@ -37,18 +37,26 @@ export default function ArchitectureView({ architectures, isLoading, errMess }) 
   }
   else {
     return (
-      <MDBDataTableV5
-        responsiveMd
-        hover
-        entriesOptions={[5, 20, 25]}
-        entries={5}
-        pagesAmount={4}
-        data={datatable}
-        pagingTop
-        searchTop
-        searchBottom={false}
-        scrollX
-      />
+      <div>
+        <div className="row">
+          <div className="col-12 container-fluid">
+            <h2 className="feature-heading ">Architecture</h2>
+            <hr className="feature-line" />
+          </div>
+        </div>
+        <MDBDataTableV5
+          responsiveMd
+          hover
+          entriesOptions={[5, 20, 25]}
+          entries={5}
+          pagesAmount={4}
+          data={datatable}
+          pagingTop
+          searchTop
+          searchBottom={false}
+          scrollX
+        />
+      </div>
     );
   }
 }
