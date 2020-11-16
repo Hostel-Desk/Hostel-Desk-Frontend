@@ -231,6 +231,35 @@ class AddStudent extends Component {
                         </FormGroup>
                     </Form>
                 </div>
+                <br />
+                <hr className="feature-line" style={{width: "30%"}}/>
+                <div className="row">
+                    <div className="col-12 container-fluid">
+                        <h3 style={{fontWeight: "bold"}}>or Upload a File</h3>
+                    </div>
+                </div>
+                <div>
+                    <Form className="myForm">
+                        <Row form>
+                            <Col md={4}>
+                                <FormGroup>
+                                    <br />
+                                    <Input required type="file" name="rooms" id="rooms"/>
+                                </FormGroup>
+                            </Col>
+                           
+                            <Col md={{ size: 6 }} style={{paddingTop: "12px"}}>
+                                <FormGroup>
+                                    <Button type="submit" color="primary">
+                                        Upload
+                                    </Button>
+                                </FormGroup>
+                            </Col>
+                            
+                        </Row>
+                    </Form>
+                </div>
+                
             </div>
         )
     }
