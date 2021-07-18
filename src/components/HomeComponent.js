@@ -3,7 +3,7 @@ function Home() {
     return (
         <div>
             <div className="describe conatiner-fluid col-12">
-                <h1>Hostel Management System</h1>
+                <h1>Hostel Desk</h1>
                 <hr />
                 <p className="content container-fluid">In our current era of automated systems with it being either software or hardware, it’s not
                 advisable to be using manual system. We have got six hostels in our university, which consist of four boy’s hostel and two girl’s hostel.
