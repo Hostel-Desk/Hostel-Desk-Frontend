@@ -1,6 +1,7 @@
 # Hostel Desk
 
 It is a system developed for managing various activities in the hostel. This project also keeps details of the hostellers. It is headed by Hostel head. He will be the administrator. This system is designed in favour of the hostel management which helps them to save the records of the students about their rooms and other things.
+Live version of the website can be accessed at: https://hostel-desk.netlify.app/
 
 ## Motivation
 
